@@ -535,3 +535,8 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
 .sym > div { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: start; }
 .sym .k { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; background: #1f2430; color: #fff; font-family: ui-monospace, Consolas, monospace; font-size: 24px; }
 .sym p { margin: 0; font-size: 17px; }
+
+/* 제목과 본문 구분 */
+.article h1 { margin-bottom: 10px; }
+.article > .meta { padding-bottom: 22px; border-bottom: 2px solid #efe1e6; font-size: 14px; color: #5b6275; }
+.article .content { margin-top: 30px; }

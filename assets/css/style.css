@@ -507,3 +507,27 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
 .done { margin: 2.4em 0 1em; padding: 26px 24px; border-radius: 18px; background: #e8f5ef; border: 2px solid #9fd6bd; text-align: center; }
 .done-t { font-size: 24px; font-weight: 700; line-height: 1.5; color: #1e6b4d; }
 .done p { margin: 10px 0 0; font-size: 18px; }
+
+/* ===== 제목 체계 (일관성) =====
+   대제목 h2: 꽉 찬 분홍 네모 번호
+   소제목 h3: 테두리만 있는 분홍 네모 번호 (또는 아이콘)
+   그림 속 순서: 작은 분홍 동그라미 */
+.content h2 { font-size: 26px; font-weight: 700; gap: 12px; }
+.content h2 .no { width: 38px; height: 38px; border-radius: 10px; background: var(--accent); color: #fff; font-size: 19px; font-weight: 700; }
+.content h2 small { font-size: 16px; font-weight: 500; color: var(--ink-soft); }
+.content h3, .content h3.ih, .content h3.step-h, .whyg .wg-h {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
+  margin: 1.8em 0 .6em; padding-top: 0; border-top: 0;
+  font-size: 21px; font-weight: 700; color: var(--ink); line-height: 1.4;
+}
+.whyg .wg-h { margin: 0 0 4px; }
+.step-h > span, .whyg .wg-h > span {
+  display: inline-grid; place-items: center; flex: none;
+  width: 32px; height: 32px; border-radius: 9px;
+  background: #fff; color: var(--accent); border: 2px solid var(--accent);
+  font-size: 17px; font-weight: 700;
+}
+.content h3.ih img, .step-h img { width: 30px; height: 30px; }
+.ss .sn, .seq .sn { width: 26px; height: 26px; background: var(--accent); color: #fff; font-size: 14px; }
+.snap-h { font-size: 18px; color: var(--ink); }
+.wshot.obs .obs-h { font-size: 17px; color: var(--ink); }

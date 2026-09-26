@@ -51,15 +51,17 @@ description: 사전 세팅 1강. AI와 한 일을 폴더 하나에 모으는 지
 AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 
 <div class="twoai">
-<div class="ta chat"><div class="ta-h">채팅창 <small>인터넷 창</small></div><div class="ta-m">전화로 알려주는 친구</div><p>무엇이든 물어보면 알려줘요. 내 컴퓨터는 만지지 못해서, <b>손은 내가</b> 움직여요.</p><p class="ta-e">claude.ai · chatgpt.com</p></div>
-<div class="ta desk"><div class="ta-h">데스크탑 앱 <small>설치하는 프로그램</small></div><div class="ta-m">옆에서 직접 해 주는 친구</div><p>내 폴더를 열고, 파일을 만들고, 정리까지 <b>직접</b> 해 줘요.</p><p class="ta-e">클로드 앱 · GPT 앱 (유료: 클로드 Pro 이상, GPT Plus 이상)</p></div>
+<div class="ta chat"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>채팅창 <small>인터넷 창</small></div><div class="ta-m">전화로 알려주는 친구</div><p>무엇이든 물어보면 알려줘요. 내 컴퓨터는 만지지 못해서, <b>손은 내가</b> 움직여요.</p><p class="ta-e">claude.ai · chatgpt.com</p></div>
+<div class="ta desk"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>데스크탑 앱 <small>설치하는 프로그램</small></div><div class="ta-m">옆에서 직접 해 주는 친구</div><p>내 폴더를 열고, 파일을 만들고, 정리까지 <b>직접</b> 해 줘요.</p><p class="ta-e">클로드 앱 · GPT 앱 (유료: 클로드 Pro 이상, GPT Plus 이상)</p></div>
 </div>
 
-그래서 **설치는 채팅창에 물어보고**, 설치가 끝나면 **세팅은 데스크탑 앱**에 맡겨요.
+그래서 **설치는 채팅창에 물어보고**, 설치가 끝나면 **나머지는 데스크탑 앱**에 맡겨요.
+
+<h3 class="step-h"><span>1</span>AI 데스크탑 앱 설치하기 <small>채팅창에서</small></h3>
 
 아래 요청을 채팅창([claude.ai](https://claude.ai) 또는 [chatgpt.com](https://chatgpt.com))에 보내면, AI가 한 단계씩 알려줘요.
 
-<div class="prompt"><span class="who">설치 도움 요청</span><button class="copy" type="button">복사</button><span class="txt">안녕! 나는 AI를 처음 쓰려고 하는데, 그 전에 AI와 한 일을 한 폴더에 모으는 세팅을 하려고 해. 이 글을 보고 따라 하는 중이야: https://lifeschedule-dotcom.github.io/2026/09/26/gpters-24-setup/
+<div class="prompt"><span class="who">설치 도움 요청 (채팅창에)</span><button class="copy" type="button">복사</button><span class="txt">안녕! 나는 AI를 처음 쓰려고 하는데, 그 전에 AI와 한 일을 한 폴더에 모으는 세팅을 하려고 해. 이 글을 보고 따라 하는 중이야: https://lifeschedule-dotcom.github.io/2026/09/26/gpters-24-setup/
 원드라이브가 켜져 있는지 확인하고, <span class="fill">(클로드 / GPT)</span> 데스크탑 앱을 설치하고 싶어. 내가 할 수 있게 한 단계씩 천천히 알려줘. 내가 화면을 캡처해서 보내면, 그 화면을 보고 다음에 뭘 누르면 되는지 알려줘. 내 컴퓨터는 <span class="fill">(윈도우 / 맥)</span>이야.</span></div>
 
 <p class="sub-note">복사해서 보내고, 노란 괄호 칸만 내 상황에 맞게 바꿔요.</p>
@@ -71,18 +73,16 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 <div class="ss"><span class="sn">2</span><img class="ico" src="/assets/img/icons/snipping.png" alt="캡처 도구 아이콘"><p>이 아이콘을 누르고, 찍을 곳을 마우스로 끌어요</p></div>
 <div class="ss"><span class="sn">3</span><div class="say">지금 이 화면이야.<br>다음에 뭘 눌러?</div><p>채팅창에 <b>Ctrl + V</b>로 붙여넣고 물어봐요</p></div>
 </div>
+<p class="snap-mac">맥은 <b>Cmd + Shift + 4</b>로 찍어요.</p>
+</div>
 
-<h3 class="ih"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언은 데스크탑 앱에게 맡겨요</h3>
+<h3 class="step-h"><span>2</span><img src="/assets/img/icons/obsidian.png" alt="">옵시디언 다운로드 <small>데스크탑 앱에게</small></h3>
 
 데스크탑 앱이 설치되면, 이제 옆에서 직접 해 주는 친구가 생겼어요. 옵시디언 설치는 데스크탑 앱에 이렇게 보내요.
 
 <div class="prompt"><span class="who">옵시디언 설치 요청 (데스크탑 앱에)</span><button class="copy" type="button">복사</button><span class="txt">옵시디언을 설치하고 싶어. 네가 직접 설치해 줄 수 있으면 해 주고, 어렵다면 내가 할 수 있게 한 단계씩 알려줘.</span></div>
 
 <p class="sub-note">옵시디언은 <b>설치만</b> 해 두세요. 쓰는 법은 오프라인 모임 때 카페에서 같이 알려드릴게요.</p>
-<p class="snap-mac">맥은 <b>Cmd + Shift + 4</b>로 찍어요.</p>
-</div>
-
-
 
 ## <span class="no">3</span> AI에게 세팅 시키기
 
@@ -112,7 +112,7 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 
 <div class="whyg">
 <div class="wg-h"><span>1</span>원드라이브 안에 me 폴더</div>
-<div class="wc"><div class="wq">원드라이브 폴더 안에</div><p>원드라이브 안에 넣은 것만 인터넷에 올라가서, 휴대폰이나 다른 노트북에서 꺼내 쓸 수 있어요. 밖에 만들면 그 노트북에만 남아요.</p></div>
+<div class="wc"><div class="wq">원드라이브 폴더 안에</div><p>원드라이브 안에 넣은 것만 인터넷에 올라가서, 휴대폰이나 다른 노트북에서 꺼내 쓸 수 있어요. me 폴더를 원드라이브 밖에 만들면, 그 폴더는 지금 노트북에만 남아요.</p></div>
 <div class="wc"><div class="wq">여기에 저장해</div><p>정해 주지 않으면 AI는 그때그때 편한 곳에 파일을 만들어요. 그래서 데스크탑 앱에서 <b>폴더를 먼저 골라 주고</b>, 요청에도 "여기에 저장해"라고 적어요.</p><div class="seq"><figure><span class="sn">1</span><img src="/assets/img/setup/pick-folder.png" alt="입력창 위 폴더 없음 버튼"><figcaption>입력창 위 <b>폴더 없음</b>을 눌러요</figcaption></figure><figure><span class="sn">2</span><img src="/assets/img/setup/pick-folder-2.png" alt="폴더 선택 창에서 me 폴더를 고른 화면"><figcaption><b>me</b>를 고르고 <b>폴더 선택</b>을 눌러요</figcaption></figure><figure><span class="sn">3</span><img src="/assets/img/setup/pick-folder-3.png" alt="입력창 위에 me가 표시된 화면"><figcaption>입력창 위에 <b>me</b>가 보이면 끝! 이제 AI가 me 폴더 안에서 일해요</figcaption></figure></div><div class="act"><div><span class="d">이렇게 하면</span><span class="t"><q>출퇴근 기록표 만들어줘</q> 대신 <q>me 폴더에 출퇴근 기록표 만들어줘</q>라고 보내요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">기록표가 바탕화면이나 다운로드 폴더에 흩어지지 않고 me 폴더에 생겨요.</span></div></div></div>
 </div>
 

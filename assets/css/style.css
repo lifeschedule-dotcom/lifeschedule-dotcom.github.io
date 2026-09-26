@@ -496,3 +496,10 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
 .wshot.obs .obs-h { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 17px; font-weight: 700; color: #5b3aa6; }
 .wshot.obs .obs-h img { width: 28px; height: 28px; border: 0; border-radius: 0; }
 .prompt.mini { margin: 10px 0 0; padding: 12px 16px; } .prompt.mini .copy { top: 10px; }
+.ta-h { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.ta-i { display: inline-flex; gap: 4px; }
+.ta-i img { width: 26px; height: 26px; }
+.content h3.step-h { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin: 2em 0 .6em; font-size: 21px; }
+.step-h > span { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: #1f2430; color: #fff; font-size: 18px; }
+.step-h img { width: 30px; height: 30px; }
+.step-h small { font-size: 15px; font-weight: 700; color: var(--accent); background: #f6e4e9; border-radius: 99px; padding: 2px 10px; }

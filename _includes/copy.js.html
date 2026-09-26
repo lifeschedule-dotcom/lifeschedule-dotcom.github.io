@@ -1,0 +1,24 @@
+<script>
+(function () {
+  var done = { ko: '복사됨', en: 'Copied' };
+  var lang = document.documentElement.lang === 'en' ? 'en' : 'ko';
+  document.querySelectorAll('.prompt .copy').forEach(function (btn) {
+    var label = btn.textContent;
+    btn.addEventListener('click', function () {
+      var txt = btn.closest('.prompt').querySelector('.txt').innerText;
+      var ok = function () {
+        btn.textContent = done[lang];
+        setTimeout(function () { btn.textContent = label; }, 1600);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(txt).then(ok, function () {});
+      } else {
+        var t = document.createElement('textarea');
+        t.value = txt; document.body.appendChild(t); t.select();
+        try { document.execCommand('copy'); ok(); } catch (e) {}
+        document.body.removeChild(t);
+      }
+    });
+  });
+})();
+</script>

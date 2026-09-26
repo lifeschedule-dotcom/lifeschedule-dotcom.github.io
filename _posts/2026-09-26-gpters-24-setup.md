@@ -91,19 +91,21 @@ AI는 폴더를 바로 열어 읽으니까 옵시디언이 필요 없어요. 옵
 <div class="rule"><span class="ic"><svg><use href="#i-key"/></svg></span><div><b>비밀번호와 키는 적지 않기</b><div class="act"><div><span class="d">이렇게 하면</span><span class="t">규칙 파일에 비밀번호 대신 <q>비밀번호는 내 휴대폰 메모에 있음</q>처럼 위치만 적어요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">폴더가 원드라이브에 올라가거나 화면을 공유해도 비밀번호가 새어 나가지 않아요.</span></div></div></div></div>
 </div>
 
-## <span class="no">2</span> 준비물
+## <span class="no">2</span> 설치하기
 
-설치 방법은 여기 적지 않을게요. **아래 링크만 AI에게 보여주고 "설치 도와줘"라고 하면 돼요.** AI가 여러분 화면에 맞춰 알려주는 게 더 정확하고 빨라요.
-
-<div class="tools">
-<div class="tool t-cloud"><div class="h"><img src="/assets/img/icons/onedrive.png" alt="">원드라이브</div><p>마이크로소프트의 인터넷 저장 공간이에요. 윈도우에는 이미 깔려 있어요. <code>Win + E</code>로 파일 탐색기를 열면 왼쪽에 구름 모양 <b>OneDrive</b>가 보여요.</p><div class="go"><a href="https://www.microsoft.com/ko-kr/microsoft-365/onedrive/download" target="_blank" rel="noopener">원드라이브 받기 →</a></div></div>
-<div class="tool t-ai"><div class="h"><span class="pair"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>클로드 / GPT 데스크탑 앱</div><p>둘 중 하나만 있으면 돼요. GPT는 Plus 이상, 클로드는 Pro 이상이 필요해요.</p><div class="go"><a href="https://claude.ai/download" target="_blank" rel="noopener">클로드 받기 →</a> &nbsp; <a href="https://chatgpt.com/download" target="_blank" rel="noopener">GPT 받기 →</a></div></div>
-</div>
-
-설치가 막막하면 이렇게 보내세요. 짧으니까 직접 쳐 보는 걸 추천해요.
+설치는 **AI에게 맡겨요.** 아래 요청을 보내면, AI가 여러분 화면에 맞춰 한 단계씩 알려줘요. 아직 데스크탑 앱이 없으니, 이 요청은 인터넷 창에서 [claude.ai](https://claude.ai) 또는 [chatgpt.com](https://chatgpt.com)에 들어가 채팅으로 보내요.
 
 <div class="prompt"><span class="who">설치 도움 요청</span><button class="copy" type="button">복사</button><span class="txt">안녕! 나는 AI를 처음 쓰려고 하는데, 그 전에 AI와 한 일을 한 폴더에 모으는 세팅을 하려고 해. 이 글을 보고 따라 하는 중이야: https://lifeschedule-dotcom.github.io/2026/09/26/gpters-24-setup/
-먼저 원드라이브가 켜져 있는지 확인하고, <span class="fill">(클로드 / GPT)</span> 데스크탑 앱을 설치하고 싶어. 네가 직접 할 수 있으면 해주고, 어렵다면 내가 할 수 있게 한 단계씩 천천히 알려줘. 내 컴퓨터는 <span class="fill">(윈도우 / 맥)</span>이야.</span></div>
+원드라이브가 켜져 있는지 확인하고, <span class="fill">(클로드 / GPT)</span> 데스크탑 앱을 설치하고 싶어. 내가 할 수 있게 한 단계씩 천천히 알려줘. 내가 화면을 캡처해서 보내면, 그 화면을 보고 다음에 뭘 누르면 되는지 알려줘. 내 컴퓨터는 <span class="fill">(윈도우 / 맥)</span>이야.</span></div>
+
+<p class="sub-note">짧으니까 직접 쳐 보는 걸 추천해요. 막히면 화면을 캡처해서 같은 채팅에 붙여넣고 "지금 이 화면이야. 다음에 뭘 눌러?"라고 물어보세요.</p>
+
+필요한 건 이 두 가지예요. 링크는 AI가 알려줄 때 참고용이에요.
+
+<div class="tools">
+<div class="tool t-cloud"><div class="h"><img src="/assets/img/icons/onedrive.png" alt="">원드라이브</div><p>마이크로소프트의 인터넷 저장 공간이에요. 윈도우에는 이미 깔려 있어요. 켜져 있는지는 AI가 확인해 줘요.</p><div class="go"><a href="https://www.microsoft.com/ko-kr/microsoft-365/onedrive/download" target="_blank" rel="noopener">원드라이브 받기 →</a></div></div>
+<div class="tool t-ai"><div class="h"><span class="pair"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>클로드 / GPT 데스크탑 앱</div><p>둘 중 하나만 있으면 돼요. GPT는 Plus 이상, 클로드는 Pro 이상이 필요해요.</p><div class="go"><a href="https://claude.ai/download" target="_blank" rel="noopener">클로드 받기 →</a> &nbsp; <a href="https://chatgpt.com/download" target="_blank" rel="noopener">GPT 받기 →</a></div></div>
+</div>
 
 ## <span class="no">3</span> AI에게 세팅 시키기
 

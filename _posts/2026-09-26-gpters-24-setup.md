@@ -78,9 +78,9 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 
 ## <span class="no">3</span> AI에게 세팅 시키기
 
-설치가 끝나면 클로드나 GPT 데스크탑 앱에서 **내 폴더를 쓸 수 있는 작업 모드**를 열고, 아래 요청을 보내요.
+설치가 끝나면 **데스크탑 앱**에 아래 요청을 보내요. 폴더와 파일은 AI가 만들어요.
 
-**보내기 전에 한 줄씩 읽어 주세요.** 내 상황에 안 맞는 줄은 고쳐서 보내요. 줄마다의 이유는 <a href="#why">5번</a>에 있어요.
+**보내기 전에 한 줄씩 읽어 주세요.**
 
 <div class="prompt"><span class="who">지식관리 세팅 요청</span><button class="copy" type="button">복사</button><span class="txt">안녕! 나는 <span class="fill">(하는 일)</span>을 하는 사람이고, AI는 처음이야. 앞으로 너랑 한 일을 한 폴더에 모아서 관리하고 싶어. 아래대로 세팅해줘. 네가 직접 할 수 있는 건 해주고, 내가 눌러야 하는 화면만 한 단계씩 천천히 알려줘.
 
@@ -96,23 +96,23 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 
 다 끝나면 무엇을 어디에 만들었는지 정리해서 보여주고, 바로가기와 규칙 파일이 실제로 열리는지 나와 함께 확인해줘.</span></div>
 
-<div class="callout warn"><svg><use href="#i-warn"/></svg><div><b>이것만은 직접 해요.</b> 로그인, 비밀번호 입력, 결제 버튼, 그리고 "허용하시겠어요?" 창은 AI에게 넘기지 말고 무엇을 허용하는지 읽고 직접 눌러요.</div></div>
+<div class="callout warn"><svg><use href="#i-warn"/></svg><div><b>이것만은 직접 해요.</b> 로그인, 비밀번호, 결제, "허용할까요?" 창은 읽어 보고 내가 눌러요.</div></div>
 
 ## <span class="no">4</span> 잘 됐는지 하나하나 확인하기
 
-AI가 끝났다고 하면, 아래와 똑같이 됐는지 **직접** 확인해요.
+AI가 끝났다고 하면, 이 세 가지를 **직접** 확인해요.
 
 <ul class="checks">
 <li><svg><use href="#i-check"/></svg><span>바탕화면의 <b>내 폴더 바로가기</b>를 더블클릭하면 폴더가 열린다</span></li>
-<li><svg><use href="#i-check"/></svg><span>그 폴더 안의 <b>AI협업규칙.md</b>를 열면 규칙이 보인다</span></li>
-<li><svg><use href="#i-check"/></svg><span>AI 앱에서 <b>새 대화</b>를 열고 아래 한 줄을 보내면, 규칙과 <b>파일의 실제 위치</b>를 말해 준다</span></li>
+<li><svg><use href="#i-check"/></svg><span>그 폴더 안에 <b>AI협업규칙.md</b>가 있다</span></li>
+<li><svg><use href="#i-check"/></svg><span>새 대화에서 아래 한 줄을 보내면, AI가 규칙을 말해 준다</span></li>
 </ul>
 
-세 개 다 되면 세팅 끝이에요. 이제부터 AI와 무엇을 만들든, 대화를 시작할 때 이 한 줄만 붙이면 돼요.
+앞으로도 대화를 시작할 때 이 한 줄이면 돼요.
 
 <div class="prompt"><span class="who">앞으로 매번</span><button class="copy" type="button">복사</button><span class="txt">원드라이브의 <span class="fill">(me)</span> 폴더에 있는 AI협업규칙.md와 이번 작업의 최근 작업기록을 읽고 시작해줘.</span></div>
 
-<div class="callout tip"><svg><use href="#i-folder"/></svg><div><b>옵시디언을 설치했다면</b> 첫 화면에서 <b>"보관함 폴더 열기"</b>를 눌러 내 폴더(me)를 골라요. "새 보관함 생성"을 누르면 빈 폴더가 따로 생겨요.</div></div>
+<div class="callout tip"><svg><use href="#i-folder"/></svg><div><b>옵시디언도 쓰고 싶다면</b> AI에게 <b>"옵시디언 설치하고, me 폴더를 열 수 있게 도와줘"</b>라고 보내요.</div></div>
 
 <h2 id="why"><span class="no">5</span> 왜 이렇게 하나요? <small>(읽고 싶을 때만)</small></h2>
 

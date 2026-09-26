@@ -354,3 +354,27 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
   .sync-mid i { transform: rotate(90deg); }
   .sync-mid br { display: none; }
 }
+
+/* 이유 카드 묶음 */
+.whyg { margin: 1em 0 1.2em; padding: 16px; border-radius: 16px; background: #fbf6f8; border: 1px solid #efe3e7; display: grid; gap: 10px; }
+.wg-h { display: flex; align-items: center; gap: 8px; font-size: 17px; font-weight: 700; color: #5a2233; }
+.wg-h span { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; background: var(--accent); color: #fff; font-size: 14px; }
+.wc { padding: 14px 16px; border-radius: 12px; background: #fff; border: 1px solid #ebe3e6; }
+.wq { display: inline-block; margin-bottom: 6px; padding: 3px 10px; border-radius: 8px; background: #f4f0fb; color: #4b2f7a; font-weight: 700; font-size: 15px; }
+.wq::before { content: "“"; } .wq::after { content: "”"; }
+.wc p { margin: 0 0 6px; font-size: 15.5px; line-height: 1.7; }
+.wc p:last-child { margin-bottom: 0; }
+.wc.shot { display: grid; grid-template-columns: 1fr 200px; gap: 16px; align-items: start; }
+.wc.shot figure { margin: 0; text-align: center; }
+.wc.shot img { width: 200px; border-radius: 10px; border: 1px solid #e6dde0; }
+.wc.shot figcaption { margin-top: 4px; font-size: 13px; color: var(--ink-soft); }
+.states { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.st { display: inline-grid; grid-template-columns: 26px auto; column-gap: 8px; align-items: center; padding: 8px 12px; border-radius: 10px; font-size: 14px; font-weight: 700; }
+.st i { grid-row: span 2; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; font-style: normal; font-size: 15px; }
+.st small { font-weight: 400; color: var(--ink-soft); font-size: 13px; }
+.st.cloud { background: #eaf4fc; } .st.cloud i { color: #0b7fc2; background: #fff; border: 1.5px solid #0b7fc2; }
+.st.keep { background: #e8f5ef; } .st.keep i { color: #fff; background: #1e9e5a; }
+@media (max-width: 760px) {
+  .wc.shot { grid-template-columns: 1fr; }
+  .wc.shot img { width: 160px; }
+}

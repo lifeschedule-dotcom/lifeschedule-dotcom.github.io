@@ -1,21 +1,25 @@
 <!doctype html>
-<html lang="ko">
+<html lang="{{ page.lang }}">
 <head>
 {% include head.html %}
 </head>
 <body class="inner">
 {% include nav.html %}
+{% assign ui = site.data.ui[page.lang] %}
 {% assign sec = site.data.sections | where: "id", page.section | first %}
+{% assign subinfo = sec.subs | where: "id", page.sub | first %}
+{% if page.lang == "en" %}{% assign root = "/en/" %}{% else %}{% assign root = "/" %}{% endif %}
 <main class="wrap">
   <article class="article">
-    <a class="back" href="{{ '/' | append: page.section | append: '/' | relative_url }}">← {{ sec.name }}</a>
+    <a class="back" href="{{ root | append: page.section | append: '/' | relative_url }}">← {{ sec.name[page.lang] }}</a>
     <h1>{{ page.title }}</h1>
     {% assign mins = content | strip_html | size | divided_by: 500 | plus: 1 %}
-    <p class="meta">{{ page.date | date: "%Y.%m.%d" }} · 읽는 시간 {{ mins }}분{% if page.sub %} · {{ page.sub }}{% endif %}</p>
+    <p class="meta">{% if page.pinned %}{{ subinfo[page.lang] }}{% else %}{{ page.date | date: "%Y.%m.%d" }} · {{ ui.read }} {{ mins }}{{ ui.min }}{% if subinfo %} · {{ subinfo[page.lang] }}{% endif %}{% endif %}</p>
     <div class="content">
       {{ content }}
     </div>
   </article>
 </main>
+{% include lang.js.html %}
 </body>
 </html>

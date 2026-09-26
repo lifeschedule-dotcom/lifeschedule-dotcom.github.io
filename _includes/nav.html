@@ -1,8 +1,10 @@
+{% if page.lang == "en" %}{% assign root = "/en/" %}{% else %}{% assign root = "/" %}{% endif %}
 <header class="topnav">
-  <a class="brand" href="{{ '/' | relative_url }}">Lifeschedule</a>
+  <a class="brand" href="{{ root | relative_url }}">Lifeschedule</a>
   <nav>
     {% for s in site.data.sections %}
-    <a href="{{ '/' | append: s.id | append: '/' | relative_url }}"{% if page.section == s.id %} class="active"{% endif %}>{{ s.name }}</a>
+    <a href="{{ root | append: s.id | append: '/' | relative_url }}"{% if page.section == s.id %} class="active"{% endif %}>{{ s.name[page.lang] }}</a>
     {% endfor %}
   </nav>
+  {% include langswitch.html %}
 </header>

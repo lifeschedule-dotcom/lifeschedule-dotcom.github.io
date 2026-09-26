@@ -1,0 +1,14 @@
+{% if page.lang == "en" %}{% assign to = "ko" %}{% else %}{% assign to = "en" %}{% endif %}
+{% assign target = "" %}
+{% if page.ref %}
+  {% for p in site.posts %}{% if p.ref == page.ref and p.lang == to %}{% assign target = p.url %}{% endif %}{% endfor %}
+{% endif %}
+{% if target == "" %}
+  {% if page.section %}{% assign sec_path = page.section | append: "/" %}{% else %}{% assign sec_path = "" %}{% endif %}
+  {% if to == "en" %}{% assign target = "/en/" | append: sec_path %}{% else %}{% assign target = "/" | append: sec_path %}{% endif %}
+{% endif %}
+<div class="lang">
+  <a href="{{ target | relative_url }}" data-lang="ko"{% if page.lang != "en" %} class="on"{% endif %}>KO</a>
+  <span>/</span>
+  <a href="{{ target | relative_url }}" data-lang="en"{% if page.lang == "en" %} class="on"{% endif %}>EN</a>
+</div>

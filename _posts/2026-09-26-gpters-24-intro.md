@@ -1,8 +1,8 @@
 ---
-layout: post
 title: 지피터스 24기 AI 스터디를 시작합니다
 section: vibe-coding
-sub: 지피터스 24기 교재
+sub: gpters24
+ref: gpters-24-intro
 ---
 사장님과 1인 사업자가 자기 업무 하나를 AI로 직접 자동화하는 4주 과정입니다. 이 블로그에 주차별 교재와 기록을 차례로 정리합니다.
 

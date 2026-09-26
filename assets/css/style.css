@@ -147,8 +147,21 @@ body.inner {
   .tile { padding: 14px 18px; }
   .tile-name { font-size: 19px; }
   .tile-desc { display: none; }
-  .topnav { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .topnav { flex-wrap: wrap; gap: 6px 14px; }
+  .topnav nav { order: 3; width: 100%; margin-left: 0; }
   .topnav nav { gap: 14px; font-size: 14px; }
   .card { padding: 20px 20px; }
   .article { padding: 26px 20px; }
 }
+
+/* ---------- 언어 전환 ---------- */
+.lang { display: flex; align-items: center; gap: 6px; font-size: 13px; letter-spacing: 0.04em; }
+.lang a { color: var(--ink-soft); padding: 2px 4px; }
+.lang a.on { color: var(--ink); font-weight: 700; }
+.lang span { color: var(--ink-soft); opacity: .6; }
+.home-lang { position: absolute; top: 20px; right: 24px; z-index: 2; }
+.home-lang .lang a, .home-lang .lang span { color: rgba(255,255,255,0.85); text-shadow: 0 1px 8px rgba(90,55,65,.35); }
+.home-lang .lang a.on { color: #fff; }
+.topnav nav { margin-left: auto; }
+.card.pinned { border-left: 4px solid rgba(176, 86, 110, 0.55); }
+.content h2 { margin-top: 1.8em; font-size: 21px; }

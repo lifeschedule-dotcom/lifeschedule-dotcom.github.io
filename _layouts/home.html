@@ -1,23 +1,36 @@
 <!doctype html>
-<html lang="ko">
+<html lang="{{ page.lang }}">
 <head>
 {% include head.html %}
+{% if page.lang != "en" %}
+<script>
+  // 한국어가 아닌 브라우저로 처음 온 방문자는 영어 대문으로 (직접 고른 적이 있으면 그 선택을 따름)
+  try {
+    var saved = localStorage.getItem('lifeschedule-lang');
+    var lang = (navigator.language || 'ko').toLowerCase();
+    if (saved === 'en' || (!saved && lang.indexOf('ko') !== 0)) location.replace('{{ "/en/" | relative_url }}');
+  } catch (e) {}
+</script>
+{% endif %}
 </head>
 <body class="home">
+  {% if page.lang == "en" %}{% assign root = "/en/" %}{% else %}{% assign root = "/" %}{% endif %}
+  <div class="home-lang">{% include langswitch.html %}</div>
   <main class="hero">
     <div class="hero-top">
       <h1 class="hero-title">Lifeschedule</h1>
-      <p class="hero-sub">{{ site.description }}</p>
+      <p class="hero-sub">{{ site.data.ui[page.lang].tagline }}</p>
       <div class="tiles">
         {% for s in site.data.sections %}
-        <a class="tile" href="{{ '/' | append: s.id | append: '/' | relative_url }}">
+        <a class="tile" href="{{ root | append: s.id | append: '/' | relative_url }}">
           <span class="tile-en">{{ s.en }}</span>
-          <span class="tile-name">{{ s.name }}</span>
-          <span class="tile-desc">{{ s.desc }}</span>
+          <span class="tile-name">{{ s.name[page.lang] }}</span>
+          <span class="tile-desc">{{ s.desc[page.lang] }}</span>
         </a>
         {% endfor %}
       </div>
     </div>
   </main>
+{% include lang.js.html %}
 </body>
 </html>

@@ -116,9 +116,9 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 
 먼저 원드라이브 안에 <code>me</code> 폴더를 준비해요. 이미 있으면 그대로 쓰세요. 없다면 파일 탐색기(맥은 Finder)에서 만들거나, 설치를 도와준 채팅창에 "원드라이브 안에 me 폴더를 만들도록 한 단계씩 알려줘"라고 물어보세요.
 
-데스크탑 앱에서 <b>me 폴더를 로컬 작업 폴더</b>(내 컴퓨터에서 직접 작업할 폴더)로 열어요. 클로드 앱에서는 <b>로컬</b>, ChatGPT 앱에서는 <b>Work의 로컬 작업</b>이나 <b>Codex의 Local</b>을 선택해요. 폴더 접근 요청은 읽어 보고 직접 허용하세요. 화면에 <b>me</b>가 작업 폴더로 표시된 걸 확인해요.
+데스크탑 앱에서 <b>me 폴더를 로컬 작업 폴더</b>(내 컴퓨터에서 직접 작업할 폴더)로 열어요. 클로드 앱에서는 <b>로컬</b>, ChatGPT 앱에서는 <b>Work의 로컬 작업</b>이나 <b>Codex의 Local</b>을 선택해요. 폴더 선택 창이 뜨면 원드라이브 안의 실제 <b>me</b> 폴더로 들어가 <b>폴더 선택</b>을 눌러요. 폴더 접근 요청은 읽어 보고 직접 허용하세요. 화면에 <b>me</b>가 작업 폴더로 표시된 걸 확인해요. 바탕화면 바로가기는 폴더를 연 다음 AI에게 만들게 할 거예요.
 
-<div class="seq"><figure><span class="sn">1</span><img src="/assets/img/setup/pick-folder.png" alt="클로드 로컬 작업 입력창의 폴더 없음 버튼"><figcaption>클로드 앱에서는 입력창 위 <b>폴더 없음</b>을 눌러요</figcaption></figure><figure><span class="sn">2</span><img src="/assets/img/setup/pick-folder-2.png" alt="폴더 선택 창에 보이는 바탕화면의 me 바로가기"><figcaption>사진의 <b>me</b>는 평소 마우스로 쉽게 들어갈 때 쓰는 바탕화면 바로가기예요. 다만 지금 아래에는 <b>폴더: 바탕 화면</b>이라고 보이죠? AI의 작업 폴더를 지정할 때는 왼쪽 원드라이브에서 실제 <b>me</b> 폴더로 들어간 뒤 <b>폴더 선택</b>을 눌러요.</figcaption></figure><figure><span class="sn">3</span><img src="/assets/img/setup/pick-folder-3.png" alt="입력창 위에 me가 표시된 화면"><figcaption>입력창 위에 <b>me</b>가 보이면 준비 끝! AI가 이 폴더에서 일할 수 있어요</figcaption></figure></div>
+<div class="seq"><figure><span class="sn">1</span><img src="/assets/img/setup/pick-folder.png" alt="클로드 로컬 작업 입력창의 폴더 없음 버튼"><figcaption>클로드 앱에서는 입력창 위 <b>폴더 없음</b>을 눌러요</figcaption></figure><figure><span class="sn">2</span><img src="/assets/img/setup/pick-folder-3.png" alt="입력창 위에 me가 표시된 화면"><figcaption>원드라이브의 <b>me</b> 폴더를 고른 뒤 입력창 위에 <b>me</b>가 보이면 준비 끝!</figcaption></figure></div>
 
 **me 폴더를 연 데스크탑 앱**에 아래 요청을 보내요. me 안의 주제별 폴더와 규칙 파일은 AI가 만들어요.
 

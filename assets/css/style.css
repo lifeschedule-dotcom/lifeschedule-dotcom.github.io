@@ -423,3 +423,5 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
 .sync-gh i { font-style: normal; font-size: 20px; line-height: 1.1; color: #8a8f9c; }
 .sync-gh span { font-size: 11.5px; }
 @media (max-width: 760px) { .sync-gh i { transform: rotate(90deg); } }
+.content h3.ih { display: flex; align-items: center; gap: 10px; margin: 2em 0 .6em; padding-top: 1.1em; border-top: 1px dashed #e3d4d9; font-size: 19px; }
+.content h3.ih img { width: 32px; height: 32px; }

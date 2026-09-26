@@ -425,3 +425,35 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
 @media (max-width: 760px) { .sync-gh i { transform: rotate(90deg); } }
 .content h3.ih { display: flex; align-items: center; gap: 10px; margin: 2em 0 .6em; padding-top: 1.1em; border-top: 1px dashed #e3d4d9; font-size: 19px; }
 .content h3.ih img { width: 32px; height: 32px; }
+
+/* 가독성: 큰 글씨, 진한 글씨 (교재 본문) */
+.content { font-size: 18px; line-height: 1.8; --ink-soft: #3a4050; }
+.keyline { font-size: 22px; }
+.keyline small { font-size: 17px; color: var(--ink); }
+.lead-note { margin: 1.2em 0; font-size: 19px; line-height: 1.8; font-weight: 500; color: var(--ink); }
+.sub-note { font-size: 17px; color: var(--ink); margin-top: 0; }
+.callout { font-size: 17px; line-height: 1.75; }
+.prompt .txt { font-size: 17px; }
+.prompt .who { font-size: 14px; }
+.wc p, .act > div, .tool p, .kr p, .ghstrip p, .checks li, .facts > div { font-size: 17px; }
+.wq { font-size: 16.5px; }
+.act .d, .act .r { font-size: 13px; }
+.need { font-size: 13px; }
+.openers span, .down, .pc-h { font-size: 15px; }
+.kfile, .kfile span { font-size: 15px; }
+.sync-mid b { font-size: 16px; }
+.sync-mid span, .sync-gh span { font-size: 14px; color: var(--ink); }
+.sync-gh b { font-size: 14px; }
+.sync-gh em { font-size: 12px; }
+.mdh { font-size: 14.5px; color: var(--ink); }
+.mdv.raw pre { font-size: 16px; }
+.mdr { font-size: 17px; }
+.st { font-size: 15.5px; } .st small { font-size: 14.5px; color: var(--ink); }
+.wc.shot figcaption { font-size: 15px; color: var(--ink); }
+.tool .go { font-size: 16px; }
+.content h2 { font-size: 26px; }
+.content h3, .content h3.ih { font-size: 21px; }
+@media (max-width: 760px) {
+  .content { font-size: 17.5px; }
+  .content h2 { font-size: 23px; }
+}

@@ -12,9 +12,9 @@ description: 사전 세팅 1강. AI와 한 일을 폴더 하나에 모으는 지
 
 "엥, 나는 그렇게까지 안 쓸 것 같은데?" 하시는 AI린이 여러분, 방심하지 마세요. 당신도 AI에 빠져서 많은 창작물을 만들게 될 수 있어요!
 
-<div class="keyline">대화의 기억은 내 폴더의 파일에 남겨요.<small>① 새 대화나 다른 AI는 전에 한 일을 자동으로 다 알지 못해요.<br>② 그래서 정한 것과 한 일은 내 폴더의 파일에 적어 둬요.<br>③ 새 대화에서는 "그 파일 읽고 시작해줘" 한 줄이면 이어서 일해요.</small></div>
+<div class="keyline">대화의 기억은 내 폴더의 파일에 남겨요.</div>
 
-<div class="callout tip"><svg><use href="#i-note"/></svg><div><b>이 글은 두 부분이에요.</b> 1~4번은 <b>따라 하기</b>만 담았어요. 왜 이렇게 하는지는 아래 <a href="#why">5번 「왜 이렇게 하나요?」</a>에 모아 뒀고, AI가 무엇을 잊어버리는지는 <a href="{{ '/2026/09/26/gpters-24-why/' | relative_url }}">2강</a>에 있어요. 둘 다 읽는 건 자유예요.</div></div>
+<div class="lead-note">원리가 궁금하다면 <a href="{{ '/2026/09/26/gpters-24-why/' | relative_url }}">2강</a>을 읽어 보세요!<br>여기서는 <b>설치 방법</b> 위주로 알려드릴게요.</div>
 
 ## <span class="no">1</span> 한눈에 보기
 

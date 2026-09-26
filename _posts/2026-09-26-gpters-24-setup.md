@@ -31,7 +31,7 @@ description: 사전 세팅 1강. AI와 한 일을 폴더 하나에 모으는 지
 <div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>주제별 폴더</b><span>작업물 + 작업기록</span></div>
 </div>
 </div>
-<div class="sync-col"><div class="sync-mid"><img src="/assets/img/icons/onedrive.png" alt=""><b>원드라이브</b><i>⇄</i><span>동기화가 끝나면<br>두 폴더가 똑같아져요</span></div><div class="sync-gh"><img src="/assets/img/icons/github.png" alt=""><b>GitHub</b><em>나중에</em><span>코드 폴더를<br>옮겨 줘요</span></div></div>
+<div class="sync-col"><div class="sync-mid"><img src="/assets/img/icons/onedrive.png" alt=""><b>원드라이브</b><i>⇄</i><span>동기화가 끝나면<br>두 폴더가 똑같아져요</span></div><div class="sync-gh"><div class="gh-top"><img src="/assets/img/icons/github.png" alt=""><b>GitHub</b><em>나중에</em></div><i>⇄</i><span>코드 폴더를 옮겨 줘요<br>(말할 때만)</span></div></div>
 <div class="pc other">
 <div class="pc-h"><svg class="i"><use href="#i-laptop"/></svg>다른 노트북 <small>(있다면)</small></div>
 <div class="openers"><span><svg class="i"><use href="#i-hand"/></svg>나</span><span><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">AI</span><span class="opt"><img src="/assets/img/icons/obsidian.png" alt=""><img src="/assets/img/icons/notion.png" alt="">옵시디언·노션 <em>선택</em></span></div>

@@ -100,7 +100,7 @@ AI는 폴더를 바로 열어 읽으니까 옵시디언이 필요 없어요. 옵
 <div class="prompt"><span class="who">설치 도움 요청</span><button class="copy" type="button">복사</button><span class="txt">안녕! 나는 AI를 처음 쓰려고 하는데, 그 전에 AI와 한 일을 한 폴더에 모으는 세팅을 하려고 해. 이 글을 보고 따라 하는 중이야: https://lifeschedule-dotcom.github.io/2026/09/26/gpters-24-setup/
 원드라이브가 켜져 있는지 확인하고, <span class="fill">(클로드 / GPT)</span> 데스크탑 앱을 설치하고 싶어. 내가 할 수 있게 한 단계씩 천천히 알려줘. 내가 화면을 캡처해서 보내면, 그 화면을 보고 다음에 뭘 누르면 되는지 알려줘. 내 컴퓨터는 <span class="fill">(윈도우 / 맥)</span>이야.</span></div>
 
-<p class="sub-note">짧으니까 직접 쳐 보는 걸 추천해요. 막히면 화면을 캡처해서 같은 채팅에 붙여넣고 "지금 이 화면이야. 다음에 뭘 눌러?"라고 물어보세요.</p>
+<p class="sub-note">복사해서 보내고, 노란 괄호 칸만 내 상황에 맞게 바꿔요. 막히면 화면을 캡처해서 같은 채팅에 붙여넣고 "지금 이 화면이야. 다음에 뭘 눌러?"라고 물어보세요.</p>
 
 필요한 건 이 두 가지예요. 링크는 AI가 알려줄 때 참고용이에요.
 

@@ -595,3 +595,8 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
 .ucurve .tag { paint-order: stroke; stroke: #fff; stroke-width: 7px; stroke-linejoin: round; }
 .nn-key .th svg { width: 34px; height: 26px; }
 .nn-key .th polyline { fill: none; stroke: #1f2430; stroke-width: 4; stroke-linejoin: round; }
+.nn.big .edges line { stroke: #d5d8df; stroke-width: 0.7; opacity: .8; }
+.nn.big .path line { stroke: var(--accent); stroke-width: 4; stroke-linecap: round; }
+.nn.big .nodes circle { fill: #fff; stroke: #1f2430; stroke-width: 1.8; }
+.nn.big .nodes circle.on { fill: var(--accent); stroke: var(--accent); }
+.nn.big figcaption { margin-top: 8px; font-size: 16px; color: var(--ink); }

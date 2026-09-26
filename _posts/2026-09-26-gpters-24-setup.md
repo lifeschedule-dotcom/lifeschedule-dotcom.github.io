@@ -106,11 +106,11 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 
 <h3 class="step-h"><span>2</span><img src="/assets/img/icons/obsidian.png" alt="">옵시디언 설치하고 보관함 만들기 <small>AI와 함께</small></h3>
 
-먼저 파일 탐색기(맥은 Finder)에서 원드라이브 안에 <code>me</code> 폴더를 만들어요. 이미 있으면 그대로 쓰면 됩니다. <b>me 폴더의 전체 주소를 복사해 잠깐 메모해 두세요.</b> 윈도우에서는 me 폴더를 연 뒤 파일 탐색기 위쪽 주소창을 한 번 클릭하면 경로가 보여요. 맥에서 경로를 찾기 어렵다면 화면을 캡처해 AI에게 물어보세요. 이름이 같은 me 폴더가 여러 개일 수 있어서, 3번에서 이 주소와 AI의 작업 폴더 주소를 비교할 거예요. 바탕화면 바로가기는 나중에 만들 거예요.
+원드라이브 안에 AI 작업물을 모을 폴더를 만들 거예요. <b>me는 제가 임의로 붙인 이름이라, 원하는 이름으로 바꿔도 돼요.</b> 다른 이름을 쓰면 아래 요청문의 <code>me</code>도 그 이름으로 바꿔 주세요.
 
-이제 데스크탑 앱에 아래처럼 보내 옵시디언 설치를 도움받으세요. 폴더를 고르는 화면은 내가 직접 눌러도 돼요.
+데스크탑 앱에 아래 요청을 보내 폴더 만들기와 옵시디언 설치를 함께 부탁해요.
 
-<div class="prompt"><span class="who">옵시디언 설치 요청 (데스크탑 앱에)</span><button class="copy" type="button">복사</button><span class="txt">옵시디언을 설치하고 싶어. 네가 직접 설치해 줄 수 있으면 해 주고, 어렵다면 내가 할 수 있게 한 단계씩 알려줘. 설치가 끝나면 원드라이브의 me 폴더 안에 Obsidian Vault 보관함을 만들 거야. 화면에서 어느 폴더를 골라야 하는지도 알려줘.</span></div>
+<div class="prompt"><span class="who">폴더 만들기·옵시디언 설치 요청 (데스크탑 앱에)</span><button class="copy" type="button">복사</button><span class="txt">원드라이브 안에 AI 작업물을 모을 <span class="fill">(me)</span> 폴더를 만들어줘. 이미 있으면 그대로 써줘. 옵시디언도 설치하고, 이 폴더 안에 Obsidian Vault라는 보관함을 만들고 싶어. 네가 직접 할 수 있는 일은 해 주고, 폴더 접근 권한이나 내가 눌러야 할 화면이 있으면 한 단계씩 알려줘. 직접 파일을 만들 수 없는 화면이라면 내가 만들 수 있게 안내해줘. 끝나면 만든 폴더를 열어 나와 함께 확인해줘.</span></div>
 
 옵시디언을 열어 <b>Create new vault</b>(새 보관함 만들기)를 누르세요. 보관함 이름은 <code>Obsidian Vault</code>, 저장 위치는 원드라이브의 <code>me</code> 폴더로 고른 뒤 <b>Create</b>를 누르면 됩니다. 그러면 <code>me/Obsidian Vault</code> 폴더가 생겨요. 이미 같은 폴더가 있다면 새로 만들지 말고 <b>Open folder as vault</b>(폴더를 보관함으로 열기)로 그 폴더를 여세요. 왼쪽 파일 목록이 비어 있어도 괜찮아요. 규칙 파일은 다음 단계에서 만들 거예요.
 
@@ -122,26 +122,26 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 
 <b>클로드 앱:</b> 로컬 작업 화면에서 폴더를 고르는 곳을 눌러, 원드라이브 안에 이미 만들어 둔 <code>me</code>를 선택해요. 아래 사진의 <b>폴더 없음</b>은 클로드 앱 화면이에요.
 
-<b>GPT(ChatGPT) 데스크탑 앱:</b> 먼저 <b>Work 또는 Codex 화면</b>에서 <code>Ctrl + O</code>(맥은 <code>Cmd + O</code>, 폴더 열기)를 눌러요. 윈도우에서 <b>Select Project Root</b> 창이 뜨면 위쪽 주소창에 <b>2번에서 메모한 me 폴더의 전체 주소</b>를 붙여넣고 Enter를 누르세요. 그 안에 방금 만든 <code>Obsidian Vault</code>가 보이는지 확인한 다음, 오른쪽 아래 <b>폴더 선택</b>을 누릅니다. 보관함이 안 보이면 멈추세요. 같은 이름의 다른 <code>me</code>일 수 있어요. 열린 <code>me</code> 프로젝트에서 새 대화를 시작하세요. Codex를 쓴다면 그다음 <b>Local</b>을 선택해요. Local은 지금 열린 프로젝트 폴더에서 작업한다는 뜻이에요. 다른 프로젝트에서 새 로컬 작업을 시작하면 그 프로젝트 폴더에서 작업해요.
+<b>GPT(ChatGPT) 데스크탑 앱:</b> <b>Work 또는 Codex 화면</b>에서 <code>Ctrl + O</code>(맥은 <code>Cmd + O</code>, 폴더 열기)를 눌러요. 윈도우의 <b>Select Project Root</b> 창에서 원드라이브 안에 방금 만든 <code>me</code> 폴더를 열고 <b>폴더 선택</b>을 누르세요. 열린 <code>me</code> 프로젝트에서 새 대화를 시작합니다. Codex를 쓴다면 <b>Local</b>을 선택해요.
 
-폴더 접근 요청은 읽어 보고 직접 허용하세요. 화면에 <b>me</b>가 표시돼도 이름만으로는 충분하지 않아요. 아래 요청문에서 앞 단계에 메모한 <b>전체 주소</b>와 같은지 확인할 거예요. 바탕화면 바로가기는 폴더를 연 다음 AI에게 만들게 할 거예요.
+폴더 접근 요청은 읽어 보고 직접 허용하세요. 아래 요청문으로 AI에게 작업 폴더를 확인하고 바탕화면 바로가기도 만들도록 부탁할 거예요.
 
 **아래 사진은 클로드 앱의 사용법이에요. GPT 앱에서는 바로 위의 `폴더 열기 → me 프로젝트에서 새 대화` 순서로 진행하세요.**
 
-<div class="seq"><figure><span class="sn">1</span><img src="/assets/img/setup/pick-folder.png" alt="클로드 로컬 작업 입력창의 폴더 없음 버튼"><figcaption>사진 속 클로드 앱에서는 입력창 위 <b>폴더 없음</b>을 눌러요. 다른 화면이라면 폴더 선택 기능을 찾아요</figcaption></figure><figure><span class="sn">2</span><img src="/assets/img/setup/pick-folder-3.png" alt="입력창 위에 me가 표시된 화면"><figcaption>원드라이브의 <b>me</b>를 고르고, 아래 요청문으로 <b>전체 주소</b>까지 확인해요</figcaption></figure></div>
+<div class="seq"><figure><span class="sn">1</span><img src="/assets/img/setup/pick-folder.png" alt="클로드 로컬 작업 입력창의 폴더 없음 버튼"><figcaption>사진 속 클로드 앱에서는 입력창 위 <b>폴더 없음</b>을 눌러요. 다른 화면이라면 폴더 선택 기능을 찾아요</figcaption></figure><figure><span class="sn">2</span><img src="/assets/img/setup/pick-folder-3.png" alt="입력창 위에 me가 표시된 화면"><figcaption>원드라이브의 <b>me</b>를 고른 뒤 아래 요청문을 보내요</figcaption></figure></div>
 
 **me 폴더를 연 데스크탑 앱**에 아래 요청을 보내요. AI가 앞에서 만든 <code>Obsidian Vault</code> 안에 규칙 파일을 만들고, 앞으로 작업물과 기록을 어디에 둘지도 적을 거예요.
 
 <div class="callout tip"><svg><use href="#i-folder"/></svg><div><b>왜 me 폴더를 만들까요?</b> Claude와 GPT의 작업물을 모을 공통 주소가 필요해서예요. me가 원드라이브 안에 있으면 동기화 후 다른 컴퓨터에서도 같은 파일을 볼 수 있어요.
 <div class="folder-tree"><div><strong>원드라이브</strong><span>인터넷 창고</span></div><div class="depth-1">└ <strong>me</strong><span>AI 작업의 공통 폴더</span></div><div class="depth-2">├ <strong>Obsidian Vault</strong><span>규칙·작업기록 노트</span></div><div class="depth-2">└ <strong>주제별 폴더</strong><span>문서·이미지 등 작업물</span></div></div>
 <div class="folder-open"><div><b>Claude·GPT에서 여는 폴더</b><code>me</code></div><div><b>옵시디언에서 여는 보관함</b><code>me/Obsidian Vault</code></div></div>
-<p>옵시디언에서 보관함을 열어도 AI 앱의 작업 폴더는 바뀌지 않아요. 아래 요청문에서 두 앱이 같은 <code>me</code>를 골랐는지 <b>전체 주소로 확인</b>해요.</p></div></div>
+<p>옵시디언에서 보관함을 열어도 AI 앱의 작업 폴더는 바뀌지 않아요. 아래 요청문으로 AI에게 작업 폴더가 맞는지 확인해 달라고 해요.</p></div></div>
 
 **보내기 전에 한 줄씩 읽어 주세요.** 이해 안 되는 줄은 바로 아래 4번에 번호별로 풀어 뒀어요.
 
 <div class="prompt"><span class="who">지식관리 세팅 요청</span><button class="copy" type="button">복사</button><span class="txt">안녕! 나는 <span class="fill">(하는 일)</span>을 하는 사람이고, AI는 처음이야. 앞으로 너랑 한 일을 한 폴더에 모아서 관리하고 싶어. 아래대로 세팅해줘. 네가 직접 할 수 있는 건 해주고, 내가 눌러야 하는 화면만 한 단계씩 천천히 알려줘.
 
-1. 지금 네 작업 폴더의 실제 전체 주소를 알려줘. 내가 옵시디언 보관함을 만든 me 폴더의 주소는 <span class="fill">(여기에 메모한 me 폴더 전체 주소 붙여넣기)</span>야. 두 주소가 같은지 확인해줘. 다르거나 확인할 수 없다면 파일을 만들지 말고 알려줘. 같다면 앞으로 너와 만든 문서·작업물은 이 me 안의 주제별 폴더에 저장해.
+1. 지금 작업 폴더가 원드라이브 안에 만든 <span class="fill">(me)</span>인지 확인하고 실제 위치를 알려줘. 다른 폴더가 열려 있거나 확인할 수 없다면, 먼저 내가 올바른 폴더를 열 수 있게 안내해줘. 확인이 끝나면 앞으로 너와 만든 문서·작업물은 이 폴더 안의 주제별 폴더에 저장해.
 2. 나는 개발자가 아니라서 마우스로 폴더를 열어 직접 볼 거야. 폴더와 파일 이름은 한눈에 알아보기 쉽게 짓고, 가능하면 바탕화면에 이 폴더 바로가기를 만들어줘. 네가 직접 만들 수 없다면 내가 마우스로 만들도록 알려줘.
 3. 이 폴더가 이 컴퓨터에 실제로 내려와 있는지 확인하고, 필요하면 원드라이브에서 "항상 이 디바이스에 유지"로 설정해줘. 바탕화면·문서·사진 전체 백업은 새로 켜지 마.
 4. me 안의 Obsidian Vault 폴더가 있는지 확인해줘. 없다면 파일을 만들지 말고 알려줘. 그 안에 AI협업규칙.md 파일을 만들고 아래 규칙을 적어줘. 같은 이름의 파일이 이미 있다면 덮어쓰지 말고 먼저 알려줘.

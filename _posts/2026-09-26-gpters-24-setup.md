@@ -46,6 +46,36 @@ description: 사전 세팅 1강. AI와 한 일을 폴더 하나에 모으는 지
 </div>
 </div>
 
+<h3 class="ih"><img src="/assets/img/icons/onedrive.png" alt="">원드라이브는 왜 쓰나요?</h3>
+
+원드라이브는 마이크로소프트의 인터넷 저장 공간(클라우드)이에요. 여기에 넣어 둔 자료는 **다른 기기에서도 꺼내 쓸 수 있어서** 꼭 추천해요. 예를 들어 부동산 계약서를 사진으로 찍어 원드라이브에 넣어 두면, 휴대폰에 원드라이브 앱을 깔고 같은 계정으로 로그인해서 바로 열 수 있어요. 다른 노트북도 같은 계정으로 로그인하면 똑같이 보여요. 노트북이 한 대뿐이어도 필요해요. 컴퓨터가 고장 나도 자료는 인터넷에 남거든요.
+
+<h3 class="ih"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언은 왜 쓰나요?</h3>
+
+AI는 폴더를 바로 열어 읽으니까 옵시디언이 필요 없어요. 옵시디언은 **사람을 위한 도구**예요. 내 폴더에 쌓이는 규칙과 기록은 대부분 **md 파일**이에요.
+
+<div class="callout tip"><svg><use href="#i-note"/></svg><div><b>md 파일이 뭐예요?</b> 이름 끝에 <code>.md</code>가 붙은 글 파일이에요(마크다운). <code>#</code>은 제목, <code>**</code>는 굵게, <code>-</code>는 목록처럼 간단한 기호로 글의 모양을 적어요. AI가 가장 잘 읽고 쓰는 형식이라, AI와 일하면 이 파일이 계속 생겨요. <code>CLAUDE.md</code>처럼 특별한 이름의 md 파일은 1주차에 자세히 알려드릴게요.</div></div>
+
+같은 md 파일을 파일 탐색기에서 열면 메모장에 기호가 그대로 보이고, 옵시디언에서 열면 읽기 좋게 바뀌어 보여요.
+
+<div class="mdcmp">
+<div class="mdv raw"><div class="mdh">메모장으로 열면</div><pre># 작업기록
+## 9월 26일
+- **한 일**: 출퇴근 기록표 만들기
+- **다음 할 일**: 주휴수당 계산 넣기</pre></div>
+<div class="mdv nice"><div class="mdh"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언으로 열면</div><div class="mdr"><h4>작업기록</h4><h5>9월 26일</h5><ul><li><b>한 일</b>: 출퇴근 기록표 만들기</li><li><b>다음 할 일</b>: 주휴수당 계산 넣기</li></ul></div></div>
+</div>
+
+<ul class="checks">
+<li><svg><use href="#i-check"/></svg><span><b>읽기 편해요.</b> 기호 대신 제목·굵은 글씨·목록으로 보여요.</span></li>
+<li><svg><use href="#i-check"/></svg><span><b>찾기 빨라요.</b> <code>Ctrl + O</code>로 노트 이름을, <code>Ctrl + Shift + F</code>로 모든 노트의 내용을 한 번에 찾아요. 기억 안 나는 프로젝트도 금방 나와요.</span></li>
+<li><svg><use href="#i-check"/></svg><span><b>바로 고쳐요.</b> 보면서 그대로 고치면, AI가 다음에 고친 내용을 읽어요.</span></li>
+</ul>
+
+<div class="ghstrip"><img src="/assets/img/icons/github.png" alt=""><div><b>GitHub</b><span class="need later">나중에 · 중급</span><p>코드를 만들기 시작하면 쓰는 코드 보관소예요. 코드는 원드라이브 밖의 코드 폴더에서 만들고 GitHub에 올려요. 내 폴더의 작업기록에는 코드가 어디 있는지만 적어요.</p></div></div>
+
+<div class="callout tip"><svg><use href="#i-folder"/></svg><div><b>폴더 이름은 자유예요.</b> 저는 <code>me</code>로, 영어로 지었어요. 일부 개발 도구가 한글 경로에서 오류를 내는 경우가 있어서 영어로 짓는 게 관례지만, 한글로 지어도 괜찮아요.</div></div>
+
 ## <span class="no">2</span> 일하는 AI(데스크탑 앱)과 옵시디언 설치하기
 
 AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
@@ -152,42 +182,7 @@ AI는 새 대화를 열면 전에 정한 규칙을 몰라요. 그래서 새 대�
 
 <div class="done"><div class="done-t">🎉 여기까지 했으면 설치가 끝났어요!<br>축하드립니다!</div><p>아래는 부가 설명이에요. 궁금한 분만 더 읽어 보세요!</p></div>
 
-<h2 id="why"><span class="no">6</span> 원드라이브·옵시디언은 왜 쓰나요? <small>(읽고 싶을 때만)</small></h2>
-
-세팅을 끝냈다면, 여기서부터는 도구를 왜 쓰는지 이야기예요.
-
-<h3 class="ih"><img src="/assets/img/icons/onedrive.png" alt="">원드라이브는 왜 쓰나요?</h3>
-
-원드라이브는 마이크로소프트의 인터넷 저장 공간(클라우드)이에요. 여기에 넣어 둔 자료는 **다른 기기에서도 꺼내 쓸 수 있어서** 꼭 추천해요. 예를 들어 부동산 계약서를 사진으로 찍어 원드라이브에 넣어 두면, 휴대폰에 원드라이브 앱을 깔고 같은 계정으로 로그인해서 바로 열 수 있어요. 다른 노트북도 같은 계정으로 로그인하면 똑같이 보여요. 노트북이 한 대뿐이어도 필요해요. 컴퓨터가 고장 나도 자료는 인터넷에 남거든요.
-
-<h3 class="ih"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언은 왜 쓰나요?</h3>
-
-AI는 폴더를 바로 열어 읽으니까 옵시디언이 필요 없어요. 옵시디언은 **사람을 위한 도구**예요. 내 폴더에 쌓이는 규칙과 기록은 대부분 **md 파일**이에요.
-
-<div class="callout tip"><svg><use href="#i-note"/></svg><div><b>md 파일이 뭐예요?</b> 이름 끝에 <code>.md</code>가 붙은 글 파일이에요(마크다운). <code>#</code>은 제목, <code>**</code>는 굵게, <code>-</code>는 목록처럼 간단한 기호로 글의 모양을 적어요. AI가 가장 잘 읽고 쓰는 형식이라, AI와 일하면 이 파일이 계속 생겨요. <code>CLAUDE.md</code>처럼 특별한 이름의 md 파일은 1주차에 자세히 알려드릴게요.</div></div>
-
-같은 md 파일을 파일 탐색기에서 열면 메모장에 기호가 그대로 보이고, 옵시디언에서 열면 읽기 좋게 바뀌어 보여요.
-
-<div class="mdcmp">
-<div class="mdv raw"><div class="mdh">메모장으로 열면</div><pre># 작업기록
-## 9월 26일
-- **한 일**: 출퇴근 기록표 만들기
-- **다음 할 일**: 주휴수당 계산 넣기</pre></div>
-<div class="mdv nice"><div class="mdh"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언으로 열면</div><div class="mdr"><h4>작업기록</h4><h5>9월 26일</h5><ul><li><b>한 일</b>: 출퇴근 기록표 만들기</li><li><b>다음 할 일</b>: 주휴수당 계산 넣기</li></ul></div></div>
-</div>
-
-<ul class="checks">
-<li><svg><use href="#i-check"/></svg><span><b>읽기 편해요.</b> 기호 대신 제목·굵은 글씨·목록으로 보여요.</span></li>
-<li><svg><use href="#i-check"/></svg><span><b>찾기 빨라요.</b> <code>Ctrl + O</code>로 노트 이름을, <code>Ctrl + Shift + F</code>로 모든 노트의 내용을 한 번에 찾아요. 기억 안 나는 프로젝트도 금방 나와요.</span></li>
-<li><svg><use href="#i-check"/></svg><span><b>바로 고쳐요.</b> 보면서 그대로 고치면, AI가 다음에 고친 내용을 읽어요.</span></li>
-</ul>
-
-<div class="ghstrip"><img src="/assets/img/icons/github.png" alt=""><div><b>GitHub</b><span class="need later">나중에 · 중급</span><p>코드를 만들기 시작하면 쓰는 코드 보관소예요. 코드는 원드라이브 밖의 코드 폴더에서 만들고 GitHub에 올려요. 내 폴더의 작업기록에는 코드가 어디 있는지만 적어요.</p></div></div>
-
-<div class="callout tip"><svg><use href="#i-folder"/></svg><div><b>폴더 이름은 자유예요.</b> 저는 <code>me</code>로, 영어로 지었어요. 일부 개발 도구가 한글 경로에서 오류를 내는 경우가 있어서 영어로 짓는 게 관례지만, 한글로 지어도 괜찮아요.</div></div>
-
-
-## <span class="no">7</span> 더 알아 두면 좋은 것 <small>(선택)</small>
+## <span class="no">6</span> 더 알아 두면 좋은 것 <small>(선택)</small>
 
 ### 내 폴더 주소 읽는 법
 

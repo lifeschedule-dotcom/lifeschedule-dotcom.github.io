@@ -123,7 +123,7 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 <div class="wg-h"><span>4</span>규칙 파일 만들기</div>
 <div class="wc"><div class="wq">AI협업규칙.md · 작업기록.md</div><p>둘 다 md 파일이에요. <b>규칙 파일</b>에는 일하는 방식을, <b>작업기록</b>에는 날짜·한 일·다음 할 일을 적어요.</p><div class="act"><div><span class="d">이렇게 하면</span><span class="t">월요일에 클로드와 <q>파일 이름은 날짜로 시작</q>이라고 정하고 규칙 파일에 적어 둬요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">수요일에 GPT로 바꿔도 <q>규칙 파일 읽고 시작해줘</q> 한 줄이면, GPT도 같은 규칙으로 일해요.</span></div></div><div class="act"><div><span class="d">이렇게 하면</span><span class="t">기록표를 만든 날, 작업기록에 <q>9/26 기록표 완성. 다음: 주휴수당 계산</q>이라고 남겨요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">한 달 뒤 계산이 틀려도 <q>작업기록 읽고 고쳐줘</q> 한 줄이면 AI가 이어서 고쳐요. 나도 코드를 몰라도 어디까지 됐는지 알아요.</span></div></div></div>
 <div class="wc"><div class="wq">비밀번호와 API 키는 적지 않는다</div><p>이 폴더는 인터넷에 올라가고, 화면 공유할 때 보일 수도 있어요. 한 번 새어 나간 키는 되돌릴 수 없어요.</p><div class="act"><div><span class="d">이렇게 하면</span><span class="t">비밀번호 대신 <q>비밀번호는 내 휴대폰 메모에 있음</q>처럼 위치만 적어요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">폴더가 원드라이브에 올라가거나 화면을 공유해도 비밀번호가 새어 나가지 않아요.</span></div></div></div>
-<div class="wc"><div class="wq">한 번에 한 단계씩</div><p><b>쪼개기 법칙</b>이에요. 큰 일은 작은 단계로 쪼개서 하나씩 해요. AI는 열 단계를 한꺼번에 쏟아내는 버릇이 있는데, 한 단계씩 받아야 어디서 막혔는지 바로 알 수 있어요.</p></div>
+<div class="wc"><div class="wq">한 번에 한 단계씩</div><p><b>쪼개기 법칙</b>이에요. 큰 일은 작은 단계로 쪼개서 하나씩 해요. AI는 열 단계를 한꺼번에 쏟아내는 버릇이 있는데, 한 단계씩 받아야 어디서 막혔는지 바로 알 수 있어요.</p><figure class="wshot"><img src="/assets/img/setup/one-step.png" alt="AI가 1단계만 알려주고 결과를 알려 달라고 기다리는 대화"><figcaption>AI가 <b>1단계만</b> 알려주고, 내가 결과를 알려줄 때까지 기다려요</figcaption></figure></div>
 </div>
 
 <div class="whyg">

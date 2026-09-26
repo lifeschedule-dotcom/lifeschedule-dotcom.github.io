@@ -195,7 +195,8 @@ AI는 폴더를 바로 열어 읽으니까 옵시디언이 필요 없어요. 옵
 
 <div class="addr">
 <div class="addr-line"><span class="c1"><b>C:</b><small>저장 드라이브</small></span><span class="sep">\</span><span class="c2"><b>Users</b><small>사용자 폴더</small></span><span class="sep">\</span><span class="c3"><b>User</b><small>이 컴퓨터의 내 이름</small></span><span class="sep">\</span><span class="c4"><b>OneDrive</b><small>원드라이브 구간</small></span><span class="sep">\</span><span class="c5"><b>me</b><small>내 폴더</small></span></div>
-<p><code>\</code>는 폴더 사이를 구분하는 표시예요. 파일 탐색기 주소창의 <code>›</code>와 같은 순서예요.</p>
+<div class="sym"><div><b class="k">:</b><p><b>"여기까지가 저장 공간 이름"</b>이라는 표시예요. <code>C:</code>는 내 컴퓨터 안의 저장 공간 이름이라, 보통 "C 드라이브"라고 읽어요.</p></div><div><b class="k">\</b><p><b>"그 안으로 들어가요"</b>라는 표시예요. 폴더 하나에 들어갈 때마다 하나씩 붙어요. 파일 탐색기 주소창의 <code>›</code>와 같아요.</p></div></div>
+<p>그래서 이 주소는 "서울시 › ○○구 › ○○동"처럼, <b>C 드라이브 안의 Users 안의 내 이름 안의 OneDrive 안의 me</b>라고 읽어요.</p>
 </div>
 
 **주소는 컴퓨터마다 조금씩 달라요.** 제 노트북 두 대도 이렇게 달라요.

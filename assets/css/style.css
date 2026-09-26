@@ -531,3 +531,7 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
 .ss .sn, .seq .sn { width: 26px; height: 26px; background: var(--accent); color: #fff; font-size: 14px; }
 .snap-h { font-size: 18px; color: var(--ink); }
 .wshot.obs .obs-h { font-size: 17px; color: var(--ink); }
+.sym { display: grid; gap: 8px; margin: 12px 0; }
+.sym > div { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: start; }
+.sym .k { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; background: #1f2430; color: #fff; font-family: ui-monospace, Consolas, monospace; font-size: 24px; }
+.sym p { margin: 0; font-size: 17px; }

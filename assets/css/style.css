@@ -495,3 +495,4 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
 .seq .sn { width: 26px; height: 26px; font-size: 14px; }
 .wshot.obs .obs-h { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 17px; font-weight: 700; color: #5b3aa6; }
 .wshot.obs .obs-h img { width: 28px; height: 28px; border: 0; border-radius: 0; }
+.prompt.mini { margin: 10px 0 0; padding: 12px 16px; } .prompt.mini .copy { top: 10px; }

@@ -8,7 +8,8 @@
   {% if to == "en" %}{% assign target = "/en/" | append: sec_path %}{% else %}{% assign target = "/" | append: sec_path %}{% endif %}
 {% endif %}
 <div class="lang">
-  <a href="{{ target | relative_url }}" data-lang="ko"{% if page.lang != "en" %} class="on"{% endif %}>KO</a>
+  {% if page.lang == "en" %}{% assign ko_url = target %}{% assign en_url = page.url %}{% else %}{% assign ko_url = page.url %}{% assign en_url = target %}{% endif %}
+  <a href="{{ ko_url | relative_url }}" data-lang="ko"{% if page.lang != "en" %} class="on"{% endif %}>KO</a>
   <span>/</span>
-  <a href="{{ target | relative_url }}" data-lang="en"{% if page.lang == "en" %} class="on"{% endif %}>EN</a>
+  <a href="{{ en_url | relative_url }}" data-lang="en"{% if page.lang == "en" %} class="on"{% endif %}>EN</a>
 </div>

@@ -16,3 +16,5 @@ defaults:
     values: { layout: post, permalink: "/en/:year/:month/:day/:title/" }
 exclude:
   - README.md
+plugins:
+  - jekyll-sitemap

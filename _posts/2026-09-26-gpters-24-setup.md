@@ -4,7 +4,7 @@ section: vibe-coding
 sub: gpters24
 ref: gpters-24-setup
 date: 2026-09-26 21:00:00 +0900
-description: 사전 세팅 1강. AI와 한 일을 폴더 하나에 모으는 지식관리 세팅을 따라 해요. 설치와 파일 만들기는 AI가 해요.
+description: 사전 세팅 1강. 원드라이브 me 폴더와 옵시디언 보관함을 만들고 AI의 작업 폴더를 확인해요.
 ---
 저는 그동안 AI로 이런저런 프로젝트를 왕창 해왔어요. 노트북 2개, 미니PC 1개, AI 3개(클로드, GPT, 제미나이)를 오가다 보니 만든 것들이 여기저기 흩어져 있었고, 미루고 미루던 정리를 하는 데 **3일이나** 썼습니다.
 
@@ -24,7 +24,7 @@ description: 사전 세팅 1강. AI와 한 일을 폴더 하나에 모으는 지
 <div class="pc">
 <div class="pc-h"><svg class="i"><use href="#i-laptop"/></svg>지금 쓰는 노트북</div>
 <div class="openers"><span><svg class="i"><use href="#i-hand"/></svg>나</span><span><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">AI</span><span class="opt"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언</span></div>
-<div class="down">↓ 같은 폴더를 열어요</div>
+<div class="down">↓ me와 그 안의 보관함을 열어요</div>
 <div class="kfolder">
 <div class="kfolder-h"><svg class="i"><use href="#i-folder"/></svg>me</div>
 <div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>Obsidian Vault</b><span>규칙 파일 + 작업기록</span></div>
@@ -35,7 +35,7 @@ description: 사전 세팅 1강. AI와 한 일을 폴더 하나에 모으는 지
 <div class="pc other">
 <div class="pc-h"><svg class="i"><use href="#i-laptop"/></svg>다른 노트북 <small>(있다면)</small></div>
 <div class="openers"><span><svg class="i"><use href="#i-hand"/></svg>나</span><span><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">AI</span><span class="opt"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언</span></div>
-<div class="down">↓ 같은 폴더를 열어요</div>
+<div class="down">↓ me와 그 안의 보관함을 열어요</div>
 <div class="kfolder">
 <div class="kfolder-h"><svg class="i"><use href="#i-folder"/></svg>me</div>
 <div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>Obsidian Vault</b><span>규칙 파일 + 작업기록</span></div>
@@ -83,7 +83,7 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 <div class="ta desk"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>데스크탑 앱 <small>설치하는 프로그램</small></div><div class="ta-m">옆에서 직접 해 주는 친구</div><p>내 컴퓨터의 폴더를 열고 권한을 주면, 파일을 만들고 정리까지 <b>직접</b> 해 줘요.</p><p class="ta-e">클로드: Pro 이상 · GPT: 무료 계정에도 제공되지만 계정에 따라 이용 범위가 달라요</p></div>
 </div>
 
-그래서 **설치는 채팅창에 물어보고**, 설치가 끝나면 **나머지는 데스크탑 앱**에 맡겨요.
+그래서 **설치는 채팅창에 물어보고**, 설치가 끝나면 **데스크탑 앱과 함께** 파일을 만들어요. 폴더를 고르는 화면은 내가 확인하고 눌러요.
 
 <h3 class="step-h"><span>1</span>AI 데스크탑 앱 설치하기 <small>채팅창에서</small></h3>
 
@@ -104,23 +104,29 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 <p class="snap-mac">맥은 <b>Cmd + Shift + 4</b>로 찍어요.</p>
 </div>
 
-<h3 class="step-h"><span>2</span><img src="/assets/img/icons/obsidian.png" alt="">옵시디언 다운로드 <small>데스크탑 앱에게</small></h3>
+<h3 class="step-h"><span>2</span><img src="/assets/img/icons/obsidian.png" alt="">옵시디언 설치하고 보관함 만들기 <small>AI와 함께</small></h3>
 
-데스크탑 앱이 설치되면, 이제 옆에서 직접 해 주는 친구가 생겼어요. 옵시디언 설치는 데스크탑 앱에 이렇게 보내요.
+먼저 파일 탐색기(맥은 Finder)에서 원드라이브 안에 <code>me</code> 폴더를 만들어요. 이미 있으면 그대로 쓰면 됩니다. 어느 원드라이브인지 헷갈리면 폴더 주소를 확인하세요. 바탕화면 바로가기는 나중에 만들 거예요.
 
-<div class="prompt"><span class="who">옵시디언 설치 요청 (데스크탑 앱에)</span><button class="copy" type="button">복사</button><span class="txt">옵시디언을 설치하고 싶어. 네가 직접 설치해 줄 수 있으면 해 주고, 어렵다면 내가 할 수 있게 한 단계씩 알려줘.</span></div>
+이제 데스크탑 앱에 아래처럼 보내 옵시디언 설치를 도움받으세요. 폴더를 고르는 화면은 내가 직접 눌러도 돼요.
 
-<p class="sub-note">여기서는 <b>설치만</b> 해 두세요. 아직 새 보관함을 만들지 마세요. 3번에서 원드라이브의 me 안에 폴더를 만든 뒤, 그 폴더를 옵시디언에 연결할 거예요. 자세한 사용법은 오프라인 모임 때 같이 알려드릴게요.</p>
+<div class="prompt"><span class="who">옵시디언 설치 요청 (데스크탑 앱에)</span><button class="copy" type="button">복사</button><span class="txt">옵시디언을 설치하고 싶어. 네가 직접 설치해 줄 수 있으면 해 주고, 어렵다면 내가 할 수 있게 한 단계씩 알려줘. 설치가 끝나면 원드라이브의 me 폴더 안에 Obsidian Vault 보관함을 만들 거야. 화면에서 어느 폴더를 골라야 하는지도 알려줘.</span></div>
+
+옵시디언을 열어 <b>Create new vault</b>(새 보관함 만들기)를 누르세요. 보관함 이름은 <code>Obsidian Vault</code>, 저장 위치는 원드라이브의 <code>me</code> 폴더로 고른 뒤 <b>Create</b>를 누르면 됩니다. 그러면 <code>me/Obsidian Vault</code> 폴더가 생겨요. 이미 같은 폴더가 있다면 새로 만들지 말고 <b>Open folder as vault</b>(폴더를 보관함으로 열기)로 그 폴더를 여세요. 왼쪽 파일 목록이 비어 있어도 괜찮아요. 규칙 파일은 다음 단계에서 만들 거예요.
+
+<p class="sub-note">옵시디언에서 보관함을 열었다고 AI 앱의 작업 폴더까지 바뀌지는 않아요. 3번에서 Claude·GPT의 작업 폴더를 <b>각각 me로</b> 선택할 거예요. 자세한 옵시디언 사용법은 오프라인 모임 때 같이 알려드릴게요.</p>
 
 ## <span class="no">3</span> AI에게 세팅 시키기
 
-먼저 원드라이브 안에 <code>me</code> 폴더를 준비해요. 이미 있으면 그대로 쓰세요. 없다면 파일 탐색기(맥은 Finder)에서 만들거나, 설치를 도와준 채팅창에 "원드라이브 안에 me 폴더를 만들도록 한 단계씩 알려줘"라고 물어보세요.
+이제 AI 앱에도 같은 원드라이브의 <code>me</code> 폴더를 지정해요. 옵시디언에는 <code>me/Obsidian Vault</code>를 열었지만, AI 앱에서는 한 단계 위의 <code>me</code>를 열어야 작업물과 보관함을 함께 다룰 수 있어요.
 
 데스크탑 앱에서 <b>me 폴더를 로컬 작업 폴더</b>(내 컴퓨터에서 직접 작업할 폴더)로 열어요. 클로드 앱에서는 <b>로컬</b>, ChatGPT 앱에서는 <b>Work의 로컬 작업</b>이나 <b>Codex의 Local</b>을 선택해요. 폴더 선택 창이 뜨면 원드라이브 안의 실제 <b>me</b> 폴더로 들어가 <b>폴더 선택</b>을 눌러요. 폴더 접근 요청은 읽어 보고 직접 허용하세요. 화면에 <b>me</b>가 작업 폴더로 표시된 걸 확인해요. 바탕화면 바로가기는 폴더를 연 다음 AI에게 만들게 할 거예요.
 
 <div class="seq"><figure><span class="sn">1</span><img src="/assets/img/setup/pick-folder.png" alt="클로드 로컬 작업 입력창의 폴더 없음 버튼"><figcaption>클로드 앱에서는 입력창 위 <b>폴더 없음</b>을 눌러요</figcaption></figure><figure><span class="sn">2</span><img src="/assets/img/setup/pick-folder-3.png" alt="입력창 위에 me가 표시된 화면"><figcaption>원드라이브의 <b>me</b> 폴더를 고른 뒤 입력창 위에 <b>me</b>가 보이면 준비 끝!</figcaption></figure></div>
 
-**me 폴더를 연 데스크탑 앱**에 아래 요청을 보내요. AI가 me 안에 주제별 작업 폴더와 <code>Obsidian Vault</code> 폴더를 만들고, 규칙·기록은 보관함 안에 넣을 거예요.
+**me 폴더를 연 데스크탑 앱**에 아래 요청을 보내요. AI가 앞에서 만든 <code>Obsidian Vault</code> 안에 규칙 파일을 만들고, 앞으로 작업물과 기록을 어디에 둘지도 적을 거예요.
+
+<div class="callout tip"><svg><use href="#i-folder"/></svg><div><b>여기서 저도 헷갈렸어요.</b> AI 앱을 내 컴퓨터에서 실행하는 것, 옵시디언에서 보관함을 여는 것, AI 앱에서 <code>me</code>를 작업 폴더로 여는 것은 각각 다른 일이에요. 옵시디언 보관함을 열거나 바탕화면에 바로가기를 만들어도 Claude·GPT의 작업 폴더가 자동으로 <code>me</code>가 되지는 않아요. AI가 <code>me</code>의 규칙 파일을 따로 읽었더라도 작업 폴더는 다른 곳일 수 있어요. 지금 대화 화면에 표시된 작업 폴더가 실제 원드라이브의 <code>me</code>인지 확인하세요.</div></div>
 
 **보내기 전에 한 줄씩 읽어 주세요.** 이해 안 되는 줄은 바로 아래 4번에 번호별로 풀어 뒀어요.
 
@@ -129,7 +135,7 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 1. 지금 작업 폴더로 연 <span class="fill">(me)</span>가 원드라이브 안에 있는지 확인해줘. 아니라면 파일을 만들지 말고 알려줘. 앞으로 너와 만든 문서·작업물은 me 안의 주제별 폴더에 저장해.
 2. 나는 개발자가 아니라서 마우스로 폴더를 열어 직접 볼 거야. 폴더와 파일 이름은 한눈에 알아보기 쉽게 짓고, 바탕화면에 이 폴더 바로가기를 만들어줘.
 3. 이 폴더가 이 컴퓨터에 실제로 내려와 있는지 확인하고, 필요하면 원드라이브에서 "항상 이 디바이스에 유지"로 설정해줘. 바탕화면·문서·사진 전체 백업은 새로 켜지 마.
-4. me 안에 Obsidian Vault 폴더를 만들어줘. 그 안에 AI협업규칙.md 파일을 만들고 아래 규칙을 적어줘. 같은 이름의 폴더나 파일이 이미 있다면 덮어쓰지 말고 먼저 알려줘.
+4. me 안의 Obsidian Vault 폴더가 있는지 확인해줘. 없다면 파일을 만들지 말고 알려줘. 그 안에 AI협업규칙.md 파일을 만들고 아래 규칙을 적어줘. 같은 이름의 파일이 이미 있다면 덮어쓰지 말고 먼저 알려줘.
    - 새 작업물은 me 안의 주제별 폴더에 저장한다
    - 작업이 끝나면 Obsidian Vault 안에 해당 주제의 작업기록.md를 만들고 날짜, 한 일, 작업물 위치, 다음 할 일을 짧게 남긴다
    - 비밀번호와 API 키는 파일에 적지 않는다
@@ -137,11 +143,7 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 
 다 끝나면 무엇을 어디에 만들었는지 실제 폴더 위치와 함께 보여줘. 바탕화면 바로가기와 Obsidian Vault 안의 규칙 파일이 열리는지도 나와 함께 확인해줘.</span></div>
 
-<h3 class="step-h"><span>3</span>옵시디언에 내 보관함 연결하기 <small>내가 직접</small></h3>
-
-옵시디언을 설치했다고 me 폴더가 자동으로 보이는 건 아니에요. 옵시디언을 열고 <b>Open folder as vault</b>(폴더를 보관함으로 열기)를 선택하세요. 원드라이브의 <code>me</code> 안으로 들어가 <b>Obsidian Vault 폴더 자체</b>를 고르면 됩니다. <code>me</code> 전체나 바탕화면 바로가기를 고르는 단계가 아니에요. 이미 다른 보관함이 열려 있다면 보관함 전환 메뉴에서 같은 기능을 찾을 수 있어요.
-
-왼쪽 파일 목록에 <b>AI협업규칙.md</b>가 보이면 연결 성공! 파일을 열어 규칙이 읽히는지도 확인해요. 여기서 말하는 ‘연결’은 같은 폴더를 옵시디언에서 열었다는 뜻이에요. AI 앱에서는 계속 <code>me</code>를 작업 폴더로 열고, 필요할 때 <code>Obsidian Vault/AI협업규칙.md</code>를 읽어 달라고 요청해요.
+AI가 파일을 만든 뒤 옵시디언으로 돌아가세요. 왼쪽 파일 목록에 <b>AI협업규칙.md</b>가 보이면 같은 보관함을 보고 있는 거예요. 파일을 열어 규칙이 읽히는지도 확인해요. AI 앱에서는 계속 <code>me</code>를 작업 폴더로 열고, 필요할 때 <code>Obsidian Vault/AI협업규칙.md</code>를 읽어 달라고 요청해요.
 
 <div class="callout warn"><svg><use href="#i-warn"/></svg><div><b>이것만은 직접 해요.</b> 로그인, 비밀번호, 결제, "허용할까요?" 창은 읽어 보고 내가 눌러요.</div></div>
 
@@ -167,7 +169,7 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 </div>
 
 <div class="whyg">
-<div class="wg-h"><span>4</span>보관함과 규칙 파일 만들기</div>
+<div class="wg-h"><span>4</span>보관함 안에 규칙 파일 만들기</div>
 <div class="wc"><div class="wq">Obsidian Vault · AI협업규칙.md · 작업기록.md</div><p><code>Obsidian Vault</code>는 me 안의 폴더예요. 규칙·기록은 그 안에 있는 md 파일입니다. me 폴더를 작업 폴더로 열었다면, <b>내가 파일을 직접 만들 필요는 없어요.</b> AI에게 부탁하면 돼요. 작업물은 me의 주제별 폴더에 두고, 보관함의 작업기록에 그 위치를 적어요. 나중에는 규칙을 조금씩 고쳐 나가면 됩니다.</p><div class="prompt mini"><span class="who">규칙을 더하고 싶을 때</span><button class="copy" type="button">복사</button><span class="txt">Obsidian Vault/AI협업규칙.md에 <span class="fill">(파일 이름은 날짜로 시작한다)</span> 규칙을 추가해줘.</span></div><div class="prompt mini"><span class="who">오늘 한 일을 남기고 싶을 때</span><button class="copy" type="button">복사</button><span class="txt">오늘 한 일을 Obsidian Vault 안의 해당 주제 작업기록.md에 남겨줘.</span></div></div>
 <div class="wc"><div class="wq">비밀번호와 API 키는 적지 않는다</div><p>이 폴더는 인터넷에 올라가고, 화면 공유할 때 보일 수도 있어요. 한 번 새어 나간 키는 되돌릴 수 없어요.</p></div>
 <div class="wc"><div class="wq">한 번에 한 단계씩</div><p><b>쪼개기 법칙</b>이에요. 큰 일은 작은 단계로 쪼개서 하나씩 해요. AI는 열 단계를 한꺼번에 쏟아내는 버릇이 있는데, 한 단계씩 받아야 어디서 막혔는지 바로 알 수 있어요.</p></div>

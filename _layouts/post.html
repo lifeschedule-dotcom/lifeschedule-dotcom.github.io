@@ -4,6 +4,7 @@
 {% include head.html %}
 </head>
 <body class="inner">
+{% include icons.html %}
 {% include nav.html %}
 {% assign ui = site.data.ui[page.lang] %}
 {% assign sec = site.data.sections | where: "id", page.section | first %}
@@ -21,5 +22,6 @@
   </article>
 </main>
 {% include lang.js.html %}
+{% include copy.js.html %}
 </body>
 </html>

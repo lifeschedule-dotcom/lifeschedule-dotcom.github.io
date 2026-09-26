@@ -14,11 +14,11 @@ description: 사전 세팅 1강. AI와 한 일을 폴더 하나에 모으는 지
 
 <div class="keyline">대화의 기억은 내 폴더의 파일에 남겨요.<small>① 새 대화나 다른 AI는 전에 한 일을 자동으로 다 알지 못해요.<br>② 그래서 정한 것과 한 일은 내 폴더의 파일에 적어 둬요.<br>③ 새 대화에서는 "그 파일 읽고 시작해줘" 한 줄이면 이어서 일해요.</small></div>
 
-<div class="callout tip"><svg><use href="#i-note"/></svg><div><b>왜 그런지 궁금하다면?</b> AI가 긴 대화에서 무엇을 놓치는지는 <a href="{{ '/2026/09/26/gpters-24-why/' | relative_url }}">2강 「AI는 왜 자꾸 잊어버릴까」</a>에 따로 적었어요. 읽는 건 자유예요. 이 글은 따라 하는 것만 담았어요.</div></div>
+<div class="callout tip"><svg><use href="#i-note"/></svg><div><b>이 글은 두 부분이에요.</b> 1~4번은 <b>따라 하기</b>만 담았어요. 왜 이렇게 하는지는 아래 <a href="#why">5번 「왜 이렇게 하나요?」</a>에 모아 뒀고, AI가 무엇을 잊어버리는지는 <a href="{{ '/2026/09/26/gpters-24-why/' | relative_url }}">2강</a>에 있어요. 둘 다 읽는 건 자유예요.</div></div>
 
-## <span class="no">1</span> 세팅의 큰 그림
+## <span class="no">1</span> 한눈에 보기
 
-**각 노트북에 내 폴더(저는 `me`)가 하나씩 있고, 원드라이브가 두 폴더의 내용을 똑같이 맞춰 줘요.** **AI는 원드라이브 안의 내 폴더를 직접 열어서** 파일을 읽고 써요. 나는 같은 폴더를 파일 탐색기나 옵시디언으로 봐요.
+**원드라이브 안의 내 폴더(저는 `me`) 하나를 나와 AI가 같이 써요.** 노트북이 여러 대여도 원드라이브가 똑같이 맞춰 줘요.
 
 <div class="sync">
 <div class="pc">
@@ -44,7 +44,67 @@ description: 사전 세팅 1강. AI와 한 일을 폴더 하나에 모으는 지
 </div>
 </div>
 
-<div class="ghstrip"><img src="/assets/img/icons/github.png" alt=""><div><b>GitHub</b><span class="need later">나중에 · 중급</span><p>코드를 만들기 시작하면 쓰는 코드 보관소예요. 코드는 원드라이브 밖의 코드 폴더에서 만들고 GitHub에 올려요. 내 폴더의 작업기록에는 코드가 어디 있는지만 적어요.</p></div></div>
+## <span class="no">2</span> 설치하기
+
+설치는 **AI에게 맡겨요.** 아래 요청을 보내면, AI가 여러분 화면에 맞춰 한 단계씩 알려줘요. 아직 데스크탑 앱이 없으니, 이 요청은 인터넷 창에서 [claude.ai](https://claude.ai) 또는 [chatgpt.com](https://chatgpt.com)에 들어가 채팅으로 보내요.
+
+<div class="prompt"><span class="who">설치 도움 요청</span><button class="copy" type="button">복사</button><span class="txt">안녕! 나는 AI를 처음 쓰려고 하는데, 그 전에 AI와 한 일을 한 폴더에 모으는 세팅을 하려고 해. 이 글을 보고 따라 하는 중이야: https://lifeschedule-dotcom.github.io/2026/09/26/gpters-24-setup/
+원드라이브가 켜져 있는지 확인하고, <span class="fill">(클로드 / GPT)</span> 데스크탑 앱을 설치하고 싶어. 내가 할 수 있게 한 단계씩 천천히 알려줘. 내가 화면을 캡처해서 보내면, 그 화면을 보고 다음에 뭘 누르면 되는지 알려줘. 내 컴퓨터는 <span class="fill">(윈도우 / 맥)</span>이야.</span></div>
+
+<p class="sub-note">복사해서 보내고, 노란 괄호 칸만 내 상황에 맞게 바꿔요.</p>
+
+<div class="callout tip"><svg><use href="#i-check"/></svg><div><b>막히면 캡처 한 장.</b> 노트북에 들어 있는 캡처 기능으로 막힌 화면을 찍어요.<br><b>윈도우</b>: <code>Win + Shift + S</code>를 누르면 <b>캡처 도구</b>가 떠요. 찍을 부분을 마우스로 끌어 고르면 복사돼요. 채팅창에서 <code>Ctrl + V</code>로 붙여넣어요.<br><b>맥</b>: <code>Cmd + Shift + 4</code>를 누르고 찍을 부분을 끌어 고르면, 바탕화면에 사진이 저장돼요. 그 사진을 채팅창으로 끌어다 놓아요.<br>그리고 쓰고 있는 GPT나 클로드에게 물어보세요. <b>"지금 이 화면이야. 다음에 뭘 눌러?"</b></div></div>
+
+링크는 AI가 알려줄 때 참고용이에요.
+
+
+<div class="tools">
+<div class="tool t-cloud"><div class="h"><img src="/assets/img/icons/onedrive.png" alt="">원드라이브</div><p>마이크로소프트의 인터넷 저장 공간이에요. 윈도우에는 이미 깔려 있어요. 켜져 있는지는 AI가 확인해 줘요.</p><div class="go"><a href="https://www.microsoft.com/ko-kr/microsoft-365/onedrive/download" target="_blank" rel="noopener">원드라이브 받기 →</a></div></div>
+<div class="tool t-ai"><div class="h"><span class="pair"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>클로드 / GPT 데스크탑 앱</div><p>둘 중 하나만 있으면 돼요. GPT는 Plus 이상, 클로드는 Pro 이상이 필요해요.</p><div class="go"><a href="https://claude.ai/download" target="_blank" rel="noopener">클로드 받기 →</a> &nbsp; <a href="https://chatgpt.com/download" target="_blank" rel="noopener">GPT 받기 →</a></div></div>
+</div>
+
+
+## <span class="no">3</span> AI에게 세팅 시키기
+
+설치가 끝나면 클로드나 GPT 데스크탑 앱에서 **내 폴더를 쓸 수 있는 작업 모드**를 열고, 아래 요청을 보내요.
+
+**보내기 전에 한 줄씩 읽어 주세요.** 내 상황에 안 맞는 줄은 고쳐서 보내요. 줄마다의 이유는 <a href="#why">5번</a>에 있어요.
+
+<div class="prompt"><span class="who">지식관리 세팅 요청</span><button class="copy" type="button">복사</button><span class="txt">안녕! 나는 <span class="fill">(하는 일)</span>을 하는 사람이고, AI는 처음이야. 앞으로 너랑 한 일을 한 폴더에 모아서 관리하고 싶어. 아래대로 세팅해줘. 네가 직접 할 수 있는 건 해주고, 내가 눌러야 하는 화면만 한 단계씩 천천히 알려줘.
+
+1. 원드라이브 폴더 안에 <span class="fill">(me)</span> 폴더를 만들어줘. 앞으로 너와 만든 문서·작업물은 여기에 저장해.
+2. 나는 개발자가 아니라서 마우스로 폴더를 열어 직접 볼 거야. 폴더와 파일 이름은 한눈에 알아보기 쉽게 짓고, 바탕화면에 이 폴더 바로가기를 만들어줘.
+3. 이 폴더가 이 컴퓨터에 실제로 내려와 있는지 확인하고, 필요하면 원드라이브에서 "항상 이 디바이스에 유지"로 설정해줘. 바탕화면·문서·사진 전체 백업은 새로 켜지 마.
+4. 이 폴더 안에 AI협업규칙.md 파일을 만들고 아래 규칙을 적어줘.
+   - 새 작업은 이 폴더 안에 주제별 폴더를 만들어 저장한다
+   - 작업이 끝나면 그 폴더의 작업기록.md에 날짜, 한 일, 다음 할 일을 짧게 남긴다
+   - 비밀번호와 API 키는 파일에 적지 않는다
+   - 나는 초보니까 쉬운 말로, 한 번에 한 단계씩 설명한다
+5. 다음 대화에서 내가 이 규칙 파일을 한 줄로 읽으라고 할 수 있게, 그 한 줄과 파일의 실제 위치를 알려줘.
+
+다 끝나면 무엇을 어디에 만들었는지 정리해서 보여주고, 바로가기와 규칙 파일이 실제로 열리는지 나와 함께 확인해줘.</span></div>
+
+<div class="callout warn"><svg><use href="#i-warn"/></svg><div><b>이것만은 직접 해요.</b> 로그인, 비밀번호 입력, 결제 버튼, 그리고 "허용하시겠어요?" 창은 AI에게 넘기지 말고 무엇을 허용하는지 읽고 직접 눌러요.</div></div>
+
+## <span class="no">4</span> 잘 됐는지 하나하나 확인하기
+
+AI가 끝났다고 하면, 아래와 똑같이 됐는지 **직접** 확인해요.
+
+<ul class="checks">
+<li><svg><use href="#i-check"/></svg><span>바탕화면의 <b>내 폴더 바로가기</b>를 더블클릭하면 폴더가 열린다</span></li>
+<li><svg><use href="#i-check"/></svg><span>그 폴더 안의 <b>AI협업규칙.md</b>를 열면 규칙이 보인다</span></li>
+<li><svg><use href="#i-check"/></svg><span>AI 앱에서 <b>새 대화</b>를 열고 아래 한 줄을 보내면, 규칙과 <b>파일의 실제 위치</b>를 말해 준다</span></li>
+</ul>
+
+세 개 다 되면 세팅 끝이에요. 이제부터 AI와 무엇을 만들든, 대화를 시작할 때 이 한 줄만 붙이면 돼요.
+
+<div class="prompt"><span class="who">앞으로 매번</span><button class="copy" type="button">복사</button><span class="txt">원드라이브의 <span class="fill">(me)</span> 폴더에 있는 AI협업규칙.md와 이번 작업의 최근 작업기록을 읽고 시작해줘.</span></div>
+
+<div class="callout tip"><svg><use href="#i-folder"/></svg><div><b>옵시디언을 설치했다면</b> 첫 화면에서 <b>"보관함 폴더 열기"</b>를 눌러 내 폴더(me)를 골라요. "새 보관함 생성"을 누르면 빈 폴더가 따로 생겨요.</div></div>
+
+<h2 id="why"><span class="no">5</span> 왜 이렇게 하나요? <small>(읽고 싶을 때만)</small></h2>
+
+따라 하기를 끝냈다면, 여기서부터는 이유예요.
 
 <h3 class="ih"><img src="/assets/img/icons/onedrive.png" alt="">원드라이브는 왜 쓰나요?</h3>
 
@@ -72,71 +132,16 @@ AI는 폴더를 바로 열어 읽으니까 옵시디언이 필요 없어요. 옵
 <li><svg><use href="#i-check"/></svg><span><b>바로 고쳐요.</b> 보면서 그대로 고치면, AI가 다음에 고친 내용을 읽어요.</span></li>
 </ul>
 
-<div class="kroles">
-<div class="kr"><img src="/assets/img/icons/onedrive.png" alt=""><div><b>원드라이브</b><span class="need must">필수</span><p>어느 노트북에서나, 모바일에서나 일할 수 있게 해 줘요!</p><div class="act"><div><span class="d">이렇게 하면</span><span class="t">계약서 사진을 원드라이브에 넣어 둬요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">휴대폰의 원드라이브 앱이나 다른 노트북에서 같은 계정으로 로그인하면 바로 열려요. 노트북이 고장 나도 사진은 남아요.</span></div></div></div></div>
-<div class="kr"><span class="ico"><svg class="i"><use href="#i-folder"/></svg></span><div><b>내 폴더 (저는 me)</b><span class="need must">필수</span><p>AI와 만든 것이 전부 모이는 폴더예요. 원드라이브 안에 만들어요.</p><div class="act"><div><span class="d">이렇게 하면</span><span class="t">AI에게 <q>원드라이브 안에 me 폴더 만들고, 바탕화면에 바로가기도 만들어줘</q>라고 보내요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">바탕화면에 me 아이콘이 생겨요. 더블클릭하면 바로 열리고, 그 뒤로 AI와 만든 파일은 여기에 쌓여요.</span></div></div></div></div>
-<div class="kr"><span class="ico"><svg class="i"><use href="#i-note"/></svg></span><div><b>규칙 파일 (AI협업규칙.md)</b><span class="need must">필수</span><p>AI에게 일하는 방식을 적어 두는 파일이에요. me 폴더 안에 있어요.</p><div class="act"><div><span class="d">이렇게 하면</span><span class="t">규칙 파일에 <q>나는 초보니까 한 번에 한 단계씩 설명해줘</q>라고 적어 둬요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">다음 날 새 대화에서 <q>규칙 파일 읽고 시작해줘</q> 한 줄만 보내도, AI가 한 단계씩 설명해요. 같은 부탁을 매번 다시 안 해도 돼요.</span></div></div></div></div>
-<div class="kr"><span class="pair"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span><div><b>내 폴더를 열고 직접 일하는 AI</b><span class="need must">필수 · 둘 중 하나</span><p>클로드나 GPT 데스크탑 앱에서, 내 컴퓨터의 폴더를 읽고 쓸 수 있는 작업 모드가 필요해요. 이 기능은 유료 요금제(GPT Plus 이상, 클로드 Pro 이상)에서 써요.</p><div class="act"><div><span class="d">이렇게 하면</span><span class="t">데스크탑 앱에서 작업할 폴더로 me를 골라요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">AI가 me 폴더 안의 파일을 직접 열어 읽고, 새 파일도 만들어요. 내가 파일을 복사해 붙여넣지 않아도 돼요.</span></div></div></div></div>
-<div class="kr"><span class="pair"><img src="/assets/img/icons/obsidian.png" alt=""><img src="/assets/img/icons/notion.png" alt=""></span><div><b>옵시디언 또는 노션</b><span class="need opt">선택 · 건너뛰어도 OK</span><p>사람을 위한 기록 보기 앱이에요. 둘 다 AI가 읽을 수 있어요. <b>옵시디언</b>은 내 폴더의 파일을 그대로 열어서, AI도 설정 없이 바로 읽어요. <code>Ctrl + O</code>로 노트 이름을, <code>Ctrl + Shift + F</code>로 내용을 찾을 수 있어요. <b>노션</b>은 기록이 노션의 인터넷 공간에 있어서, AI가 읽으려면 AI 앱에 노션을 한 번 연결해 줘야 해요. 기록이 쌓이면 그때 골라도 늦지 않아요.</p></div></div>
-<div class="kr later"><img src="/assets/img/icons/github.png" alt=""><div><b>GitHub</b><span class="need later">나중에 · 중급</span><p>코드를 만들기 시작하면 필요해요. 언제 무엇을 바꿨는지 기록이 남아 되돌릴 수 있어요. 코드 폴더는 원드라이브 밖에 두고 GitHub로 옮겨요. 원드라이브와 GitHub가 한 폴더를 같이 건드리면 저장소가 깨질 수 있거든요. 이때는 코드 위치를 내 폴더의 작업기록에 적어 둬요.</p></div></div>
-</div>
+<div class="ghstrip"><img src="/assets/img/icons/github.png" alt=""><div><b>GitHub</b><span class="need later">나중에 · 중급</span><p>코드를 만들기 시작하면 쓰는 코드 보관소예요. 코드는 원드라이브 밖의 코드 폴더에서 만들고 GitHub에 올려요. 내 폴더의 작업기록에는 코드가 어디 있는지만 적어요.</p></div></div>
 
 <div class="callout tip"><svg><use href="#i-folder"/></svg><div><b>폴더 이름은 자유예요.</b> 저는 <code>me</code>로, 영어로 지었어요. 일부 개발 도구가 한글 경로에서 오류를 내는 경우가 있어서 영어로 짓는 게 관례지만, 한글로 지어도 괜찮아요.</div></div>
 
-세팅의 핵심은 **규칙**이에요. 이 폴더에는 규칙이 다섯 개 있어요.
-
-<div class="rules">
-<div class="rule"><span class="ic"><svg><use href="#i-folder"/></svg></span><div><b>AI와 함께 볼 것은 내 폴더에</b><div class="act"><div><span class="d">이렇게 하면</span><span class="t"><q>출퇴근 기록표 만들어줘</q> 대신 <q>me 폴더에 출퇴근 기록표 만들어줘</q>라고 보내요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">기록표가 바탕화면이나 다운로드 폴더에 흩어지지 않고 me 폴더에 생겨요. "어디 뒀더라"가 없어져요.</span></div></div></div></div>
-<div class="rule"><span class="ic"><svg><use href="#i-hand"/></svg></span><div><b>내가 마우스로 직접 들어갈 수 있게</b><div class="act"><div><span class="d">이렇게 하면</span><span class="t">바탕화면 me 바로가기를 더블클릭해요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">AI에게 부탁하지 않아도 파일을 직접 열어 보고, 이름을 바꾸고, 정리할 수 있어요.</span></div></div></div></div>
-<div class="rule"><span class="ic"><svg><use href="#i-note"/></svg></span><div><b>규칙 파일 하나</b><div class="act"><div><span class="d">이렇게 하면</span><span class="t">월요일에 클로드와 <q>파일 이름은 날짜로 시작</q>이라고 정하고, 규칙 파일에 적어 둬요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">수요일에 GPT로 바꿔도 <q>규칙 파일 읽고 시작해줘</q> 한 줄이면, GPT도 날짜로 시작하는 이름으로 파일을 만들어요.</span></div></div></div></div>
-<div class="rule"><span class="ic"><svg><use href="#i-log"/></svg></span><div><b>끝나면 작업기록 남기기</b><div class="act"><div><span class="d">이렇게 하면</span><span class="t">기록표를 만든 날, 작업기록에 <q>9/26 기록표 완성. 다음: 주휴수당 계산</q>이라고 남겨요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">한 달 뒤 계산이 틀려도 <q>작업기록 읽고 고쳐줘</q> 한 줄이면 AI가 어디까지 만들었는지 알고 바로 고쳐요. 나도 코드를 몰라도 기록만 보면 어디까지 됐는지 알아요.</span></div></div></div></div>
-<div class="rule"><span class="ic"><svg><use href="#i-key"/></svg></span><div><b>비밀번호와 키는 적지 않기</b><div class="act"><div><span class="d">이렇게 하면</span><span class="t">규칙 파일에 비밀번호 대신 <q>비밀번호는 내 휴대폰 메모에 있음</q>처럼 위치만 적어요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">폴더가 원드라이브에 올라가거나 화면을 공유해도 비밀번호가 새어 나가지 않아요.</span></div></div></div></div>
-</div>
-
-## <span class="no">2</span> 설치하기
-
-설치는 **AI에게 맡겨요.** 아래 요청을 보내면, AI가 여러분 화면에 맞춰 한 단계씩 알려줘요. 아직 데스크탑 앱이 없으니, 이 요청은 인터넷 창에서 [claude.ai](https://claude.ai) 또는 [chatgpt.com](https://chatgpt.com)에 들어가 채팅으로 보내요.
-
-<div class="prompt"><span class="who">설치 도움 요청</span><button class="copy" type="button">복사</button><span class="txt">안녕! 나는 AI를 처음 쓰려고 하는데, 그 전에 AI와 한 일을 한 폴더에 모으는 세팅을 하려고 해. 이 글을 보고 따라 하는 중이야: https://lifeschedule-dotcom.github.io/2026/09/26/gpters-24-setup/
-원드라이브가 켜져 있는지 확인하고, <span class="fill">(클로드 / GPT)</span> 데스크탑 앱을 설치하고 싶어. 내가 할 수 있게 한 단계씩 천천히 알려줘. 내가 화면을 캡처해서 보내면, 그 화면을 보고 다음에 뭘 누르면 되는지 알려줘. 내 컴퓨터는 <span class="fill">(윈도우 / 맥)</span>이야.</span></div>
-
-<p class="sub-note">복사해서 보내고, 노란 괄호 칸만 내 상황에 맞게 바꿔요. 막히면 화면을 캡처해서 같은 채팅에 붙여넣고 "지금 이 화면이야. 다음에 뭘 눌러?"라고 물어보세요.</p>
-
-필요한 건 이 두 가지예요. 링크는 AI가 알려줄 때 참고용이에요.
-
-<div class="tools">
-<div class="tool t-cloud"><div class="h"><img src="/assets/img/icons/onedrive.png" alt="">원드라이브</div><p>마이크로소프트의 인터넷 저장 공간이에요. 윈도우에는 이미 깔려 있어요. 켜져 있는지는 AI가 확인해 줘요.</p><div class="go"><a href="https://www.microsoft.com/ko-kr/microsoft-365/onedrive/download" target="_blank" rel="noopener">원드라이브 받기 →</a></div></div>
-<div class="tool t-ai"><div class="h"><span class="pair"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>클로드 / GPT 데스크탑 앱</div><p>둘 중 하나만 있으면 돼요. GPT는 Plus 이상, 클로드는 Pro 이상이 필요해요.</p><div class="go"><a href="https://claude.ai/download" target="_blank" rel="noopener">클로드 받기 →</a> &nbsp; <a href="https://chatgpt.com/download" target="_blank" rel="noopener">GPT 받기 →</a></div></div>
-</div>
-
-## <span class="no">3</span> AI에게 세팅 시키기
-
-준비가 되면, 클로드나 GPT 데스크탑 앱에서 **내 컴퓨터의 폴더를 쓸 수 있는 작업 모드**를 열고 아래 요청을 보내요. 폴더와 파일은 AI가 만들어요.
-
-**보내기 전에 한 줄씩 잘 읽어 주세요.** 복사해도 괜찮아요. 대신 이해 안 되는 줄이 있으면 아래 "왜 이렇게 요청하나요"를 먼저 보고, 내 상황에 안 맞는 줄은 고쳐서 보내세요.
-
-<div class="prompt"><span class="who">지식관리 세팅 요청</span><button class="copy" type="button">복사</button><span class="txt">안녕! 나는 <span class="fill">(하는 일)</span>을 하는 사람이고, AI는 처음이야. 앞으로 너랑 한 일을 한 폴더에 모아서 관리하고 싶어. 아래대로 세팅해줘. 네가 직접 할 수 있는 건 해주고, 내가 눌러야 하는 화면만 한 단계씩 천천히 알려줘.
-
-1. 원드라이브 폴더 안에 <span class="fill">(me)</span> 폴더를 만들어줘. 앞으로 너와 만든 문서·작업물은 여기에 저장해.
-2. 나는 개발자가 아니라서 마우스로 폴더를 열어 직접 볼 거야. 폴더와 파일 이름은 한눈에 알아보기 쉽게 짓고, 바탕화면에 이 폴더 바로가기를 만들어줘.
-3. 이 폴더가 이 컴퓨터에 실제로 내려와 있는지 확인하고, 필요하면 원드라이브에서 "항상 이 디바이스에 유지"로 설정해줘. 바탕화면·문서·사진 전체 백업은 새로 켜지 마.
-4. 이 폴더 안에 AI협업규칙.md 파일을 만들고 아래 규칙을 적어줘.
-   - 새 작업은 이 폴더 안에 주제별 폴더를 만들어 저장한다
-   - 작업이 끝나면 그 폴더의 작업기록.md에 날짜, 한 일, 다음 할 일을 짧게 남긴다
-   - 비밀번호와 API 키는 파일에 적지 않는다
-   - 나는 초보니까 쉬운 말로, 한 번에 한 단계씩 설명한다
-5. 다음 대화에서 내가 이 규칙 파일을 한 줄로 읽으라고 할 수 있게, 그 한 줄과 파일의 실제 위치를 알려줘.
-
-다 끝나면 무엇을 어디에 만들었는지 정리해서 보여주고, 바로가기와 규칙 파일이 실제로 열리는지 나와 함께 확인해줘.</span></div>
-
-### 왜 이렇게 요청하나요?
-
-요청문의 줄마다 이유가 있어요. 네 가지로 묶어 볼게요.
+<h3 class="ih">요청문, 줄마다 이유</h3>
 
 <div class="whyg">
 <div class="wg-h"><span>①</span>어디에 모을까</div>
 <div class="wc"><div class="wq">원드라이브 폴더 안에</div><p>원드라이브 안에 넣은 것만 인터넷에 올라가서, 휴대폰이나 다른 노트북에서 꺼내 쓸 수 있어요. 밖에 만들면 그 노트북에만 남아요.</p></div>
-<div class="wc"><div class="wq">여기에 저장해</div><p>정해 주지 않으면 AI는 그때그때 편한 곳에 파일을 만들어요. 오늘은 바탕화면, 내일은 다운로드 폴더. 처음에 "여기"라고 정해 줘야 흩어지지 않아요.</p></div>
+<div class="wc"><div class="wq">여기에 저장해</div><p>정해 주지 않으면 AI는 그때그때 편한 곳에 파일을 만들어요. 오늘은 바탕화면, 내일은 다운로드 폴더. 처음에 "여기"라고 정해 줘야 흩어지지 않아요.</p><div class="act"><div><span class="d">이렇게 하면</span><span class="t"><q>출퇴근 기록표 만들어줘</q> 대신 <q>me 폴더에 출퇴근 기록표 만들어줘</q>라고 보내요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">기록표가 바탕화면이나 다운로드 폴더에 흩어지지 않고 me 폴더에 생겨요.</span></div></div></div>
 <div class="wc"><div class="wq">전체 백업은 새로 켜지 마</div><p>켜면 바탕화면·문서·사진이 통째로 올라가서, 스크린샷까지 전부 원드라이브에 쌓여요. 필요한 폴더만 넣어야 찾기 쉬워요.</p></div>
 </div>
 
@@ -148,37 +153,17 @@ AI는 폴더를 바로 열어 읽으니까 옵시디언이 필요 없어요. 옵
 
 <div class="whyg">
 <div class="wg-h"><span>③</span>AI가 이어서 일하게</div>
-<div class="wc"><div class="wq">AI협업규칙.md · 작업기록.md</div><p>둘 다 md 파일이에요(위 "옵시디언은 왜 쓰나요?" 참고).</p><p><b>규칙 파일</b>에는 일하는 방식을, <b>작업기록</b>에는 날짜·한 일·다음 할 일을 적어요. 한 달 뒤 에러가 나도 "작업기록 읽고 고쳐줘" 한마디로 시작할 수 있고, 다른 AI에게 넘길 때는 인수인계서가 돼요.</p></div>
+<div class="wc"><div class="wq">AI협업규칙.md · 작업기록.md</div><p>둘 다 md 파일이에요. <b>규칙 파일</b>에는 일하는 방식을, <b>작업기록</b>에는 날짜·한 일·다음 할 일을 적어요.</p><div class="act"><div><span class="d">이렇게 하면</span><span class="t">월요일에 클로드와 <q>파일 이름은 날짜로 시작</q>이라고 정하고 규칙 파일에 적어 둬요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">수요일에 GPT로 바꿔도 <q>규칙 파일 읽고 시작해줘</q> 한 줄이면, GPT도 같은 규칙으로 일해요.</span></div></div><div class="act"><div><span class="d">이렇게 하면</span><span class="t">기록표를 만든 날, 작업기록에 <q>9/26 기록표 완성. 다음: 주휴수당 계산</q>이라고 남겨요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">한 달 뒤 계산이 틀려도 <q>작업기록 읽고 고쳐줘</q> 한 줄이면 AI가 이어서 고쳐요. 나도 코드를 몰라도 어디까지 됐는지 알아요.</span></div></div></div>
 <div class="wc"><div class="wq">한 줄로 읽으라고 할 수 있게</div><p>규칙 파일을 읽는 건 <b>AI</b>예요. 다만 AI는 파일이 있다고 저절로 읽지 않아요. 새 대화를 시작할 때 <b>내가</b> "규칙 파일 읽고 시작해줘"라고 말하면, 그때 AI가 파일을 열어 읽어요. 그 한 줄을 미리 받아 두면 매번 쉽게 시작할 수 있어요.</p></div>
 </div>
 
 <div class="whyg">
 <div class="wg-h"><span>④</span>안전하고 차근차근</div>
-<div class="wc"><div class="wq">비밀번호와 API 키는 적지 않는다</div><p>이 폴더는 인터넷에 올라가고, 화면 공유할 때 보일 수도 있어요. 한 번 새어 나간 키는 되돌릴 수 없어요.</p></div>
+<div class="wc"><div class="wq">비밀번호와 API 키는 적지 않는다</div><p>이 폴더는 인터넷에 올라가고, 화면 공유할 때 보일 수도 있어요. 한 번 새어 나간 키는 되돌릴 수 없어요.</p><div class="act"><div><span class="d">이렇게 하면</span><span class="t">비밀번호 대신 <q>비밀번호는 내 휴대폰 메모에 있음</q>처럼 위치만 적어요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">폴더가 원드라이브에 올라가거나 화면을 공유해도 비밀번호가 새어 나가지 않아요.</span></div></div></div>
 <div class="wc"><div class="wq">한 번에 한 단계씩</div><p><b>쪼개기 법칙</b>이에요. 큰 일은 작은 단계로 쪼개서 하나씩 해요. AI는 열 단계를 한꺼번에 쏟아내는 버릇이 있는데, 한 단계씩 받아야 어디서 막혔는지 바로 알 수 있어요.</p></div>
 </div>
 
-<div class="callout tip"><svg><use href="#i-check"/></svg><div><b>막히면 캡처 한 장.</b> 노트북에 들어 있는 캡처 기능으로 막힌 화면을 찍어요.<br><b>윈도우</b>: <code>Win + Shift + S</code>를 누르면 <b>캡처 도구</b>가 떠요. 찍을 부분을 마우스로 끌어 고르면 복사돼요. 채팅창에서 <code>Ctrl + V</code>로 붙여넣어요.<br><b>맥</b>: <code>Cmd + Shift + 4</code>를 누르고 찍을 부분을 끌어 고르면, 바탕화면에 사진이 저장돼요. 그 사진을 채팅창으로 끌어다 놓아요.<br>그리고 쓰고 있는 GPT나 클로드에게 물어보세요. <b>"지금 이 화면이야. 다음에 뭘 눌러?"</b></div></div>
-
-<div class="callout warn"><svg><use href="#i-warn"/></svg><div><b>이것만은 직접 해요.</b> 로그인, 비밀번호 입력, 결제 버튼, 그리고 "허용하시겠어요?" 창은 AI에게 넘기지 말고 무엇을 허용하는지 읽고 직접 눌러요.</div></div>
-
-## <span class="no">4</span> 잘 됐는지 하나하나 확인하기
-
-AI가 끝났다고 하면, 아래와 똑같이 됐는지 **직접** 확인해요.
-
-<ul class="checks">
-<li><svg><use href="#i-check"/></svg><span>바탕화면의 <b>내 폴더 바로가기</b>를 더블클릭하면 폴더가 열린다</span></li>
-<li><svg><use href="#i-check"/></svg><span>그 폴더 안의 <b>AI협업규칙.md</b>를 열면 규칙이 보인다</span></li>
-<li><svg><use href="#i-check"/></svg><span>AI 앱에서 <b>새 대화</b>를 열고 아래 한 줄을 보내면, 규칙과 <b>파일의 실제 위치</b>를 말해 준다</span></li>
-</ul>
-
-세 개 다 되면 세팅 끝이에요. 이제부터 AI와 무엇을 만들든, 대화를 시작할 때 이 한 줄만 붙이면 돼요.
-
-<div class="prompt"><span class="who">앞으로 매번</span><button class="copy" type="button">복사</button><span class="txt">원드라이브의 <span class="fill">(me)</span> 폴더에 있는 AI협업규칙.md와 이번 작업의 최근 작업기록을 읽고 시작해줘.</span></div>
-
-<div class="callout tip"><svg><use href="#i-folder"/></svg><div><b>옵시디언을 설치했다면</b> 첫 화면에서 <b>"보관함 폴더 열기"</b>를 눌러 내 폴더(me)를 골라요. "새 보관함 생성"을 누르면 빈 폴더가 따로 생겨요.</div></div>
-
-## <span class="no">5</span> 더 알아 두면 좋은 것 <small>(선택)</small>
+## <span class="no">6</span> 더 알아 두면 좋은 것 <small>(선택)</small>
 
 ### 내 폴더 주소 읽는 법
 

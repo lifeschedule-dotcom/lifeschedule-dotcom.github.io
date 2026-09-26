@@ -240,6 +240,16 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
 .callout svg { width: 22px; height: 22px; margin-top: 2px; }
 .callout.tip { background: #e8f5ef; } .callout.tip svg { fill: #1e7a5a; } .callout.tip b { color: #1e7a5a; }
 .callout.warn { background: #fff3dd; } .callout.warn svg { fill: #b06a00; } .callout.warn b { color: #b06a00; }
+.folder-tree { margin: 12px 0; padding: 12px 14px; border-radius: 10px; background: #fff; font-size: 15px; line-height: 1.55; }
+.folder-tree div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; padding: 3px 0; }
+.folder-tree strong { color: #195c45; }
+.folder-tree span { color: var(--ink-soft); }
+.folder-tree .depth-1 { padding-left: 15px; }
+.folder-tree .depth-2 { padding-left: 34px; }
+.folder-open { display: grid; gap: 6px; margin: 10px 0; }
+.folder-open div { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+.folder-open code { overflow-wrap: anywhere; }
+.callout .folder-open + p { margin: 10px 0 0; }
 
 /* 확인 목록 */
 .checks { margin: 1em 0 1.4em; padding: 6px 18px; border-radius: 14px; background: #fff; border: 1px solid #ebe3e6; list-style: none; }

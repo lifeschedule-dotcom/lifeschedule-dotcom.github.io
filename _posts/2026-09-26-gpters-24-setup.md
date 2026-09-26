@@ -128,7 +128,10 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 
 **me 폴더를 연 데스크탑 앱**에 아래 요청을 보내요. AI가 앞에서 만든 <code>Obsidian Vault</code> 안에 규칙 파일을 만들고, 앞으로 작업물과 기록을 어디에 둘지도 적을 거예요.
 
-<div class="callout tip"><svg><use href="#i-folder"/></svg><div><b>여기서 저도 헷갈렸어요.</b> AI 앱을 내 컴퓨터에서 실행하는 것, 옵시디언에서 보관함을 여는 것, AI 앱에서 <code>me</code>를 작업 폴더로 여는 것은 각각 다른 일이에요. 옵시디언 보관함을 열거나 바탕화면에 바로가기를 만들어도 Claude·GPT의 작업 폴더가 자동으로 <code>me</code>가 되지는 않아요. AI가 <code>me</code>의 규칙 파일을 따로 읽었더라도 작업 폴더는 다른 곳일 수 있어요. <b>이름 me만 보지 말고 전체 주소를 비교하세요.</b></div></div>
+<div class="callout tip"><svg><use href="#i-folder"/></svg><div><b>왜 me 폴더를 만들까요?</b> Claude와 GPT의 작업물을 모을 공통 주소가 필요해서예요. me가 원드라이브 안에 있으면 동기화 후 다른 컴퓨터에서도 같은 파일을 볼 수 있어요.
+<div class="folder-tree"><div><strong>원드라이브</strong><span>인터넷 창고</span></div><div class="depth-1">└ <strong>me</strong><span>AI 작업의 공통 폴더</span></div><div class="depth-2">├ <strong>Obsidian Vault</strong><span>규칙·작업기록 노트</span></div><div class="depth-2">└ <strong>주제별 폴더</strong><span>문서·이미지 등 작업물</span></div></div>
+<div class="folder-open"><div><b>Claude·GPT에서 여는 폴더</b><code>me</code></div><div><b>옵시디언에서 여는 보관함</b><code>me/Obsidian Vault</code></div></div>
+<p>옵시디언에서 보관함을 열어도 AI 앱의 작업 폴더는 바뀌지 않아요. 아래 요청문에서 두 앱이 같은 <code>me</code>를 골랐는지 <b>전체 주소로 확인</b>해요.</p></div></div>
 
 **보내기 전에 한 줄씩 읽어 주세요.** 이해 안 되는 줄은 바로 아래 4번에 번호별로 풀어 뒀어요.
 

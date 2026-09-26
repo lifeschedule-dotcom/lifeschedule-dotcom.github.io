@@ -168,7 +168,7 @@ AI가 끝났다고 하면, 이 세 가지를 **직접** 확인해요.
 
 <ul class="checks">
 <li><svg><use href="#i-check"/></svg><span>바탕화면의 <b>내 폴더 바로가기</b>를 더블클릭하면 폴더가 열린다</span></li>
-<li><svg><use href="#i-check"/></svg><span>그 폴더 안에 <b>AI협업규칙.md</b>가 있다</span></li>
+<li><svg><use href="#i-check"/></svg><span>me 폴더를 열면 바로 <b>AI협업규칙.md</b> 파일이 보인다</span></li>
 <li><svg><use href="#i-check"/></svg><span><b>새 대화</b>에서 아래 한 줄을 보내면, AI가 규칙을 말해 준다</span></li>
 </ul>
 

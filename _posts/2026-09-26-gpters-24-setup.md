@@ -198,18 +198,3 @@ AI는 폴더를 바로 열어 읽으니까 옵시디언이 필요 없어요. 옵
 <div class="sym"><div><b class="k">:</b><p><b>"여기까지가 저장 공간 이름"</b>이라는 표시예요. <code>C:</code>는 내 컴퓨터 안의 저장 공간 이름이라, 보통 "C 드라이브"라고 읽어요.</p></div><div><b class="k">\</b><p><b>"그 안으로 들어가요"</b>라는 표시예요. 폴더 하나에 들어갈 때마다 하나씩 붙어요. 파일 탐색기 주소창의 <code>›</code>와 같아요.</p></div></div>
 <p>그래서 이 주소는 "서울시 › ○○구 › ○○동"처럼, <b>C 드라이브 안의 Users 안의 내 이름 안의 OneDrive 안의 me</b>라고 읽어요.</p>
 </div>
-
-**주소는 컴퓨터마다 조금씩 달라요.** 제 노트북 두 대도 이렇게 달라요.
-
-<div class="addr-pair">
-<div><span>노트북 1</span><code>C:\Users\wootw\OneDrive-JW\OneDrive\me</code></div>
-<div><span>노트북 2</span><code>C:\Users\User\OneDrive\me</code></div>
-</div>
-
-주소를 똑같이 맞출 필요는 없어요. 중요한 건 **같은 원드라이브 계정의 원드라이브 폴더 안에 me가 있는지**예요. 주소를 외우지 말고, `Win + E` → 왼쪽 **OneDrive** → **me** 순서로 마우스로 열면 돼요.
-
-<div class="callout warn"><svg><use href="#i-warn"/></svg><div><b>제가 처음 권했던 위치는 틀렸어요.</b> 처음엔 <code>C:\me</code>처럼 원드라이브 <b>밖</b>에 폴더를 만들었어요. 그러면 다른 노트북으로 옮겨지지 않아요. 원드라이브와 연결하려면 폴더가 <b>원드라이브 안</b>에 있어야 해요.</div></div>
-
-### 두 AI에게 일을 나눠 줄 때
-
-저는 내 폴더 안에 `live_collaboration`이라는 폴더를 하나 더 만들어 **두 AI의 우편함**으로 써요. GPT가 인계문을 넣어 두면 클로드에게 "live_collaboration의 최신 인계문 읽고 진행해줘" 한 줄만 말해요. 반대로 클로드의 결과를 GPT에게 검토시킬 때도 같은 한 줄이면 돼요. 두 AI 모두 내 폴더를 읽고 쓸 수 있는 작업 모드일 때 가능해요.

@@ -78,7 +78,7 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 
 <div class="prompt"><span class="who">옵시디언 설치 요청 (데스크탑 앱에)</span><button class="copy" type="button">복사</button><span class="txt">옵시디언을 설치하고 싶어. 네가 직접 설치해 줄 수 있으면 해 주고, 어렵다면 내가 할 수 있게 한 단계씩 알려줘.</span></div>
 
-<p class="sub-note">이미 설치되어 있으면 AI가 알려줘요. 옵시디언과 me 폴더를 잇는 건 세팅이 끝난 뒤(5번)에 해요.</p>
+<p class="sub-note">옵시디언은 <b>설치만</b> 해 두세요. 쓰는 법은 오프라인 모임 때 카페에서 같이 알려드릴게요.</p>
 <p class="snap-mac">맥은 <b>Cmd + Shift + 4</b>로 찍어요.</p>
 </div>
 
@@ -152,8 +152,6 @@ AI가 끝났다고 하면, 이 세 가지를 **직접** 확인해요.
 앞으로도 대화를 시작할 때 이 한 줄이면 돼요.
 
 <div class="prompt"><span class="who">앞으로 매번</span><button class="copy" type="button">복사</button><span class="txt">원드라이브의 <span class="fill">(me)</span> 폴더에 있는 AI협업규칙.md와 이번 작업의 최근 작업기록을 읽고 시작해줘.</span></div>
-
-<div class="callout tip"><svg><use href="#i-folder"/></svg><div><b>옵시디언으로 me 폴더 열기</b> 데스크탑 앱에 <b>"옵시디언에서 me 폴더를 보관함으로 열 수 있게 도와줘"</b>라고 보내요.</div></div>
 
 <h2 id="why"><span class="no">6</span> 원드라이브·옵시디언은 왜 쓰나요? <small>(읽고 싶을 때만)</small></h2>
 

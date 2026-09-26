@@ -106,7 +106,7 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 
 <h3 class="step-h"><span>2</span><img src="/assets/img/icons/obsidian.png" alt="">옵시디언 설치하고 보관함 만들기 <small>AI와 함께</small></h3>
 
-먼저 파일 탐색기(맥은 Finder)에서 원드라이브 안에 <code>me</code> 폴더를 만들어요. 이미 있으면 그대로 쓰면 됩니다. 어느 원드라이브인지 헷갈리면 폴더 주소를 확인하세요. 바탕화면 바로가기는 나중에 만들 거예요.
+먼저 파일 탐색기(맥은 Finder)에서 원드라이브 안에 <code>me</code> 폴더를 만들어요. 이미 있으면 그대로 쓰면 됩니다. <b>me 폴더의 전체 주소를 복사해 잠깐 메모해 두세요.</b> 윈도우에서는 me 폴더를 연 뒤 파일 탐색기 위쪽 주소창을 한 번 클릭하면 경로가 보여요. 맥에서 경로를 찾기 어렵다면 화면을 캡처해 AI에게 물어보세요. 이름이 같은 me 폴더가 여러 개일 수 있어서, 3번에서 이 주소와 AI의 작업 폴더 주소를 비교할 거예요. 바탕화면 바로가기는 나중에 만들 거예요.
 
 이제 데스크탑 앱에 아래처럼 보내 옵시디언 설치를 도움받으세요. 폴더를 고르는 화면은 내가 직접 눌러도 돼요.
 
@@ -114,36 +114,38 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 
 옵시디언을 열어 <b>Create new vault</b>(새 보관함 만들기)를 누르세요. 보관함 이름은 <code>Obsidian Vault</code>, 저장 위치는 원드라이브의 <code>me</code> 폴더로 고른 뒤 <b>Create</b>를 누르면 됩니다. 그러면 <code>me/Obsidian Vault</code> 폴더가 생겨요. 이미 같은 폴더가 있다면 새로 만들지 말고 <b>Open folder as vault</b>(폴더를 보관함으로 열기)로 그 폴더를 여세요. 왼쪽 파일 목록이 비어 있어도 괜찮아요. 규칙 파일은 다음 단계에서 만들 거예요.
 
-<p class="sub-note">옵시디언에서 보관함을 열었다고 AI 앱의 작업 폴더까지 바뀌지는 않아요. 3번에서 Claude·GPT의 작업 폴더를 <b>각각 me로</b> 선택할 거예요. 자세한 옵시디언 사용법은 오프라인 모임 때 같이 알려드릴게요.</p>
+<p class="sub-note">옵시디언에서 보관함을 열었다고 AI 앱의 작업 폴더까지 바뀌지는 않아요. 3번에서 Claude·GPT의 작업 폴더를 <b>각각 me로</b> 선택할 거예요. 자세한 옵시디언 사용법은 스터디를 진행하면서 알려드릴게요.</p>
 
 ## <span class="no">3</span> AI에게 세팅 시키기
 
 이제 AI 앱에도 같은 원드라이브의 <code>me</code> 폴더를 지정해요. 옵시디언에는 <code>me/Obsidian Vault</code>를 열었지만, AI 앱에서는 한 단계 위의 <code>me</code>를 열어야 작업물과 보관함을 함께 다룰 수 있어요.
 
-데스크탑 앱에서 <b>me 폴더를 로컬 작업 폴더</b>(내 컴퓨터에서 직접 작업할 폴더)로 열어요. 클로드 앱에서는 <b>로컬</b>, ChatGPT 앱에서는 <b>Work의 로컬 작업</b>이나 <b>Codex의 Local</b>을 선택해요. 폴더 선택 창이 뜨면 원드라이브 안의 실제 <b>me</b> 폴더로 들어가 <b>폴더 선택</b>을 눌러요. 폴더 접근 요청은 읽어 보고 직접 허용하세요. 화면에 <b>me</b>가 작업 폴더로 표시된 걸 확인해요. 바탕화면 바로가기는 폴더를 연 다음 AI에게 만들게 할 거예요.
+데스크탑 앱에서 <b>me 폴더를 로컬 작업 폴더</b>(내 컴퓨터에서 직접 작업할 폴더)로 열어요. 클로드 앱에서는 컴퓨터의 폴더를 고르는 로컬 작업 화면으로, ChatGPT 앱에서는 Work의 로컬 작업이나 Codex의 Local로 들어가요. 앱 버전과 계정에 따라 버튼 이름이 다를 수 있어요. 중요한 건 <b>이 컴퓨터의 기존 me 폴더를 직접 선택하는 것</b>이에요. 폴더 선택 창이 뜨면 원드라이브 안의 실제 <b>me</b> 폴더로 들어가 <b>폴더 선택</b>을 눌러요. 폴더 접근 요청은 읽어 보고 직접 허용하세요. 화면에 <b>me</b>가 표시돼도 이름만으로는 충분하지 않아요. 아래 요청문에서 앞 단계에 메모한 <b>전체 주소</b>와 같은지 확인할 거예요. 바탕화면 바로가기는 폴더를 연 다음 AI에게 만들게 할 거예요.
 
-<div class="seq"><figure><span class="sn">1</span><img src="/assets/img/setup/pick-folder.png" alt="클로드 로컬 작업 입력창의 폴더 없음 버튼"><figcaption>클로드 앱에서는 입력창 위 <b>폴더 없음</b>을 눌러요</figcaption></figure><figure><span class="sn">2</span><img src="/assets/img/setup/pick-folder-3.png" alt="입력창 위에 me가 표시된 화면"><figcaption>원드라이브의 <b>me</b> 폴더를 고른 뒤 입력창 위에 <b>me</b>가 보이면 준비 끝!</figcaption></figure></div>
+**아래 사진은 클로드 앱의 사용법이에요. GPT(ChatGPT) 앱은 폴더를 여는 화면과 버튼이 달라요.** GPT에서는 위 설명대로 로컬 작업 폴더를 열고, 화면이 다르면 캡처를 보내며 "원드라이브의 me 폴더를 어디서 선택해?"라고 물어보세요.
+
+<div class="seq"><figure><span class="sn">1</span><img src="/assets/img/setup/pick-folder.png" alt="클로드 로컬 작업 입력창의 폴더 없음 버튼"><figcaption>사진 속 클로드 앱에서는 입력창 위 <b>폴더 없음</b>을 눌러요. 다른 화면이라면 폴더 선택 기능을 찾아요</figcaption></figure><figure><span class="sn">2</span><img src="/assets/img/setup/pick-folder-3.png" alt="입력창 위에 me가 표시된 화면"><figcaption>원드라이브의 <b>me</b>를 고르고, 아래 요청문으로 <b>전체 주소</b>까지 확인해요</figcaption></figure></div>
 
 **me 폴더를 연 데스크탑 앱**에 아래 요청을 보내요. AI가 앞에서 만든 <code>Obsidian Vault</code> 안에 규칙 파일을 만들고, 앞으로 작업물과 기록을 어디에 둘지도 적을 거예요.
 
-<div class="callout tip"><svg><use href="#i-folder"/></svg><div><b>여기서 저도 헷갈렸어요.</b> AI 앱을 내 컴퓨터에서 실행하는 것, 옵시디언에서 보관함을 여는 것, AI 앱에서 <code>me</code>를 작업 폴더로 여는 것은 각각 다른 일이에요. 옵시디언 보관함을 열거나 바탕화면에 바로가기를 만들어도 Claude·GPT의 작업 폴더가 자동으로 <code>me</code>가 되지는 않아요. AI가 <code>me</code>의 규칙 파일을 따로 읽었더라도 작업 폴더는 다른 곳일 수 있어요. 지금 대화 화면에 표시된 작업 폴더가 실제 원드라이브의 <code>me</code>인지 확인하세요.</div></div>
+<div class="callout tip"><svg><use href="#i-folder"/></svg><div><b>여기서 저도 헷갈렸어요.</b> AI 앱을 내 컴퓨터에서 실행하는 것, 옵시디언에서 보관함을 여는 것, AI 앱에서 <code>me</code>를 작업 폴더로 여는 것은 각각 다른 일이에요. 옵시디언 보관함을 열거나 바탕화면에 바로가기를 만들어도 Claude·GPT의 작업 폴더가 자동으로 <code>me</code>가 되지는 않아요. AI가 <code>me</code>의 규칙 파일을 따로 읽었더라도 작업 폴더는 다른 곳일 수 있어요. <b>이름 me만 보지 말고 전체 주소를 비교하세요.</b></div></div>
 
 **보내기 전에 한 줄씩 읽어 주세요.** 이해 안 되는 줄은 바로 아래 4번에 번호별로 풀어 뒀어요.
 
 <div class="prompt"><span class="who">지식관리 세팅 요청</span><button class="copy" type="button">복사</button><span class="txt">안녕! 나는 <span class="fill">(하는 일)</span>을 하는 사람이고, AI는 처음이야. 앞으로 너랑 한 일을 한 폴더에 모아서 관리하고 싶어. 아래대로 세팅해줘. 네가 직접 할 수 있는 건 해주고, 내가 눌러야 하는 화면만 한 단계씩 천천히 알려줘.
 
-1. 지금 작업 폴더로 연 <span class="fill">(me)</span>가 원드라이브 안에 있는지 확인해줘. 아니라면 파일을 만들지 말고 알려줘. 앞으로 너와 만든 문서·작업물은 me 안의 주제별 폴더에 저장해.
-2. 나는 개발자가 아니라서 마우스로 폴더를 열어 직접 볼 거야. 폴더와 파일 이름은 한눈에 알아보기 쉽게 짓고, 바탕화면에 이 폴더 바로가기를 만들어줘.
+1. 지금 네 작업 폴더의 실제 전체 주소를 알려줘. 내가 옵시디언 보관함을 만든 me 폴더의 주소는 <span class="fill">(여기에 메모한 me 폴더 전체 주소 붙여넣기)</span>야. 두 주소가 같은지 확인해줘. 다르거나 확인할 수 없다면 파일을 만들지 말고 알려줘. 같다면 앞으로 너와 만든 문서·작업물은 이 me 안의 주제별 폴더에 저장해.
+2. 나는 개발자가 아니라서 마우스로 폴더를 열어 직접 볼 거야. 폴더와 파일 이름은 한눈에 알아보기 쉽게 짓고, 가능하면 바탕화면에 이 폴더 바로가기를 만들어줘. 네가 직접 만들 수 없다면 내가 마우스로 만들도록 알려줘.
 3. 이 폴더가 이 컴퓨터에 실제로 내려와 있는지 확인하고, 필요하면 원드라이브에서 "항상 이 디바이스에 유지"로 설정해줘. 바탕화면·문서·사진 전체 백업은 새로 켜지 마.
 4. me 안의 Obsidian Vault 폴더가 있는지 확인해줘. 없다면 파일을 만들지 말고 알려줘. 그 안에 AI협업규칙.md 파일을 만들고 아래 규칙을 적어줘. 같은 이름의 파일이 이미 있다면 덮어쓰지 말고 먼저 알려줘.
    - 새 작업물은 me 안의 주제별 폴더에 저장한다
-   - 작업이 끝나면 Obsidian Vault 안에 해당 주제의 작업기록.md를 만들고 날짜, 한 일, 작업물 위치, 다음 할 일을 짧게 남긴다
+   - 작업이 끝나면 Obsidian Vault 안에 해당 주제의 작업기록.md가 있으면 기존 내용을 보존하고 날짜별로 덧붙인다. 없으면 만든다. 날짜, 한 일, 작업물 위치, 다음 할 일을 짧게 남긴다
    - 비밀번호와 API 키는 파일에 적지 않는다
    - 나는 초보니까 쉬운 말로, 한 번에 한 단계씩 설명한다
 
 다 끝나면 무엇을 어디에 만들었는지 실제 폴더 위치와 함께 보여줘. 바탕화면 바로가기와 Obsidian Vault 안의 규칙 파일이 열리는지도 나와 함께 확인해줘.</span></div>
 
-AI가 파일을 만든 뒤 옵시디언으로 돌아가세요. 왼쪽 파일 목록에 <b>AI협업규칙.md</b>가 보이면 같은 보관함을 보고 있는 거예요. 파일을 열어 규칙이 읽히는지도 확인해요. AI 앱에서는 계속 <code>me</code>를 작업 폴더로 열고, 필요할 때 <code>Obsidian Vault/AI협업규칙.md</code>를 읽어 달라고 요청해요.
+AI가 파일을 만든 뒤 옵시디언으로 돌아가세요. 왼쪽 파일 목록에 <b>AI협업규칙</b>이 보이면 같은 보관함을 보고 있는 거예요. 옵시디언에서는 이름 뒤의 <code>.md</code>가 숨겨져 보일 수도 있어요. 파일을 열어 규칙이 읽히는지도 확인해요. AI 앱에서는 계속 <code>me</code>를 작업 폴더로 열고, 필요할 때 <code>Obsidian Vault/AI협업규칙.md</code>를 읽어 달라고 요청해요.
 
 <div class="callout warn"><svg><use href="#i-warn"/></svg><div><b>이것만은 직접 해요.</b> 로그인, 비밀번호, 결제, "허용할까요?" 창은 읽어 보고 내가 눌러요.</div></div>
 
@@ -159,7 +161,7 @@ AI가 파일을 만든 뒤 옵시디언으로 돌아가세요. 왼쪽 파일 목
 
 <div class="whyg">
 <div class="wg-h"><span>2</span>마우스로 직접 볼 거야</div>
-<div class="wc shot"><div><div class="wq">마우스로 폴더를 열어 직접 볼 거야</div><p>이 말을 넣으면 AI가 알아보기 쉬운 이름과 <b>바탕화면 바로가기</b>를 만들어 줘요. 그러면 오른쪽 화면처럼, 바탕화면에서 더블클릭 한 번으로 내 폴더에 들어가요.</p><p>내가 직접 못 들어가는 폴더는 파일 하나 여는 쉬운 일도 매번 AI에게 부탁하게 돼요.</p></div><figure><img src="/assets/img/setup/desktop-me.png" alt="바탕화면의 me 폴더 바로가기를 마우스로 가리킨 화면"><figcaption>바탕화면의 <b>me</b> 바로가기</figcaption></figure></div>
+<div class="wc shot"><div><div class="wq">마우스로 폴더를 열어 직접 볼 거야</div><p>이 말을 넣으면 AI에게 알아보기 쉬운 이름과 <b>바탕화면 바로가기</b>를 부탁할 수 있어요. AI가 바탕화면에 직접 만들 수 없다면, 안내를 보며 내가 마우스로 만들면 됩니다. 그러면 오른쪽 화면처럼 더블클릭 한 번으로 내 폴더에 들어가요.</p><p>내가 직접 못 들어가는 폴더는 파일 하나 여는 쉬운 일도 매번 AI에게 부탁하게 돼요.</p></div><figure><img src="/assets/img/setup/desktop-me.png" alt="바탕화면의 me 폴더 바로가기를 마우스로 가리킨 화면"><figcaption>바탕화면의 <b>me</b> 바로가기</figcaption></figure></div>
 </div>
 
 <div class="whyg">
@@ -183,13 +185,13 @@ AI가 끝났다고 하면, 이 네 가지를 **직접** 확인해요.
 <ul class="checks">
 <li><svg><use href="#i-check"/></svg><span>바탕화면의 <b>내 폴더 바로가기</b>를 더블클릭하면 폴더가 열린다</span></li>
 <li><svg><use href="#i-check"/></svg><span>me 안의 <b>Obsidian Vault</b> 폴더를 열면 <b>AI협업규칙.md</b> 파일이 보인다</span></li>
-<li><svg><use href="#i-check"/></svg><span>옵시디언에서도 <b>Obsidian Vault</b>를 열면 같은 규칙 파일이 보인다</span></li>
+<li><svg><use href="#i-check"/></svg><span>옵시디언에서도 <b>Obsidian Vault</b>를 열면 같은 규칙 파일이 보인다(<code>.md</code>가 안 보여도 괜찮다)</span></li>
 <li><svg><use href="#i-check"/></svg><span><b>새 대화</b>에서 아래 한 줄을 보내면, AI가 파일의 규칙과 실제 위치를 말해 준다</span></li>
 </ul>
 
 새 대화는 전에 정한 규칙 파일을 자동으로 읽는다고 기대하면 안 돼요. 새 대화에서도 me 폴더를 로컬 작업 폴더로 열고 이 한 줄을 보내요. 새로 출근한 직원에게 "업무 매뉴얼 먼저 보고 시작해요"라고 말하는 것과 같아요.
 
-<div class="prompt"><span class="who">새 대화를 시작할 때</span><button class="copy" type="button">복사</button><span class="txt">지금 작업 폴더로 연 원드라이브의 <span class="fill">(me)</span> 안에서 Obsidian Vault/AI협업규칙.md와 이번 작업의 최근 작업기록을 읽고, 각 파일의 실제 위치를 알려준 뒤 시작해줘.</span></div>
+<div class="prompt"><span class="who">새 대화를 시작할 때</span><button class="copy" type="button">복사</button><span class="txt">지금 작업 폴더로 연 원드라이브의 <span class="fill">(me)</span> 안에서 Obsidian Vault/AI협업규칙.md와 이번 작업의 최근 작업기록을 읽고, 각 파일의 실제 위치를 알려준 뒤 시작해줘. 아직 작업기록이 없다면 없다고 알려줘.</span></div>
 
 <p class="sub-note">이 한 줄 없이도 AI가 알아서 규칙을 읽게 하는 설정은 1주차에 같이 해요.</p>
 

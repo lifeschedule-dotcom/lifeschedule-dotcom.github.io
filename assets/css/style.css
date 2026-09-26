@@ -378,3 +378,19 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
   .wc.shot { grid-template-columns: 1fr; }
   .wc.shot img { width: 160px; }
 }
+
+/* md 비교 */
+.mdcmp { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 1em 0 1.2em; }
+.mdv { border-radius: 12px; border: 1px solid #e6dde0; overflow: hidden; background: #fff; }
+.mdh { display: flex; align-items: center; gap: 6px; padding: 8px 14px; font-size: 13px; font-weight: 700; color: var(--ink-soft); background: #f5f2f3; border-bottom: 1px solid #ece4e7; }
+.mdh img { width: 18px; height: 18px; }
+.mdv.raw pre { margin: 0; border-radius: 0; background: #fff; font-size: 14px; line-height: 1.7; white-space: pre-wrap; }
+.mdr { padding: 12px 16px; font-size: 15px; }
+.mdr h4 { margin: 0 0 4px; font-size: 20px; }
+.mdr h5 { margin: 0 0 4px; font-size: 16px; color: #6f47c7; }
+.mdr ul { margin: 0; padding-left: 20px; }
+@media (max-width: 760px) { .mdcmp { grid-template-columns: 1fr; } }
+.ghstrip { display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: start; margin: 10px 0 1.2em; padding: 12px 16px; border-radius: 14px; border: 1.5px dashed #c9ccd4; background: #fafafa; }
+.ghstrip img { width: 40px; height: 40px; }
+.ghstrip b { font-size: 16px; margin-right: 8px; }
+.ghstrip p { margin: 4px 0 0; font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; }

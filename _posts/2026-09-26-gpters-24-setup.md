@@ -18,12 +18,12 @@ description: 사전 세팅 1강. AI와 한 일을 폴더 하나에 모으는 지
 
 ## <span class="no">1</span> 세팅의 큰 그림
 
-**각 노트북에 내 폴더(저는 `me`)가 하나씩 있고, 원드라이브가 두 폴더의 내용을 똑같이 맞춰 줘요.** 나는 파일 탐색기로, AI도 그 폴더를 직접 열어요. 옵시디언은 같은 폴더를 보기 좋게 여는 창이에요.
+**각 노트북에 내 폴더(저는 `me`)가 하나씩 있고, 원드라이브가 두 폴더의 내용을 똑같이 맞춰 줘요.** **AI는 원드라이브 안의 내 폴더를 직접 열어서** 파일을 읽고 써요. 나는 같은 폴더를 파일 탐색기나 옵시디언으로 봐요.
 
 <div class="sync">
 <div class="pc">
 <div class="pc-h"><svg class="i"><use href="#i-laptop"/></svg>지금 쓰는 노트북</div>
-<div class="openers"><span><svg class="i"><use href="#i-hand"/></svg>나</span><span><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">AI</span><span class="opt"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언 <em>선택</em></span></div>
+<div class="openers"><span><svg class="i"><use href="#i-hand"/></svg>나</span><span><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">AI</span><span class="opt"><img src="/assets/img/icons/obsidian.png" alt=""><img src="/assets/img/icons/notion.png" alt="">옵시디언·노션 <em>선택</em></span></div>
 <div class="down">↓ 같은 폴더를 열어요</div>
 <div class="kfolder">
 <div class="kfolder-h"><svg class="i"><use href="#i-folder"/></svg>me</div>
@@ -34,7 +34,7 @@ description: 사전 세팅 1강. AI와 한 일을 폴더 하나에 모으는 지
 <div class="sync-mid"><img src="/assets/img/icons/onedrive.png" alt=""><b>원드라이브</b><i>⇄</i><span>동기화가 끝나면<br>두 폴더가 똑같아져요</span></div>
 <div class="pc other">
 <div class="pc-h"><svg class="i"><use href="#i-laptop"/></svg>다른 노트북 <small>(있다면)</small></div>
-<div class="openers"><span><svg class="i"><use href="#i-hand"/></svg>나</span><span><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">AI</span><span class="opt"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언 <em>선택</em></span></div>
+<div class="openers"><span><svg class="i"><use href="#i-hand"/></svg>나</span><span><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">AI</span><span class="opt"><img src="/assets/img/icons/obsidian.png" alt=""><img src="/assets/img/icons/notion.png" alt="">옵시디언·노션 <em>선택</em></span></div>
 <div class="down">↓ 같은 폴더를 열어요</div>
 <div class="kfolder">
 <div class="kfolder-h"><svg class="i"><use href="#i-folder"/></svg>me</div>
@@ -44,10 +44,34 @@ description: 사전 세팅 1강. AI와 한 일을 폴더 하나에 모으는 지
 </div>
 </div>
 
+<div class="ghstrip"><img src="/assets/img/icons/github.png" alt=""><div><b>GitHub</b><span class="need later">나중에 · 중급</span><p>코드를 만들기 시작하면 쓰는 코드 보관소예요. 코드는 원드라이브 밖의 코드 폴더에서 만들고 GitHub에 올려요. 내 폴더의 작업기록에는 코드가 어디 있는지만 적어요.</p></div></div>
+
 원드라이브는 마이크로소프트의 인터넷 저장 공간(클라우드)이에요. 여기에 넣어 둔 자료는 **다른 기기에서도 꺼내 쓸 수 있어서** 꼭 추천해요. 예를 들어 부동산 계약서를 사진으로 찍어 원드라이브에 넣어 두면, 휴대폰에 원드라이브 앱을 깔고 같은 계정으로 로그인해서 바로 열 수 있어요. 다른 노트북도 같은 계정으로 로그인하면 똑같이 보여요. 노트북이 한 대뿐이어도 필요해요. 컴퓨터가 고장 나도 자료는 인터넷에 남거든요.
 
+### 옵시디언은 왜 쓰나요?
+
+AI는 폴더를 바로 열어 읽으니까 옵시디언이 필요 없어요. 옵시디언은 **사람을 위한 도구**예요. 내 폴더에 쌓이는 규칙과 기록은 대부분 **md 파일**이에요.
+
+<div class="callout tip"><svg><use href="#i-note"/></svg><div><b>md 파일이 뭐예요?</b> 이름 끝에 <code>.md</code>가 붙은 글 파일이에요(마크다운). <code>#</code>은 제목, <code>**</code>는 굵게, <code>-</code>는 목록처럼 간단한 기호로 글의 모양을 적어요. AI가 가장 잘 읽고 쓰는 형식이라, AI와 일하면 이 파일이 계속 생겨요. <code>CLAUDE.md</code>처럼 특별한 이름의 md 파일은 1주차에 자세히 알려드릴게요.</div></div>
+
+같은 md 파일을 파일 탐색기에서 열면 메모장에 기호가 그대로 보이고, 옵시디언에서 열면 읽기 좋게 바뀌어 보여요.
+
+<div class="mdcmp">
+<div class="mdv raw"><div class="mdh">메모장으로 열면</div><pre># 작업기록
+## 9월 26일
+- **한 일**: 출퇴근 기록표 만들기
+- **다음 할 일**: 주휴수당 계산 넣기</pre></div>
+<div class="mdv nice"><div class="mdh"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언으로 열면</div><div class="mdr"><h4>작업기록</h4><h5>9월 26일</h5><ul><li><b>한 일</b>: 출퇴근 기록표 만들기</li><li><b>다음 할 일</b>: 주휴수당 계산 넣기</li></ul></div></div>
+</div>
+
+<ul class="checks">
+<li><svg><use href="#i-check"/></svg><span><b>읽기 편해요.</b> 기호 대신 제목·굵은 글씨·목록으로 보여요.</span></li>
+<li><svg><use href="#i-check"/></svg><span><b>찾기 빨라요.</b> <code>Ctrl + O</code>로 노트 이름을, <code>Ctrl + Shift + F</code>로 모든 노트의 내용을 한 번에 찾아요. 기억 안 나는 프로젝트도 금방 나와요.</span></li>
+<li><svg><use href="#i-check"/></svg><span><b>바로 고쳐요.</b> 보면서 그대로 고치면, AI가 다음에 고친 내용을 읽어요.</span></li>
+</ul>
+
 <div class="kroles">
-<div class="kr"><img src="/assets/img/icons/onedrive.png" alt=""><div><b>원드라이브</b><span class="need must">필수</span><p>노트북끼리 폴더를 맞춰 주고, 백업도 돼요. 없으면 작업물이 노트북 한 대에 갇혀요.</p></div></div>
+<div class="kr"><img src="/assets/img/icons/onedrive.png" alt=""><div><b>원드라이브</b><span class="need must">필수</span><p>어느 노트북에서나, 모바일에서나 일할 수 있게 해 줘요! 노트북끼리 폴더를 맞춰 주고, 백업도 돼요. 없으면 작업물이 노트북 한 대에 갇혀요.</p></div></div>
 <div class="kr"><span class="ico"><svg class="i"><use href="#i-folder"/></svg></span><div><b>내 폴더 (AI 전용 폴더)</b><span class="need must">필수</span><p>AI와 함께 볼 문서·사진·작업기록이 모이는 한 곳이에요. <b>반드시 원드라이브 안에</b> 만들어요.</p></div></div>
 <div class="kr"><span class="ico"><svg class="i"><use href="#i-note"/></svg></span><div><b>규칙 파일</b><span class="need must">필수</span><p>AI에게 일하는 방식을 알려 주는 파일이에요. 새 대화에서 이 파일을 읽어 달라고 하면, 전에 정한 방식을 다시 설명하지 않아도 돼요.</p></div></div>
 <div class="kr"><span class="pair"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span><div><b>내 폴더를 열고 직접 일하는 AI</b><span class="need must">필수 · 둘 중 하나</span><p>클로드나 GPT 데스크탑 앱에서, 내 컴퓨터의 폴더를 읽고 쓸 수 있는 작업 모드가 필요해요. 이 기능은 유료 요금제(GPT Plus 이상, 클로드 Pro 이상)에서 써요.</p></div></div>
@@ -120,7 +144,7 @@ description: 사전 세팅 1강. AI와 한 일을 폴더 하나에 모으는 지
 
 <div class="whyg">
 <div class="wg-h"><span>③</span>AI가 이어서 일하게</div>
-<div class="wc"><div class="wq">AI협업규칙.md · 작업기록.md</div><p><b>md 파일이 뭐예요?</b> 이름 끝에 <code>.md</code>가 붙은 글 파일이에요(마크다운). 메모장으로도 열 수 있고, AI가 가장 잘 읽고 쓰는 형식이라 규칙과 기록은 md로 만들어요.</p><p><b>규칙 파일</b>에는 일하는 방식을, <b>작업기록</b>에는 날짜·한 일·다음 할 일을 적어요. 한 달 뒤 에러가 나도 "작업기록 읽고 고쳐줘" 한마디로 시작할 수 있고, 다른 AI에게 넘길 때는 인수인계서가 돼요.</p></div>
+<div class="wc"><div class="wq">AI협업규칙.md · 작업기록.md</div><p>둘 다 md 파일이에요(위 "옵시디언은 왜 쓰나요?" 참고).</p><p><b>규칙 파일</b>에는 일하는 방식을, <b>작업기록</b>에는 날짜·한 일·다음 할 일을 적어요. 한 달 뒤 에러가 나도 "작업기록 읽고 고쳐줘" 한마디로 시작할 수 있고, 다른 AI에게 넘길 때는 인수인계서가 돼요.</p></div>
 <div class="wc"><div class="wq">한 줄로 읽으라고 할 수 있게</div><p>규칙 파일을 읽는 건 <b>AI</b>예요. 다만 AI는 파일이 있다고 저절로 읽지 않아요. 새 대화를 시작할 때 <b>내가</b> "규칙 파일 읽고 시작해줘"라고 말하면, 그때 AI가 파일을 열어 읽어요. 그 한 줄을 미리 받아 두면 매번 쉽게 시작할 수 있어요.</p></div>
 </div>
 

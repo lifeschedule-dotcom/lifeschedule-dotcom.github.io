@@ -80,7 +80,7 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 
 설치가 끝나면 **데스크탑 앱**에 아래 요청을 보내요. 폴더와 파일은 AI가 만들어요.
 
-**보내기 전에 한 줄씩 읽어 주세요.**
+**보내기 전에 한 줄씩 읽어 주세요.** 이해 안 되는 줄은 바로 아래 4번에 번호별로 풀어 뒀어요.
 
 <div class="prompt"><span class="who">지식관리 세팅 요청</span><button class="copy" type="button">복사</button><span class="txt">안녕! 나는 <span class="fill">(하는 일)</span>을 하는 사람이고, AI는 처음이야. 앞으로 너랑 한 일을 한 폴더에 모아서 관리하고 싶어. 아래대로 세팅해줘. 네가 직접 할 수 있는 건 해주고, 내가 눌러야 하는 화면만 한 단계씩 천천히 알려줘.
 
@@ -98,7 +98,40 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 
 <div class="callout warn"><svg><use href="#i-warn"/></svg><div><b>이것만은 직접 해요.</b> 로그인, 비밀번호, 결제, "허용할까요?" 창은 읽어 보고 내가 눌러요.</div></div>
 
-## <span class="no">4</span> 잘 됐는지 하나하나 확인하기
+## <span class="no">4</span> 요청문 한 줄씩 풀어 보기
+
+요청문의 번호와 똑같은 순서예요. 이해 안 되는 줄이 있으면 여기서 찾아보세요.
+
+<div class="whyg">
+<div class="wg-h"><span>1</span>원드라이브 안에 me 폴더</div>
+<div class="wc"><div class="wq">원드라이브 폴더 안에</div><p>원드라이브 안에 넣은 것만 인터넷에 올라가서, 휴대폰이나 다른 노트북에서 꺼내 쓸 수 있어요. 밖에 만들면 그 노트북에만 남아요.</p></div>
+<div class="wc"><div class="wq">여기에 저장해</div><p>정해 주지 않으면 AI는 그때그때 편한 곳에 파일을 만들어요. 오늘은 바탕화면, 내일은 다운로드 폴더. 처음에 "여기"라고 정해 줘야 흩어지지 않아요.</p><div class="act"><div><span class="d">이렇게 하면</span><span class="t"><q>출퇴근 기록표 만들어줘</q> 대신 <q>me 폴더에 출퇴근 기록표 만들어줘</q>라고 보내요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">기록표가 바탕화면이나 다운로드 폴더에 흩어지지 않고 me 폴더에 생겨요.</span></div></div></div>
+</div>
+
+<div class="whyg">
+<div class="wg-h"><span>2</span>마우스로 직접 볼 거야</div>
+<div class="wc shot"><div><div class="wq">마우스로 폴더를 열어 직접 볼 거야</div><p>이 말을 넣으면 AI가 알아보기 쉬운 이름과 <b>바탕화면 바로가기</b>를 만들어 줘요. 그러면 오른쪽 화면처럼, 바탕화면에서 더블클릭 한 번으로 내 폴더에 들어가요.</p><p>내가 직접 못 들어가는 폴더는 파일 하나 여는 쉬운 일도 매번 AI에게 부탁하게 돼요.</p></div><figure><img src="/assets/img/setup/desktop-me.png" alt="바탕화면의 me 폴더 바로가기를 마우스로 가리킨 화면"><figcaption>바탕화면의 <b>me</b> 바로가기</figcaption></figure></div>
+</div>
+
+<div class="whyg">
+<div class="wg-h"><span>3</span>항상 이 디바이스에 유지</div>
+<div class="wc"><div class="wq">항상 이 디바이스에 유지</div><p>원드라이브는 컴퓨터 용량을 아끼려고, 파일은 인터넷에만 두고 내 컴퓨터에는 <b>이름만</b> 남겨 두기도 해요. 그러면 인터넷이 끊겼을 때 열리지 않고, AI가 파일을 제대로 못 읽을 때가 있어요.</p><p>"항상 이 디바이스에 유지"는 <b>"이 폴더는 내 컴퓨터에도 늘 진짜 파일로 둬"</b>라는 설정이에요. 파일 탐색기에서 폴더 옆 표시로 확인해요.</p><div class="states"><span class="st cloud"><i>☁</i>파란 구름<small>인터넷에만 있어요</small></span><span class="st keep"><i>✔</i>꽉 찬 초록 체크<small>내 컴퓨터에도 늘 있어요</small></span></div></div>
+<div class="wc"><div class="wq">전체 백업은 새로 켜지 마</div><p>켜면 바탕화면·문서·사진이 통째로 올라가서, 스크린샷까지 전부 원드라이브에 쌓여요. 필요한 폴더만 넣어야 찾기 쉬워요.</p></div>
+</div>
+
+<div class="whyg">
+<div class="wg-h"><span>4</span>규칙 파일 만들기</div>
+<div class="wc"><div class="wq">AI협업규칙.md · 작업기록.md</div><p>둘 다 md 파일이에요. <b>규칙 파일</b>에는 일하는 방식을, <b>작업기록</b>에는 날짜·한 일·다음 할 일을 적어요.</p><div class="act"><div><span class="d">이렇게 하면</span><span class="t">월요일에 클로드와 <q>파일 이름은 날짜로 시작</q>이라고 정하고 규칙 파일에 적어 둬요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">수요일에 GPT로 바꿔도 <q>규칙 파일 읽고 시작해줘</q> 한 줄이면, GPT도 같은 규칙으로 일해요.</span></div></div><div class="act"><div><span class="d">이렇게 하면</span><span class="t">기록표를 만든 날, 작업기록에 <q>9/26 기록표 완성. 다음: 주휴수당 계산</q>이라고 남겨요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">한 달 뒤 계산이 틀려도 <q>작업기록 읽고 고쳐줘</q> 한 줄이면 AI가 이어서 고쳐요. 나도 코드를 몰라도 어디까지 됐는지 알아요.</span></div></div></div>
+<div class="wc"><div class="wq">비밀번호와 API 키는 적지 않는다</div><p>이 폴더는 인터넷에 올라가고, 화면 공유할 때 보일 수도 있어요. 한 번 새어 나간 키는 되돌릴 수 없어요.</p><div class="act"><div><span class="d">이렇게 하면</span><span class="t">비밀번호 대신 <q>비밀번호는 내 휴대폰 메모에 있음</q>처럼 위치만 적어요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">폴더가 원드라이브에 올라가거나 화면을 공유해도 비밀번호가 새어 나가지 않아요.</span></div></div></div>
+<div class="wc"><div class="wq">한 번에 한 단계씩</div><p><b>쪼개기 법칙</b>이에요. 큰 일은 작은 단계로 쪼개서 하나씩 해요. AI는 열 단계를 한꺼번에 쏟아내는 버릇이 있는데, 한 단계씩 받아야 어디서 막혔는지 바로 알 수 있어요.</p></div>
+</div>
+
+<div class="whyg">
+<div class="wg-h"><span>5</span>한 줄로 읽으라고 할 수 있게</div>
+<div class="wc"><div class="wq">한 줄로 읽으라고 할 수 있게</div><p>규칙 파일을 읽는 건 <b>AI</b>예요. 다만 AI는 파일이 있다고 저절로 읽지 않아요. 새 대화를 시작할 때 <b>내가</b> "규칙 파일 읽고 시작해줘"라고 말하면, 그때 AI가 파일을 열어 읽어요. 그 한 줄을 미리 받아 두면 매번 쉽게 시작할 수 있어요.</p></div>
+</div>
+
+## <span class="no">5</span> 잘 됐는지 하나하나 확인하기
 
 AI가 끝났다고 하면, 이 세 가지를 **직접** 확인해요.
 
@@ -114,9 +147,9 @@ AI가 끝났다고 하면, 이 세 가지를 **직접** 확인해요.
 
 <div class="callout tip"><svg><use href="#i-folder"/></svg><div><b>옵시디언도 쓰고 싶다면</b> AI에게 <b>"옵시디언 설치하고, me 폴더를 열 수 있게 도와줘"</b>라고 보내요.</div></div>
 
-<h2 id="why"><span class="no">5</span> 왜 이렇게 하나요? <small>(읽고 싶을 때만)</small></h2>
+<h2 id="why"><span class="no">6</span> 원드라이브·옵시디언은 왜 쓰나요? <small>(읽고 싶을 때만)</small></h2>
 
-따라 하기를 끝냈다면, 여기서부터는 이유예요.
+세팅을 끝냈다면, 여기서부터는 도구를 왜 쓰는지 이야기예요.
 
 <h3 class="ih"><img src="/assets/img/icons/onedrive.png" alt="">원드라이브는 왜 쓰나요?</h3>
 
@@ -148,34 +181,8 @@ AI는 폴더를 바로 열어 읽으니까 옵시디언이 필요 없어요. 옵
 
 <div class="callout tip"><svg><use href="#i-folder"/></svg><div><b>폴더 이름은 자유예요.</b> 저는 <code>me</code>로, 영어로 지었어요. 일부 개발 도구가 한글 경로에서 오류를 내는 경우가 있어서 영어로 짓는 게 관례지만, 한글로 지어도 괜찮아요.</div></div>
 
-<h3 class="ih">요청문, 줄마다 이유</h3>
 
-<div class="whyg">
-<div class="wg-h"><span>①</span>어디에 모을까</div>
-<div class="wc"><div class="wq">원드라이브 폴더 안에</div><p>원드라이브 안에 넣은 것만 인터넷에 올라가서, 휴대폰이나 다른 노트북에서 꺼내 쓸 수 있어요. 밖에 만들면 그 노트북에만 남아요.</p></div>
-<div class="wc"><div class="wq">여기에 저장해</div><p>정해 주지 않으면 AI는 그때그때 편한 곳에 파일을 만들어요. 오늘은 바탕화면, 내일은 다운로드 폴더. 처음에 "여기"라고 정해 줘야 흩어지지 않아요.</p><div class="act"><div><span class="d">이렇게 하면</span><span class="t"><q>출퇴근 기록표 만들어줘</q> 대신 <q>me 폴더에 출퇴근 기록표 만들어줘</q>라고 보내요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">기록표가 바탕화면이나 다운로드 폴더에 흩어지지 않고 me 폴더에 생겨요.</span></div></div></div>
-<div class="wc"><div class="wq">전체 백업은 새로 켜지 마</div><p>켜면 바탕화면·문서·사진이 통째로 올라가서, 스크린샷까지 전부 원드라이브에 쌓여요. 필요한 폴더만 넣어야 찾기 쉬워요.</p></div>
-</div>
-
-<div class="whyg">
-<div class="wg-h"><span>②</span>내가 직접 볼 수 있게</div>
-<div class="wc shot"><div><div class="wq">마우스로 폴더를 열어 직접 볼 거야</div><p>이 말을 넣으면 AI가 알아보기 쉬운 이름과 <b>바탕화면 바로가기</b>를 만들어 줘요. 그러면 오른쪽 화면처럼, 바탕화면에서 더블클릭 한 번으로 내 폴더에 들어가요.</p><p>내가 직접 못 들어가는 폴더는 파일 하나 여는 쉬운 일도 매번 AI에게 부탁하게 돼요.</p></div><figure><img src="/assets/img/setup/desktop-me.png" alt="바탕화면의 me 폴더 바로가기를 마우스로 가리킨 화면"><figcaption>바탕화면의 <b>me</b> 바로가기</figcaption></figure></div>
-<div class="wc"><div class="wq">항상 이 디바이스에 유지</div><p>원드라이브는 컴퓨터 용량을 아끼려고, 파일은 인터넷에만 두고 내 컴퓨터에는 <b>이름만</b> 남겨 두기도 해요. 그러면 인터넷이 끊겼을 때 열리지 않고, AI가 파일을 제대로 못 읽을 때가 있어요.</p><p>"항상 이 디바이스에 유지"는 <b>"이 폴더는 내 컴퓨터에도 늘 진짜 파일로 둬"</b>라는 설정이에요. 파일 탐색기에서 폴더 옆 표시로 확인해요.</p><div class="states"><span class="st cloud"><i>☁</i>파란 구름<small>인터넷에만 있어요</small></span><span class="st keep"><i>✔</i>꽉 찬 초록 체크<small>내 컴퓨터에도 늘 있어요</small></span></div></div>
-</div>
-
-<div class="whyg">
-<div class="wg-h"><span>③</span>AI가 이어서 일하게</div>
-<div class="wc"><div class="wq">AI협업규칙.md · 작업기록.md</div><p>둘 다 md 파일이에요. <b>규칙 파일</b>에는 일하는 방식을, <b>작업기록</b>에는 날짜·한 일·다음 할 일을 적어요.</p><div class="act"><div><span class="d">이렇게 하면</span><span class="t">월요일에 클로드와 <q>파일 이름은 날짜로 시작</q>이라고 정하고 규칙 파일에 적어 둬요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">수요일에 GPT로 바꿔도 <q>규칙 파일 읽고 시작해줘</q> 한 줄이면, GPT도 같은 규칙으로 일해요.</span></div></div><div class="act"><div><span class="d">이렇게 하면</span><span class="t">기록표를 만든 날, 작업기록에 <q>9/26 기록표 완성. 다음: 주휴수당 계산</q>이라고 남겨요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">한 달 뒤 계산이 틀려도 <q>작업기록 읽고 고쳐줘</q> 한 줄이면 AI가 이어서 고쳐요. 나도 코드를 몰라도 어디까지 됐는지 알아요.</span></div></div></div>
-<div class="wc"><div class="wq">한 줄로 읽으라고 할 수 있게</div><p>규칙 파일을 읽는 건 <b>AI</b>예요. 다만 AI는 파일이 있다고 저절로 읽지 않아요. 새 대화를 시작할 때 <b>내가</b> "규칙 파일 읽고 시작해줘"라고 말하면, 그때 AI가 파일을 열어 읽어요. 그 한 줄을 미리 받아 두면 매번 쉽게 시작할 수 있어요.</p></div>
-</div>
-
-<div class="whyg">
-<div class="wg-h"><span>④</span>안전하고 차근차근</div>
-<div class="wc"><div class="wq">비밀번호와 API 키는 적지 않는다</div><p>이 폴더는 인터넷에 올라가고, 화면 공유할 때 보일 수도 있어요. 한 번 새어 나간 키는 되돌릴 수 없어요.</p><div class="act"><div><span class="d">이렇게 하면</span><span class="t">비밀번호 대신 <q>비밀번호는 내 휴대폰 메모에 있음</q>처럼 위치만 적어요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">폴더가 원드라이브에 올라가거나 화면을 공유해도 비밀번호가 새어 나가지 않아요.</span></div></div></div>
-<div class="wc"><div class="wq">한 번에 한 단계씩</div><p><b>쪼개기 법칙</b>이에요. 큰 일은 작은 단계로 쪼개서 하나씩 해요. AI는 열 단계를 한꺼번에 쏟아내는 버릇이 있는데, 한 단계씩 받아야 어디서 막혔는지 바로 알 수 있어요.</p></div>
-</div>
-
-## <span class="no">6</span> 더 알아 두면 좋은 것 <small>(선택)</small>
+## <span class="no">7</span> 더 알아 두면 좋은 것 <small>(선택)</small>
 
 ### 내 폴더 주소 읽는 법
 

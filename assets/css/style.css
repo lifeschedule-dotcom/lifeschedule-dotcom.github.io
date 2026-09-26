@@ -504,3 +504,6 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
 .step-h img { width: 30px; height: 30px; }
 .step-h small { font-size: 15px; font-weight: 700; color: var(--accent); background: #f6e4e9; border-radius: 99px; padding: 2px 10px; }
 .when { margin: 6px 0 10px; padding-left: 22px; } .when li { font-size: 17px; margin: 4px 0; }
+.done { margin: 2.4em 0 1em; padding: 26px 24px; border-radius: 18px; background: #e8f5ef; border: 2px solid #9fd6bd; text-align: center; }
+.done-t { font-size: 24px; font-weight: 700; line-height: 1.5; color: #1e6b4d; }
+.done p { margin: 10px 0 0; font-size: 18px; }

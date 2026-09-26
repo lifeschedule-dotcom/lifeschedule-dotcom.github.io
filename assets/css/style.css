@@ -552,3 +552,5 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
 .pf-a { align-self: center; text-align: center; font-size: 24px; font-weight: 700; color: var(--accent); }
 .done-t a { color: inherit; }
 @media (max-width: 760px) { .pf-row { grid-template-columns: 1fr; } .pf-a { transform: rotate(90deg); } }
+.pf-p span, .pf-s span { font-size: 14.5px; }
+.facts .n { font-size: 14.5px; }

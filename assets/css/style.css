@@ -404,3 +404,13 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
   .sync-gh { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 6px 10px; }
   .sync-gh br { display: none; }
 }
+
+/* 행동 → 결과 */
+.act { display: grid; gap: 6px; margin-top: 8px; }
+.act > div { display: grid; grid-template-columns: 84px 1fr; gap: 10px; align-items: start; font-size: 15px; line-height: 1.6; color: var(--ink); }
+.act .d, .act .r { display: inline-block; text-align: center; font-size: 12px; font-weight: 700; border-radius: 99px; padding: 2px 0; margin-top: 2px; }
+.act .d { background: #f4f0fb; color: #6f47c7; }
+.act .r { background: #e8f5ef; color: #1e7a5a; }
+.act q { quotes: "“" "”"; font-weight: 700; color: #4b2f7a; }
+.rule .act { margin-top: 6px; }
+@media (max-width: 760px) { .act > div { grid-template-columns: 1fr; gap: 2px; } .act .d, .act .r { justify-self: start; padding: 2px 10px; } }

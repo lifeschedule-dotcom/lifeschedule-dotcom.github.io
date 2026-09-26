@@ -46,7 +46,7 @@ description: 사전 세팅 1강. AI와 한 일을 폴더 하나에 모으는 지
 </div>
 </div>
 
-## <span class="no">2</span> 설치하기
+## <span class="no">2</span> 일하는 AI(데스크탑 앱) 설치하기
 
 AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 

@@ -52,7 +52,7 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 
 <div class="twoai">
 <div class="ta chat"><div class="ta-h">채팅창 <small>인터넷 창</small></div><div class="ta-m">전화로 알려주는 친구</div><p>무엇이든 물어보면 알려줘요. 내 컴퓨터는 만지지 못해서, <b>손은 내가</b> 움직여요.</p><p class="ta-e">claude.ai · chatgpt.com</p></div>
-<div class="ta desk"><div class="ta-h">데스크탑 앱 <small>설치하는 프로그램</small></div><div class="ta-m">옆에서 직접 해 주는 친구</div><p>내 폴더를 열고, 파일을 만들고, 정리까지 <b>직접</b> 해 줘요.</p><p class="ta-e">클로드 앱 · GPT 앱</p></div>
+<div class="ta desk"><div class="ta-h">데스크탑 앱 <small>설치하는 프로그램</small></div><div class="ta-m">옆에서 직접 해 주는 친구</div><p>내 폴더를 열고, 파일을 만들고, 정리까지 <b>직접</b> 해 줘요.</p><p class="ta-e">클로드 앱 · GPT 앱 (유료: 클로드 Pro 이상, GPT Plus 이상)</p></div>
 </div>
 
 그래서 **설치는 채팅창에 물어보고**, 설치가 끝나면 **세팅은 데스크탑 앱**에 맡겨요.
@@ -74,13 +74,6 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 <p class="snap-mac">맥은 <b>Cmd + Shift + 4</b>로 찍어요.</p>
 </div>
 
-링크는 AI가 알려줄 때 참고용이에요.
-
-
-<div class="tools">
-<div class="tool t-cloud"><div class="h"><img src="/assets/img/icons/onedrive.png" alt="">원드라이브</div><p>마이크로소프트의 인터넷 저장 공간이에요. 윈도우에는 이미 깔려 있어요. 켜져 있는지는 AI가 확인해 줘요.</p><div class="go"><a href="https://www.microsoft.com/ko-kr/microsoft-365/onedrive/download" target="_blank" rel="noopener">원드라이브 받기 →</a></div></div>
-<div class="tool t-ai"><div class="h"><span class="pair"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>클로드 / GPT 데스크탑 앱</div><p>둘 중 하나만 있으면 돼요. GPT는 Plus 이상, 클로드는 Pro 이상이 필요해요.</p><div class="go"><a href="https://claude.ai/download" target="_blank" rel="noopener">클로드 받기 →</a> &nbsp; <a href="https://chatgpt.com/download" target="_blank" rel="noopener">GPT 받기 →</a></div></div>
-</div>
 
 
 ## <span class="no">3</span> AI에게 세팅 시키기

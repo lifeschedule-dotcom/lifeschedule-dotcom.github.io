@@ -311,3 +311,46 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
   .kside .kcard { flex: 1; }
   .klabel { writing-mode: horizontal-tb; }
 }
+
+/* ---------- 두 노트북 동기화 그림 ---------- */
+.content h2 small { font-size: 14px; font-weight: 400; color: var(--ink-soft); }
+.sync { display: grid; grid-template-columns: 1fr 150px 1fr; align-items: center; gap: 10px; margin: 1.2em 0 1.4em; }
+.pc { padding: 12px; border-radius: 16px; background: #f7f8fb; border: 1px solid #e3e6ee; }
+.pc.other { opacity: .78; border-style: dashed; }
+.pc-h { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; font-size: 14px; font-weight: 700; color: var(--ink-soft); }
+.pc-h svg { width: 20px; height: 20px; fill: #5b6275; }
+.pc-h small { font-weight: 400; }
+.openers { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.openers span { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 99px; background: #fff; border: 1px solid #e6dde0; font-size: 13px; font-weight: 700; }
+.openers span.opt { border-style: dashed; color: var(--ink-soft); }
+.openers img, .openers svg { width: 18px; height: 18px; fill: var(--accent); }
+.openers em { font-style: normal; font-size: 11px; color: #6f47c7; background: #eee8fb; border-radius: 99px; padding: 0 6px; }
+.down { margin: 6px 0; text-align: center; font-size: 12.5px; font-weight: 700; color: var(--accent); }
+.sync .kfolder { background: #fffdf5; border-color: #e0a93b; }
+.sync-mid { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2px; padding: 10px 6px; border-radius: 14px; background: linear-gradient(180deg, #e8f4fd, #f5fbff); border: 1px solid #b9dcf5; }
+.sync-mid img { width: 40px; height: 40px; }
+.sync-mid b { font-size: 15px; }
+.sync-mid i { font-style: normal; font-size: 28px; line-height: 1; color: #2f7fc1; }
+.sync-mid span { font-size: 12.5px; color: var(--ink-soft); line-height: 1.45; }
+
+/* ---------- 주소 읽는 법 ---------- */
+.addr { margin: 1em 0 1.2em; padding: 16px 18px; border-radius: 14px; background: #fff; border: 1px solid #ebe3e6; }
+.addr-line { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 4px; }
+.addr-line > span:not(.sep) { display: flex; flex-direction: column; align-items: center; padding: 6px 10px; border-radius: 10px; }
+.addr-line b { font-family: ui-monospace, Consolas, monospace; font-size: 18px; }
+.addr-line small { font-size: 12px; color: var(--ink-soft); }
+.addr-line .sep { align-self: flex-start; padding-top: 7px; font-family: ui-monospace, Consolas, monospace; font-size: 18px; font-weight: 700; color: #9aa0ad; }
+.addr .c1 { background: #eceef2; } .addr .c2 { background: #e8f5ef; } .addr .c3 { background: #fff3dd; }
+.addr .c4 { background: #e3f1fc; } .addr .c5 { background: #f6e4e9; }
+.addr p { margin: 10px 0 0; font-size: 14.5px; color: var(--ink-soft); }
+.addr-pair { display: grid; gap: 6px; margin: .6em 0 1.2em; }
+.addr-pair > div { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 12px; background: #f7f8fb; }
+.addr-pair span { font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+.addr-pair code { font-size: 14px; word-break: break-all; }
+
+@media (max-width: 760px) {
+  .sync { grid-template-columns: 1fr; }
+  .sync-mid { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 6px 10px; }
+  .sync-mid i { transform: rotate(90deg); }
+  .sync-mid br { display: none; }
+}

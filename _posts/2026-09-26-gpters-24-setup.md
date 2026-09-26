@@ -100,7 +100,7 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
    - 작업이 끝나면 그 폴더의 작업기록.md에 날짜, 한 일, 다음 할 일을 짧게 남긴다
    - 비밀번호와 API 키는 파일에 적지 않는다
    - 나는 초보니까 쉬운 말로, 한 번에 한 단계씩 설명한다
-5. 새 대화를 시작할 때 내가 보낼 한 줄을 알려줘. (규칙 파일을 먼저 읽고 시작하라는 말)
+5. 새 대화에서도 내가 말하지 않아도 이 규칙 파일을 먼저 읽도록 설정해줘. 네가 직접 할 수 없는 설정이면, 내가 할 수 있게 알려줘.
 
 다 끝나면 무엇을 어디에 만들었는지 정리해서 보여주고, 바로가기와 규칙 파일이 실제로 열리는지 나와 함께 확인해줘.</span></div>
 
@@ -135,8 +135,8 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 </div>
 
 <div class="whyg">
-<div class="wg-h"><span>5</span>새 대화를 시작할 때 보낼 한 줄</div>
-<div class="wc"><div class="wq">새 대화를 시작할 때 내가 보낼 한 줄을 알려줘</div><p>AI는 새 대화를 열면 전에 정한 규칙을 몰라요. 새로 출근한 직원에게 "업무 매뉴얼 먼저 보고 시작해요"라고 말해 주는 것처럼, 새 대화마다 <b>"규칙 파일 읽고 시작해줘"</b> 한 줄을 보내요.</p><p>그러면 AI가 규칙을 읽고 그대로 일해요. 5번 줄은 이 한 줄을 AI가 <b>미리 만들어 주게</b> 하는 거예요.</p></div>
+<div class="wg-h"><span>5</span>새 대화에서도 규칙을 먼저 읽게</div>
+<div class="wc"><div class="wq">내가 말하지 않아도 규칙 파일을 먼저 읽도록</div><p>AI는 새 대화를 열면 전에 정한 규칙을 몰라요. 그래서 새로 출근한 직원이 업무 매뉴얼부터 보듯, <b>AI가 대화를 시작할 때마다 규칙 파일을 먼저 읽도록</b> 설정해 두는 거예요.</p><p>설정 방법은 앱마다 달라서, AI가 알맞은 방법으로 해 주거나 알려줘요.</p></div>
 </div>
 
 ## <span class="no">5</span> 잘 됐는지 하나하나 확인하기
@@ -146,12 +146,12 @@ AI가 끝났다고 하면, 이 세 가지를 **직접** 확인해요.
 <ul class="checks">
 <li><svg><use href="#i-check"/></svg><span>바탕화면의 <b>내 폴더 바로가기</b>를 더블클릭하면 폴더가 열린다</span></li>
 <li><svg><use href="#i-check"/></svg><span>그 폴더 안에 <b>AI협업규칙.md</b>가 있다</span></li>
-<li><svg><use href="#i-check"/></svg><span>새 대화에서 아래 한 줄을 보내면, AI가 규칙을 말해 준다</span></li>
+<li><svg><use href="#i-check"/></svg><span><b>새 대화</b>를 열고 <b>"우리 규칙이 뭐야?"</b>라고만 물어도, AI가 규칙을 말해 준다</span></li>
 </ul>
 
-앞으로도 대화를 시작할 때 이 한 줄이면 돼요.
+혹시 AI가 규칙을 모르는 것 같으면, 대화를 시작할 때 이 한 줄을 보내요.
 
-<div class="prompt"><span class="who">앞으로 매번</span><button class="copy" type="button">복사</button><span class="txt">원드라이브의 <span class="fill">(me)</span> 폴더에 있는 AI협업규칙.md와 이번 작업의 최근 작업기록을 읽고 시작해줘.</span></div>
+<div class="prompt"><span class="who">AI가 규칙을 모를 때</span><button class="copy" type="button">복사</button><span class="txt">원드라이브의 <span class="fill">(me)</span> 폴더에 있는 AI협업규칙.md와 이번 작업의 최근 작업기록을 읽고 시작해줘.</span></div>
 
 <h2 id="why"><span class="no">6</span> 원드라이브·옵시디언은 왜 쓰나요? <small>(읽고 싶을 때만)</small></h2>
 

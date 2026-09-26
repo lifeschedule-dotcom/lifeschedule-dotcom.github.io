@@ -105,7 +105,7 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 <div class="whyg">
 <div class="wg-h"><span>1</span>원드라이브 안에 me 폴더</div>
 <div class="wc"><div class="wq">원드라이브 폴더 안에</div><p>원드라이브 안에 넣은 것만 인터넷에 올라가서, 휴대폰이나 다른 노트북에서 꺼내 쓸 수 있어요. 밖에 만들면 그 노트북에만 남아요.</p></div>
-<div class="wc"><div class="wq">여기에 저장해</div><p>정해 주지 않으면 AI는 그때그때 편한 곳에 파일을 만들어요. 그래서 데스크탑 앱에서 <b>폴더를 먼저 골라 주고</b>, 요청에도 "여기에 저장해"라고 적어요.</p><figure class="wshot"><img src="/assets/img/setup/pick-folder.png" alt="클로드 데스크탑 앱 입력창 위의 폴더 없음 버튼"><figcaption>입력창 위 <b>폴더 없음</b>을 누르고 <b>me</b>를 골라요</figcaption></figure><div class="act"><div><span class="d">이렇게 하면</span><span class="t"><q>출퇴근 기록표 만들어줘</q> 대신 <q>me 폴더에 출퇴근 기록표 만들어줘</q>라고 보내요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">기록표가 바탕화면이나 다운로드 폴더에 흩어지지 않고 me 폴더에 생겨요.</span></div></div></div>
+<div class="wc"><div class="wq">여기에 저장해</div><p>정해 주지 않으면 AI는 그때그때 편한 곳에 파일을 만들어요. 그래서 데스크탑 앱에서 <b>폴더를 먼저 골라 주고</b>, 요청에도 "여기에 저장해"라고 적어요.</p><div class="seq"><figure><span class="sn">1</span><img src="/assets/img/setup/pick-folder.png" alt="입력창 위 폴더 없음 버튼"><figcaption>입력창 위 <b>폴더 없음</b>을 눌러요</figcaption></figure><figure><span class="sn">2</span><img src="/assets/img/setup/pick-folder-2.png" alt="폴더 선택 창에서 me 폴더를 고른 화면"><figcaption><b>me</b>를 고르고 <b>폴더 선택</b>을 눌러요</figcaption></figure><figure><span class="sn">3</span><img src="/assets/img/setup/pick-folder-3.png" alt="입력창 위에 me가 표시된 화면"><figcaption>입력창 위에 <b>me</b>가 보이면 끝! 이제 AI가 me 폴더 안에서 일해요</figcaption></figure></div><div class="act"><div><span class="d">이렇게 하면</span><span class="t"><q>출퇴근 기록표 만들어줘</q> 대신 <q>me 폴더에 출퇴근 기록표 만들어줘</q>라고 보내요.</span></div><div><span class="r">이렇게 돼요</span><span class="t">기록표가 바탕화면이나 다운로드 폴더에 흩어지지 않고 me 폴더에 생겨요.</span></div></div></div>
 </div>
 
 <div class="whyg">

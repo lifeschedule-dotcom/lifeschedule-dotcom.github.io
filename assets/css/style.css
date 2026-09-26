@@ -485,3 +485,8 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
 .wshot { margin: 10px 0 8px; }
 .wshot img { display: block; width: 100%; border-radius: 10px; border: 1px solid #e6dde0; }
 .wshot figcaption { margin-top: 6px; font-size: 16px; color: var(--ink); }
+.seq { display: grid; gap: 14px; margin: 12px 0 10px; }
+.seq figure { position: relative; margin: 0; padding: 14px 14px 12px; border-radius: 12px; background: #faf7f8; border: 1px solid #ece3e6; }
+.seq .sn { position: absolute; top: -10px; left: -8px; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; font-size: 16px; }
+.seq img { display: block; width: 100%; border-radius: 8px; border: 1px solid #e6dde0; background: #fff; }
+.seq figcaption { margin-top: 8px; font-size: 17px; color: var(--ink); }

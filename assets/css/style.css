@@ -257,3 +257,57 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
   .why > div { grid-template-columns: 1fr; gap: 4px; }
   .prompt { padding: 16px; }
 }
+
+/* 관계도 */
+.kmap { display: grid; grid-template-columns: 1fr auto 1.3fr auto 1fr; align-items: center; gap: 8px; margin: 1.2em 0 1.4em; }
+.kside { display: flex; flex-direction: column; align-items: stretch; gap: 6px; }
+.klabel { align-self: center; font-size: 13px; font-weight: 700; letter-spacing: .04em; color: var(--ink-soft); background: #f3edef; border-radius: 99px; padding: 1px 12px; }
+.kcard { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; padding: 16px 12px; border-radius: 14px; background: #fff; border: 1px solid #e6dde0; }
+.kcard.opt { border-style: dashed; }
+.kcard img { width: 44px; height: 44px; }
+.kcard b { font-size: 16px; }
+.kcard span { font-size: 13.5px; color: var(--ink-soft); line-height: 1.5; }
+.kcard em { position: absolute; top: 8px; right: 8px; font-style: normal; font-size: 11px; font-weight: 700; color: #6f47c7; background: #eee8fb; border-radius: 99px; padding: 1px 8px; }
+.pair { display: inline-flex; gap: 6px; }
+.kcard .pair img { width: 38px; height: 38px; }
+.karrow { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 12px; color: var(--accent); font-weight: 700; }
+.karrow::before { content: "⟷"; font-size: 26px; line-height: 1; opacity: .7; }
+.kcenter { padding: 14px; border-radius: 18px; background: linear-gradient(180deg, #e8f4fd, #f5fbff); border: 2px solid #9fd0f2; }
+.kcloud { display: grid; grid-template-columns: 40px 1fr; column-gap: 10px; align-items: center; margin-bottom: 10px; }
+.kcloud img { width: 40px; height: 40px; grid-row: span 2; }
+.kcloud b { font-size: 16px; line-height: 1.3; }
+.kcloud span { font-size: 13px; color: var(--ink-soft); line-height: 1.4; }
+.kfolder { padding: 12px; border-radius: 12px; background: #fff; border: 2px solid var(--accent); }
+.kfolder-h { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; font-weight: 700; font-size: 16px; color: #5a2233; }
+.kfolder-h svg { fill: #e0a93b; width: 22px; height: 22px; }
+.kfolder-h small { font-weight: 400; color: var(--ink-soft); }
+.kfile { display: grid; grid-template-columns: 22px 1fr; column-gap: 6px; padding: 6px 4px; border-top: 1px solid #f1eaec; font-size: 14px; line-height: 1.45; }
+.kfile svg { width: 18px; height: 18px; fill: #8a8f9c; grid-row: span 2; margin-top: 2px; }
+.kfile span { color: var(--ink-soft); font-size: 13px; }
+
+.kroles { display: grid; gap: 8px; margin: 1em 0 1.4em; }
+.kr { display: grid; grid-template-columns: 48px 1fr; gap: 14px; align-items: start; padding: 14px 16px; border-radius: 14px; background: #fff; border: 1px solid #ebe3e6; }
+.kr > img, .kr > .ico, .kr > .pair { width: 48px; height: 48px; }
+.kr > .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; align-items: center; }
+.kr > .pair img { width: 23px; height: 23px; }
+.kr > .ico { display: grid; place-items: center; border-radius: 12px; background: #f6e4e9; color: var(--accent); }
+.kr > .ico svg { width: 26px; height: 26px; }
+.kr b { font-size: 17px; margin-right: 8px; }
+.kr p { margin: 4px 0 0; font-size: 15px; color: var(--ink-soft); line-height: 1.6; }
+.kr.later { background: #fafafa; border-style: dashed; }
+.need { display: inline-block; font-size: 12px; font-weight: 700; border-radius: 99px; padding: 1px 9px; vertical-align: 2px; }
+.need.must { background: #f6e4e9; color: var(--accent); }
+.need.opt { background: #eee8fb; color: #6f47c7; }
+.need.later { background: #eceef2; color: #5b6275; }
+
+.tool .h img { width: 28px; height: 28px; }
+.tool .h .pair img { width: 26px; height: 26px; }
+.tool .h small { font-weight: 400; font-size: 14px; color: var(--ink-soft); }
+
+@media (max-width: 760px) {
+  .kmap { grid-template-columns: 1fr; }
+  .karrow::before { content: "↕"; }
+  .kside { flex-direction: row; align-items: center; }
+  .kside .kcard { flex: 1; }
+  .klabel { writing-mode: horizontal-tb; }
+}

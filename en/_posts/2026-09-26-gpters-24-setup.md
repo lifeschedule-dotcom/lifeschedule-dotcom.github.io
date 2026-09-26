@@ -1,4 +1,5 @@
 ---
+published: false
 title: Beyond Asking About the Weather — The One Setup Every AI Beginner Needs
 section: vibe-coding
 sub: gpters24

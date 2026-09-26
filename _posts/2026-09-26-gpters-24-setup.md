@@ -18,7 +18,9 @@ description: 사전 세팅 1강. AI와 한 일을 폴더 하나에 모으는 지
 
 ## <span class="no">1</span> 한눈에 보기
 
-**원드라이브 안의 내 폴더(저는 `me`) 하나를 나와 AI가 같이 써요.** 노트북이 여러 대여도 원드라이브가 똑같이 맞춰 줘요.
+**원드라이브 안의 내 폴더(저는 `me`) 하나를 나와 AI가 같이 써요.**
+
+쉽게 말하면 원드라이브는 **인터넷 창고**예요. 창고에 넣어 둔 me 폴더는 어느 노트북, 어느 휴대폰에서 열어도 똑같이 보여요. AI는 이 폴더를 직접 열고 일하는 **비서**, 옵시디언은 폴더 속 글을 읽기 좋게 보여주는 **돋보기**예요.
 
 <div class="sync">
 <div class="pc">
@@ -31,7 +33,7 @@ description: 사전 세팅 1강. AI와 한 일을 폴더 하나에 모으는 지
 <div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>주제별 폴더</b><span>작업물 + 작업기록</span></div>
 </div>
 </div>
-<div class="sync-col"><div class="sync-mid"><img src="/assets/img/icons/onedrive.png" alt=""><b>원드라이브</b><i>⇄</i><span>동기화가 끝나면<br>두 폴더가 똑같아져요</span></div><div class="sync-gh"><div class="gh-top"><img src="/assets/img/icons/github.png" alt=""><b>GitHub</b><em>나중에</em></div><i>⇄</i><span>코드 폴더를 옮겨 줘요<br>(말할 때만)</span></div></div>
+<div class="sync-col"><div class="sync-mid"><img src="/assets/img/icons/onedrive.png" alt=""><b>원드라이브</b><small class="mt">인터넷 창고</small><i>⇄</i><span>동기화가 끝나면<br>두 폴더가 똑같아져요</span></div><div class="sync-gh"><div class="gh-top"><img src="/assets/img/icons/github.png" alt=""><b>GitHub</b></div><i>⇄</i><span>중급자용<br>(코드 폴더용)</span></div></div>
 <div class="pc other">
 <div class="pc-h"><svg class="i"><use href="#i-laptop"/></svg>다른 노트북 <small>(있다면)</small></div>
 <div class="openers"><span><svg class="i"><use href="#i-hand"/></svg>나</span><span><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">AI</span><span class="opt"><img src="/assets/img/icons/obsidian.png" alt=""><img src="/assets/img/icons/notion.png" alt="">옵시디언·노션 <em>선택</em></span></div>
@@ -46,14 +48,31 @@ description: 사전 세팅 1강. AI와 한 일을 폴더 하나에 모으는 지
 
 ## <span class="no">2</span> 설치하기
 
-설치는 **AI에게 맡겨요.** 아래 요청을 보내면, AI가 여러분 화면에 맞춰 한 단계씩 알려줘요. 아직 데스크탑 앱이 없으니, 이 요청은 인터넷 창에서 [claude.ai](https://claude.ai) 또는 [chatgpt.com](https://chatgpt.com)에 들어가 채팅으로 보내요.
+AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
+
+<div class="twoai">
+<div class="ta chat"><div class="ta-h">채팅창 <small>인터넷 창</small></div><div class="ta-m">전화로 알려주는 친구</div><p>무엇이든 물어보면 알려줘요. 내 컴퓨터는 만지지 못해서, <b>손은 내가</b> 움직여요.</p><p class="ta-e">claude.ai · chatgpt.com</p></div>
+<div class="ta desk"><div class="ta-h">데스크탑 앱 <small>설치하는 프로그램</small></div><div class="ta-m">옆에서 직접 해 주는 친구</div><p>내 폴더를 열고, 파일을 만들고, 정리까지 <b>직접</b> 해 줘요.</p><p class="ta-e">클로드 앱 · GPT 앱</p></div>
+</div>
+
+그래서 **설치는 채팅창에 물어보고**, 설치가 끝나면 **세팅은 데스크탑 앱**에 맡겨요.
+
+아래 요청을 채팅창([claude.ai](https://claude.ai) 또는 [chatgpt.com](https://chatgpt.com))에 보내면, AI가 한 단계씩 알려줘요.
 
 <div class="prompt"><span class="who">설치 도움 요청</span><button class="copy" type="button">복사</button><span class="txt">안녕! 나는 AI를 처음 쓰려고 하는데, 그 전에 AI와 한 일을 한 폴더에 모으는 세팅을 하려고 해. 이 글을 보고 따라 하는 중이야: https://lifeschedule-dotcom.github.io/2026/09/26/gpters-24-setup/
 원드라이브가 켜져 있는지 확인하고, <span class="fill">(클로드 / GPT)</span> 데스크탑 앱을 설치하고 싶어. 내가 할 수 있게 한 단계씩 천천히 알려줘. 내가 화면을 캡처해서 보내면, 그 화면을 보고 다음에 뭘 누르면 되는지 알려줘. 내 컴퓨터는 <span class="fill">(윈도우 / 맥)</span>이야.</span></div>
 
 <p class="sub-note">복사해서 보내고, 노란 괄호 칸만 내 상황에 맞게 바꿔요.</p>
 
-<div class="callout tip"><svg><use href="#i-check"/></svg><div><b>막히면 캡처 한 장.</b> 노트북에 들어 있는 캡처 기능으로 막힌 화면을 찍어요.<br><b>윈도우</b>: <code>Win + Shift + S</code>를 누르면 <b>캡처 도구</b>가 떠요. 찍을 부분을 마우스로 끌어 고르면 복사돼요. 채팅창에서 <code>Ctrl + V</code>로 붙여넣어요.<br><b>맥</b>: <code>Cmd + Shift + 4</code>를 누르고 찍을 부분을 끌어 고르면, 바탕화면에 사진이 저장돼요. 그 사진을 채팅창으로 끌어다 놓아요.<br>그리고 쓰고 있는 GPT나 클로드에게 물어보세요. <b>"지금 이 화면이야. 다음에 뭘 눌러?"</b></div></div>
+<div class="snap">
+<div class="snap-h">막히면 캡처 한 장</div>
+<div class="snap-steps">
+<div class="ss"><span class="sn">1</span><img src="/assets/img/setup/win-search.png" alt="윈도우 작업 표시줄 검색창"><p>검색창에 <b>캡처 도구</b>를 입력해요</p></div>
+<div class="ss"><span class="sn">2</span><img class="ico" src="/assets/img/icons/snipping.png" alt="캡처 도구 아이콘"><p>이 아이콘을 누르고, 찍을 곳을 마우스로 끌어요</p></div>
+<div class="ss"><span class="sn">3</span><div class="say">지금 이 화면이야.<br>다음에 뭘 눌러?</div><p>채팅창에 <b>Ctrl + V</b>로 붙여넣고 물어봐요</p></div>
+</div>
+<p class="snap-mac">맥은 <b>Cmd + Shift + 4</b>로 찍어요.</p>
+</div>
 
 링크는 AI가 알려줄 때 참고용이에요.
 

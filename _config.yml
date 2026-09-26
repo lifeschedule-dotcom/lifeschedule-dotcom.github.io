@@ -1,0 +1,10 @@
+title: Lifeschedule
+description: 바이브 코딩, Physical AI, 그리고 일상의 기록
+lang: ko
+url: "https://lifeschedule-dotcom.github.io"
+baseurl: ""
+timezone: Asia/Seoul
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+exclude:
+  - README.md

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+<head>
+{% include head.html %}
+</head>
+<body class="home">
+  <main class="hero">
+    <div class="hero-top">
+      <h1 class="hero-title">Lifeschedule</h1>
+      <p class="hero-sub">{{ site.description }}</p>
+      <div class="tiles">
+        {% for s in site.data.sections %}
+        <a class="tile" href="{{ '/' | append: s.id | append: '/' | relative_url }}">
+          <span class="tile-en">{{ s.en }}</span>
+          <span class="tile-name">{{ s.name }}</span>
+          <span class="tile-desc">{{ s.desc }}</span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+</body>
+</html>

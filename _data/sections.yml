@@ -1,0 +1,22 @@
+- id: vibe-coding
+  name: 바이브 코딩
+  en: Vibe Coding
+  desc: AI로 일을 자동화하고 앱을 직접 만드는 기록
+  subs:
+    - 지피터스 24기 교재
+    - 자동화 사례
+
+- id: physical-ai
+  name: Physical AI
+  en: Robotics
+  desc: 로봇팔 조립부터 NVIDIA 과정까지, 로보틱스로 가는 기록
+  subs:
+    - SO-ARM101
+    - NVIDIA AI CAMPUS
+
+- id: daily
+  name: 개인 일상
+  en: Daily
+  desc: 일하고 배우며 사는 이야기
+  subs:
+    - 일상

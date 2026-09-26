@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko">
+<head>
+{% include head.html %}
+</head>
+<body class="inner">
+{% include nav.html %}
+{% assign sec = site.data.sections | where: "id", page.section | first %}
+{% assign posts = site.posts | where: "section", page.section %}
+<main class="wrap">
+  <section class="intro">
+    <p class="intro-en">{{ sec.en }}</p>
+    <h1>{{ sec.name }}</h1>
+    <p>{{ sec.desc }}</p>
+  </section>
+
+  <div class="subs" role="tablist">
+    <button class="sub active" data-sub="all">전체</button>
+    {% for sub in sec.subs %}
+    <button class="sub" data-sub="{{ sub }}">{{ sub }}</button>
+    {% endfor %}
+  </div>
+
+  <div class="posts">
+    {% for post in posts %}
+    <a class="card" href="{{ post.url | relative_url }}" data-sub="{{ post.sub }}">
+      <h2>{{ post.title }}</h2>
+      <p class="excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 140 }}</p>
+      {% assign mins = post.content | strip_html | size | divided_by: 500 | plus: 1 %}
+      <p class="meta">{{ post.date | date: "%Y.%m.%d" }} · 읽는 시간 {{ mins }}분{% if post.sub %} · {{ post.sub }}{% endif %}</p>
+    </a>
+    {% endfor %}
+    <p class="empty"{% if posts.size > 0 %} hidden{% endif %}>아직 글이 없습니다. 곧 채워질 예정이에요.</p>
+  </div>
+</main>
+<script src="{{ '/assets/js/filter.js' | relative_url }}"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<header class="topnav">
+  <a class="brand" href="{{ '/' | relative_url }}">Lifeschedule</a>
+  <nav>
+    {% for s in site.data.sections %}
+    <a href="{{ '/' | append: s.id | append: '/' | relative_url }}"{% if page.section == s.id %} class="active"{% endif %}>{{ s.name }}</a>
+    {% endfor %}
+  </nav>
+</header>

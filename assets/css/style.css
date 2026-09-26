@@ -540,3 +540,15 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
 .article h1 { margin-bottom: 10px; }
 .article > .meta { padding-bottom: 22px; border-bottom: 2px solid #efe1e6; font-size: 14px; color: #5b6275; }
 .article .content { margin-top: 30px; }
+
+/* 문제 → 해결 */
+.pf { display: grid; gap: 10px; margin: 1em 0 1.4em; }
+.pf-row { display: grid; grid-template-columns: 1fr 32px 1.3fr; align-items: stretch; gap: 8px; }
+.pf-p, .pf-s { padding: 14px 16px; border-radius: 12px; font-size: 17px; line-height: 1.6; }
+.pf-p { background: #fdf0f0; border: 1px solid #f1d3d3; }
+.pf-s { background: #e8f5ef; border: 1px solid #bfe3d1; }
+.pf-p span, .pf-s span { display: block; margin-bottom: 4px; font-size: 13px; font-weight: 700; }
+.pf-p span { color: #a33b3b; } .pf-s span { color: #1e6b4d; }
+.pf-a { align-self: center; text-align: center; font-size: 24px; font-weight: 700; color: var(--accent); }
+.done-t a { color: inherit; }
+@media (max-width: 760px) { .pf-row { grid-template-columns: 1fr; } .pf-a { transform: rotate(90deg); } }

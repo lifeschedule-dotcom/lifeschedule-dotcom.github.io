@@ -2,6 +2,8 @@
 
 https://lifeschedule-dotcom.github.io
 
+글 쓰기·검토 규칙은 [AGENTS.md](AGENTS.md)에 있습니다. (CLAUDE.md는 이 파일을 불러오는 한 줄)
+
 ## 글 쓰는 법
 
 한국어 글은 `_posts/`, 영어 글은 `en/_posts/`에 `YYYY-MM-DD-영문제목.md` 이름으로 만들고 맨 위에 아래를 붙입니다.

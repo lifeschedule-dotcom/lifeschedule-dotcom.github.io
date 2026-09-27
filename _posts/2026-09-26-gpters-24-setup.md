@@ -44,9 +44,11 @@ description: 사전 세팅 1강. 원드라이브 me 폴더와 옵시디언 보�
 </div>
 </div>
 
+<div class="callout tip"><svg><use href="#i-folder"/></svg><div><b>프로젝트 폴더는 그대로 두어요.</b> 옵시디언의 파일 목록과 검색에는 지금 연 <code>Obsidian Vault</code> 안의 노트가 나와요. 그 옆에 있는 주제별 폴더의 원본은 자동으로 나타나지 않아요. 이어지는 수업에서는 AI에게 보관함 안에 <b>프로젝트 소개 노트와 원본 위치 링크</b>를 만들고 홈 목차에 연결해 달라고 할 거예요.</div></div>
+
 <h3 class="ih"><img src="/assets/img/icons/onedrive.png" alt="">원드라이브는 왜 쓰나요?</h3>
 
-원드라이브는 마이크로소프트의 인터넷 저장 공간(클라우드)이에요. 여기에 넣어 둔 자료는 **다른 기기에서도 꺼내 쓸 수 있어서** 꼭 추천해요. 예를 들어 부동산 계약서를 사진으로 찍어 원드라이브에 넣어 두면, 휴대폰에 원드라이브 앱을 깔고 같은 계정으로 로그인해서 바로 열 수 있어요. 다른 노트북도 같은 계정으로 로그인하면 똑같이 보여요. 노트북이 한 대뿐이어도 필요해요. 컴퓨터가 고장 나도 자료는 인터넷에 남거든요.
+원드라이브는 마이크로소프트의 인터넷 저장 공간(클라우드)이에요. 여기에 넣어 둔 자료는 **다른 기기에서도 꺼내 쓸 수 있어서** 꼭 추천해요. 예를 들어 부동산 계약서를 사진으로 찍어 원드라이브에 넣어 두면, 휴대폰에 원드라이브 앱을 깔고 같은 계정으로 로그인해서 열 수 있어요. 다른 노트북도 같은 계정으로 로그인하면 볼 수 있어요. 컴퓨터가 고장 나도 **동기화가 끝난 자료**는 원드라이브에서 다시 꺼낼 수 있어요.
 
 <h3 class="ih"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언은 왜 쓰나요?</h3>
 
@@ -54,7 +56,7 @@ AI에 폴더 접근 권한을 주면, AI는 그 안의 파일을 직접 읽을 �
 
 <div class="callout tip"><svg><use href="#i-note"/></svg><div><b>md 파일이 뭐예요?</b> 이름 끝에 <code>.md</code>가 붙은 글 파일이에요(마크다운). <code>#</code>은 제목, <code>**</code>는 굵게, <code>-</code>는 목록처럼 간단한 기호로 글의 모양을 적어요. AI와 주고받기 편한 형식이라, AI와 일하면 이 파일이 계속 생겨요. <code>CLAUDE.md</code>처럼 특별한 이름의 md 파일은 <a href="{{ '/2026/09/27/gpters-24-md/' | relative_url }}">3강</a>에서 자세히 알려드려요.</div></div>
 
-같은 md 파일을 파일 탐색기에서 열면 메모장에 기호가 그대로 보이고, 옵시디언에서 열면 읽기 좋게 바뀌어 보여요.
+같은 md 파일을 **메모장으로 열면** 기호가 그대로 보이고, 옵시디언에서 열면 읽기 좋게 바뀌어 보여요.
 
 <div class="mdcmp">
 <div class="mdv raw"><div class="mdh">메모장으로 열면</div><pre># 작업기록
@@ -66,8 +68,8 @@ AI에 폴더 접근 권한을 주면, AI는 그 안의 파일을 직접 읽을 �
 
 <ul class="checks">
 <li><svg><use href="#i-check"/></svg><span><b>읽기 편해요.</b> 기호 대신 제목·굵은 글씨·목록으로 보여요.</span></li>
-<li><svg><use href="#i-check"/></svg><span><b>찾기 빨라요.</b> <code>Ctrl + O</code>로 노트 이름을, <code>Ctrl + Shift + F</code>로 모든 노트의 내용을 한 번에 찾아요. 기억 안 나는 프로젝트도 금방 나와요.</span></li>
-<li><svg><use href="#i-check"/></svg><span><b>바로 고쳐요.</b> 보면서 그대로 고치면, AI가 다음에 고친 내용을 읽어요.</span></li>
+<li><svg><use href="#i-check"/></svg><span><b>찾기 빨라요.</b> <code>Ctrl + O</code>로 지금 연 보관함의 노트 이름을, <code>Ctrl + Shift + F</code>로 그 안의 노트 내용을 찾아요.</span></li>
+<li><svg><use href="#i-check"/></svg><span><b>바로 고쳐요.</b> 보면서 그대로 고치면, 다음 작업에서 AI가 그 파일을 읽을 때 바뀐 내용을 볼 수 있어요.</span></li>
 </ul>
 
 <div class="ghstrip"><img src="/assets/img/icons/github.png" alt=""><div><b>GitHub</b><span class="need later">나중에 · 중급</span><p>코드를 만들기 시작하면 쓰는 코드 보관소예요. 코드는 원드라이브 밖의 코드 폴더에서 만들고 GitHub에 올려요. 내 폴더의 작업기록에는 코드가 어디 있는지만 적어요.</p></div></div>
@@ -80,7 +82,7 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 
 <div class="twoai">
 <div class="ta chat"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>일반 채팅창 <small>인터넷 창</small></div><div class="ta-m">전화로 알려주는 친구</div><p>무엇이든 물어보면 알려줘요. 여기서 질문만 했다면 내 컴퓨터의 me 폴더가 작업 폴더로 열린 건 아니에요. <b>손은 내가</b> 움직여요.</p><p class="ta-e">claude.ai · chatgpt.com</p></div>
-<div class="ta desk"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>데스크탑 앱 <small>설치하는 프로그램</small></div><div class="ta-m">옆에서 직접 해 주는 친구</div><p>내 컴퓨터의 폴더를 열고 권한을 주면, 파일을 만들고 정리까지 <b>직접</b> 해 줘요.</p><p class="ta-e">클로드: Pro 이상 · GPT: 무료 계정에도 제공되지만 계정에 따라 이용 범위가 달라요</p></div>
+<div class="ta desk"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>데스크탑 앱 <small>설치하는 프로그램</small></div><div class="ta-m">옆에서 직접 해 주는 친구</div><p>파일을 직접 다룰 수 있는 로컬 작업 화면에서 내 컴퓨터의 폴더를 열고 권한을 주면, 파일을 만들고 정리해 줘요.</p><p class="ta-e">로컬 작업 기능의 이용 가능 여부와 범위는 계정·앱 환경에 따라 달라요</p></div>
 </div>
 
 그래서 **설치는 채팅창에 물어보고**, 설치가 끝나면 **데스크탑 앱과 함께** 파일을 만들어요. 폴더를 고르는 화면은 내가 확인하고 눌러요.
@@ -106,13 +108,17 @@ AI는 두 곳에서 쓸 수 있어요. 할 수 있는 일이 달라요.
 
 <h3 class="step-h"><span>2</span><img src="/assets/img/icons/obsidian.png" alt="">옵시디언 설치하고 보관함 만들기 <small>AI와 함께</small></h3>
 
-원드라이브 안에 AI 작업물을 모을 폴더를 만들 거예요. <b>me는 제가 임의로 붙인 이름이라, 원하는 이름으로 바꿔도 돼요.</b> 다른 이름을 쓰면 아래 요청문의 <code>me</code>도 그 이름으로 바꿔 주세요.
+원드라이브 안에 AI 작업물을 모을 폴더를 만들 거예요. <b>me는 제가 임의로 붙인 이름이라, 원하는 이름으로 바꿔도 돼요.</b> 다른 이름을 쓰면 이 글의 요청문에 나오는 <code>me</code>를 모두 자신이 지은 이름으로 바꿔 주세요.
+
+원드라이브 계정이 여러 개 보이면, 앞으로 사용할 계정을 먼저 고르세요. 같은 이름의 폴더가 여러 곳에 생기지 않게 하는 첫 확인이에요.
 
 데스크탑 앱에 아래 요청을 보내 폴더 만들기와 옵시디언 설치를 함께 부탁해요.
 
 <p><strong style="font-weight:900">여기서 모르겠거나 어려운 부분이 있다면, 이 글을 복사해서 AI에게 붙여넣거나 화면을 캡처해서 보내 보세요! “지금 이 화면인데, 다음에 뭘 누르면 돼?” 하고 계속 대화하며 물어보면 돼요. 막히는 부분을 한 단계씩 풀어 가는 데 도움이 됩니다.</strong></p>
 
-<div class="prompt"><span class="who">폴더 만들기·옵시디언 설치 요청 (데스크탑 앱에)</span><button class="copy" type="button">복사</button><span class="txt">원드라이브 안에 AI 작업물을 모을 <span class="fill">(me)</span> 폴더를 만들어줘. 이미 있으면 그대로 써줘. 옵시디언도 설치하고, 이 폴더 안에 Obsidian Vault라는 보관함을 만들고 싶어. 네가 직접 할 수 있는 일은 해 주고, 폴더 접근 권한이나 내가 눌러야 할 화면이 있으면 한 단계씩 알려줘. 직접 파일을 만들 수 없는 화면이라면 내가 만들 수 있게 안내해줘. 끝나면 만든 폴더를 열어 나와 함께 확인해줘.</span></div>
+<div class="prompt"><span class="who">폴더 만들기·옵시디언 설치 요청 (데스크탑 앱에)</span><button class="copy" type="button">복사</button><span class="txt">원드라이브 안에 AI 작업물을 모을 <span class="fill">(me)</span> 폴더를 만들어줘. 이미 있으면 그대로 써줘. 원드라이브 계정이 여러 개라면 어느 계정을 쓸지 먼저 내게 물어봐줘. 옵시디언도 설치하고, 이 폴더 안에 Obsidian Vault라는 보관함을 만들고 싶어. 네가 직접 할 수 있는 일은 해 주고, 폴더 접근 권한이나 내가 눌러야 할 화면이 있으면 한 단계씩 알려줘. 직접 파일을 만들 수 없는 화면이라면 내가 만들 수 있게 안내해줘. 끝나면 만든 폴더를 열어 나와 함께 확인해줘.</span></div>
+
+앱에서 대화를 시작하기 전에 폴더를 먼저 고르라고 하면, 파일 탐색기에서 원드라이브를 열어 <code>me</code> 폴더를 직접 만든 뒤 그 폴더를 선택하세요. 이후 AI에게 위 요청을 보내면 돼요.
 
 직접 보관함을 만드는 화면에서는 이렇게 해요. 옵시디언의 <b>새 보관함 생성 → 생성</b>(영문: Create new vault)을 누르세요. 보관함 이름에 <code>Obsidian Vault</code>를 적고, <b>위치 → 탐색</b>에서 원드라이브의 <code>me</code> 폴더를 고른 뒤 <b>생성</b>(Create)을 누릅니다. 그러면 <code>me/Obsidian Vault</code> 폴더가 생겨요.
 
@@ -142,9 +148,11 @@ AI가 이미 같은 보관함을 만들어 뒀다면 다시 만들 필요 없어
 
 어떤 폴더를 골라야 할지 어렵다면, 화면을 캡처해서 AI에게 이렇게 물어보세요.
 
-<div class="prompt"><span class="who">폴더 선택이 막힐 때</span><button class="copy" type="button">복사</button><span class="txt">AI 작업물을 원드라이브 안의 (me) 폴더에 모으고 싶어. 지금 화면에서 어디를 눌러야 이 폴더를 작업 폴더로 열 수 있는지 한 단계씩 알려줘. 폴더 정리가 필요하다면 기존 파일을 바로 옮기거나 지우지 말고, 어떻게 정리하면 좋을지 먼저 설명해줘.</span></div>
+<div class="prompt"><span class="who">폴더 선택이 막힐 때</span><button class="copy" type="button">복사</button><span class="txt">AI 작업물을 원드라이브 안의 <span class="fill">(me)</span> 폴더에 모으고 싶어. 지금 화면에서 어디를 눌러야 이 폴더를 작업 폴더로 열 수 있는지 한 단계씩 알려줘. 폴더 정리가 필요하다면 기존 파일을 바로 옮기거나 지우지 말고, 어떻게 정리하면 좋을지 먼저 설명해줘.</span></div>
 
 **me 폴더를 연 데스크탑 앱**에 아래 요청을 보내요. AI가 앞에서 만든 <code>Obsidian Vault</code> 안에 규칙 파일을 만들고, 앞으로 작업물과 기록을 어디에 둘지도 적을 거예요.
+
+윈도우라면 파일 탐색기에서 <code>me</code> 폴더를 열고 <code>Alt + D</code>를 눌러 실제 주소를 확인해 두세요. 아래 요청에서 AI가 알려준 작업 폴더 주소와 같은지 비교하면, 이름이 같은 다른 폴더를 고르는 일을 피할 수 있어요.
 
 <div class="callout tip"><svg><use href="#i-folder"/></svg><div><b>왜 me 폴더를 만들까요?</b> Claude와 GPT의 작업물을 모을 공통 주소가 필요해서예요. me가 원드라이브 안에 있으면 동기화 후 다른 컴퓨터에서도 같은 파일을 볼 수 있어요.
 <div class="folder-tree"><div><strong>원드라이브</strong><span>인터넷 창고</span></div><div class="depth-1">└ <strong>me</strong><span>AI 작업의 공통 폴더</span></div><div class="depth-2">├ <strong>Obsidian Vault</strong><span>규칙·작업기록 노트</span></div><div class="depth-2">└ <strong>주제별 폴더</strong><span>문서·이미지 등 작업물</span></div></div>
@@ -158,8 +166,8 @@ AI가 이미 같은 보관함을 만들어 뒀다면 다시 만들 필요 없어
 1. 지금 작업 폴더가 원드라이브 안에 만든 <span class="fill">(me)</span>인지 확인하고 실제 위치를 알려줘. 다른 폴더가 열려 있거나 확인할 수 없다면, 먼저 내가 올바른 폴더를 열 수 있게 안내해줘. 확인이 끝나면 앞으로 너와 만든 문서·작업물은 이 폴더 안의 주제별 폴더에 저장해.
 2. 나는 개발자가 아니라서 마우스로 폴더를 열어 직접 볼 거야. 폴더와 파일 이름은 한눈에 알아보기 쉽게 짓고, 가능하면 바탕화면에 이 폴더 바로가기를 만들어줘. 네가 직접 만들 수 없다면 내가 마우스로 만들도록 알려줘.
 3. 이 폴더가 이 컴퓨터에 실제로 내려와 있는지 확인하고, 필요하면 원드라이브에서 "항상 이 디바이스에 유지"로 설정해줘. 바탕화면·문서·사진 전체 백업은 새로 켜지 마.
-4. me 안의 Obsidian Vault 폴더가 있는지 확인해줘. 없다면 앞의 보관함 만들기를 마칠 수 있게 안내해줘. 보관함이 준비되면 그 안에 AI협업규칙.md 파일을 만들고 아래 규칙을 적어줘. 같은 이름의 파일이 이미 있다면 기존 내용을 읽고, 필요한 규칙만 보완해줘.
-   - 새 작업물은 me 안의 주제별 폴더에 저장한다
+4. <span class="fill">(me)</span> 안의 Obsidian Vault 폴더가 있는지 확인해줘. 없다면 앞의 보관함 만들기를 마칠 수 있게 안내해줘. 보관함이 준비되면 그 안에 AI협업규칙.md 파일을 만들고 아래 규칙을 적어줘. 같은 이름의 파일이 이미 있다면 기존 내용을 읽고, 필요한 규칙만 보완해줘.
+   - 새 작업물은 <span class="fill">(me)</span> 안의 주제별 폴더에 저장한다
    - 작업이 끝나면 Obsidian Vault 안에 해당 주제의 작업기록.md가 있으면 기존 내용을 보존하고 날짜별로 덧붙인다. 없으면 만든다. 날짜, 한 일, 작업물 위치, 다음 할 일을 짧게 남긴다
    - 비밀번호와 API 키는 파일에 적지 않는다
    - 나는 초보니까 쉬운 말로, 한 번에 한 단계씩 설명한다
@@ -201,10 +209,12 @@ AI가 파일을 만든 뒤 옵시디언으로 돌아가세요. 왼쪽 파일 목
 
 ## <span class="no">5</span> 잘 됐는지 하나하나 확인하기
 
-AI가 끝났다고 하면, 이 네 가지를 **직접** 확인해요.
+AI가 끝났다고 하면, 아래 항목을 **직접** 확인해요.
 
 <ul class="checks">
 <li><svg><use href="#i-check"/></svg><span>바탕화면의 <b>내 폴더 바로가기</b>를 더블클릭하면 폴더가 열린다</span></li>
+<li><svg><use href="#i-check"/></svg><span>내가 확인한 <b>폴더 주소</b>가 AI가 알려준 작업 폴더 주소와 같다</span></li>
+<li><svg><use href="#i-check"/></svg><span>원드라이브에서 <b>me와 Obsidian Vault</b>의 동기화가 끝났고, 파일을 항상 이 컴퓨터에 두려면 폴더 옆에 <b>꽉 찬 초록 체크</b>가 보인다</span></li>
 <li><svg><use href="#i-check"/></svg><span>me 안의 <b>Obsidian Vault</b> 폴더를 열면 <b>AI협업규칙.md</b> 파일이 보인다</span></li>
 <li><svg><use href="#i-check"/></svg><span>옵시디언에서도 <b>Obsidian Vault</b>를 열면 같은 규칙 파일이 보인다(<code>.md</code>가 안 보여도 괜찮다)</span></li>
 <li><svg><use href="#i-check"/></svg><span><b>새 대화</b>에서 아래 한 줄을 보내면, AI가 파일의 규칙과 실제 위치를 말해 준다</span></li>
@@ -214,7 +224,7 @@ AI가 끝났다고 하면, 이 네 가지를 **직접** 확인해요.
 
 <div class="prompt"><span class="who">새 대화를 시작할 때</span><button class="copy" type="button">복사</button><span class="txt">지금 작업 폴더로 연 원드라이브의 <span class="fill">(me)</span> 안에서 Obsidian Vault/AI협업규칙.md와 이번 작업의 최근 작업기록을 읽고, 각 파일의 실제 위치를 알려준 뒤 시작해줘. 아직 작업기록이 없다면 없다고 알려줘.</span></div>
 
-<p class="sub-note">이 한 줄 없이도 AI가 알아서 규칙을 읽게 하는 설정은 <a href="{{ '/2026/09/27/gpters-24-md/' | relative_url }}">3강</a>에서 해요.</p>
+<p class="sub-note"><a href="{{ '/2026/09/27/gpters-24-md/' | relative_url }}">3강</a>에서는 AI가 규칙 파일을 찾도록 시작 안내 파일을 만들어요. 새 대화에서 실제로 규칙을 읽었는지도 확인하세요.</p>
 
 <div class="done"><div class="done-t">🎉 여기까지 했으면 설치가 끝났어요!<br>축하드립니다!</div><p>아래는 부가 설명이에요. 궁금한 분만 더 읽어 보세요!</p></div>
 
@@ -222,7 +232,7 @@ AI가 끝났다고 하면, 이 네 가지를 **직접** 확인해요.
 
 ### 내 폴더 주소 읽는 법
 
-파일 탐색기 주소창을 한 번 클릭하면 내 폴더의 주소가 보여요. 주소는 큰 곳에서 작은 곳으로 들어가는 길이에요.
+윈도우 파일 탐색기에서 내 폴더를 열고 <code>Alt + D</code>를 누르면 주소가 선택돼요. 주소는 큰 곳에서 작은 곳으로 들어가는 길이에요.
 
 <div class="addr">
 <div class="addr-line"><span class="c1"><b>C:</b><small>저장 드라이브</small></span><span class="sep">\</span><span class="c2"><b>Users</b><small>사용자 폴더</small></span><span class="sep">\</span><span class="c3"><b>User</b><small>이 컴퓨터의 내 이름</small></span><span class="sep">\</span><span class="c4"><b>OneDrive</b><small>원드라이브 구간</small></span><span class="sep">\</span><span class="c5"><b>me</b><small>내 폴더</small></span></div>

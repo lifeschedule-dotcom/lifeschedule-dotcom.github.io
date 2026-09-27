@@ -9,6 +9,8 @@ description: 원하는 결과를 분명히 말하고, AI와 함께 네 명의 �
 
 <div class="lead-note">AI로 무언가 만들고 싶은데, 무엇부터 말해야 할지 막막한가요? 오늘은 소설 속 북부대공의 금광 장부를 정리하면서 <b>원하는 일 설명하기 → 빠진 조건 찾기 → 결과 검산하기</b>를 연습해 봐요. 채팅창만 있으면 됩니다.</div>
 
+<style>.article .content .prompt .txt{font-size:18px}.article .content .prompt .who{font-size:17px}.article .content .prompt .copy{font-size:16px}.article .content video{display:block;margin:1em 0 1.5em}.article .content table{width:100%;border-collapse:collapse;display:block;overflow-x:auto;font-size:18px}.article .content th,.article .content td{padding:9px 12px;border-bottom:1px solid #d9d4d7;white-space:nowrap}.article .content th{background:#f9edf1}</style>
+
 이 글은 혼자 읽는 분도 바로 해볼 수 있게 썼어요. 전체 가상 자료와 정답은 [금광 실습 GitHub](https://github.com/lifeschedule-dotcom/gpters-24-goldmine-payroll)에 모았습니다. GitHub 회원가입이나 프로그램 설치는 필요 없어요. 링크를 열고 글을 읽으면 됩니다.
 
 ## <span class="no">1</span> AI를 배우려면, 원하는 일을 설명하는 연습부터

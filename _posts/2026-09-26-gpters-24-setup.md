@@ -52,7 +52,7 @@ description: 사전 세팅 1강. 원드라이브 me 폴더와 옵시디언 보�
 
 AI에 폴더 접근 권한을 주면, AI는 그 안의 파일을 직접 읽을 수 있어요. 옵시디언은 **사람을 위한 도구**예요. 내 폴더에 쌓이는 규칙과 기록은 대부분 **md 파일**이에요.
 
-<div class="callout tip"><svg><use href="#i-note"/></svg><div><b>md 파일이 뭐예요?</b> 이름 끝에 <code>.md</code>가 붙은 글 파일이에요(마크다운). <code>#</code>은 제목, <code>**</code>는 굵게, <code>-</code>는 목록처럼 간단한 기호로 글의 모양을 적어요. AI와 주고받기 편한 형식이라, AI와 일하면 이 파일이 계속 생겨요. <code>CLAUDE.md</code>처럼 특별한 이름의 md 파일은 1주차에 자세히 알려드릴게요.</div></div>
+<div class="callout tip"><svg><use href="#i-note"/></svg><div><b>md 파일이 뭐예요?</b> 이름 끝에 <code>.md</code>가 붙은 글 파일이에요(마크다운). <code>#</code>은 제목, <code>**</code>는 굵게, <code>-</code>는 목록처럼 간단한 기호로 글의 모양을 적어요. AI와 주고받기 편한 형식이라, AI와 일하면 이 파일이 계속 생겨요. <code>CLAUDE.md</code>처럼 특별한 이름의 md 파일은 <a href="{{ '/2026/09/27/gpters-24-md/' | relative_url }}">3강</a>에서 자세히 알려드려요.</div></div>
 
 같은 md 파일을 파일 탐색기에서 열면 메모장에 기호가 그대로 보이고, 옵시디언에서 열면 읽기 좋게 바뀌어 보여요.
 
@@ -214,7 +214,7 @@ AI가 끝났다고 하면, 이 네 가지를 **직접** 확인해요.
 
 <div class="prompt"><span class="who">새 대화를 시작할 때</span><button class="copy" type="button">복사</button><span class="txt">지금 작업 폴더로 연 원드라이브의 <span class="fill">(me)</span> 안에서 Obsidian Vault/AI협업규칙.md와 이번 작업의 최근 작업기록을 읽고, 각 파일의 실제 위치를 알려준 뒤 시작해줘. 아직 작업기록이 없다면 없다고 알려줘.</span></div>
 
-<p class="sub-note">이 한 줄 없이도 AI가 알아서 규칙을 읽게 하는 설정은 1주차에 같이 해요.</p>
+<p class="sub-note">이 한 줄 없이도 AI가 알아서 규칙을 읽게 하는 설정은 <a href="{{ '/2026/09/27/gpters-24-md/' | relative_url }}">3강</a>에서 해요.</p>
 
 <div class="done"><div class="done-t">🎉 여기까지 했으면 설치가 끝났어요!<br>축하드립니다!</div><p>아래는 부가 설명이에요. 궁금한 분만 더 읽어 보세요!</p></div>
 

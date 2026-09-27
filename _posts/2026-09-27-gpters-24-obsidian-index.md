@@ -4,7 +4,7 @@ section: vibe-coding
 sub: gpters24
 ref: gpters-24-obsidian-index
 date: 2026-09-27 22:00:00 +0900
-description: 4강. 북부대공 실습 파일을 GitHub에서 받아 me에 저장하고, AI가 소개 노트와 홈 링크를 만드는 과정을 실제 화면으로 따라 해요.
+description: 4강. 북부대공 실습 파일을 내려받아 me에 저장하고, AI가 소개 노트와 홈 링크를 만드는 과정을 실제 화면으로 따라 해요.
 ---
 <link rel="stylesheet" href="{{ '/assets/css/lesson4.css' | relative_url }}">
 <div class="lesson4">
@@ -24,33 +24,32 @@ description: 4강. 북부대공 실습 파일을 GitHub에서 받아 me에 저�
 <p><a class="l4-button" href="{{ '/assets/downloads/gpters24/rules/AI협업규칙.md' | relative_url }}" download="AI협업규칙.md">③ AI협업규칙.md 받기</a></p>
 </div>
 
-<p><b>처음 준비하는 분:</b> 받은 <b>AGENTS.md·CLAUDE.md·AI협업규칙.md</b> 세 파일을 모두 원드라이브의 <b>me → Obsidian Vault</b> 폴더 안에 넣으세요. 이미 같은 이름의 파일이 있다면 덮어쓰지 말고, 위의 <b>기존 규칙이 있는 분</b> 방법을 쓰세요.</p>
+<p><b>처음 준비하는 분:</b> 받은 <b>AGENTS.md·CLAUDE.md</b>는 원드라이브의 <b>me</b> 폴더에, <b>AI협업규칙.md</b>는 그 안의 <b>Obsidian Vault</b> 폴더에 넣으세요. 이미 같은 이름의 파일이 있다면 덮어쓰지 말고, 아래 <b>‘기존 규칙이 있는 분’ 요청</b>을 쓰세요.</p>
 
 <p>받은 파일 이름에 <code>(1)</code>이 붙었다면 바로 옮기지 말고 AI에게 파일 목록 화면을 보여 주며 어떤 파일을 넣을지 물어보세요.</p>
 
 <pre class="l4-tree">me/                       ← 내가 만든 AI 전용 폴더
+├─ AGENTS.md               ← AI의 시작 안내
+├─ CLAUDE.md               ← Claude Code의 시작 안내
+├─ 북부대공/                ← 잠시 뒤 만들 원본 폴더
 └─ Obsidian Vault/         ← 1강에서 연 보관함
-   ├─ AGENTS.md
-   ├─ CLAUDE.md
-   └─ AI협업규칙.md</pre>
-
-<div class="seq"><figure><img src="/assets/img/gpters24/lesson4/07-vault-rules.png" alt="보관함 안의 AGENTS, AI협업규칙, CLAUDE 파일 세 개가 보이는 탐색기 화면" style="max-width:420px;margin:auto;display:block"><figcaption><b>세 규칙이 같은 보관함 안에 있어요.</b> 확장명이 숨겨진 Windows 화면에서는 이름 끝의 .md가 생략돼요. 위 그림과 이 화면은 같은 세 파일을 가리켜요.</figcaption></figure></div>
+   └─ AI협업규칙.md         ← 내가 고쳐 갈 정리 약속</pre>
 
 <p><b>AGENTS.md·CLAUDE.md</b>는 AI의 시작 안내, <b>AI협업규칙.md</b>는 앞으로 내 방식에 맞게 고칠 정리 약속이에요.</p>
 
-<h3>AI에게 처음 한 번 연결 부탁하기</h3>
+<h3>AI가 규칙을 읽었는지 확인하기</h3>
 
 <p><a href="{{ '/2026/09/26/gpters-24-setup/' | relative_url }}">1강</a>처럼 GPT나 Claude의 <b>폴더를 열어 일하는 화면</b>에서 me를 선택하세요. 일반 웹 채팅에 파일을 첨부하면 AI가 읽을 수는 있지만, 내 컴퓨터의 파일은 바로 바뀌지 않아요.</p>
 
-<div class="l4-request"><span class="l4-label">처음 준비하는 분 · 폴더 이름은 내 것으로 바꿔요</span><p><span class="fill">me</span>를 작업 폴더로 열었어. <span class="fill">Obsidian Vault</span>의 규칙 세 파일을 읽고, 다음 대화에서도 찾도록 <span class="fill">me</span>에 시작 안내 AGENTS.md와 CLAUDE.md를 만들어 줘. 같은 이름의 파일이 이미 있으면 먼저 읽고 필요한 연결만 더해 줘. 원본은 그대로 두고 만든 파일을 알려 줘.</p></div>
+<div class="l4-request"><span class="l4-label">처음 준비하는 분 · me를 작업 폴더로 연 뒤</span><p>AI협업규칙 읽어 줘. 읽은 파일의 실제 위치와 프로젝트 원본·보관함 위치를 알려 줘. 읽지 못했다면 말해 줘.</p></div>
 
-<div class="l4-request"><span class="l4-label">기존 규칙이 있는 분 · 받은 파일 세 개를 먼저 첨부해요</span><p>1강에서 만든 내 규칙과 첨부한 MD 세 개를 비교해 줘. 필요한 변경만 짧게 제안하고, 내가 확인하면 <span class="fill">me</span>/<span class="fill">Obsidian Vault</span>에 반영해 줘. 없는 규칙 파일은 만들고, <span class="fill">me</span>의 시작 안내도 보관함을 읽도록 연결해 줘. 원본과 작업기록은 그대로 둬.</p></div>
+<div class="l4-request"><span class="l4-label">기존 규칙이 있는 분 · 받은 파일 세 개를 먼저 첨부해요</span><p>내 기존 규칙과 첨부한 세 파일을 비교해 줘. <span class="fill">me</span>의 AGENTS.md·CLAUDE.md가 보관함의 AI협업규칙.md를 읽는 구성이 목표야. 바꿀 내용만 제안해 줘. 내가 확인하면 기존 파일을 백업하고 필요한 부분만 합쳐 줘. CLAUDE.md가 AGENTS.md를 읽도록 연결됐는지도 확인해 줘. 원본과 기록은 그대로 둬.</p></div>
 
-<p>결과는 <b>보관함의 규칙 세 개</b>와 <b>me의 시작 안내 두 개</b>예요. 이름이 겹쳐도 역할은 달라요. 정리 방법을 바꿀 때는 보관함의 AI협업규칙.md를 고쳐요.</p>
+<p>처음 시작했다면 결과는 <b>me의 시작 안내 두 개</b>와 <b>보관함의 정리 약속 한 개</b>예요. 정리 방법을 바꿀 때는 보관함의 AI협업규칙.md를 고쳐요. 기존 규칙이 있던 분은 AI가 제안한 변경 내용을 확인하세요.</p>
 
 <ul class="l4-checks">
-<li><b>보관함 안</b> — AGENTS.md·CLAUDE.md·AI협업규칙.md 세 개를 확인해요.</li>
-<li><b>me 바로 아래</b> — AGENTS.md·CLAUDE.md에 보관함의 규칙을 먼저 읽으라는 안내가 있는지 확인해요.</li>
+<li><b>me 바로 아래</b> — AGENTS.md·CLAUDE.md 두 파일을 확인해요.</li>
+<li><b>보관함 안</b> — AI협업규칙.md를 확인해요.</li>
 </ul>
 <p>새 대화를 <b>me에서</b> 열고 “보관함의 협업규칙을 읽고 원본과 목차의 위치를 알려 줘”라고 물어 확인하세요. 두 AI를 쓴다면 각각 한 번씩 확인해요.</p>
 
@@ -146,7 +145,7 @@ description: 4강. 북부대공 실습 파일을 GitHub에서 받아 me에 저�
 
 <div class="l4-request"><span class="l4-label">내 규칙을 바꾸는 요청</span><p>앞으로 소개 노트에 마감일도 넣어 줘. 내가 날짜를 정하지 않았으면 미정이라고 적어 줘. 이 약속을 보관함의 AI협업규칙.md에 반영하고, 바뀐 부분을 알려 줘. 원본 폴더와 보관함의 위치 관계는 유지해 줘.</p></div>
 
-<p><b>AI가 관련 작업을 맡아 실행하는 동안</b> 적용되는 약속이에요. 자료를 받아 두기만 했다면 AI에게 목차 정리를 요청해요.</p>
+<p><b>AI가 이 규칙을 읽고 일할 때</b> 지키는 약속이에요. 자료를 받아 두기만 했다면 AI에게 목차 정리를 요청해요.</p>
 
 <p>자료만 새로 받았고 바로 목차에 넣고 싶다면 짧게 요청해요. <b>“me에 북부대공 자료를 받았어. 기존 협업규칙대로 홈에 연결해 줘.”</b> AI가 정리했다고 답하면 실제 링크를 한 번 눌러 확인해요.</p>
 

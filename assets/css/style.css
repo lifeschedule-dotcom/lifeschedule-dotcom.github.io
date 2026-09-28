@@ -867,3 +867,8 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
 /* 메모장/옵시디언 비교: 560px 넘으면 좌우 나란히 */
 @media (max-width: 760px) and (min-width: 561px) { .mdcmp { grid-template-columns: 1fr 1fr; } .mdcmp pre { font-size: 14px; white-space: pre-wrap; } }
+
+/* 풀이 속 작은 사진: 글 옆에 작게, 폰에서도 옆에 */
+.wc.shot { grid-template-columns: 1fr 88px !important; gap: 12px; align-items: center; }
+.wc.shot img { width: 88px !important; }
+.wc.shot figcaption { display: none; }

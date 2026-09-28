@@ -760,3 +760,4 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .kfile.same { display: block; padding: 8px 4px; color: var(--ink-soft); }
 .sync .pc.other { align-self: center; }
 .who .me-glass { width: 18px; height: 18px; fill: #5b3aa6; }
+.kdesc { margin: -4px 0 8px 28px; font-size: 15px; color: var(--ink-soft); } .kdesc b, .kfile span b { color: #5a2233; }

@@ -147,6 +147,8 @@ GPT나 클로드 데스크탑 앱에 옵시디언 설치를 부탁해 봐요.
 
 이제 <b>AI 앱에서 작업할 폴더로 <code>me</code>를 선택해요.</b>
 
+<div class="callout warn"><svg><use href="#i-warn"/></svg><div>폴더 선택은 처음 한 번이면 돼요.<br>다음부터는 새 대화에서 <code>me</code>가 선택되어 있는지만 확인해요.</div></div>
+
 <div class="apptabs">
 <input type="radio" name="apptab" id="apptab-claude" checked>
 <input type="radio" name="apptab" id="apptab-gpt">
@@ -161,10 +163,7 @@ GPT나 클로드 데스크탑 앱에 옵시디언 설치를 부탁해 봐요.
 </div>
 </div>
 
-<p class="sub-note">폴더 선택은 처음 한 번이면 돼요. 다음부터는 새 대화에서 me가 선택되어 있는지만 확인해요.</p>
-
-이제 **me를 연 데스크탑 앱**에 아래 요청을 보내요.<br>
-한 줄씩 읽어 보고, 모르는 줄은 4번에서 찾아보세요.
+**자, 이제 대화를 해 봐요!**
 
 <div class="prompt"><span class="who">지식관리 세팅 요청</span><button class="copy" type="button">복사</button><span class="txt">안녕! 나는 <span class="fill">(하는 일)</span>을 하는 사람이고, AI는 처음이야.
 앞으로 너랑 한 일을 한 폴더에 모아서 관리하고 싶어. 아래대로 세팅해줘.

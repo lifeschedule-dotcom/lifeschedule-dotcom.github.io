@@ -806,3 +806,11 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .fallback ol { margin: 0 0 1em; padding-left: 1.3em; }
 .fallback li { margin: .3em 0; }
 .content.spacious .fallback p { margin: .8em 0 0; }
+
+/* 관계도 폭 정리: 쌓일 때는 글 길이에 맞게 가운데, 받침이 넘치지 않게 */
+.lap { padding: 0 10px; }
+.lap-base { margin: 0 -10px; }
+@media (max-width: 760px) {
+  .lap, .lap-sync { width: 100%; max-width: 400px; justify-self: center; margin: 0; }
+}
+@media (max-width: 480px) { .lap { padding: 0 6px; } .lap-base { margin: 0 -6px; } }

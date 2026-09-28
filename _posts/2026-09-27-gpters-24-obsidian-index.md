@@ -11,7 +11,7 @@ spacious: true
 <div class="lesson4">
 <div class="lead-note">오늘은 북부대공 자료를 <b>me에 저장</b>하고, AI에게 <b>Obsidian 홈 목차 연결</b>을 부탁해요.</div>
 
-<p><a href="{{ '/2026/09/26/gpters-24-setup/' | relative_url }}">1강</a>에서 만든 <b>me</b> 폴더와 <b>Obsidian Vault</b> 보관함을 그대로 써요.<br>다른 이름을 썼다면 요청문에서도 바꿔 주세요.</p>
+<p><a href="{{ '/2026/09/26/gpters-24-setup/' | relative_url }}">1강</a>에서 만든 <b>me</b> 폴더와 <b>Obsidian Vault</b> 보관함을 그대로 써요.</p>
 
 <h2 id="starter-rules"><span class="no">1</span> 규칙 파일부터 준비해요</h2>
 
@@ -28,17 +28,16 @@ spacious: true
 <pre class="l4-tree">me/
 ├─ AGENTS.md  ← 여기에
 ├─ CLAUDE.md  ← 여기에
-├─ 북부대공/  ← 곧 만들 폴더
 └─ Obsidian Vault/
    └─ AI협업규칙.md  ← 여기에</pre>
 
-<div class="callout tip"><svg><use href="#i-note"/></svg><div><b>같은 이름의 파일이 이미 있다면?</b><br>덮어쓰지 마세요.<br>받은 세 파일은 다운로드 폴더에 두고, 아래 <b>‘이미 규칙 파일이 있는 분’</b> 요청을 써요.<br>받은 파일 이름에 <code>(1)</code>이 붙었다면, 옮기기 전에 AI에게 파일 목록 화면을 보여 주고 물어보세요.</div></div>
+<div class="callout tip"><svg><use href="#i-note"/></svg><div><b>같은 이름의 파일이 이미 있다면?</b><br>덮어쓰지 말고, 아래 <b>‘이미 규칙 파일이 있는 분’</b> 요청을 써요.</div></div>
 
 <h3>AI가 규칙을 읽었는지 확인하기</h3>
 
-<p>AI 데스크탑 앱에서 <b>me를 작업 폴더로 연 채로</b> 보내요.<br>인터넷 채팅창에서는 내 컴퓨터의 파일이 바뀌지 않아요.</p>
+<p>데스크탑 앱에서 <b>me를 선택한 채로</b> 보내요.</p>
 
-<div class="prompt"><span class="who">처음 준비하는 분 (me를 연 데스크탑 앱에)</span><button class="copy" type="button">복사</button><span class="txt">AI협업규칙.md를 읽어 줘.
+<div class="prompt"><span class="who">처음 준비하는 분 (데스크탑 앱에)</span><button class="copy" type="button">복사</button><span class="txt">AI협업규칙.md를 읽어 줘.
 
 그리고 아래 위치를 실제 경로로 알려 줘.
 - 읽은 파일의 위치
@@ -49,7 +48,7 @@ spacious: true
 
 <p class="sub-note">노란 괄호 칸만 내 상황에 맞게 바꿔주면 됩니다.</p>
 
-<div class="prompt"><span class="who">이미 규칙 파일이 있는 분 (받은 세 파일을 먼저 첨부해요)</span><button class="copy" type="button">복사</button><span class="txt">내 기존 규칙과 첨부한 세 파일을 비교해 줘.
+<div class="prompt"><span class="who">이미 규칙 파일이 있는 분 (받은 세 파일을 첨부해서)</span><button class="copy" type="button">복사</button><span class="txt">내 기존 규칙과 첨부한 세 파일을 비교해 줘.
 
 목표: <span class="fill">(me)</span>의 AGENTS.md·CLAUDE.md가 보관함의 AI협업규칙.md를 읽는 구성
 
@@ -59,7 +58,10 @@ spacious: true
 
 3. CLAUDE.md가 AGENTS.md를 읽도록 연결됐는지도 확인해 줘.
 
+기존 파일을 덮어쓰지 마.
 원본과 기록은 그대로 둬.</span></div>
+
+<div class="callout warn"><svg><use href="#i-warn"/></svg><div><b>단!!</b> 로그인, 비밀번호, 결제는 내가 직접 입력해요.<br>AI가 묻는 <b>"허용할까요?"</b> 창은 꼭 읽고, 내가 판단해서 눌러요.</div></div>
 
 <p>AI가 세 파일의 위치를 알려 주면 준비 끝이에요.</p>
 
@@ -69,41 +71,38 @@ spacious: true
 
 <p><a class="l4-button" href="{{ '/assets/downloads/gpters24/00_북부성_실습_상황.md' | relative_url }}" download="00_북부성_실습_상황.md">북부대공 실습 파일 바로 받기 ↓</a></p>
 
-<p>누르면 <code>00_북부성_실습_상황.md</code>가 다운로드돼요.</p>
-
-<p><a href="https://github.com/lifeschedule-dotcom/gpters-24-goldmine-payroll" target="_blank" rel="noopener"><img src="/assets/img/icons/github.png" alt="" style="width:20px;vertical-align:middle"> GitHub에서 원본과 다른 실습 자료 보기 ↗</a></p>
-
 <h3 class="step-h"><span>2</span>me 안에 북부대공 폴더 만들기</h3>
 
 <ol>
 <li>파일 탐색기에서 <b>me</b> 폴더를 열어요.</li>
 <li><b>새로 만들기 → 폴더</b>를 누르고, 이름을 <b>북부대공</b>으로 적어요.</li>
-<li>다운로드 폴더의 MD 파일을 골라 <b>Ctrl+X</b>, 북부대공 폴더에서 <b>Ctrl+V</b>를 눌러 옮겨요.</li>
+<li>다운로드 폴더의 MD 파일을 골라 <b>Ctrl+X</b>, 북부대공 폴더에서 <b>Ctrl+V</b>를 눌러요.</li>
 </ol>
 
-<div class="l4-location"><figure><img src="/assets/img/gpters24/lesson4/02a-folder-location.png" alt="파일 탐색기 위치 표시: OneDrive, me, 북부대공"><figcaption>주소에 <b>me › 북부대공</b>이 보이면 돼요.</figcaption></figure><figure><img src="/assets/img/gpters24/lesson4/02b-folder-file.png" alt="실제 북부대공 폴더 안에 00_북부성_실습_상황 파일이 있고 유형은 MD 파일, 크기는 5KB로 표시된다"><figcaption>폴더 안에 받은 파일(유형 <b>MD 파일</b>)이 있으면 돼요.</figcaption></figure></div>
+<div class="l4-location"><figure><img src="/assets/img/gpters24/lesson4/02a-folder-location.png" alt="파일 탐색기 위치 표시: OneDrive, me, 북부대공"><figcaption>주소에 <b>me › 북부대공</b>이 보이면 돼요.</figcaption></figure><figure><img src="/assets/img/gpters24/lesson4/02b-folder-file.png" alt="실제 북부대공 폴더 안에 00_북부성_실습_상황 파일이 있고 유형은 MD 파일, 크기는 5KB로 표시된다"><figcaption>폴더 안에 <b>MD 파일</b>이 있으면 돼요.</figcaption></figure></div>
 
 <h2><span class="no">3</span> AI에게 목차 연결을 맡겨요</h2>
 
-<p>규칙을 확인한 <b>me의 AI 대화</b>에서 이어서 보내요.</p>
+<p>규칙을 확인한 대화에서 이어서 보내요.</p>
 
 <p class="sub-note">노란 괄호 칸만 내 상황에 맞게 바꿔주면 됩니다.</p>
 
-<div class="prompt"><span class="who">목차 연결 요청 (me를 연 데스크탑 앱에)</span><button class="copy" type="button">복사</button><span class="txt"><span class="fill">(me)</span>/북부대공에 실습 파일을 받았어.
-<span class="fill">(Obsidian Vault)</span>의 AI협업규칙.md를 읽고, 이 프로젝트를 기존 홈 목차에서 찾을 수 있게 연결해 줘.
+<div class="prompt"><span class="who">목차 연결 요청 (데스크탑 앱에)</span><button class="copy" type="button">복사</button><span class="txt"><span class="fill">(me)</span>/북부대공에 실습 파일을 받았어.
+<span class="fill">(Obsidian Vault)</span>의 AI협업규칙.md를 읽어 줘.
+그리고 이 프로젝트를 기존 홈 목차에서 찾을 수 있게 연결해 줘.
 
 - 원본은 옮기지 마.
 - 보관함에 ‘북부대공 실습’ 소개 노트를 만들고, 원본 위치를 적어 줘.
 
 끝나면 Obsidian에서 무엇을 누르면 되는지 알려 줘.</span></div>
 
-<h3>AI가 바꾸는 곳</h3>
+<h3>끝나면 이렇게 돼요</h3>
 
 <div class="l4-filemap" aria-label="원본 폴더와 보관함 안의 소개 노트, 홈 파일의 관계">
 <div class="l4-root">me</div>
 <div class="l4-branches">
-<section><span class="l4-badge">원본 보관</span><h3>북부대공</h3><p><code>00_북부성_실습_상황.md</code></p><b>지금 위치에 그대로 있어요.</b></section>
-<section><span class="l4-badge">AI가 기록</span><h3>Obsidian Vault</h3><p><code>10 프로젝트/…/북부대공 실습.md</code><br>소개와 원본 위치를 적은 노트</p><p><code>홈.md</code><br>위 소개 노트로 가는 링크 한 줄</p></section>
+<section><h3>북부대공</h3><p><code>00_북부성_실습_상황.md</code></p><b>원본은 그대로 있어요.</b></section>
+<section><h3>Obsidian Vault</h3><p><code>10 프로젝트/…/북부대공 실습.md</code><br>AI가 만든 소개 노트</p><p><code>홈.md</code><br>소개 노트로 가는 링크 한 줄</p></section>
 </div>
 <p class="l4-map-foot">홈 → 소개 노트 → 원본 위치 순서로 찾아가요.</p>
 </div>
@@ -116,11 +115,13 @@ spacious: true
 
 <div class="seq"><figure><a href="/assets/img/gpters24/lesson4/03-find-home.png" target="_blank" rel="noopener"><img src="/assets/img/gpters24/lesson4/03-find-home.png" alt="Obsidian 빠른 전환기에서 홈을 입력하고 기존 홈 노트 하나가 검색된 실제 화면"></a><figcaption>검색된 <b>홈</b>을 고르고 Enter를 눌러요.</figcaption></figure></div>
 
-<div class="callout tip"><svg><use href="#i-note"/></svg><div><b>홈이 검색되지 않으면 Enter를 누르지 마세요.</b><br>새 노트가 생길 수 있어요.<br>AI에게 “홈을 어느 보관함의 어떤 파일에 연결했는지 확인해 줘”라고 물어요.</div></div>
+<div class="callout tip"><svg><use href="#i-note"/></svg><div><b>홈이 검색되지 않으면 Enter를 누르지 마세요.</b><br>새 노트가 생길 수 있어요.<br>AI에게 “홈을 어디에 연결했는지 확인해 줘”라고 물어요.</div></div>
 
 <h3 class="step-h"><span>2</span>북부대공 실습 누르기</h3>
 
-<div class="seq"><figure><div class="l4-marked"><img src="/assets/img/gpters24/lesson4/04-home-link.png" alt="Obsidian 홈의 오늘의 스터디 실습 아래에 북부대공 실습 링크가 추가된 실제 화면"><span class="l4-outline home" aria-hidden="true"></span></div><figcaption>홈에 생긴 <b>북부대공 실습</b>을 눌러요.<br>안 눌리면 <b>Ctrl+E</b>로 읽기 보기로 바꿔요.</figcaption></figure></div>
+<div class="seq"><figure><div class="l4-marked"><img src="/assets/img/gpters24/lesson4/04-home-link.png" alt="Obsidian 홈의 오늘의 스터디 실습 아래에 북부대공 실습 링크가 추가된 실제 화면"><span class="l4-outline home" aria-hidden="true"></span></div><figcaption>홈에 생긴 <b>북부대공 실습</b>을 눌러요.</figcaption></figure></div>
+
+<p>안 눌리면 <b>Ctrl+E</b>로 읽기 보기로 바꿔요.</p>
 
 <div class="seq"><figure><img src="/assets/img/gpters24/lesson4/05-intro-note.png" alt="홈의 북부대공 실습 링크를 눌러 보관함 안의 소개 노트가 열린 실제 화면"><figcaption><b>소개 노트</b>가 열려요.</figcaption></figure></div>
 
@@ -130,31 +131,21 @@ spacious: true
 
 <div class="seq"><figure><div class="l4-marked"><img src="/assets/img/gpters24/lesson4/06-source-links.png" alt="북부대공 소개 노트 아래에 원본 폴더, 원본 MD, GitHub 자료 링크가 있는 실제 화면"><span class="l4-outline source" aria-hidden="true"></span></div><figcaption>파일 탐색기에서 <b>북부대공 폴더</b>가 열리면 성공이에요.</figcaption></figure></div>
 
-<div class="done"><div class="done-t">🎉 여기까지 했으면 목차 연결이 끝났어요!<br>축하드립니다!</div><p>아래는 부가 설명이에요.<br>궁금한 분만 더 읽어 보세요!</p></div>
+<div class="done"><div class="done-t">🎉 여기까지 했으면 목차 연결이 끝났어요!<br>축하드립니다!</div></div>
 
-<h2><span class="no">5</span> 내 방식으로 바꾸기 <small>(선택)</small></h2>
+<h2><span class="no">5</span> 다음 자료부터는 짧게 <small>(선택)</small></h2>
 
-<p>기본 규칙에는 <b>작업을 마칠 때 소개 노트와 목차를 확인한다</b>는 약속이 이미 있어요.<br>바꾸고 싶은 게 생기면 AI에게 요청해요.</p>
+<p class="sub-note">노란 괄호 칸만 내 상황에 맞게 바꿔주면 됩니다.</p>
 
-<div class="prompt"><span class="who">내 규칙을 바꾸는 요청 (예시)</span><button class="copy" type="button">복사</button><span class="txt">앞으로 소개 노트에 마감일도 넣어 줘.
-내가 날짜를 정하지 않았으면 ‘미정’이라고 적어 줘.
+<div class="prompt"><span class="who">새 자료 목차 연결 (짧게)</span><button class="copy" type="button">복사</button><span class="txt">me/<span class="fill">(새 폴더 이름)</span>에 자료를 받았어.
+기존 협업규칙대로 홈에 연결해 줘.
+원본은 옮기지 마.</span></div>
 
-- 이 약속을 보관함의 AI협업규칙.md에 반영해 줘.
-- 바뀐 부분을 알려 줘.
-- 원본 폴더와 보관함의 위치 관계는 유지해 줘.</span></div>
-
-<p>새 자료를 받았을 때는 짧게 요청해도 돼요.<br>끝나면 링크를 한 번 눌러 확인해요.</p>
-
-<div class="prompt"><span class="who">새 자료 목차 연결 (짧게)</span><button class="copy" type="button">복사</button><span class="txt">me에 북부대공 자료를 받았어.
-기존 협업규칙대로 홈에 연결해 줘.</span></div>
+<p>규칙을 바꾸고 싶으면 “이 약속을 AI협업규칙.md에 반영해 줘”라고 요청해요.</p>
 
 <h2><span class="no">6</span> 자주 헷갈리는 것</h2>
 
-<details class="l4-faq" open><summary>같은 MD가 두 개 생긴 건가요?</summary><p>원본은 <code>me/북부대공/00_북부성_실습_상황.md</code>예요.<br>보관함의 <code>북부대공 실습.md</code>는 <b>소개와 위치</b>만 적은 다른 파일이에요.</p></details>
-<details class="l4-faq"><summary>Obsidian은 me 안의 모든 MD를 보여 주나요?</summary><p>Obsidian은 열린 보관함 안의 파일만 보여 줘요.<br>바깥 원본은 소개 노트에 적힌 위치로 찾아가요.<br>원본을 옮기면 AI에게 위치 링크도 고쳐 달라고 해요.<br><a href="https://obsidian.md/help/vault">Obsidian 보관함 안내</a></p></details>
-<details class="l4-faq"><summary>홈이라는 목차는 특별한 기능인가요?</summary><p>홈은 <b>홈.md라는 보통 문서</b>예요.<br>AI가 그 안에 <code>[[10 프로젝트/…/북부대공 실습]]</code> 같은 내부 링크를 적어서 누를 수 있게 된 거예요.<br><a href="https://obsidian.md/help/links">Obsidian 내부 링크 안내</a></p></details>
-<details class="l4-faq"><summary>다른 컴퓨터에서 원본 폴더 링크가 안 열려요.</summary><p>링크는 지금 쓰는 컴퓨터의 주소로 만들어져요.<br>AI에게 새 컴퓨터의 원본 위치를 확인해 링크를 고쳐 달라고 해요.</p></details>
-<details class="l4-faq"><summary>실습 MD 본문을 당장 읽고 싶어요.</summary><p>파일 탐색기에서 <code>me/북부대공/00_북부성_실습_상황.md</code>를 열거나, 위의 GitHub 링크에서 봐요.</p></details>
-
-<p class="l4-next">다음 실습에서는 이 MD에 적힌 소설 설정을 AI와 함께 읽고, 북부대공의 금광 장부 정리를 시작해요.</p>
+<details class="l4-faq" open><summary>같은 MD가 두 개 생긴 건가요?</summary><p>원본은 <code>me/북부대공</code> 안의 파일이에요.<br>보관함의 <code>북부대공 실습.md</code>는 소개와 위치만 적은 다른 파일이에요.</p></details>
+<details class="l4-faq"><summary>Obsidian에 me의 다른 파일은 왜 안 보여요?</summary><p>Obsidian은 열린 보관함 안의 파일만 보여 줘요.<br>바깥 원본은 소개 노트의 위치 링크로 찾아가요. <a href="https://obsidian.md/help/vault">Obsidian 보관함 안내</a></p></details>
+<details class="l4-faq"><summary>다른 컴퓨터에서 원본 폴더 링크가 안 열려요.</summary><p>링크는 지금 쓰는 컴퓨터의 주소로 만들어져요.<br>AI에게 새 컴퓨터의 위치로 링크를 고쳐 달라고 해요.</p></details>
 </div>

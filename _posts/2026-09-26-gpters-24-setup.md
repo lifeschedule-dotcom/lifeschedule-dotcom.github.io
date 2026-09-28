@@ -128,13 +128,19 @@ AI가 이미 만들어 뒀다면 <b>보관함 폴더 열기</b>로 <code>me/Obsi
 
 <div class="callout tip"><svg><use href="#i-folder"/></svg><div><div class="folder-open"><div><b>Claude·GPT에서 여는 폴더</b><code>me</code></div><div><b>옵시디언에서 여는 보관함</b><code>me/Obsidian Vault</code></div></div></div></div>
 
-<b>클로드 앱:</b> 입력창 위 <b>폴더 없음</b>을 눌러 <code>me</code>를 골라요.
-
+<div class="apptabs">
+<input type="radio" name="apptab" id="apptab-claude" checked>
+<input type="radio" name="apptab" id="apptab-gpt">
+<div class="apptabs-bar"><label for="apptab-claude"><img src="/assets/img/icons/claude.png" alt="">클로드 앱</label><label for="apptab-gpt"><img src="/assets/img/icons/chatgpt.png" alt="">GPT 앱</label></div>
+<div class="apptab-panel claude">
+<p>입력창 위 <b>폴더 없음</b>을 눌러 <code>me</code>를 골라요.</p>
 <div class="seq"><figure><span class="sn">1</span><img src="/assets/img/setup/pick-folder.png" alt="클로드 로컬 작업 입력창의 폴더 없음 버튼"><figcaption>입력창 위 <b>폴더 없음</b>을 눌러요</figcaption></figure><figure><span class="sn">2</span><img src="/assets/img/setup/pick-folder-3.png" alt="입력창 위에 me가 표시된 화면"><figcaption>원드라이브의 <b>me</b>를 골라요</figcaption></figure></div>
-
-<b>GPT 데스크탑 앱:</b> <code>Ctrl + O</code>(맥은 <code>Cmd + O</code>)를 눌러 <code>me</code>를 고르고, 그 프로젝트에서 새 대화를 시작해요. Codex라면 <b>Local</b>을 선택해요.
-
+</div>
+<div class="apptab-panel gpt">
+<p><code>Ctrl + O</code>(맥은 <code>Cmd + O</code>)를 눌러 <code>me</code>를 고르고, 그 프로젝트에서 새 대화를 시작해요. Codex라면 <b>Local</b>을 선택해요.</p>
 <div class="seq"><figure><img src="/assets/img/setup/gpt-select-project-root.png" alt="GPT의 Select Project Root 창에서 원드라이브 안의 me 폴더를 선택한 화면"><figcaption>원드라이브 안의 <b>me</b>를 고르고 <b>폴더 선택</b>을 눌러요</figcaption></figure></div>
+</div>
+</div>
 
 <p class="sub-note">폴더 선택은 처음 한 번이면 돼요. 다음부터는 새 대화에서 me가 선택되어 있는지만 확인해요.</p>
 

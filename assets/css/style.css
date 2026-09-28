@@ -682,3 +682,22 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
 .content.spacious .sync { margin-top: 1.6em; margin-bottom: 2em; }
 .content.spacious .callout p,
 .content.spacious .wc p { margin-bottom: .6em; }
+
+/* 클로드 / GPT 앱 탭 (CSS만으로 전환) */
+.apptabs { margin: 1.6em 0 2em; }
+.apptabs > input { position: absolute; opacity: 0; pointer-events: none; }
+.apptabs-bar { display: flex; gap: 6px; border-bottom: 2px solid #ecdfe3; }
+.apptabs-bar label { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; margin-bottom: -2px; border: 2px solid transparent; border-radius: 12px 12px 0 0; font-weight: 700; color: var(--ink-soft); cursor: pointer; }
+.apptabs-bar label img { width: 20px; height: 20px; border-radius: 4px; }
+.apptab-panel { display: none; padding: 18px 20px 6px; border: 2px solid #ecdfe3; border-top: 0; border-radius: 0 0 14px 14px; background: #fff; }
+.apptab-panel .seq { margin-top: .6em; }
+#apptab-claude:checked ~ .apptabs-bar label[for="apptab-claude"] { color: #c15f3c; background: #fff; border-color: #ecdfe3 #ecdfe3 #fff; }
+#apptab-gpt:checked ~ .apptabs-bar label[for="apptab-gpt"] { color: #10a37f; background: #fff; border-color: #ecdfe3 #ecdfe3 #fff; }
+#apptab-claude:checked ~ .apptab-panel.claude,
+#apptab-gpt:checked ~ .apptab-panel.gpt { display: block; }
+#apptab-claude:focus-visible ~ .apptabs-bar label[for="apptab-claude"],
+#apptab-gpt:focus-visible ~ .apptabs-bar label[for="apptab-gpt"] { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* 여유 간격 글: 폴더·단축키 표시를 본문 글씨체로 */
+.content.spacious :not(pre) > code { font-family: inherit; font-size: .95em; font-weight: 700; padding: 1px 7px; border-radius: 6px; background: #f6e4e9; color: #7d3349; }
+.content.spacious .prompt code { background: #fff; }

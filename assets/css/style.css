@@ -814,3 +814,13 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   .lap, .lap-sync { width: 100%; max-width: 400px; justify-self: center; margin: 0; }
 }
 @media (max-width: 480px) { .lap { padding: 0 6px; } .lap-base { margin: 0 -6px; } }
+
+/* 관계도 길이 줄이기: 쌓일 때 두 번째 노트북 숨김, 하위 폴더 좌우 배치 */
+.nb.me .nb-subs { display: grid; grid-template-columns: 1fr; gap: 6px; }
+@media (max-width: 760px) and (min-width: 381px) { .nb.me .nb-subs { grid-template-columns: 1fr 1fr; } }
+.nb.me .nb-subs .nb { margin-top: 0; }
+@media (max-width: 760px) {
+  .lapmap > .lap:last-child { display: none; }
+  .lap-sync { flex-direction: row; }
+}
+

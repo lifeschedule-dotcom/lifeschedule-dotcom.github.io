@@ -70,20 +70,24 @@ AI에 폴더 접근 권한을 주면, AI는 그 안의 파일을 직접 읽을 �
 AI는 두 곳에서 쓸 수 있어요.
 
 <div class="twoai">
-<div class="ta chat"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>일반 채팅창 <small>인터넷 창</small></div><div class="ta-m">전화로 알려주는 친구</div><p>물어보면 알려줘요. <b>손은 내가</b> 움직여요.</p><p class="ta-e">claude.ai · chatgpt.com</p></div>
-<div class="ta desk"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>데스크탑 앱 <small>설치하는 프로그램</small></div><div class="ta-m">옆에서 직접 해 주는 친구</div><p>내 폴더를 열어 주면, 파일을 직접 만들고 정리해 줘요.</p></div>
+<div class="ta chat"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>인터넷 채팅창</div><p>물어보면 알려줘요. <b>손은 내가</b> 움직여요.</p><p class="ta-e">claude.ai · chatgpt.com</p></div>
+<div class="ta desk"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>데스크탑 앱 <small>설치하는 프로그램</small></div><p>내 폴더를 열어 주면, 파일을 직접 만들고 정리해 줘요.</p></div>
 </div>
-
-**설치는 채팅창에 물어보고**, 설치가 끝나면 **데스크탑 앱과 함께** 파일을 만들어요.
 
 <h3 class="step-h"><span>1</span>AI 데스크탑 앱 설치하기 <small>채팅창에서</small></h3>
 
-아래 요청을 채팅창([claude.ai](https://claude.ai) 또는 [chatgpt.com](https://chatgpt.com))에 보내면, AI가 한 단계씩 알려줘요.
+클로드나 GPT 사이트([claude.ai](https://claude.ai) 또는 [chatgpt.com](https://chatgpt.com))에 들어가서, AI에게 **데스크탑 버전을 설치해 달라고** 말해 보세요!
 
-<div class="prompt"><span class="who">설치 도움 요청 (채팅창에)</span><button class="copy" type="button">복사</button><span class="txt">안녕! 나는 AI를 처음 쓰려고 하는데, 그 전에 AI와 한 일을 한 폴더에 모으는 세팅을 하려고 해. 이 글을 보고 따라 하는 중이야: https://lifeschedule-dotcom.github.io/2026/09/26/gpters-24-setup/
-원드라이브가 켜져 있는지 확인하고, <span class="fill">(클로드 / GPT)</span> 데스크탑 앱을 설치하고 싶어. 내가 할 수 있게 한 단계씩 천천히 알려줘. 내가 화면을 캡처해서 보내면, 그 화면을 보고 다음에 뭘 누르면 되는지 알려줘. 내 컴퓨터는 <span class="fill">(윈도우 / 맥)</span>이야.</span></div>
+<div class="prompt"><span class="who">설치 도움 요청 (인터넷 채팅창에)</span><button class="copy" type="button">복사</button><span class="txt">안녕! AI 데스크탑 앱을 설치하고 싶어.
 
-<p class="sub-note">복사해서 보내고, 노란 괄호 칸만 내 상황에 맞게 바꿔요.</p>
+- 설치할 앱: <span class="fill">(클로드 / GPT)</span> 데스크탑 앱
+- 내 컴퓨터: <span class="fill">(윈도우 / 맥)</span>
+- 보고 있는 글: https://lifeschedule-dotcom.github.io/2026/09/26/gpters-24-setup/
+
+원드라이브가 켜져 있는지도 같이 확인해줘.
+한 단계씩 천천히 알려주고, 내가 화면을 캡처해서 보내면 다음에 뭘 누르면 되는지 알려줘.</span></div>
+
+<p class="sub-note">노란 괄호 칸만 내 상황에 맞게 바꿔주면 됩니다.</p>
 
 <div class="snap">
 <div class="snap-h">막히면 캡처 한 장</div>
@@ -101,7 +105,14 @@ AI는 두 곳에서 쓸 수 있어요.
 
 <p><strong style="font-weight:900">막히면 화면을 캡처해서 “다음에 뭘 누르면 돼?” 하고 물어보세요!</strong></p>
 
-<div class="prompt"><span class="who">폴더 만들기·옵시디언 설치 요청 (데스크탑 앱에)</span><button class="copy" type="button">복사</button><span class="txt">원드라이브 안에 AI 작업물을 모을 <span class="fill">(me)</span> 폴더를 만들어줘. 이미 있으면 그대로 써줘. 옵시디언도 설치하고, 이 폴더 안에 Obsidian Vault라는 보관함을 만들고 싶어. 네가 직접 할 수 있는 일은 해 주고, 폴더 접근 권한이나 내가 눌러야 할 화면이 있으면 한 단계씩 알려줘. 직접 파일을 만들 수 없는 화면이라면 내가 만들 수 있게 안내해줘. 끝나면 만든 폴더를 열어 나와 함께 확인해줘.</span></div>
+<div class="prompt"><span class="who">폴더 만들기·옵시디언 설치 요청 (데스크탑 앱에)</span><button class="copy" type="button">복사</button><span class="txt">아래 세 가지를 도와줘.
+
+1. 원드라이브 안에 AI 작업물을 모을 <span class="fill">(me)</span> 폴더 만들기 (이미 있으면 그대로 써줘)
+2. 옵시디언 설치하기
+3. <span class="fill">(me)</span> 안에 Obsidian Vault라는 보관함 만들기
+
+네가 직접 할 수 있는 건 해 주고, 내가 눌러야 할 화면이나 권한 창은 한 단계씩 알려줘.
+끝나면 만든 폴더를 열어 나와 함께 확인해줘.</span></div>
 
 앱이 폴더부터 고르라고 하면, 파일 탐색기에서 원드라이브 안에 <code>me</code>를 직접 만들고 선택하세요.
 
@@ -129,18 +140,33 @@ AI가 이미 만들어 뒀다면 <b>보관함 폴더 열기</b>로 <code>me/Obsi
 
 이제 **me를 연 데스크탑 앱**에 아래 요청을 보내요. 한 줄씩 읽어 보고, 모르는 줄은 4번에서 찾아보세요.
 
-<div class="prompt"><span class="who">지식관리 세팅 요청</span><button class="copy" type="button">복사</button><span class="txt">안녕! 나는 <span class="fill">(하는 일)</span>을 하는 사람이고, AI는 처음이야. 앞으로 너랑 한 일을 한 폴더에 모아서 관리하고 싶어. 아래대로 세팅해줘. 네가 직접 할 수 있는 건 해주고, 내가 눌러야 하는 화면만 한 단계씩 천천히 알려줘.
+<div class="prompt"><span class="who">지식관리 세팅 요청</span><button class="copy" type="button">복사</button><span class="txt">안녕! 나는 <span class="fill">(하는 일)</span>을 하는 사람이고, AI는 처음이야.
+앞으로 너랑 한 일을 한 폴더에 모아서 관리하고 싶어. 아래대로 세팅해줘.
+네가 할 수 있는 건 직접 하고, 내가 눌러야 하는 화면만 한 단계씩 알려줘.
 
-1. 지금 작업 폴더가 원드라이브 안에 만든 <span class="fill">(me)</span>인지 확인하고 실제 위치를 알려줘. 다른 폴더가 열려 있거나 확인할 수 없다면, 먼저 내가 올바른 폴더를 열 수 있게 안내해줘. 확인이 끝나면 앞으로 너와 만든 문서·작업물은 이 폴더 안의 주제별 폴더에 저장해.
-2. 나는 개발자가 아니라서 마우스로 폴더를 열어 직접 볼 거야. 폴더와 파일 이름은 한눈에 알아보기 쉽게 짓고, 가능하면 바탕화면에 이 폴더 바로가기를 만들어줘. 네가 직접 만들 수 없다면 내가 마우스로 만들도록 알려줘.
-3. 이 폴더가 이 컴퓨터에 실제로 내려와 있는지 확인하고, 필요하면 원드라이브에서 "항상 이 디바이스에 유지"로 설정해줘. 바탕화면·문서·사진 전체 백업은 새로 켜지 마.
-4. <span class="fill">(me)</span> 안의 Obsidian Vault 폴더가 있는지 확인해줘. 없다면 앞의 보관함 만들기를 마칠 수 있게 안내해줘. 보관함이 준비되면 그 안에 AI협업규칙.md 파일을 만들고 아래 규칙을 적어줘. 같은 이름의 파일이 이미 있다면 기존 내용을 읽고, 필요한 규칙만 보완해줘.
-   - 새 작업물은 <span class="fill">(me)</span> 안의 주제별 폴더에 저장한다
-   - 작업이 끝나면 Obsidian Vault 안에 해당 주제의 작업기록.md가 있으면 기존 내용을 보존하고 날짜별로 덧붙인다. 없으면 만든다. 날짜, 한 일, 작업물 위치, 다음 할 일을 짧게 남긴다
-   - 비밀번호와 API 키는 파일에 적지 않는다
-   - 나는 초보니까 쉬운 말로, 한 번에 한 단계씩 설명한다
+1. 작업 폴더 확인
+   - 지금 작업 폴더가 원드라이브 안의 <span class="fill">(me)</span>인지 확인하고 실제 위치를 알려줘.
+   - 다른 폴더가 열려 있으면, 내가 올바른 폴더를 열도록 먼저 안내해줘.
+   - 앞으로 만드는 문서·작업물은 이 폴더 안의 주제별 폴더에 저장해.
 
-다 끝나면 무엇을 어디에 만들었는지 실제 폴더 위치와 함께 보여줘. 바탕화면 바로가기와 Obsidian Vault 안의 규칙 파일이 열리는지도 나와 함께 확인해줘.</span></div>
+2. 바탕화면 바로가기
+   - 나는 마우스로 폴더를 열어 직접 볼 거야. 이름은 알아보기 쉽게 지어줘.
+   - 바탕화면에 이 폴더 바로가기를 만들어줘. 못 하면 내가 만들도록 알려줘.
+
+3. 원드라이브 설정
+   - 이 폴더를 "항상 이 디바이스에 유지"로 설정해줘.
+   - 바탕화면·문서·사진 전체 백업은 새로 켜지 마.
+
+4. 규칙 파일 만들기
+   - <span class="fill">(me)</span> 안에 Obsidian Vault 폴더가 있는지 확인해줘. 없으면 만들도록 안내해줘.
+   - 그 안에 AI협업규칙.md를 만들고 아래 규칙을 적어줘. 이미 있으면 기존 내용을 읽고 필요한 것만 보완해줘.
+     · 새 작업물은 <span class="fill">(me)</span> 안의 주제별 폴더에 저장한다
+     · 작업이 끝나면 Obsidian Vault 안의 해당 주제 작업기록.md에 날짜, 한 일, 작업물 위치, 다음 할 일을 짧게 덧붙인다 (없으면 만든다, 기존 내용은 지우지 않는다)
+     · 비밀번호와 API 키는 파일에 적지 않는다
+     · 나는 초보니까 쉬운 말로, 한 번에 한 단계씩 설명한다
+
+다 끝나면 무엇을 어디에 만들었는지 실제 위치와 함께 보여주고,
+바탕화면 바로가기와 규칙 파일이 열리는지 나와 함께 확인해줘.</span></div>
 
 끝나면 옵시디언 왼쪽 목록에 <b>AI협업규칙</b>이 보이는지 확인해요.
 
@@ -188,7 +214,12 @@ AI가 끝났다고 하면, 아래 항목을 **직접** 확인해요.
 
 <b>새 대화를 시작할 때 한 번</b> 보내요. 새 직원에게 "업무 매뉴얼 먼저 보고 시작해요"라고 말하는 것과 같아요.
 
-<div class="prompt"><span class="who">새 대화를 시작할 때</span><button class="copy" type="button">복사</button><span class="txt">지금 작업 폴더로 연 원드라이브의 <span class="fill">(me)</span> 안에서 Obsidian Vault/AI협업규칙.md와 이번 작업의 최근 작업기록을 읽고, 각 파일의 실제 위치를 알려준 뒤 시작해줘. 아직 작업기록이 없다면 없다고 알려줘.</span></div>
+<div class="prompt"><span class="who">새 대화를 시작할 때</span><button class="copy" type="button">복사</button><span class="txt">시작하기 전에 <span class="fill">(me)</span> 안에서 아래 두 파일을 읽어줘.
+
+- Obsidian Vault/AI협업규칙.md
+- 이번 작업의 최근 작업기록 (없으면 없다고 알려줘)
+
+읽은 파일의 실제 위치를 알려준 뒤 시작해줘.</span></div>
 
 <p class="sub-note">AI가 규칙 파일을 스스로 찾게 하는 방법은 <a href="{{ '/2026/09/27/gpters-24-md/' | relative_url }}">3강</a>에서 알려드려요.</p>
 

@@ -31,7 +31,7 @@ spacious: true
 <div class="kfolder">
 <div class="kfolder-h"><svg class="i"><use href="#i-folder"/></svg>me</div>
 <div class="kdesc"><b>클로드·GPT 앱의 작업 공간</b></div>
-<div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>Obsidian Vault</b><span><b>옵시디언 보관함</b> · 규칙과 기록 노트를 모아 두는 곳</span></div>
+<div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>Obsidian Vault</b><span><b>옵시디언의 보관함</b> · 기록을 모아 보는 곳</span></div>
 <div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>주제별 폴더</b><span>작업물</span></div>
 </div>
 </div>
@@ -41,7 +41,7 @@ spacious: true
 <div class="kfolder">
 <div class="kfolder-h"><svg class="i"><use href="#i-folder"/></svg>me</div>
 <div class="kdesc"><b>클로드·GPT 앱의 작업 공간</b></div>
-<div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>Obsidian Vault</b><span><b>옵시디언 보관함</b> · 규칙과 기록 노트를 모아 두는 곳</span></div>
+<div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>Obsidian Vault</b><span><b>옵시디언의 보관함</b> · 기록을 모아 보는 곳</span></div>
 <div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>주제별 폴더</b><span>작업물</span></div>
 </div>
 </div>

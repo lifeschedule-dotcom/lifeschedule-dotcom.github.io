@@ -202,7 +202,7 @@ AI가 끝났다고 하면, 내 **me** 폴더가 아래 사진처럼 되어 있�
 <div class="seq"><figure><img src="/assets/img/setup/setup-done.png" alt="원드라이브 me 폴더 안에 Obsidian Vault 폴더가 초록 체크와 함께 보이는 파일 탐색기 화면"><figcaption>원드라이브 <b>me</b> 안에 <b>Obsidian Vault</b>가 보이면 성공이에요</figcaption></figure></div>
 
 
-<div class="done"><div class="done-t">🎉 여기까지 했으면 설치가 끝났어요!<br>축하드립니다!</div><p>아래는 부가 설명이에요.<br>궁금한 분만 더 읽어 보세요!</p></div>
+<div class="done"><div class="done-t">🎉 여기까지 했으면 설치가 끝났어요!<br>축하드립니다!</div></div>
 
 ## <span class="no">6</span> 더 알아 두면 좋은 것 <small>(선택)</small>
 

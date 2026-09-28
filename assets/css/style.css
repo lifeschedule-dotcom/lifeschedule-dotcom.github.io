@@ -872,3 +872,4 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .wc.shot { grid-template-columns: 1fr 88px !important; gap: 12px; align-items: center; }
 .wc.shot img { width: 88px !important; }
 .wc.shot figcaption { display: none; }
+.content.spacious .done-t { margin-bottom: 0; }

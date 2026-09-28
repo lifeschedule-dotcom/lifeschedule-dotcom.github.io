@@ -73,11 +73,21 @@ AI에 폴더 접근 권한을 주면, AI는 그 안의 파일을 직접 읽을 �
 
 ## <span class="no">2</span> 일하는 AI(데스크탑 앱)과 옵시디언 설치하기
 
-AI는 두 곳에서 쓸 수 있어요.
-
-<div class="twoai">
-<div class="ta chat"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>인터넷 채팅창</div><p>물어보면 알려줘요. <b>손은 내가</b> 움직여요.</p><p class="ta-e">claude.ai · chatgpt.com</p></div>
-<div class="ta desk"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>데스크탑 앱 <small>설치하는 프로그램</small></div><p>내 폴더를 열어 주면, 파일을 직접 만들고 정리해 줘요.</p></div>
+<div class="aicmp">
+<div class="ac-h chat"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">인터넷 채팅창</div>
+<div class="ac-h desk"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">데스크탑 앱</div>
+<div class="ac-l">여는 곳</div>
+<div class="ac-c">claude.ai · chatgpt.com 사이트</div>
+<div class="ac-c">내 컴퓨터에 설치한 프로그램</div>
+<div class="ac-l">할 수 있는 일</div>
+<div class="ac-c">질문에 답하고 방법을 알려줘요</div>
+<div class="ac-c">내 폴더에 파일을 <b>직접 만들고 고쳐요</b></div>
+<div class="ac-l">내 컴퓨터 파일</div>
+<div class="ac-c">내가 하나씩 올려야 보여요</div>
+<div class="ac-c">폴더를 열어 주면 <b>직접 읽어요</b></div>
+<div class="ac-l">이번 강에서</div>
+<div class="ac-c">설치 방법 물어보기</div>
+<div class="ac-c">폴더·보관함 만들기</div>
 </div>
 
 <h3 class="step-h"><span>1</span>AI 데스크탑 앱 설치하기 <small>채팅창에서</small></h3>
@@ -96,7 +106,7 @@ AI는 두 곳에서 쓸 수 있어요.
 한 단계씩 천천히 알려주고, 내가 화면을 캡처해서 보내면 다음에 뭘 누르면 되는지 알려줘.</span></div>
 
 <div class="snap">
-<div class="snap-h">막히면 캡처 한 장</div>
+<div class="snap-h">막히면? 캡처해서 직접 대화창에 물어보세요</div>
 <div class="snap-steps">
 <div class="ss"><span class="sn">1</span><img src="/assets/img/setup/win-search.png" alt="윈도우 작업 표시줄 검색창"><p>검색창에 <b>캡처 도구</b>를 입력해요</p></div>
 <div class="ss"><span class="sn">2</span><img class="ico" src="/assets/img/icons/snipping.png" alt="캡처 도구 아이콘"><p>이 아이콘을 누르고, 찍을 곳을 마우스로 끌어요</p></div>

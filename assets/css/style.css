@@ -735,3 +735,15 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .mt-item + .mt-item { border-top: 1px solid #f1eaec; }
 .mt-f { display: flex; flex-wrap: wrap; gap: 4px 6px; margin-top: 4px; }
 .content.spacious .mt-f code { font-size: 14.5px; }
+
+/* 1강 인터넷 채팅창 / 데스크탑 앱 좌우 비교 */
+.aicmp { display: grid; grid-template-columns: 1fr 1fr; gap: 0 10px; margin: 1.4em 0 2em; }
+.ac-h { display: flex; align-items: center; gap: 6px; padding: 12px 14px; border-radius: 14px 14px 0 0; font-weight: 700; font-size: 17px; color: #fff; }
+.ac-h img { width: 22px; height: 22px; border-radius: 5px; background: #fff; padding: 2px; }
+.ac-h.chat { background: #2b7fc1; }
+.ac-h.desk { background: var(--accent); }
+.ac-l { grid-column: 1 / -1; margin-top: 12px; margin-bottom: 4px; font-size: 15.5px; font-weight: 700; color: #5a2233; }
+.ac-c { padding: 10px 14px; border-radius: 10px; background: #fff; border: 1px solid #ebe3e6; font-size: 16.5px; line-height: 1.55; }
+.ac-l + .ac-c { background: #f3f8fd; border-color: #d6e7f5; }
+.ac-l + .ac-c + .ac-c { background: #fdf3f6; border-color: #f1d9e1; }
+@media (max-width: 480px) { .aicmp { gap: 0 6px; } .ac-h { padding: 10px; font-size: 15.5px; } .ac-c { padding: 8px 10px; font-size: 15px; } }

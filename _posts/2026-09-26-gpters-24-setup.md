@@ -147,7 +147,7 @@ GPT나 클로드 데스크탑 앱에 옵시디언 설치를 부탁해 봐요.
 <div class="seq"><figure><span class="sn">1</span><img src="/assets/img/setup/pick-folder.png" alt="클로드 로컬 작업 입력창의 폴더 없음 버튼"><figcaption>입력창 위 <b>폴더 없음</b>을 눌러요</figcaption></figure><figure><span class="sn">2</span><img src="/assets/img/setup/pick-folder-3.png" alt="입력창 위에 me가 표시된 화면"><figcaption>원드라이브의 <b>me</b>를 골라요</figcaption></figure></div>
 </div>
 <div class="apptab-panel gpt">
-<p><code>Ctrl + O</code>(맥은 <code>Cmd + O</code>)를 눌러 <code>me</code>를 고르고, 그 프로젝트에서 새 대화를 시작해요. Codex라면 <b>Local</b>을 선택해요.</p>
+<p><code>Ctrl + O</code>(맥은 <code>Cmd + O</code>)를 눌러 <code>me</code>를 고르고, 그 프로젝트에서 새 대화를 시작해요.<br>Codex라면 <b>Local</b>을 선택해요.</p>
 <div class="seq"><figure><img src="/assets/img/setup/gpt-select-project-root.png" alt="GPT의 Select Project Root 창에서 원드라이브 안의 me 폴더를 선택한 화면"><figcaption>원드라이브 안의 <b>me</b>를 고르고 <b>폴더 선택</b>을 눌러요</figcaption></figure></div>
 </div>
 </div>
@@ -189,7 +189,7 @@ GPT나 클로드 데스크탑 앱에 옵시디언 설치를 부탁해 봐요.
 
 <div class="whyg">
 <div class="wg-h"><span>2</span>마우스로 직접 볼 거야</div>
-<div class="wc shot"><div><div class="wq">마우스로 폴더를 열어 직접 볼 거야</div><p>알아보기 쉬운 이름과 <b>바탕화면 바로가기</b>를 만들어 줘요. 더블클릭 한 번으로 내 폴더에 들어갈 수 있어요.</p></div><figure><img src="/assets/img/setup/desktop-me.png" alt="바탕화면의 me 폴더 바로가기를 마우스로 가리킨 화면"><figcaption>바탕화면의 <b>me</b> 바로가기</figcaption></figure></div>
+<div class="wc shot"><div><div class="wq">마우스로 폴더를 열어 직접 볼 거야</div><p>알아보기 쉬운 이름과 <b>바탕화면 바로가기</b>를 만들어 줘요.<br>더블클릭 한 번으로 내 폴더에 들어갈 수 있어요.</p></div><figure><img src="/assets/img/setup/desktop-me.png" alt="바탕화면의 me 폴더 바로가기를 마우스로 가리킨 화면"><figcaption>바탕화면의 <b>me</b> 바로가기</figcaption></figure></div>
 </div>
 
 <div class="whyg">
@@ -204,9 +204,8 @@ AI가 끝났다고 하면, 내 **me** 폴더가 아래 사진처럼 되어 있�
 
 <div class="seq"><figure><img src="/assets/img/setup/setup-done.png" alt="원드라이브 me 폴더 안에 Obsidian Vault 폴더가 초록 체크와 함께 보이는 파일 탐색기 화면"><figcaption>원드라이브 <b>me</b> 안에 <b>Obsidian Vault</b>가 보이면 성공이에요</figcaption></figure></div>
 
-<p class="sub-note">규칙 파일(AI협업규칙.md 등)은 1주차 수업에서 함께 넣어요. md 파일이 궁금하다면 <a href="{{ '/2026/09/27/gpters-24-md/' | relative_url }}">3강</a>을 먼저 읽어 보세요.</p>
 
-<div class="done"><div class="done-t">🎉 여기까지 했으면 설치가 끝났어요!<br>축하드립니다!</div><p>아래는 부가 설명이에요. 궁금한 분만 더 읽어 보세요!</p></div>
+<div class="done"><div class="done-t">🎉 여기까지 했으면 설치가 끝났어요!<br>축하드립니다!</div><p>아래는 부가 설명이에요.<br>궁금한 분만 더 읽어 보세요!</p></div>
 
 ## <span class="no">6</span> 더 알아 두면 좋은 것 <small>(선택)</small>
 
@@ -217,6 +216,6 @@ AI가 끝났다고 하면, 내 **me** 폴더가 아래 사진처럼 되어 있�
 
 <div class="addr">
 <div class="addr-line"><span class="c1"><b>C:</b><small>저장 드라이브</small></span><span class="sep">\</span><span class="c2"><b>Users</b><small>사용자 폴더</small></span><span class="sep">\</span><span class="c3"><b>User</b><small>이 컴퓨터의 내 이름</small></span><span class="sep">\</span><span class="c4"><b>OneDrive</b><small>원드라이브 구간</small></span><span class="sep">\</span><span class="c5"><b>me</b><small>내 폴더</small></span></div>
-<div class="sym"><div><b class="k">:</b><p><b>"여기까지가 저장 공간 이름"</b>이라는 표시예요. <code>C:</code>는 내 컴퓨터 안의 저장 공간 이름이라, 보통 "C 드라이브"라고 읽어요.</p></div><div><b class="k">\</b><p><b>"그 안으로 들어가요"</b>라는 표시예요. 폴더 하나에 들어갈 때마다 하나씩 붙어요. 파일 탐색기 주소창의 <code>›</code>와 같아요.</p></div></div>
+<div class="sym"><div><b class="k">:</b><p><b>"여기까지가 저장 공간 이름"</b>이라는 표시예요. <code>C:</code>는 내 컴퓨터 안의 저장 공간 이름이라, 보통 "C 드라이브"라고 읽어요.</p></div><div><b class="k">\</b><p><b>"그 안으로 들어가요"</b>라는 표시예요.<br>폴더 하나에 들어갈 때마다 하나씩 붙어요.<br>파일 탐색기 주소창의 <code>›</code>와 같아요.</p></div></div>
 <p>그래서 이 주소는 "서울시 › ○○구 › ○○동"처럼, <b>C 드라이브 안의 Users 안의 내 이름 안의 OneDrive 안의 me</b>라고 읽어요.</p>
 </div>

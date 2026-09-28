@@ -120,10 +120,9 @@ AI에 폴더 접근 권한을 주면, AI는 그 안의 파일을 직접 읽을 �
 
 <h3 class="step-h"><span>2</span><img src="/assets/img/icons/obsidian.png" alt="">옵시디언 설치하고 보관함 만들기 <small>AI와 함께</small></h3>
 
-데스크탑 앱에 아래 요청을 보내 폴더 만들기와 옵시디언 설치를 부탁해요.<br>
-<b>me는 제가 붙인 이름이라 바꿔도 돼요.</b>
+GPT나 클로드 데스크탑 앱에 옵시디언 설치를 부탁해 봐요.
 
-<p><strong style="font-weight:900">막히면 화면을 캡처해서 “다음에 뭘 누르면 돼?” 하고 물어보세요!</strong></p>
+<p><strong style="font-weight:900">막히면 화면을 캡처해서 AI에게 “다음에 뭘 누르면 돼?” 하고 물어보세요!</strong></p>
 
 <div class="prompt"><span class="who">폴더 만들기·옵시디언 설치 요청 (데스크탑 앱에)</span><button class="copy" type="button">복사</button><span class="txt">아래 세 가지를 도와줘.
 
@@ -134,14 +133,15 @@ AI에 폴더 접근 권한을 주면, AI는 그 안의 파일을 직접 읽을 �
 네가 직접 할 수 있는 건 해 주고, 내가 눌러야 할 화면이나 권한 창은 한 단계씩 알려줘.
 끝나면 만든 폴더를 열어 나와 함께 확인해줘.</span></div>
 
-앱이 폴더부터 고르라고 하면, 파일 탐색기에서 원드라이브 안에 <code>me</code>를 직접 만들고 선택하세요.
-
-보관함을 직접 만들 때는 옵시디언에서 <b>새 보관함 생성</b>을 누르고, 이름은 <code>Obsidian Vault</code>, 위치는 <code>me</code>로 골라요.
-
+<details class="fallback"><summary>AI가 못 하면? 직접 하는 방법</summary>
+<ol>
+<li>파일 탐색기에서 원드라이브를 열고, 새 폴더를 만들어 이름을 <code>me</code>로 바꿔요.</li>
+<li>옵시디언에서 <b>새 보관함 생성</b>을 눌러요.</li>
+<li>이름은 <code>Obsidian Vault</code>, 위치는 <code>me</code>로 골라요.</li>
+</ol>
 <div class="seq"><figure><img src="/assets/img/setup/obsidian-create-vault.png" alt="옵시디언 로컬 보관함 생성 화면의 보관함 이름과 위치 탐색 버튼" style="max-width:520px;margin:auto;display:block"><figcaption><b>보관함 이름</b>은 Obsidian Vault, <b>위치</b>는 원드라이브 안의 me</figcaption></figure></div>
-
-AI가 이미 만들어 뒀다면 <b>보관함 폴더 열기</b>로 <code>me/Obsidian Vault</code>를 열면 돼요.<br>
-비어 있어도 괜찮아요.
+<p>AI가 보관함을 이미 만들었다면, 옵시디언에서 <b>보관함 폴더 열기</b>로 <code>me/Obsidian Vault</code>를 열어요.</p>
+</details>
 
 ## <span class="no">3</span> AI에게 세팅 시키기
 

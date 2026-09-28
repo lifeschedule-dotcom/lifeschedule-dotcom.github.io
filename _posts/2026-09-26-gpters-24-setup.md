@@ -209,14 +209,13 @@ AI가 이미 만들어 뒀다면 <b>보관함 폴더 열기</b>로 <code>me/Obsi
 
 ## <span class="no">5</span> 잘 됐는지 하나하나 확인하기
 
-AI가 끝났다고 하면, 아래 항목을 **직접** 확인해요.
+AI가 끝났다고 하면, 내 **me** 폴더가 아래 사진처럼 되어 있는지 **직접** 열어 확인해요.
 
-<ul class="checks">
-<li><svg><use href="#i-check"/></svg><span>바탕화면의 <b>내 폴더 바로가기</b>를 더블클릭하면 폴더가 열린다</span></li>
-<li><svg><use href="#i-check"/></svg><span>me 안의 <b>Obsidian Vault</b> 폴더를 열면 <b>AI협업규칙.md</b> 파일이 보인다</span></li>
-<li><svg><use href="#i-check"/></svg><span>옵시디언에서도 <b>Obsidian Vault</b>를 열면 같은 규칙 파일이 보인다(<code>.md</code>가 안 보여도 괜찮다)</span></li>
-<li><svg><use href="#i-check"/></svg><span><b>새 대화</b>에서 아래 한 줄을 보내면, AI가 파일의 규칙과 실제 위치를 말해 준다</span></li>
-</ul>
+<!-- TODO: 지원님이 줄 1강 완료 화면 캡처를 assets/img/setup/ 에 넣고 아래 figure 주석을 푼다
+<div class="seq"><figure><img src="/assets/img/setup/setup-done.png" alt="1강을 마친 me 폴더 화면"><figcaption>…</figcaption></figure></div>
+-->
+
+그다음 **새 대화**에서 아래 요청을 보내 보세요. AI가 규칙 파일을 읽고 실제 위치를 말해 주면 성공이에요.
 
 <b>새 대화를 시작할 때 한 번</b> 보내요. 새 직원에게 "업무 매뉴얼 먼저 보고 시작해요"라고 말하는 것과 같아요.
 

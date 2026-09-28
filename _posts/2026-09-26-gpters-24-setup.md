@@ -1,5 +1,5 @@
 ---
-title: 날씨 묻는 거 말고, AI 처음 시작할 때 꼭 해야 할 세팅
+title: [1강] 날씨 묻는 거 말고, AI 처음 시작할 때 꼭 해야 할 세팅
 section: vibe-coding
 sub: gpters24
 ref: gpters-24-setup
@@ -163,18 +163,9 @@ AI가 이미 만들어 뒀다면 <b>보관함 폴더 열기</b>로 <code>me/Obsi
    - 이 폴더를 "항상 이 디바이스에 유지"로 설정해줘.
    - 바탕화면·문서·사진 전체 백업은 새로 켜지 마.
 
-4. 규칙 파일 만들기
-   - <span class="fill">(me)</span> 안에 Obsidian Vault 폴더가 있는지 확인해줘. 없으면 만들도록 안내해줘.
-   - 그 안에 AI협업규칙.md를 만들고 아래 규칙을 적어줘. 이미 있으면 기존 내용을 읽고 필요한 것만 보완해줘.
-     · 새 작업물은 <span class="fill">(me)</span> 안의 주제별 폴더에 저장한다
-     · 작업이 끝나면 Obsidian Vault 안의 해당 주제 작업기록.md에 날짜, 한 일, 작업물 위치, 다음 할 일을 짧게 덧붙인다 (없으면 만든다, 기존 내용은 지우지 않는다)
-     · 비밀번호와 API 키는 파일에 적지 않는다
-     · 나는 초보니까 쉬운 말로, 한 번에 한 단계씩 설명한다
-
+마지막으로 <span class="fill">(me)</span> 안에 Obsidian Vault 폴더가 있는지도 확인해줘.
 다 끝나면 무엇을 어디에 만들었는지 실제 위치와 함께 보여주고,
-바탕화면 바로가기와 규칙 파일이 열리는지 나와 함께 확인해줘.</span></div>
-
-끝나면 옵시디언 왼쪽 목록에 <b>AI협업규칙</b>이 보이는지 확인해요.
+바탕화면 바로가기가 열리는지 나와 함께 확인해줘.</span></div>
 
 <div class="callout warn"><svg><use href="#i-warn"/></svg><div><b>이것만은 직접 해요.</b> 로그인, 비밀번호, 결제, "허용할까요?" 창은 읽어 보고 내가 눌러요.</div></div>
 
@@ -199,34 +190,15 @@ AI가 이미 만들어 뒀다면 <b>보관함 폴더 열기</b>로 <code>me/Obsi
 <div class="wc"><div class="wq">전체 백업은 새로 켜지 마</div><p>켜면 바탕화면·문서·사진이 통째로 올라가 원드라이브가 복잡해져요.</p></div>
 </div>
 
-<div class="whyg">
-<div class="wg-h"><span>4</span>보관함 안에 규칙 파일 만들기</div>
-<div class="wc"><div class="wq">Obsidian Vault · AI협업규칙.md · 작업기록.md</div><p>규칙·기록 파일은 <b>AI가 만들어요.</b> 나중에 규칙을 조금씩 고쳐 나가면 돼요.</p><div class="prompt mini"><span class="who">규칙을 더하고 싶을 때</span><button class="copy" type="button">복사</button><span class="txt">Obsidian Vault/AI협업규칙.md에 <span class="fill">(파일 이름은 날짜로 시작한다)</span> 규칙을 추가해줘.</span></div><div class="prompt mini"><span class="who">오늘 한 일을 남기고 싶을 때</span><button class="copy" type="button">복사</button><span class="txt">오늘 한 일을 Obsidian Vault 안의 해당 주제 작업기록.md에 남겨줘.</span></div></div>
-<div class="wc"><div class="wq">비밀번호와 API 키는 적지 않는다</div><p>이 폴더는 인터넷에 올라가요. 새어 나간 키는 되돌릴 수 없어요.</p></div>
-<div class="wc"><div class="wq">한 번에 한 단계씩</div><p>한 단계씩 받아야 어디서 막혔는지 바로 알 수 있어요.</p></div>
-</div>
-
-
 ## <span class="no">5</span> 잘 됐는지 하나하나 확인하기
 
 AI가 끝났다고 하면, 내 **me** 폴더가 아래 사진처럼 되어 있는지 **직접** 열어 확인해요.
 
-<!-- TODO: 지원님이 줄 1강 완료 화면 캡처를 assets/img/setup/ 에 넣고 아래 figure 주석을 푼다
+<!-- TODO: 지원님이 줄 1강 완료 화면(me 안에 Obsidian Vault) 캡처를 assets/img/setup/ 에 넣고 아래 figure 주석을 푼다
 <div class="seq"><figure><img src="/assets/img/setup/setup-done.png" alt="1강을 마친 me 폴더 화면"><figcaption>…</figcaption></figure></div>
 -->
 
-그다음 **새 대화**에서 아래 요청을 보내 보세요. AI가 규칙 파일을 읽고 실제 위치를 말해 주면 성공이에요.
-
-<b>새 대화를 시작할 때 한 번</b> 보내요. 새 직원에게 "업무 매뉴얼 먼저 보고 시작해요"라고 말하는 것과 같아요.
-
-<div class="prompt"><span class="who">새 대화를 시작할 때</span><button class="copy" type="button">복사</button><span class="txt">시작하기 전에 <span class="fill">(me)</span> 안에서 아래 두 파일을 읽어줘.
-
-- Obsidian Vault/AI협업규칙.md
-- 이번 작업의 최근 작업기록 (없으면 없다고 알려줘)
-
-읽은 파일의 실제 위치를 알려준 뒤 시작해줘.</span></div>
-
-<p class="sub-note">AI가 규칙 파일을 스스로 찾게 하는 방법은 <a href="{{ '/2026/09/27/gpters-24-md/' | relative_url }}">3강</a>에서 알려드려요.</p>
+<p class="sub-note">규칙 파일(AI협업규칙.md 등)은 1주차 수업에서 함께 넣어요. md 파일이 궁금하다면 <a href="{{ '/2026/09/27/gpters-24-md/' | relative_url }}">3강</a>을 먼저 읽어 보세요.</p>
 
 <div class="done"><div class="done-t">🎉 여기까지 했으면 설치가 끝났어요!<br>축하드립니다!</div><p>아래는 부가 설명이에요. 궁금한 분만 더 읽어 보세요!</p></div>
 

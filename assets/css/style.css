@@ -873,3 +873,10 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .wc.shot img { width: 88px !important; }
 .wc.shot figcaption { display: none; }
 .content.spacious .done-t { margin-bottom: 0; }
+
+/* 3강: 두 줄짜리 흰 상자 (색 최소) */
+.linkbox { margin: 1.2em 0 1.6em; padding: 6px 18px; border-radius: 14px; background: #fff; border: 1px solid #ebe3e6; }
+.linkbox > div { display: grid; grid-template-columns: 28px 1fr; gap: 8px; align-items: baseline; padding: 10px 0; font-size: 17px; line-height: 1.6; }
+.linkbox > div + div { border-top: 1px solid #f1eaec; }
+.linkbox .n { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 7px; border: 1.5px solid var(--accent); color: var(--accent); font-size: 14px; font-weight: 700; }
+@media (max-width: 480px) { .linkbox { padding: 4px 12px; } .linkbox > div { font-size: 15.5px; } }

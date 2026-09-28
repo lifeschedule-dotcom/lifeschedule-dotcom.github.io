@@ -9,13 +9,13 @@ spacious: true
 ---
 <link rel="stylesheet" href="{{ '/assets/css/lesson4.css' | relative_url }}">
 <div class="lesson4">
-<div class="lead-note">오늘은 북부대공 자료를 <b>me에 저장</b>하고, AI에게 <b>Obsidian 홈 목차 연결</b>을 부탁해요.</div>
+<div class="keyline">받은 자료는 me에 두고, 옵시디언 홈에서 찾아가게 해요.</div>
 
-<p><a href="{{ '/2026/09/26/gpters-24-setup/' | relative_url }}">1강</a>에서 만든 <b>me</b> 폴더와 <b>Obsidian Vault</b> 보관함을 그대로 써요.</p>
+<h2 id="starter-rules"><span class="no">1</span> 규칙 파일 준비</h2>
 
-<h2 id="starter-rules"><span class="no">1</span> 규칙 파일부터 준비해요</h2>
+<h3 class="step-h"><span>1</span>규칙 파일 받기</h3>
 
-<p>세 파일은 AI에게 내 자료 정리 방법을 알려 주는 <b>업무 매뉴얼</b>이에요.<br>하나씩 받아 주세요.</p>
+<p>AI가 일하는 방식을 정한 규칙 파일이에요.<br>하나씩 받아 주세요.</p>
 
 <div class="l4-downloads">
 <p><a class="l4-button" href="{{ '/assets/downloads/gpters24/rules/AGENTS.md' | relative_url }}" download="AGENTS.md">① AGENTS.md 받기</a></p>
@@ -23,7 +23,7 @@ spacious: true
 <p><a class="l4-button" href="{{ '/assets/downloads/gpters24/rules/AI협업규칙.md' | relative_url }}" download="AI협업규칙.md">③ AI협업규칙.md 받기</a></p>
 </div>
 
-<p>받은 파일은 아래 자리에 넣어요.</p>
+<h3 class="step-h"><span>2</span>넣을 자리</h3>
 
 <pre class="l4-tree">me/
 ├─ AGENTS.md  ← 여기에
@@ -33,7 +33,7 @@ spacious: true
 
 <div class="callout tip"><svg><use href="#i-note"/></svg><div><b>같은 이름의 파일이 이미 있다면?</b><br>덮어쓰지 말고, 아래 <b>‘이미 규칙 파일이 있는 분’</b> 요청을 써요.</div></div>
 
-<h3>AI가 규칙을 읽었는지 확인하기</h3>
+<h3 class="step-h"><span>3</span>AI에게 확인</h3>
 
 <p>데스크탑 앱에서 <b>me를 선택한 채로</b> 보내요.</p>
 
@@ -65,7 +65,7 @@ spacious: true
 
 <p>AI가 세 파일의 위치를 알려 주면 준비 끝이에요.</p>
 
-<h2><span class="no">2</span> 북부대공 자료를 me에 저장해요</h2>
+<h2><span class="no">2</span> 북부대공 자료 저장</h2>
 
 <h3 class="step-h"><span>1</span>실습 MD 파일 받기</h3>
 
@@ -81,7 +81,7 @@ spacious: true
 
 <div class="l4-location"><figure><img src="/assets/img/gpters24/lesson4/02a-folder-location.png" alt="파일 탐색기 위치 표시: OneDrive, me, 북부대공"><figcaption>주소에 <b>me › 북부대공</b>이 보이면 돼요.</figcaption></figure><figure><img src="/assets/img/gpters24/lesson4/02b-folder-file.png" alt="실제 북부대공 폴더 안에 00_북부성_실습_상황 파일이 있고 유형은 MD 파일, 크기는 5KB로 표시된다"><figcaption>폴더 안에 <b>MD 파일</b>이 있으면 돼요.</figcaption></figure></div>
 
-<h2><span class="no">3</span> AI에게 목차 연결을 맡겨요</h2>
+<h2><span class="no">3</span> 목차 연결 요청</h2>
 
 <p>규칙을 확인한 대화에서 이어서 보내요.</p>
 
@@ -107,7 +107,7 @@ spacious: true
 <p class="l4-map-foot">홈 → 소개 노트 → 원본 위치 순서로 찾아가요.</p>
 </div>
 
-<h2><span class="no">4</span> Obsidian 홈에서 눌러 봐요</h2>
+<h2><span class="no">4</span> 옵시디언 홈에서 확인</h2>
 
 <h3 class="step-h"><span>1</span><img src="/assets/img/icons/obsidian.png" alt="">홈 찾기</h3>
 
@@ -123,7 +123,6 @@ spacious: true
 
 <p>안 눌리면 <b>Ctrl+E</b>로 읽기 보기로 바꿔요.</p>
 
-<div class="seq"><figure><img src="/assets/img/gpters24/lesson4/05-intro-note.png" alt="홈의 북부대공 실습 링크를 눌러 보관함 안의 소개 노트가 열린 실제 화면"><figcaption><b>소개 노트</b>가 열려요.</figcaption></figure></div>
 
 <h3 class="step-h"><span>3</span>소개 노트에서 원본 위치 열기</h3>
 
@@ -133,7 +132,7 @@ spacious: true
 
 <div class="done"><div class="done-t">🎉 여기까지 했으면 목차 연결이 끝났어요!<br>축하드립니다!</div></div>
 
-<h2><span class="no">5</span> 다음 자료부터는 짧게 <small>(선택)</small></h2>
+<h2><span class="no">5</span> 다음 자료용 짧은 요청문 <small>(한번 해 보세요!)</small></h2>
 
 <p class="sub-note">노란 괄호 칸만 내 상황에 맞게 바꿔주면 됩니다.</p>
 

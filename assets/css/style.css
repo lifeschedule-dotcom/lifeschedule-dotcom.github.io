@@ -880,3 +880,14 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .linkbox > div + div { border-top: 1px solid #f1eaec; }
 .linkbox .n { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 7px; border: 1.5px solid var(--accent); color: var(--accent); font-size: 14px; font-weight: 700; }
 @media (max-width: 480px) { .linkbox { padding: 4px 12px; } .linkbox > div { font-size: 15.5px; } }
+
+/* 3강: md 파일 종류 목록 (흰 상자 하나, 색 최소) */
+.mdlist { margin: 1.2em 0 2em; padding: 6px 18px 10px; border-radius: 14px; background: #fff; border: 1px solid #ebe3e6; }
+.ml-h { margin: 14px 0 2px; font-size: 16px; font-weight: 700; color: var(--accent); }
+.ml-h:first-child { margin-top: 8px; }
+.ml-i { padding: 8px 0 10px; border-bottom: 1px solid #f1eaec; }
+.ml-i b { display: block; font-size: 17px; }
+.ml-i p { margin: 6px 0 0 !important; font-size: 16px; line-height: 1.6; }
+.ml-ai { display: inline-flex; align-items: center; gap: 4px; font-weight: 700; color: #5a2233; }
+.ml-ai img { width: 18px; height: 18px; }
+.mdlist .ml-i:last-child { border-bottom: 0; }

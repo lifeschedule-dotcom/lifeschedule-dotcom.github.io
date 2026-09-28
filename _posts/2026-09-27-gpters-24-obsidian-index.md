@@ -151,8 +151,8 @@ spacious: true
 <h2><span class="no">6</span> 자주 헷갈리는 것</h2>
 
 <details class="l4-faq" open><summary>같은 MD가 두 개 생긴 건가요?</summary><p>원본은 <code>me/북부대공/00_북부성_실습_상황.md</code>예요.<br>보관함의 <code>북부대공 실습.md</code>는 <b>소개와 위치</b>만 적은 다른 파일이에요.</p></details>
-<details class="l4-faq"><summary>Obsidian은 me 안의 모든 MD를 보여 주나요?</summary><p>Obsidian은 열린 보관함 안의 파일만 보여 줘요.<br>바깥 원본은 소개 노트에 적힌 위치로 찾아가요.<br>원본을 옮기면 AI에게 위치 링크도 고쳐 달라고 해요. <a href="https://obsidian.md/help/vault">Obsidian 보관함 안내</a></p></details>
-<details class="l4-faq"><summary>홈이라는 목차는 특별한 기능인가요?</summary><p>홈은 <b>홈.md라는 보통 문서</b>예요.<br>AI가 그 안에 <code>[[10 프로젝트/…/북부대공 실습]]</code> 같은 내부 링크를 적어서 누를 수 있게 된 거예요. <a href="https://obsidian.md/help/links">Obsidian 내부 링크 안내</a></p></details>
+<details class="l4-faq"><summary>Obsidian은 me 안의 모든 MD를 보여 주나요?</summary><p>Obsidian은 열린 보관함 안의 파일만 보여 줘요.<br>바깥 원본은 소개 노트에 적힌 위치로 찾아가요.<br>원본을 옮기면 AI에게 위치 링크도 고쳐 달라고 해요.<br><a href="https://obsidian.md/help/vault">Obsidian 보관함 안내</a></p></details>
+<details class="l4-faq"><summary>홈이라는 목차는 특별한 기능인가요?</summary><p>홈은 <b>홈.md라는 보통 문서</b>예요.<br>AI가 그 안에 <code>[[10 프로젝트/…/북부대공 실습]]</code> 같은 내부 링크를 적어서 누를 수 있게 된 거예요.<br><a href="https://obsidian.md/help/links">Obsidian 내부 링크 안내</a></p></details>
 <details class="l4-faq"><summary>다른 컴퓨터에서 원본 폴더 링크가 안 열려요.</summary><p>링크는 지금 쓰는 컴퓨터의 주소로 만들어져요.<br>AI에게 새 컴퓨터의 원본 위치를 확인해 링크를 고쳐 달라고 해요.</p></details>
 <details class="l4-faq"><summary>실습 MD 본문을 당장 읽고 싶어요.</summary><p>파일 탐색기에서 <code>me/북부대공/00_북부성_실습_상황.md</code>를 열거나, 위의 GitHub 링크에서 봐요.</p></details>
 

@@ -194,7 +194,7 @@ GPT나 클로드 데스크탑 앱에 옵시디언 설치를 부탁해 봐요.
 
 <div class="whyg">
 <div class="wg-h"><span>3</span>항상 이 디바이스에 유지</div>
-<div class="wc"><div class="wq">항상 이 디바이스에 유지</div><p>파일이 인터넷에만 있으면 AI가 못 읽을 때가 있어요. <b>"내 컴퓨터에도 늘 진짜 파일로 둬"</b>라는 설정이에요.</p><div class="states"><span class="st cloud"><i>☁</i>파란 구름<small>인터넷에만 있어요</small></span><span class="st keep"><i>✔</i>꽉 찬 초록 체크<small>내 컴퓨터에도 늘 있어요</small></span></div></div>
+<div class="wc"><div class="wq">항상 이 디바이스에 유지</div><p>파일이 인터넷에만 있으면 AI가 못 읽을 때가 있어요.<br><b>"내 컴퓨터에도 늘 진짜 파일로 둬"</b>라는 설정이에요.</p><div class="states"><span class="st cloud"><i>☁</i>파란 구름<small>인터넷에만 있어요</small></span><span class="st keep"><i>✔</i>꽉 찬 초록 체크<small>내 컴퓨터에도 늘 있어요</small></span></div></div>
 <div class="wc"><div class="wq">전체 백업은 새로 켜지 마</div><p>켜면 바탕화면·문서·사진이 통째로 올라가 원드라이브가 복잡해져요.</p></div>
 </div>
 
@@ -216,6 +216,6 @@ AI가 끝났다고 하면, 내 **me** 폴더가 아래 사진처럼 되어 있�
 
 <div class="addr">
 <div class="addr-line"><span class="c1"><b>C:</b><small>저장 드라이브</small></span><span class="sep">\</span><span class="c2"><b>Users</b><small>사용자 폴더</small></span><span class="sep">\</span><span class="c3"><b>User</b><small>이 컴퓨터의 내 이름</small></span><span class="sep">\</span><span class="c4"><b>OneDrive</b><small>원드라이브 구간</small></span><span class="sep">\</span><span class="c5"><b>me</b><small>내 폴더</small></span></div>
-<div class="sym"><div><b class="k">:</b><p><b>"여기까지가 저장 공간 이름"</b>이라는 표시예요. <code>C:</code>는 내 컴퓨터 안의 저장 공간 이름이라, 보통 "C 드라이브"라고 읽어요.</p></div><div><b class="k">\</b><p><b>"그 안으로 들어가요"</b>라는 표시예요.<br>폴더 하나에 들어갈 때마다 하나씩 붙어요.<br>파일 탐색기 주소창의 <code>›</code>와 같아요.</p></div></div>
+<div class="sym"><div><b class="k">:</b><p><b>"여기까지가 저장 공간 이름"</b>이라는 표시예요.<br><code>C:</code>는 내 컴퓨터 안의 저장 공간 이름이라, 보통 "C 드라이브"라고 읽어요.</p></div><div><b class="k">\</b><p><b>"그 안으로 들어가요"</b>라는 표시예요.<br>폴더 하나에 들어갈 때마다 하나씩 붙어요.<br>파일 탐색기 주소창의 <code>›</code>와 같아요.</p></div></div>
 <p>그래서 이 주소는 "서울시 › ○○구 › ○○동"처럼, <b>C 드라이브 안의 Users 안의 내 이름 안의 OneDrive 안의 me</b>라고 읽어요.</p>
 </div>

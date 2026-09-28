@@ -78,8 +78,8 @@ AI에 폴더 접근 권한을 주면, AI는 그 안의 파일을 직접 읽을 �
 ## <span class="no">2</span> 일하는 AI(데스크탑 앱)과 옵시디언 설치하기
 
 <div class="twoai">
-<div class="ta chat"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>인터넷 채팅창</div><p>질문하면 <b>방법을 알려줘요.</b></p></div>
-<div class="ta desk"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>데스크탑 앱 <small>설치하는 프로그램</small></div><p>내 폴더에서 <b>파일을 직접 만들고 고쳐요.</b></p></div>
+<div class="ta chat"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>인터넷 채팅창</div><p>답과 결과물을 <b>채팅창 안에서 줘요.</b></p></div>
+<div class="ta desk"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt=""></span>데스크탑 앱</div><p>내 폴더에서 <b>파일을 직접 만들고 고쳐요.</b></p></div>
 </div>
 
 <h3 class="step-h"><span>1</span>AI 데스크탑 앱 설치하기 <small>채팅창에서</small></h3>

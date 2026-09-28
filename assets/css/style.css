@@ -891,3 +891,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .ml-ai { display: inline-flex; align-items: center; gap: 4px; font-weight: 700; color: #5a2233; }
 .ml-ai img { width: 18px; height: 18px; }
 .mdlist .ml-i:last-child { border-bottom: 0; }
+.ml-r { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; padding: 7px 0; border-bottom: 1px solid #f1eaec; font-size: 16.5px; line-height: 1.5; }
+.ml-r .mt-f { margin-top: 0; }
+.mdlist .ml-r:last-child { border-bottom: 0; }
+.mdlist .ml-h { margin: 10px 0 0; }

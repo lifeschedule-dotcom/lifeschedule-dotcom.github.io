@@ -11,7 +11,6 @@ ref: gpters-24-intro
 - 사전 세팅 1강: [날씨 묻는 거 말고, AI 처음 시작할 때 꼭 해야 할 세팅]({{ '/2026/09/26/gpters-24-setup/' | relative_url }})
 - 사전 세팅 2강 (자유): [AI는 왜 자꾸 잊어버릴까]({{ '/2026/09/26/gpters-24-why/' | relative_url }})
 - 사전 세팅 3강: [md 파일이 뭘까? md 파일에 대해 알아보자]({{ '/2026/09/27/gpters-24-md/' | relative_url }})
-- 4강: [me에 받은 자료를 Obsidian 홈 목차에 연결하기]({{ '/2026/09/27/gpters-24-obsidian-index/' | relative_url }})
 - 1주차: 준비 중
 - 2주차: 준비 중
 - 3주차: 준비 중

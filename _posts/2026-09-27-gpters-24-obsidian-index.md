@@ -9,7 +9,7 @@ spacious: true
 ---
 <link rel="stylesheet" href="{{ '/assets/css/lesson4.css' | relative_url }}">
 <div class="lesson4">
-<div class="keyline">받은 자료는 me에 두고, 옵시디언 홈에서 찾아가게 해요.</div>
+<div class="keyline">받은 자료는 me 폴더에 정리하고,<br>나는 옵시디언으로 많은 자료를 쉽게 보고 쓰기</div>
 
 <h2 id="starter-rules"><span class="no">1</span> 규칙 파일 준비</h2>
 

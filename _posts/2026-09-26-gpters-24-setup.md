@@ -32,7 +32,7 @@ spacious: true
 <div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>주제별 폴더</b><span>작업물</span></div>
 </div>
 </div>
-<div class="sync-col"><div class="sync-mid"><img src="/assets/img/icons/onedrive.png" alt=""><b>원드라이브</b><small class="mt">인터넷 창고</small><i>⇄</i><span>동기화가 끝나면<br>다른 기기에서도 볼 수 있어요</span></div><div class="sync-gh"><div class="gh-top"><img src="/assets/img/icons/github.png" alt=""><b>GitHub</b></div><span>별도 서비스<br>(나중에 배워요)</span></div></div>
+<div class="sync-col"><div class="sync-mid"><img src="/assets/img/icons/onedrive.png" alt=""><b>원드라이브</b><small class="mt">인터넷 창고</small><i>⇄</i><span>동기화가 끝나면 <br>다른 기기에서도 볼 수 있어요</span></div><div class="sync-gh"><div class="gh-top"><img src="/assets/img/icons/github.png" alt=""><b>GitHub</b></div><span>별도 서비스 <br>(나중에 배워요)</span></div></div>
 <div class="pc other">
 <div class="pc-h"><svg class="i"><use href="#i-laptop"/></svg>다른 노트북 <small>(있다면)</small></div>
 <div class="openers"><span><svg class="i"><use href="#i-hand"/></svg>나</span><span><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">AI</span><span class="opt"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언</span></div>
@@ -190,7 +190,7 @@ AI가 이미 만들어 뒀다면 <b>보관함 폴더 열기</b>로 <code>me/Obsi
 <div class="wc"><div class="wq">전체 백업은 새로 켜지 마</div><p>켜면 바탕화면·문서·사진이 통째로 올라가 원드라이브가 복잡해져요.</p></div>
 </div>
 
-## <span class="no">5</span> 잘 됐는지 하나하나 확인하기
+## <span class="no">5</span> 잘 됐는지 확인하기
 
 AI가 끝났다고 하면, 내 **me** 폴더가 아래 사진처럼 되어 있는지 **직접** 열어 확인해요.
 

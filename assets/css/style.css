@@ -701,3 +701,23 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
 /* 여유 간격 글: 폴더·단축키 표시를 본문 글씨체로 */
 .content.spacious :not(pre) > code { font-family: inherit; font-size: .95em; font-weight: 700; padding: 1px 7px; border-radius: 6px; background: #f6e4e9; color: #7d3349; }
 .content.spacious .prompt code { background: #fff; }
+
+/* ---------- 폰 (갤럭시 360~412px · 아이폰 375~430px) ---------- */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+@media (max-width: 480px) {
+  .wrap { padding-left: 10px; padding-right: 10px; }
+  .article { padding: 22px 16px; border-radius: 12px; }
+  .article h1 { font-size: 25px; line-height: 1.35; word-break: keep-all; }
+  .content.spacious p { margin-bottom: 1.4em; }
+  .content.spacious h2 { margin-top: 2.4em; }
+  .content.spacious .callout { gap: 10px; padding: 12px 14px; }
+  .content.spacious .prompt { padding: 14px 12px; }
+  .content.spacious .prompt .who { padding-right: 64px; }
+  .content.spacious .prompt .txt { font-size: 16px; line-height: 1.7; }
+  .content.spacious .whyg { padding: 12px 10px; }
+  .content.spacious .wc { padding: 12px; }
+  .content.spacious .ta { padding: 14px; }
+  .apptabs-bar label { padding: 8px 12px; font-size: 16px; }
+  .apptab-panel { padding: 14px 12px 4px; }
+  .sync-gh { gap: 2px 8px; }
+}

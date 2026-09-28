@@ -665,3 +665,20 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
   .fd .nm { grid-column: 1; }
 }
 .bm-what code, .fd code { font-family: inherit; }
+
+/* 여유 있는 문단 간격 (front matter: spacious: true) */
+.content.spacious { line-height: 1.85; }
+.content.spacious p { margin: 0 0 1.7em; }
+.content.spacious h2 { margin-top: 3em; }
+.content.spacious h3 { margin: 2.2em 0 .8em; }
+.content.spacious .callout,
+.content.spacious .prompt,
+.content.spacious .seq,
+.content.spacious .snap,
+.content.spacious .twoai,
+.content.spacious .mdcmp,
+.content.spacious .whyg,
+.content.spacious .checks,
+.content.spacious .sync { margin-top: 1.6em; margin-bottom: 2em; }
+.content.spacious .callout p,
+.content.spacious .wc p { margin-bottom: .6em; }

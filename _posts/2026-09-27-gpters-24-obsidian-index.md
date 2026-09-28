@@ -1,5 +1,5 @@
 ---
-title: [4강] me에 받은 자료를 Obsidian 홈 목차에 연결하기
+title: "[4강] me에 받은 자료를 Obsidian 홈 목차에 연결하기"
 section: vibe-coding
 sub: gpters24
 ref: gpters-24-obsidian-index

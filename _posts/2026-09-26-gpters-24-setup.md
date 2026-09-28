@@ -1,5 +1,5 @@
 ---
-title: [1강] 날씨 묻는 거 말고, AI 처음 시작할 때 꼭 해야 할 세팅
+title: "[1강] 날씨 묻는 거 말고, AI 처음 시작할 때 꼭 해야 할 세팅"
 section: vibe-coding
 sub: gpters24
 ref: gpters-24-setup

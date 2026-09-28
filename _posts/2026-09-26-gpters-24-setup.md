@@ -7,11 +7,15 @@ date: 2026-09-26 21:00:00 +0900
 description: 사전 세팅 1강. 원드라이브 me 폴더와 옵시디언 보관함을 만들고 AI의 작업 폴더를 확인해요.
 spacious: true
 ---
-저는 그동안 AI로 이런저런 프로젝트를 왕창 해왔어요. 노트북 2개, 미니PC 1개, AI 3개(클로드, GPT, 제미나이)를 오가다 보니 만든 것들이 여기저기 흩어져 있었고, 미루고 미루던 정리를 하는 데 **3일이나** 썼습니다.
+저는 그동안 AI로 이런저런 프로젝트를 왕창 해왔어요.<br>
+노트북 2개, 미니PC 1개, AI 3개(클로드, GPT, 제미나이)를 오가다 보니 만든 것들이 여기저기 흩어져 있었고, 미루고 미루던 정리를 하는 데 **3일이나** 썼습니다.
 
-여러분은 저처럼 되지 않길 바라요. 아직까지 날씨 묻는 데만 AI를 썼다면? **오히려 좋아!!!!!** 처음부터 세팅해 두면 저 같은 수고를 안 해도 돼요.
+여러분은 저처럼 되지 않길 바라요.<br>
+아직까지 날씨 묻는 데만 AI를 썼다면? **오히려 좋아!!!!!**<br>
+처음부터 세팅해 두면 저 같은 수고를 안 해도 돼요.
 
-"엥, 나는 그렇게까지 안 쓸 것 같은데?" 하시는 AI린이 여러분, 방심하지 마세요. 당신도 AI에 빠져서 많은 창작물을 만들게 될 수 있어요!
+"엥, 나는 그렇게까지 안 쓸 것 같은데?" 하시는 AI린이 여러분, 방심하지 마세요.<br>
+당신도 AI에 빠져서 많은 창작물을 만들게 될 수 있어요!
 
 <div class="keyline">대화의 기억은 내 폴더의 파일에 남겨요.</div>
 
@@ -47,13 +51,15 @@ spacious: true
 
 <h3 class="ih"><img src="/assets/img/icons/onedrive.png" alt="">원드라이브는 왜 쓰나요?</h3>
 
-원드라이브는 마이크로소프트의 인터넷 저장 공간(클라우드)이에요. 여기에 넣어 둔 자료는 **다른 기기에서도 꺼내 쓸 수 있어서** 꼭 추천해요.
+원드라이브는 마이크로소프트의 인터넷 저장 공간(클라우드)이에요.<br>
+여기에 넣어 둔 자료는 **다른 기기에서도 꺼내 쓸 수 있어서** 꼭 추천해요.
 
 컴퓨터가 고장 나도 **동기화가 끝난 자료**는 원드라이브에서 다시 꺼낼 수 있어요.
 
 <h3 class="ih"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언은 왜 쓰나요?</h3>
 
-AI에 폴더 접근 권한을 주면, AI는 그 안의 파일을 직접 읽을 수 있어요. 옵시디언은 **사람을 위한 도구**예요.
+AI에 폴더 접근 권한을 주면, AI는 그 안의 파일을 직접 읽을 수 있어요.<br>
+옵시디언은 **사람을 위한 도구**예요.
 
 같은 md 파일을 **메모장으로 열면** 기호가 그대로 보이고, 옵시디언에서 열면 읽기 좋게 바뀌어 보여요.
 
@@ -101,7 +107,8 @@ AI는 두 곳에서 쓸 수 있어요.
 
 <h3 class="step-h"><span>2</span><img src="/assets/img/icons/obsidian.png" alt="">옵시디언 설치하고 보관함 만들기 <small>AI와 함께</small></h3>
 
-데스크탑 앱에 아래 요청을 보내 폴더 만들기와 옵시디언 설치를 부탁해요. <b>me는 제가 붙인 이름이라 바꿔도 돼요.</b>
+데스크탑 앱에 아래 요청을 보내 폴더 만들기와 옵시디언 설치를 부탁해요.<br>
+<b>me는 제가 붙인 이름이라 바꿔도 돼요.</b>
 
 <p><strong style="font-weight:900">막히면 화면을 캡처해서 “다음에 뭘 누르면 돼?” 하고 물어보세요!</strong></p>
 
@@ -120,7 +127,8 @@ AI는 두 곳에서 쓸 수 있어요.
 
 <div class="seq"><figure><img src="/assets/img/setup/obsidian-create-vault.png" alt="옵시디언 로컬 보관함 생성 화면의 보관함 이름과 위치 탐색 버튼" style="max-width:520px;margin:auto;display:block"><figcaption><b>보관함 이름</b>은 Obsidian Vault, <b>위치</b>는 원드라이브 안의 me</figcaption></figure></div>
 
-AI가 이미 만들어 뒀다면 <b>보관함 폴더 열기</b>로 <code>me/Obsidian Vault</code>를 열면 돼요. 비어 있어도 괜찮아요.
+AI가 이미 만들어 뒀다면 <b>보관함 폴더 열기</b>로 <code>me/Obsidian Vault</code>를 열면 돼요.<br>
+비어 있어도 괜찮아요.
 
 ## <span class="no">3</span> AI에게 세팅 시키기
 
@@ -144,7 +152,8 @@ AI가 이미 만들어 뒀다면 <b>보관함 폴더 열기</b>로 <code>me/Obsi
 
 <p class="sub-note">폴더 선택은 처음 한 번이면 돼요. 다음부터는 새 대화에서 me가 선택되어 있는지만 확인해요.</p>
 
-이제 **me를 연 데스크탑 앱**에 아래 요청을 보내요. 한 줄씩 읽어 보고, 모르는 줄은 4번에서 찾아보세요.
+이제 **me를 연 데스크탑 앱**에 아래 요청을 보내요.<br>
+한 줄씩 읽어 보고, 모르는 줄은 4번에서 찾아보세요.
 
 <div class="prompt"><span class="who">지식관리 세팅 요청</span><button class="copy" type="button">복사</button><span class="txt">안녕! 나는 <span class="fill">(하는 일)</span>을 하는 사람이고, AI는 처음이야.
 앞으로 너랑 한 일을 한 폴더에 모아서 관리하고 싶어. 아래대로 세팅해줘.
@@ -204,7 +213,8 @@ AI가 끝났다고 하면, 내 **me** 폴더가 아래 사진처럼 되어 있�
 
 ### 내 폴더 주소 읽는 법
 
-윈도우 파일 탐색기에서 내 폴더를 열고 <code>Alt + D</code>를 누르면 주소가 선택돼요. 주소는 큰 곳에서 작은 곳으로 들어가는 길이에요.
+윈도우 파일 탐색기에서 내 폴더를 열고 <code>Alt + D</code>를 누르면 주소가 선택돼요.<br>
+주소는 큰 곳에서 작은 곳으로 들어가는 길이에요.
 
 <div class="addr">
 <div class="addr-line"><span class="c1"><b>C:</b><small>저장 드라이브</small></span><span class="sep">\</span><span class="c2"><b>Users</b><small>사용자 폴더</small></span><span class="sep">\</span><span class="c3"><b>User</b><small>이 컴퓨터의 내 이름</small></span><span class="sep">\</span><span class="c4"><b>OneDrive</b><small>원드라이브 구간</small></span><span class="sep">\</span><span class="c5"><b>me</b><small>내 폴더</small></span></div>

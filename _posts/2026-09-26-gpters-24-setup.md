@@ -30,7 +30,7 @@ spacious: true
 <div class="pc-h"><svg class="i"><use href="#i-laptop"/></svg>지금 쓰는 노트북</div>
 <div class="kfolder">
 <div class="kfolder-h"><svg class="i"><use href="#i-folder"/></svg>me</div>
-<div class="kdesc"><b>AI 작업 폴더</b> · 클로드·GPT 앱이 이 안의 파일을 읽고 만들어요</div>
+<div class="kdesc"><b>클로드·GPT 앱의 작업 공간</b></div>
 <div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>Obsidian Vault</b><span><b>옵시디언 보관함</b> · 규칙과 기록 노트를 모아 두는 곳</span></div>
 <div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>주제별 폴더</b><span>작업물</span></div>
 </div>
@@ -40,7 +40,7 @@ spacious: true
 <div class="pc-h"><svg class="i"><use href="#i-laptop"/></svg>다른 노트북 <small>(있다면)</small></div>
 <div class="kfolder">
 <div class="kfolder-h"><svg class="i"><use href="#i-folder"/></svg>me</div>
-<div class="kdesc"><b>AI 작업 폴더</b> · 클로드·GPT 앱이 이 안의 파일을 읽고 만들어요</div>
+<div class="kdesc"><b>클로드·GPT 앱의 작업 공간</b></div>
 <div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>Obsidian Vault</b><span><b>옵시디언 보관함</b> · 규칙과 기록 노트를 모아 두는 곳</span></div>
 <div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>주제별 폴더</b><span>작업물</span></div>
 </div>

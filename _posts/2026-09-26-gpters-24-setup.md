@@ -25,14 +25,31 @@ spacious: true
 
 원드라이브 안에 **me** 폴더를 만들어요.
 
-<div class="sync">
-<div class="pc">
-<div class="pc-h"><svg class="i"><use href="#i-laptop"/></svg>지금 쓰는 노트북</div>
-<div class="kfolder">
-<div class="kfolder-h"><svg class="i"><use href="#i-folder"/></svg>me</div>
-<div class="kdesc"><b>클로드·GPT 앱의 작업 공간</b></div>
-<div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>Obsidian Vault</b><span><b>옵시디언의 보관함</b> · 기록을 모아 보는 곳</span></div>
-<div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>주제별 폴더</b><span>작업물</span></div>
+<div class="lapmap">
+<div class="lap">
+<div class="lap-screen">
+<div class="lap-t"><svg class="i"><use href="#i-laptop"/></svg>지금 쓰는 노트북</div>
+<div class="nb od"><div class="nb-h"><img src="/assets/img/icons/onedrive.png" alt="">원드라이브</div>
+<div class="nb me"><div class="nb-h"><svg class="i"><use href="#i-folder"/></svg>me</div><div class="nb-who"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">클로드·GPT 앱의 작업 공간</div>
+<div class="nb sub"><div class="nb-h"><svg class="i"><use href="#i-folder"/></svg>Obsidian Vault</div><div class="nb-who"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언의 보관함 · 기록을 모아 보는 곳</div></div>
+<div class="nb sub"><div class="nb-h"><svg class="i"><use href="#i-folder"/></svg>주제별 폴더</div><div class="nb-who">작업물</div></div>
+</div>
+</div>
+</div>
+<div class="lap-base"></div>
+</div>
+<div class="lap-sync"><img src="/assets/img/icons/onedrive.png" alt=""><b>원드라이브</b><i>⇄</i><span>동기화가 끝나면 <br>다른 노트북에서도 똑같이 보여요</span></div>
+<div class="lap">
+<div class="lap-screen">
+<div class="lap-t"><svg class="i"><use href="#i-laptop"/></svg>다른 노트북 <small>(있다면)</small></div>
+<div class="nb od"><div class="nb-h"><img src="/assets/img/icons/onedrive.png" alt="">원드라이브</div>
+<div class="nb me"><div class="nb-h"><svg class="i"><use href="#i-folder"/></svg>me</div><div class="nb-who"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">클로드·GPT 앱의 작업 공간</div>
+<div class="nb sub"><div class="nb-h"><svg class="i"><use href="#i-folder"/></svg>Obsidian Vault</div><div class="nb-who"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언의 보관함 · 기록을 모아 보는 곳</div></div>
+<div class="nb sub"><div class="nb-h"><svg class="i"><use href="#i-folder"/></svg>주제별 폴더</div><div class="nb-who">작업물</div></div>
+</div>
+</div>
+</div>
+<div class="lap-base"></div>
 </div>
 </div>
 <div class="sync-col"><div class="sync-mid"><img src="/assets/img/icons/onedrive.png" alt=""><b>원드라이브</b><i>⇄</i><span>동기화가 끝나면 <br>다른 기기에서도 볼 수 있어요</span></div></div>

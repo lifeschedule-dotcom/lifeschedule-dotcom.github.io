@@ -78,6 +78,8 @@ AI는 두 곳에서 쓸 수 있어요.
 
 클로드나 GPT 사이트([claude.ai](https://claude.ai) 또는 [chatgpt.com](https://chatgpt.com))에 들어가서, AI에게 **데스크탑 버전을 설치해 달라고** 말해 보세요!
 
+<p class="sub-note">노란 괄호 칸만 내 상황에 맞게 바꿔주면 됩니다.</p>
+
 <div class="prompt"><span class="who">설치 도움 요청 (인터넷 채팅창에)</span><button class="copy" type="button">복사</button><span class="txt">안녕! AI 데스크탑 앱을 설치하고 싶어.
 
 - 설치할 앱: <span class="fill">(클로드 / GPT)</span> 데스크탑 앱
@@ -86,8 +88,6 @@ AI는 두 곳에서 쓸 수 있어요.
 
 원드라이브가 켜져 있는지도 같이 확인해줘.
 한 단계씩 천천히 알려주고, 내가 화면을 캡처해서 보내면 다음에 뭘 누르면 되는지 알려줘.</span></div>
-
-<p class="sub-note">노란 괄호 칸만 내 상황에 맞게 바꿔주면 됩니다.</p>
 
 <div class="snap">
 <div class="snap-h">막히면 캡처 한 장</div>

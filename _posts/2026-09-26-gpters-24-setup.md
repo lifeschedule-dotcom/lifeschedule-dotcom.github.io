@@ -183,8 +183,7 @@ GPT나 클로드 데스크탑 앱에 옵시디언 설치를 부탁해 봐요.
 
 <div class="whyg">
 <div class="wg-h"><span>1</span>원드라이브 안에 연 me 폴더</div>
-<div class="wc"><div class="wq">원드라이브 안에 있는지 확인해줘</div><p>원드라이브 밖에 만든 폴더는 다른 기기에서 볼 수 없어요.</p></div>
-<div class="wc"><div class="wq">여기에 저장해</div><p>저장 위치를 정해 주지 않으면 파일이 엉뚱한 곳에 생길 수 있어요.</p></div>
+<div class="wc"><p>원드라이브 안에다가 폴더를 만들어야 동기화할 수 있어요!</p></div>
 </div>
 
 <div class="whyg">

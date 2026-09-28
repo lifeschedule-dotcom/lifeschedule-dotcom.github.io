@@ -23,28 +23,23 @@ spacious: true
 
 ## <span class="no">1</span> 한눈에 보기
 
-원드라이브 안에 **me** 폴더를 만들고, AI와 옵시디언이 이 폴더를 함께 열어요.
+원드라이브 안에 **me** 폴더를 만들어요.
 
 <div class="sync">
 <div class="pc">
 <div class="pc-h"><svg class="i"><use href="#i-laptop"/></svg>지금 쓰는 노트북</div>
-<div class="openers"><span><svg class="i"><use href="#i-hand"/></svg>나</span><span><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">AI</span><span class="opt"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언</span></div>
-<div class="down">↓ me와 그 안의 보관함을 열어요</div>
 <div class="kfolder">
-<div class="kfolder-h"><svg class="i"><use href="#i-folder"/></svg>me</div>
-<div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>Obsidian Vault</b><span>규칙 파일 + 작업기록</span></div>
+<div class="kfolder-h"><svg class="i"><use href="#i-folder"/></svg>me<span class="who ai"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">클로드·GPT가 열어요</span></div>
+<div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>Obsidian Vault</b><span class="who obs"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언이 열어요</span></div>
 <div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>주제별 폴더</b><span>작업물</span></div>
 </div>
 </div>
-<div class="sync-col"><div class="sync-mid"><img src="/assets/img/icons/onedrive.png" alt=""><b>원드라이브</b><small class="mt">인터넷 창고</small><i>⇄</i><span>동기화가 끝나면 <br>다른 기기에서도 볼 수 있어요</span></div><div class="sync-gh"><div class="gh-top"><img src="/assets/img/icons/github.png" alt=""><b>GitHub</b></div><span>별도 서비스 <br>(나중에 배워요)</span></div></div>
+<div class="sync-col"><div class="sync-mid"><img src="/assets/img/icons/onedrive.png" alt=""><b>원드라이브</b><i>⇄</i><span>동기화가 끝나면 <br>다른 기기에서도 볼 수 있어요</span></div></div>
 <div class="pc other">
 <div class="pc-h"><svg class="i"><use href="#i-laptop"/></svg>다른 노트북 <small>(있다면)</small></div>
-<div class="openers"><span><svg class="i"><use href="#i-hand"/></svg>나</span><span><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">AI</span><span class="opt"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언</span></div>
-<div class="down">↓ me와 그 안의 보관함을 열어요</div>
 <div class="kfolder">
 <div class="kfolder-h"><svg class="i"><use href="#i-folder"/></svg>me</div>
-<div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>Obsidian Vault</b><span>규칙 파일 + 작업기록</span></div>
-<div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>주제별 폴더</b><span>작업물</span></div>
+<div class="kfile same">같은 폴더가 그대로 보여요</div>
 </div>
 </div>
 </div>
@@ -131,8 +126,6 @@ AI가 이미 만들어 뒀다면 <b>보관함 폴더 열기</b>로 <code>me/Obsi
 ## <span class="no">3</span> AI에게 세팅 시키기
 
 이제 <b>AI 앱에서 작업할 폴더로 <code>me</code>를 선택해요.</b>
-
-<div class="callout tip"><svg><use href="#i-folder"/></svg><div><div class="folder-open"><div><b>Claude·GPT에서 여는 폴더</b><code>me</code></div><div><b>옵시디언에서 여는 보관함</b><code>me/Obsidian Vault</code></div></div></div></div>
 
 <div class="apptabs">
 <input type="radio" name="apptab" id="apptab-claude" checked>

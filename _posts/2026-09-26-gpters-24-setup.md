@@ -194,9 +194,7 @@ AI가 이미 만들어 뒀다면 <b>보관함 폴더 열기</b>로 <code>me/Obsi
 
 AI가 끝났다고 하면, 내 **me** 폴더가 아래 사진처럼 되어 있는지 **직접** 열어 확인해요.
 
-<!-- TODO: 지원님이 줄 1강 완료 화면(me 안에 Obsidian Vault) 캡처를 assets/img/setup/ 에 넣고 아래 figure 주석을 푼다
-<div class="seq"><figure><img src="/assets/img/setup/setup-done.png" alt="1강을 마친 me 폴더 화면"><figcaption>…</figcaption></figure></div>
--->
+<div class="seq"><figure><img src="/assets/img/setup/setup-done.png" alt="원드라이브 me 폴더 안에 Obsidian Vault 폴더가 초록 체크와 함께 보이는 파일 탐색기 화면"><figcaption>원드라이브 <b>me</b> 안에 <b>Obsidian Vault</b>가 보이면 성공이에요</figcaption></figure></div>
 
 <p class="sub-note">규칙 파일(AI협업규칙.md 등)은 1주차 수업에서 함께 넣어요. md 파일이 궁금하다면 <a href="{{ '/2026/09/27/gpters-24-md/' | relative_url }}">3강</a>을 먼저 읽어 보세요.</p>
 

@@ -28,30 +28,31 @@ spacious: true
 <div class="lapmap">
 <div class="lap">
 <div class="lap-screen">
-<div class="lap-t"><svg class="i"><use href="#i-laptop"/></svg>지금 쓰는 노트북</div>
+<div class="lap-t"><svg class="i"><use href="#i-laptop"/></svg>내 노트북</div>
 <div class="nb od"><div class="nb-h"><img src="/assets/img/icons/onedrive.png" alt="">원드라이브</div>
-<div class="nb me"><div class="nb-h"><svg class="i"><use href="#i-folder"/></svg>me</div><div class="nb-who"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">클로드·GPT 앱의 작업 공간</div>
-<div class="nb-subs"><div class="nb sub"><div class="nb-h"><svg class="i"><use href="#i-folder"/></svg>Obsidian Vault</div><div class="nb-who"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언의 보관함</div><div class="nb-who">기록을 모아 보는 곳</div></div>
-<div class="nb sub"><div class="nb-h"><svg class="i"><use href="#i-folder"/></svg>주제별 폴더</div><div class="nb-who">작업물</div></div></div>
+<div class="nb me"><div class="nb-h"><svg class="i"><use href="#i-folder"/></svg>me<span class="nb-ic"><img src="/assets/img/icons/claude.png" alt="클로드"><img src="/assets/img/icons/chatgpt.png" alt="GPT"></span></div><div class="nb-who">클로드·GPT 앱의 작업 공간</div>
+<div class="nb sub"><div class="nb-h"><svg class="i"><use href="#i-folder"/></svg>Obsidian Vault<span class="nb-ic"><img src="/assets/img/icons/obsidian.png" alt="옵시디언"></span></div><div class="nb-who">옵시디언의 보관함 · 기록을 모아 보는 곳</div></div>
+<div class="nb sub"><div class="nb-h"><svg class="i"><use href="#i-folder"/></svg>주제별 폴더</div><div class="nb-who">작업물</div></div>
 </div>
 </div>
 </div>
 <div class="lap-base"></div>
 </div>
-<div class="lap-sync"><img src="/assets/img/icons/onedrive.png" alt=""><b>원드라이브</b><i>⇄</i><span>동기화가 끝나면 <br>다른 노트북에서도 똑같이 보여요</span></div>
+<div class="lap-sync"><img src="/assets/img/icons/onedrive.png" alt=""><b>원드라이브</b><i>⇄</i><span>똑같이 맞춰져요</span></div>
 <div class="lap">
 <div class="lap-screen">
-<div class="lap-t"><svg class="i"><use href="#i-laptop"/></svg>다른 노트북 <small>(있다면)</small></div>
+<div class="lap-t"><svg class="i"><use href="#i-laptop"/></svg>다른 노트북</div>
 <div class="nb od"><div class="nb-h"><img src="/assets/img/icons/onedrive.png" alt="">원드라이브</div>
-<div class="nb me"><div class="nb-h"><svg class="i"><use href="#i-folder"/></svg>me</div><div class="nb-who"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">클로드·GPT 앱의 작업 공간</div>
-<div class="nb-subs"><div class="nb sub"><div class="nb-h"><svg class="i"><use href="#i-folder"/></svg>Obsidian Vault</div><div class="nb-who"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언의 보관함</div><div class="nb-who">기록을 모아 보는 곳</div></div>
-<div class="nb sub"><div class="nb-h"><svg class="i"><use href="#i-folder"/></svg>주제별 폴더</div><div class="nb-who">작업물</div></div></div>
+<div class="nb me"><div class="nb-h"><svg class="i"><use href="#i-folder"/></svg>me<span class="nb-ic"><img src="/assets/img/icons/claude.png" alt="클로드"><img src="/assets/img/icons/chatgpt.png" alt="GPT"></span></div><div class="nb-who">클로드·GPT 앱의 작업 공간</div>
+<div class="nb sub"><div class="nb-h"><svg class="i"><use href="#i-folder"/></svg>Obsidian Vault<span class="nb-ic"><img src="/assets/img/icons/obsidian.png" alt="옵시디언"></span></div><div class="nb-who">옵시디언의 보관함 · 기록을 모아 보는 곳</div></div>
+<div class="nb sub"><div class="nb-h"><svg class="i"><use href="#i-folder"/></svg>주제별 폴더</div><div class="nb-who">작업물</div></div>
 </div>
 </div>
 </div>
 <div class="lap-base"></div>
 </div>
 </div>
+
 <h3 class="ih"><img src="/assets/img/icons/onedrive.png" alt="">원드라이브는 왜 쓰나요?</h3>
 
 원드라이브는 마이크로소프트의 인터넷 저장 공간(클라우드)이에요.<br>

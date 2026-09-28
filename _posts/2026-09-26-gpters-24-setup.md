@@ -17,9 +17,8 @@ spacious: true
 "엥, 나는 그렇게까지 안 쓸 것 같은데?" 하시는 AI린이 여러분, 방심하지 마세요.<br>
 당신도 AI에 빠져서 많은 창작물을 만들게 될 수 있어요!
 
-<div class="keyline">대화의 기억은 내 폴더의 파일에 남겨요.</div>
+<div class="keyline">설치 방법 바로 소개해 드릴게요.</div>
 
-<div class="lead-note">원리가 궁금하다면 <a href="{{ '/2026/09/26/gpters-24-why/' | relative_url }}">2강</a>을 읽어 보세요!<br>여기서는 <b>설치 방법</b> 위주로 알려드릴게요.</div>
 
 ## <span class="no">1</span> 한눈에 보기
 

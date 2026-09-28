@@ -864,3 +864,6 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   .nb-h { font-size: 11.5px; }
   .nb.sub .nb-h { font-size: 11px; }
 }
+
+/* 메모장/옵시디언 비교: 560px 넘으면 좌우 나란히 */
+@media (max-width: 760px) and (min-width: 561px) { .mdcmp { grid-template-columns: 1fr 1fr; } .mdcmp pre { font-size: 14px; white-space: pre-wrap; } }

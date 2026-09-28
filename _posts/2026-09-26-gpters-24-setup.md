@@ -188,7 +188,7 @@ GPT나 클로드 데스크탑 앱에 옵시디언 설치를 부탁해 봐요.
 
 <div class="whyg">
 <div class="wg-h"><span>2</span>마우스로 직접 볼 거야</div>
-<div class="wc shot"><div><div class="wq">마우스로 폴더를 열어 직접 볼 거야</div><p>비개발자인 제 경험으로는,<br><b>바탕화면 바로가기</b>를 만들어 두니 AI가 정리한 폴더에 훨씬 쉽게 들어갈 수 있었어요.</p></div><figure><img src="/assets/img/setup/desktop-me.png" alt="바탕화면의 me 폴더 바로가기를 마우스로 가리킨 화면"><figcaption>바탕화면의 <b>me</b> 바로가기</figcaption></figure></div>
+<div class="wc shot"><div><p>비개발자인 제 경험으로는,<br><b>바탕화면 바로가기</b>를 만들어 두니 AI가 정리한 폴더에 훨씬 쉽게 들어갈 수 있었어요.</p></div><figure><img src="/assets/img/setup/desktop-me.png" alt="바탕화면의 me 폴더 바로가기를 마우스로 가리킨 화면"><figcaption>바탕화면의 <b>me</b> 바로가기</figcaption></figure></div>
 </div>
 
 <div class="whyg">

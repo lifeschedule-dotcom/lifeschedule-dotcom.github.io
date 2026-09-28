@@ -29,8 +29,9 @@ spacious: true
 <div class="pc">
 <div class="pc-h"><svg class="i"><use href="#i-laptop"/></svg>지금 쓰는 노트북</div>
 <div class="kfolder">
-<div class="kfolder-h"><svg class="i"><use href="#i-folder"/></svg>me<span class="who ai"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">클로드·GPT가 열어요</span></div>
-<div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>Obsidian Vault</b><span class="who obs"><img src="/assets/img/icons/obsidian.png" alt="">옵시디언이 열어요</span></div>
+<div class="kfolder-h"><svg class="i"><use href="#i-folder"/></svg>me</div>
+<div class="kwho"><span class="who ai"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">클로드·GPT 데스크탑 앱</span><span class="who-t">일할 때 이 폴더를 직접 열어요</span></div>
+<div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>Obsidian Vault</b><span class="kwho"><span class="who obs"><svg class="me-glass" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M3.5 22c0-4.8 3.8-7.6 8.5-7.6s8.5 2.8 8.5 7.6z"/><g fill="none" stroke="#fff" stroke-width="1.4"><circle cx="9.7" cy="8" r="1.7"/><circle cx="14.3" cy="8" r="1.7"/><path d="M11.4 8h1.2"/></g></svg><img src="/assets/img/icons/obsidian.png" alt="">나 + 옵시디언</span><span class="who-t">AI가 남긴 기록을 내가 쉽게 찾아봐요</span></span></div>
 <div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>주제별 폴더</b><span>작업물</span></div>
 </div>
 </div>
@@ -39,7 +40,9 @@ spacious: true
 <div class="pc-h"><svg class="i"><use href="#i-laptop"/></svg>다른 노트북 <small>(있다면)</small></div>
 <div class="kfolder">
 <div class="kfolder-h"><svg class="i"><use href="#i-folder"/></svg>me</div>
-<div class="kfile same">같은 폴더가 그대로 보여요</div>
+<div class="kwho"><span class="who ai"><img src="/assets/img/icons/claude.png" alt=""><img src="/assets/img/icons/chatgpt.png" alt="">클로드·GPT 데스크탑 앱</span><span class="who-t">일할 때 이 폴더를 직접 열어요</span></div>
+<div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>Obsidian Vault</b><span class="kwho"><span class="who obs"><svg class="me-glass" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M3.5 22c0-4.8 3.8-7.6 8.5-7.6s8.5 2.8 8.5 7.6z"/><g fill="none" stroke="#fff" stroke-width="1.4"><circle cx="9.7" cy="8" r="1.7"/><circle cx="14.3" cy="8" r="1.7"/><path d="M11.4 8h1.2"/></g></svg><img src="/assets/img/icons/obsidian.png" alt="">나 + 옵시디언</span><span class="who-t">AI가 남긴 기록을 내가 쉽게 찾아봐요</span></span></div>
+<div class="kfile"><svg class="i"><use href="#i-folder"/></svg><b>주제별 폴더</b><span>작업물</span></div>
 </div>
 </div>
 </div>

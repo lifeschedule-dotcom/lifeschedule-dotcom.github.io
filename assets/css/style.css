@@ -751,10 +751,12 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 /* 1강 관계도: 폴더 줄마다 "누가 여는지" 꼬리표 */
 .kfolder-h { flex-wrap: wrap; }
 .who { display: inline-flex; align-items: center; gap: 4px; width: fit-content; padding: 2px 10px 2px 6px; border-radius: 99px; font-size: 14px !important; font-weight: 700; line-height: 1.5; }
-.kfolder-h .who { margin-left: 6px; }
-.kfile .who { margin-top: 3px; }
+.kwho { display: flex; flex-direction: column; gap: 2px; margin: 0 0 8px; }
+.kfile .kwho { margin: 4px 0 0; }
+.who-t { font-size: 14.5px !important; color: var(--ink) !important; line-height: 1.5; }
 .who img { width: 18px; height: 18px; }
 .who.ai { background: #fbe9e3; color: #a4462a !important; }
 .who.obs { background: #efe8fb; color: #5b3aa6 !important; }
 .kfile.same { display: block; padding: 8px 4px; color: var(--ink-soft); }
 .sync .pc.other { align-self: center; }
+.who .me-glass { width: 18px; height: 18px; fill: #5b3aa6; }

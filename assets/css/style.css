@@ -721,3 +721,17 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   .apptab-panel { padding: 14px 12px 4px; }
   .sync-gh { gap: 2px 8px; }
 }
+
+/* 3강 md 파일 세 단계 (가게 서류 비유) */
+.mdtiers { display: grid; gap: 12px; margin: 1.4em 0 2em; }
+.mt-tier { padding: 14px 18px; border-radius: 14px; border: 1px solid #ebe3e6; background: #fff; }
+.mt-tier.must { border-left: 6px solid var(--accent); }
+.mt-tier.some { border-left: 6px solid #5b8fd6; }
+.mt-tier.skip { border-left: 6px solid #b8bcc6; background: #fafafb; }
+.mt-h { display: inline-block; margin-bottom: 6px; padding: 1px 12px; border-radius: 99px; font-size: 15px; font-weight: 700; color: #fff; background: var(--accent); }
+.mt-tier.some .mt-h { background: #5b8fd6; }
+.mt-tier.skip .mt-h { background: #9aa0ad; }
+.mt-item { padding: 6px 0; font-size: 17px; line-height: 1.6; }
+.mt-item + .mt-item { border-top: 1px solid #f1eaec; }
+.mt-f { display: flex; flex-wrap: wrap; gap: 4px 6px; margin-top: 4px; }
+.content.spacious .mt-f code { font-size: 14.5px; }

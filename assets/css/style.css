@@ -226,6 +226,10 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
 .prompt .fill { background: #fff3c4; border-radius: 4px; padding: 0 3px; }
 .prompt .copy { position: absolute; top: 14px; right: 14px; font: inherit; font-size: 13px; font-weight: 700; color: #6f47c7; background: #fff; border: 1px solid #6f47c7; border-radius: 99px; padding: 3px 12px; cursor: pointer; }
 .prompt .copy:focus-visible { outline: 2px solid #6f47c7; outline-offset: 2px; }
+.prompt.od-prompt { background: #fff8fa; border-color: #e8b6c5; }
+.prompt.od-prompt .who, .prompt.od-prompt .copy { color: #963f5b; }
+.prompt.od-prompt .copy { border-color: #c86786; }
+.prompt.od-prompt .copy:focus-visible { outline-color: #c86786; }
 
 /* 문장 → 이유 */
 .why { margin: 1em 0 1.4em; border-radius: 14px; border: 1px solid #ebe3e6; background: #fff; overflow: hidden; }
@@ -240,6 +244,8 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
 .callout svg { width: 22px; height: 22px; margin-top: 2px; }
 .callout.tip { background: #e8f5ef; } .callout.tip svg { fill: #1e7a5a; } .callout.tip b { color: #1e7a5a; }
 .callout.warn { background: #fff3dd; } .callout.warn svg { fill: #b06a00; } .callout.warn b { color: #b06a00; }
+.callout.warn.od-warning { background: #fff6f8; border: 1px solid #e8b6c5; }
+.callout.warn.od-warning svg { fill: #a84f6c; }
 .folder-tree { margin: 12px 0; padding: 12px 14px; border-radius: 10px; background: #fff; font-size: 15px; line-height: 1.55; }
 .folder-tree div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; padding: 3px 0; }
 .folder-tree strong { color: #195c45; }
@@ -517,6 +523,8 @@ svg.i { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -.18em;
 .done { margin: 2.4em 0 1em; padding: 26px 24px; border-radius: 18px; background: #e8f5ef; border: 2px solid #9fd6bd; text-align: center; }
 .done-t { font-size: 24px; font-weight: 700; line-height: 1.5; color: #1e6b4d; }
 .done p { margin: 10px 0 0; font-size: 18px; }
+.done.od-done { background: #fff6f8; border-color: #e8b6c5; }
+.done.od-done .done-t { color: #78324a; }
 
 /* ===== 제목 체계 (일관성) =====
    대제목 h2: 꽉 찬 분홍 네모 번호

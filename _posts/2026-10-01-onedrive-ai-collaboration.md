@@ -4,92 +4,61 @@ section: vibe-coding
 sub: automation
 ref: onedrive-ai-collaboration
 date: 2026-10-01 22:30:00 +0900
-description: 두 노트북의 AI가 원드라이브 같은 폴더에 요청과 검토 결과를 따로 남기는 방법.
+description: AI가 한 노트북의 화면을 쓰는 동안, 다른 노트북의 AI와 원드라이브 파일로 일을 이어 간 경험.
 spacious: true
 ---
 
-노트북 한 대에서 AI가 화면을 조작할 때, 다른 노트북으로 일을 이어 갈 수 있어요.
+제 윈도우 노트북에서 ChatGPT의 컴퓨터 사용(Computer Use) 기능이 화면을 조작할 때, 저는 그 화면을 동시에 쓰기 불편했어요.
+노트북이 두 대라 각 노트북의 AI에게 일을 나눠 맡겨 봤습니다.
 
-<div class="keyline">원드라이브 파일을 동기화해서<br>GPT 요청 → 클로드 검토 → GPT 반영</div>
+<div class="keyline">GPT가 결과를 파일로 남기고<br>클로드가 다른 노트북에서 검토한 제 사례예요.</div>
 
-## <span class="no">1</span> 두 노트북의 me 폴더
+## 두 노트북을 잇는 폴더
 
-[1강]({{ '/2026/09/26/gpters-24-setup/' | relative_url }})에서 만든 원드라이브 <code>me</code> 폴더를 두 노트북에서 열어요.
+[1강]({{ '/2026/09/26/gpters-24-setup/' | relative_url }})에서 만든 원드라이브 <code>me</code> 안에 <code>live_collaboration</code> 폴더를 뒀어요.
+두 노트북에 같은 폴더가 동기화되니, 한쪽에서 저장한 파일을 다른 쪽에서도 열 수 있었어요.
 
 <div class="twoai">
-<div class="ta"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/chatgpt.png" alt=""></span>GPT 노트북</div><p>요청 파일을 남겨요.</p></div>
-<div class="ta"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/claude.png" alt=""></span>클로드 노트북</div><p>같은 폴더에서 읽어요.</p></div>
+<div class="ta"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/chatgpt.png" alt=""></span>GPT 노트북</div><p>작업 결과와 검토 요청을 파일로 남겼어요.</p></div>
+<div class="ta"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/claude.png" alt=""></span>클로드 노트북</div><p>동기화된 파일을 읽고 답장을 남겼어요.</p></div>
 </div>
 
-<div class="seq"><figure><a href="/assets/img/collaboration/me-folder.png" target="_blank" rel="noopener"><img src="/assets/img/collaboration/me-folder.png" alt="다른 노트북의 원드라이브 me 폴더에 lifeschedule 블로그, live_collaboration, Obsidian Vault가 나란히 있는 실제 화면" style="max-width:520px;margin:auto"></a><figcaption>다른 노트북의 <b>me</b>에도 <b>live_collaboration</b>이 보여요.</figcaption></figure></div>
+<div class="seq"><figure><a href="/assets/img/collaboration/me-folder.png" target="_blank" rel="noopener"><img src="/assets/img/collaboration/me-folder.png" alt="다른 노트북의 원드라이브 me 폴더에 lifeschedule 블로그, live_collaboration, Obsidian Vault가 나란히 있는 실제 화면" style="max-width:520px;margin:auto"></a><figcaption>제가 쓰는 <b>me</b> 폴더예요. 협업 폴더와 Obsidian 보관함이 나란히 있어요.</figcaption></figure></div>
 
-## <span class="no">2</span> 첫 번째 AI에게 요청 남기기
+## GPT 요청과 클로드 검토
 
-[2강]({{ '/2026/09/26/gpters-24-why/' | relative_url }})에서 배운 **맥락**을 [3강]({{ '/2026/09/27/gpters-24-md/' | relative_url }})의 **MD 파일**에 남겨요.<br>
-노란 괄호 칸만 내 상황에 맞게 바꿔주면 됩니다.
+GPT에게 지금까지 한 일과 클로드에게 확인받고 싶은 점을 [MD 파일]({{ '/2026/09/27/gpters-24-md/' | relative_url }})에 적게 했어요.
+다른 노트북에서 파일이 내려온 것을 확인한 뒤, 클로드에게 읽고 검토해 달라고 했습니다.
 
-<div class="prompt od-prompt"><span class="who">GPT에게</span><button class="copy" type="button">복사</button><span class="txt">안녕! 다른 노트북의 클로드에게 검토를 받고 싶어.
-원드라이브 me 안에 live_collaboration 폴더가 없으면 만들어 줘.
+<div class="seq"><figure><a href="/assets/img/collaboration/onedrive-sync-status.png" target="_blank" rel="noopener"><img src="/assets/img/collaboration/onedrive-sync-status.png" alt="다른 노트북의 OneDrive가 백업 및 동기화됨 상태이고 협업 폴더의 새 파일을 다운로드한 실제 화면" style="max-width:340px;margin:auto"></a><figcaption>다른 노트북에 협업 파일이 내려온 화면이에요.</figcaption></figure></div>
 
-할 일: <span class="fill">(만들거나 검토할 일)</span>
-배경: <span class="fill">(왜 하는지, 지금까지 한 일)</span>
+클로드는 원본을 고치지 않고 별도의 MD 파일에 검토 의견을 남겼어요.
+GPT가 그 의견을 읽고 결과에 반영한 다음, 다시 검토를 받았습니다.
 
-결과와 클로드에게 확인받고 싶은 점을
-live_collaboration의 새 MD 파일에 적어 줘.
-이름은 '01 요청 → Claude.md'로 해 줘.
-기존 파일은 지우거나 덮어쓰지 말고,
-저장한 실제 경로를 알려 줘.</span></div>
+<div class="seq"><figure><a href="/assets/img/collaboration/request-and-review.png" target="_blank" rel="noopener"><img src="/assets/img/collaboration/request-and-review.png" alt="협업 폴더에서 GPT의 요청 파일과 Claude가 남긴 검토 파일이 함께 보이는 실제 화면, Claude 회신에 분홍 테두리 표시" style="max-width:410px;margin:auto"></a><figcaption>분홍 칸은 클로드가 남긴 회신 파일이에요.</figcaption></figure></div>
 
-<div class="callout warn od-warning"><svg><use href="#i-warn"/></svg><div>로그인·비밀번호·결제는 내가 직접 입력해요.<br>AI가 묻는 “허용할까요?” 창은 읽고 내가 결정해요.</div></div>
+## 실시간 협업의 실제 모습
 
-<code>01 요청 → Claude.md</code>가 다른 노트북에도 보이면 클로드에게 이어서 부탁해요.
+두 AI의 대화는 자동으로 공유되지 않아요.
+제가 말하는 실시간 협업은 새 파일이 동기화되면 상대 AI가 읽고 회신하는 흐름이에요.
+저는 상대 AI에게 폴더를 읽으라고 하고, 작업 중에는 2분 간격으로 새 파일을 확인하게 했어요.
+클로드 Pro·Max 구독으로 Claude Code를 사용할 수 있어요.
+제가 이전에 GPT에서 클로드 검토를 직접 불렀을 때는 이 노트북에 설치된 Claude Code를 별도로 실행했습니다.
+공개하거나 발송할 결과는 마지막에 제가 확인합니다.
 
-<div class="seq"><figure><a href="/assets/img/collaboration/onedrive-sync-status.png" target="_blank" rel="noopener"><img src="/assets/img/collaboration/onedrive-sync-status.png" alt="다른 노트북의 OneDrive가 백업 및 동기화됨 상태이고 협업 폴더의 새 파일을 다운로드한 실제 화면" style="max-width:340px;margin:auto"></a><figcaption>다른 노트북에서 새 파일을 내려받은 실제 화면이에요.</figcaption></figure></div>
+## 원드라이브를 고른 이유
 
-## <span class="no">3</span> 클로드 검토와 GPT 반영
+저는 이미 원드라이브 <code>me</code>에 작업 폴더와 Obsidian 보관함을 두고 있었어요.
+그래서 같은 곳에 협업 폴더 하나를 더 두는 방식이 편했습니다.
 
-<div class="prompt od-prompt"><span class="who">클로드에게</span><button class="copy" type="button">복사</button><span class="txt">원드라이브 me/live_collaboration의
-'01 요청 → Claude.md'를 읽어 줘.
-
-원본 파일은 고치지 말고,
-틀린 점·빠진 점을 확인해 줘.
-검토 결과는 '02 검토 결과 → GPT.md'라는
-새 MD 파일로 같은 폴더에 저장해 줘.
-
-직접 확인한 것과 아직 확인하지 못한 것을 구분하고,
-읽고 저장한 실제 경로를 알려 줘.</span></div>
-
-<div class="prompt od-prompt"><span class="who">다시 GPT에게</span><button class="copy" type="button">복사</button><span class="txt">live_collaboration의 '02 검토 결과 → GPT.md'를 읽어 줘.
-맞는 지적을 결과에 반영해 줘.
-반영하지 않은 지적은 이유를 알려 줘.</span></div>
-
-**한 파일은 한 AI만 수정**하면 서로 덮어쓸 위험이 줄어요.
-
-<div class="seq"><figure><a href="/assets/img/collaboration/request-and-review.png" target="_blank" rel="noopener"><img src="/assets/img/collaboration/request-and-review.png" alt="협업 폴더에서 GPT의 요청 파일과 Claude가 남긴 검토 파일이 함께 보이는 실제 화면, Claude 회신에 분홍 테두리 표시" style="max-width:410px;margin:auto"></a><figcaption>실제 협업 폴더예요. 분홍 칸은 클로드가 남긴 회신이에요.</figcaption></figure></div>
-
-## <span class="no">4</span> 마지막으로 내가 확인하기
-
-두 AI가 같은 답을 해도 틀릴 수 있어요.<br>
-공개·발송·결제처럼 중요한 일은 **최종 결과를 내가 확인**해요.
-
-폴더가 같아도 두 AI의 대화가 저절로 합쳐지지는 않아요.<br>
-이번에는 클로드 데스크탑 앱의 Code 탭에서 “5분 뒤에 읽어 줘”라고 했어요.
-
-<div class="done od-done"><div class="done-t">🎉 요청 파일과 검토 파일이 두 노트북에 보이면 성공이에요!</div></div>
-
-<details class="fallback"><summary>다른 동기화 도구도 될까요?</summary>
-<p>네. Google Drive for desktop도 파일을 컴퓨터에 보관하는 미러링을 지원해요. 저는 이미 <code>me</code>와 Obsidian Vault를 원드라이브에서 쓰고 있어서 같은 폴더를 활용했어요.</p>
-</details>
-
-<details class="fallback"><summary>GPT가 클로드를 직접 불러 검토받을 수도 있나요?</summary>
-<p>네. Claude Code를 설치하고 클로드 계정으로 로그인한 컴퓨터에서는 GPT가 직접 실행해 검토받을 수도 있어요.</p>
-</details>
+Google Drive for desktop도 파일을 컴퓨터에 보관하는 **미러링**을 지원해요.
+두 노트북에서 같은 파일을 동기화할 수 있다면, 구글 드라이브로도 이런 방식의 협업을 해볼 수 있습니다.
 
 ### 확인한 자료
 
 <ul class="refs">
-<li><a href="https://support.microsoft.com/en-us/onedrive/sync-your-computer-s-files-and-folders-with-onedrive" target="_blank" rel="noopener">Microsoft: 원드라이브 폴더 동기화</a></li>
+<li><a href="https://support.microsoft.com/en-us/onedrive/windows/move-files-to-a-new-windows-pc-using-onedrive" target="_blank" rel="noopener">Microsoft: 원드라이브로 새 PC에 파일 옮기기</a></li>
 <li><a href="https://support.google.com/drive/answer/13401938" target="_blank" rel="noopener">Google: 데스크톱 파일 스트리밍과 미러링</a></li>
 <li><a href="https://learn.chatgpt.com/use-cases/use-your-computer-with-codex" target="_blank" rel="noopener">OpenAI: 컴퓨터 사용 기능</a></li>
-<li><a href="https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-or-max-plan" target="_blank" rel="noopener">Anthropic: 유료 구독으로 Claude Code 사용</a></li>
+<li><a href="https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-or-max-plan" target="_blank" rel="noopener">Anthropic: 유료 구독의 Claude Code 사용</a></li>
 </ul>

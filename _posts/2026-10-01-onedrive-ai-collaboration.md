@@ -1,5 +1,5 @@
 ---
-title: "원드라이브 폴더로 클로드와 GPT가 서로 검토하게 만들기"
+title: "여러 노트북에서 AI가 실시간으로 협업하게 만들기"
 section: vibe-coding
 sub: automation
 ref: onedrive-ai-collaboration
@@ -10,7 +10,7 @@ spacious: true
 
 노트북 한 대에서 AI가 화면을 조작할 때, 다른 노트북으로 일을 이어 갈 수 있어요.
 
-<div class="keyline">원드라이브 한 폴더에서<br>GPT 요청 → 클로드 검토 → GPT 반영</div>
+<div class="keyline">원드라이브 파일을 동기화해서<br>GPT 요청 → 클로드 검토 → GPT 반영</div>
 
 ## <span class="no">1</span> 두 노트북의 me 폴더
 

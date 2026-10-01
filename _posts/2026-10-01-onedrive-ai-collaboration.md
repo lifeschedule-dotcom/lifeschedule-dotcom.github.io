@@ -65,7 +65,7 @@ live_collaboration의 새 MD 파일에 적어 줘.
 
 **한 파일은 한 AI만 수정**하면 서로 덮어쓸 위험이 줄어요.
 
-<div class="seq"><figure><a href="/assets/img/collaboration/request-and-review.png" target="_blank" rel="noopener"><img src="/assets/img/collaboration/request-and-review.png" alt="협업 폴더에서 GPT의 요청 파일과 Claude가 남긴 검토 파일이 함께 보이는 실제 화면, Claude 회신에 분홍 테두리 표시" style="max-width:700px;margin:auto"></a><figcaption>실제 협업 폴더예요. 분홍 칸은 클로드가 남긴 회신이에요.</figcaption></figure></div>
+<div class="seq"><figure><a href="/assets/img/collaboration/request-and-review.png" target="_blank" rel="noopener"><img src="/assets/img/collaboration/request-and-review.png" alt="협업 폴더에서 GPT의 요청 파일과 Claude가 남긴 검토 파일이 함께 보이는 실제 화면, Claude 회신에 분홍 테두리 표시" style="max-width:410px;margin:auto"></a><figcaption>실제 협업 폴더예요. 분홍 칸은 클로드가 남긴 회신이에요.</figcaption></figure></div>
 
 ## <span class="no">4</span> 마지막으로 내가 확인하기
 

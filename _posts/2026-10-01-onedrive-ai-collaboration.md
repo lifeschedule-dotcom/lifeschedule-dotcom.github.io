@@ -21,7 +21,7 @@ spacious: true
 <div class="ta"><div class="ta-h"><span class="ta-i"><img src="/assets/img/icons/claude.png" alt=""></span>클로드 노트북</div><p>같은 폴더에서 읽어요.</p></div>
 </div>
 
-<!-- 실제 두 노트북 파일 탐색기 me 폴더 캡처를 Claude 회신 뒤 삽입 -->
+<div class="seq"><figure><img src="/assets/img/collaboration/me-folder.png" alt="다른 노트북의 원드라이브 me 폴더에 lifeschedule 블로그, live_collaboration, Obsidian Vault가 나란히 있는 실제 화면" style="max-width:520px;margin:auto"><figcaption>다른 노트북의 <b>me</b>에도 <b>live_collaboration</b>이 보여요.</figcaption></figure></div>
 
 ## <span class="no">2</span> 첫 번째 AI에게 요청 남기기
 
@@ -44,11 +44,11 @@ live_collaboration의 새 MD 파일에 적어 줘.
 
 <code>01 요청 → Claude.md</code>가 다른 노트북에도 보이면 클로드에게 이어서 부탁해요.
 
-<!-- 실제 01 요청 파일이 다른 노트북에 동기화된 화면을 Claude 회신 뒤 삽입 -->
+<div class="seq"><figure><img src="/assets/img/collaboration/onedrive-sync-status.png" alt="다른 노트북의 OneDrive가 백업 및 동기화됨 상태이고 협업 폴더의 새 파일을 다운로드한 실제 화면" style="max-width:340px;margin:auto"><figcaption>다른 노트북에서 새 파일을 내려받은 실제 화면이에요.</figcaption></figure></div>
 
-## <span class="no">3</span> 클로드에게 따로 검토 맡기기
+## <span class="no">3</span> 클로드 검토와 GPT 반영
 
-<div class="prompt od-prompt"><span class="who">클로드에게</span><button class="copy" type="button">복사</button><span class="txt">원드라이브 me/live_collaboration의
+<div class="prompt od-prompt"><span class="who">클로드에게</span><button class="copy" type="button">복사</button><span class="txt">5분 뒤에 원드라이브 me/live_collaboration의
 '01 요청 → Claude.md'를 읽어 줘.
 
 원본 파일은 고치지 말고,
@@ -65,15 +65,14 @@ live_collaboration의 새 MD 파일에 적어 줘.
 
 **한 파일은 한 AI만 수정**하면 서로 덮어쓸 위험이 줄어요.
 
-<!-- Claude의 실제 회신 파일과 GPT 반영 화면을 삽입 -->
+<div class="seq"><figure><img src="/assets/img/collaboration/request-and-review.png" alt="협업 폴더에서 GPT의 요청 파일과 Claude가 남긴 검토 파일이 함께 보이는 실제 화면, Claude 회신에 분홍 테두리 표시" style="max-width:700px;margin:auto"><figcaption>실제 협업 폴더예요. 분홍 칸은 클로드가 남긴 회신이에요.</figcaption></figure></div>
 
 ## <span class="no">4</span> 마지막으로 내가 확인하기
 
 두 AI가 같은 답을 해도 틀릴 수 있어요.<br>
 공개·발송·결제처럼 중요한 일은 **최종 결과를 내가 확인**해요.
 
-폴더가 같아도 두 AI의 대화가 저절로 합쳐지지는 않아요.<br>
-이번에는 클로드에게 **5분 뒤 폴더를 읽어 달라**고 했고, 검토 파일을 받았어요.
+폴더가 같아도 두 AI의 대화가 저절로 합쳐지지는 않아요.
 
 <div class="done od-done"><div class="done-t">🎉 요청 파일과 검토 파일이 두 노트북에 보이면 성공이에요!</div></div>
 
@@ -82,7 +81,7 @@ live_collaboration의 새 MD 파일에 적어 줘.
 </details>
 
 <details class="fallback"><summary>GPT가 클로드를 직접 불러 검토받을 수도 있나요?</summary>
-<p>네. Claude Code 프로그램을 설치하고 연결한 환경에서는 GPT가 직접 실행해 검토받을 수도 있어요.</p>
+<p>네. Claude Code를 설치하고 클로드 계정으로 로그인한 컴퓨터에서는 GPT가 직접 실행해 검토받을 수도 있어요.</p>
 </details>
 
 ### 확인한 자료

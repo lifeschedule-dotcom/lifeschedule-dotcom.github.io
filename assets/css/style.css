@@ -895,3 +895,11 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .ml-r .mt-f { margin-top: 0; }
 .mdlist .ml-r:last-child { border-bottom: 0; }
 .mdlist .ml-h { margin: 10px 0 0; }
+
+/* 자료 제출 탭 */
+.content .submit-go { display: block; margin: 1em 0 .6em; padding: 16px 20px; border-radius: 14px; background: var(--accent); color: #fff; font-size: 19px; font-weight: 700; text-align: center; text-decoration: none; }
+.content .submit-go:hover { filter: brightness(.95); }
+.content .submit-go.pending { background: #fff; color: var(--accent); border: 2px dashed var(--accent); }
+.content .submit-go.pending small { display: block; margin-top: 4px; font-size: 14px; font-weight: 500; color: var(--ink-soft); }
+.use-list { margin: .6em 0 1.4em; padding: 14px 18px 14px 36px; border-radius: 14px; background: #fff; border: 1px solid #ebe3e6; }
+.use-list li { margin: 4px 0; font-size: 17px; line-height: 1.7; }

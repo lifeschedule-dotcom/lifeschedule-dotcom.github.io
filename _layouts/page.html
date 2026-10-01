@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="{{ page.lang }}">
+<head>
+{% include head.html %}
+</head>
+<body class="inner">
+{% include icons.html %}
+{% include nav.html %}
+<main class="wrap">
+  <article class="article">
+    <h1>{{ page.title }}</h1>
+    <div class="content{% if page.spacious %} spacious{% endif %}">
+      {{ content }}
+    </div>
+  </article>
+</main>
+{% include lang.js.html %}
+{% include copy.js.html %}
+</body>
+</html>

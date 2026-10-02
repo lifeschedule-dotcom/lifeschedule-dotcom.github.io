@@ -59,8 +59,7 @@ Ask these two questions together in one message.
 - Once I've confirmed the folder, don't ask me anything else. Decide on your own by looking at the files.
 
 [Step 3: Gather the files]
-- Include the whole folder I confirmed.
-- If I use n8n and you're connected to it, export my workflows as JSON and include them. If you're not connected, skip this.
+- Copy the folders I confirmed into one submission folder.
 - Never edit or delete the original files. Work only on copies.
 
 [Step 4: Leave these out]

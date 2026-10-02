@@ -5,6 +5,7 @@
     {% for s in site.data.sections %}
     <a href="{{ root | append: s.id | append: '/' | relative_url }}"{% if page.section == s.id %} class="active"{% endif %}>{{ s.name[page.lang] }}</a>
     {% endfor %}
+    <a href="{{ root | append: 'submit/' | relative_url }}"{% if page.section == "submit" %} class="active"{% endif %}>{{ site.data.ui[page.lang].submit }}</a>
   </nav>
   {% include langswitch.html %}
 </header>

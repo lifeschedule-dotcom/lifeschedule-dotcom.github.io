@@ -895,3 +895,24 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .ml-r .mt-f { margin-top: 0; }
 .mdlist .ml-r:last-child { border-bottom: 0; }
 .mdlist .ml-h { margin: 10px 0 0; }
+
+/* 자료 제출 탭 */
+.sform { margin: 1em 0 1.2em; padding: 20px; border-radius: 14px; background: #fff; border: 1px solid #ebe3e6; }
+.sf-row { display: block; margin: 0 0 14px; }
+.sf-l { display: block; margin-bottom: 6px; font-size: 17px; font-weight: 700; color: var(--ink); }
+.sf-l b { color: var(--accent); }
+.sform input[type=text], .sform input[type=url] { width: 100%; box-sizing: border-box; padding: 12px 14px; border: 1px solid #d9cfd3; border-radius: 10px; font: inherit; font-size: 17px; }
+.sform input[type=file] { width: 100%; font: inherit; font-size: 16px; }
+.sform input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.sf-hint { margin: -6px 0 14px; font-size: 15px; color: var(--ink-soft); }
+.sf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.sf-agree { display: flex; gap: 10px; align-items: flex-start; margin: 6px 0 16px; font-size: 17px; line-height: 1.5; }
+.sf-agree input { width: 22px; height: 22px; flex: none; margin-top: 2px; accent-color: var(--accent); }
+.sf-btn { display: block; width: 100%; padding: 15px; border: 0; border-radius: 12px; background: var(--accent); color: #fff; font: inherit; font-size: 19px; font-weight: 700; cursor: pointer; }
+.sf-btn:disabled { opacity: .6; cursor: wait; }
+.sf-bar { height: 10px; margin-top: 14px; border-radius: 99px; background: #f3e6ea; overflow: hidden; }
+.sf-bar span { display: block; height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+.content .sf-status { margin: 12px 0 0; font-size: 17px; font-weight: 700; }
+.sf-status.ok { color: #1e6b4d; } .sf-status.err { color: #a33b3b; }
+.use-list { margin: .6em 0 1.4em; padding: 14px 18px 14px 36px; border-radius: 14px; background: #fff; border: 1px solid #ebe3e6; }
+.use-list li { margin: 4px 0; font-size: 17px; line-height: 1.7; }

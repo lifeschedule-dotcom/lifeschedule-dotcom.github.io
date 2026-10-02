@@ -10,7 +10,7 @@ spacious: true
 
 ## <span class="no">1</span> Attach
 
-<form id="submit-form" class="sform" data-endpoint="" novalidate>
+<form id="submit-form" class="sform" data-endpoint="https://script.google.com/macros/s/AKfycbzdtn8CjrIkqHaXIaaGFig6XBJhxgnhV6H5yoNXuHTdgaqsxj57VYBDpFjuclaQxNbmBg/exec" novalidate>
 <label class="sf-row"><span class="sf-l">Nickname <b>*</b></span><input name="nickname" type="text" maxlength="40" autocomplete="nickname" required></label>
 <label class="sf-row"><span class="sf-l">Project file (zip, up to 100MB)</span><input name="file" type="file"></label>
 <label class="sf-row"><span class="sf-l">Or a chat share link</span><input name="link" type="url" placeholder="https://" inputmode="url"></label>

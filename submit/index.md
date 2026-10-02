@@ -10,7 +10,7 @@ spacious: true
 
 ## <span class="no">1</span> 첨부하기
 
-<form id="submit-form" class="sform" data-endpoint="" novalidate>
+<form id="submit-form" class="sform" data-endpoint="https://script.google.com/macros/s/AKfycbzdtn8CjrIkqHaXIaaGFig6XBJhxgnhV6H5yoNXuHTdgaqsxj57VYBDpFjuclaQxNbmBg/exec" novalidate>
 <label class="sf-row"><span class="sf-l">닉네임 <b>*</b></span><input name="nickname" type="text" maxlength="40" autocomplete="nickname" required></label>
 <label class="sf-row"><span class="sf-l">자료 파일 (zip, 100MB까지)</span><input name="file" type="file"></label>
 <label class="sf-row"><span class="sf-l">또는 대화 공유 링크</span><input name="link" type="url" placeholder="https://" inputmode="url"></label>

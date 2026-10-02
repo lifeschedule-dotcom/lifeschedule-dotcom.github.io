@@ -59,8 +59,7 @@ Ask these two questions together in one message.
 - Once I've confirmed the folder, don't ask me anything else. Decide on your own by looking at the files.
 
 [Step 3: Gather the files]
-- Include the whole folder I confirmed.
-- If some of my work lives outside the folder, include it if you can export it; if not, just note where it is in "00_AI-handoff.md".
+- Copy the folders I confirmed into one submission folder.
 - Never edit or delete the original files. Work only on copies.
 
 [Step 4: Leave these out]

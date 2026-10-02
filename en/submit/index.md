@@ -6,23 +6,35 @@ lang: en
 description: Where GPTers Cohort 24 members send their project files privately to the study lead.
 spacious: true
 ---
-Case posts are great for sharing what we learn, but it's hard to write about your own business in detail.<br>
-So I've opened a channel where you can send the project files you need help customizing — to me only.
+<div class="keyline">Attach your project files here.<small>You can make the zip file with the prompt below.</small></div>
 
-Send them in, and over our four weeks I'll research approaches that fit your situation ahead of time.<br>
-When it helps, I'll also give you individual feedback.
+## <span class="no">1</span> Attach
 
-<div class="keyline">Here's how to send them.</div>
+<form id="submit-form" class="sform" data-endpoint="" novalidate>
+<label class="sf-row"><span class="sf-l">Nickname <b>*</b></span><input name="nickname" type="text" maxlength="40" autocomplete="nickname" required></label>
+<label class="sf-row"><span class="sf-l">Project file (zip, up to 100MB)</span><input name="file" type="file"></label>
+<label class="sf-row"><span class="sf-l">Or a chat share link</span><input name="link" type="url" placeholder="https://" inputmode="url"></label>
+<p class="sf-hint">If you only worked in a web chat (ChatGPT or Claude), paste the chat's "Share" link.</p>
+<input class="sf-hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+<label class="sf-agree"><input name="agree" type="checkbox"> I've read the notes below and agree to send my files.</label>
+<button class="sf-btn" type="submit">Submit</button>
+<div class="sf-bar" hidden><span></span></div>
+<p class="sf-status" role="status" aria-live="polite"></p>
+</form>
 
-## <span class="no">1</span> How to send
+<ul class="use-list">
+<li>Only the study lead (Lifeschedule) can see your files.<br>They are not shared with other members.</li>
+<li>They are used only to help you.<br>Never for anything else.</li>
+<li>I use AI tools (such as Claude) when researching better approaches.</li>
+<li>I delete them when the study ends.<br>You can ask me to delete them sooner at any time.</li>
+</ul>
 
-1. Open Claude Code or Codex, then copy the whole prompt below and paste it in.<br>Pasting it into the chat where you've been building works best.
-2. The AI asks for your project name and where you're stuck.<br>If nothing is blocking you, just answer "none".
-3. The AI shows the folders it found. Pick your project by number.
-4. A file named `dev-files_date.zip` appears on your desktop.
-5. Under **Submit** below, enter your nickname and upload the zip file.
+<div class="callout warn"><svg><use href="#i-warn"/></svg><div>The AI is set up to leave out API keys and passwords automatically.<br>Still, please check once before you send.</div></div>
 
-## <span class="no">2</span> File-packing prompt <small>(give it a try!)</small>
+## <span class="no">2</span> Zip-making prompt <small>(copy and paste it!)</small>
+
+Paste the whole thing into Claude Code or Codex.<br>
+Pasting it into the chat where you've been building works best.
 
 <div class="prompt"><span class="who">Packing request (to Claude Code or Codex)</span><button class="copy" type="button">Copy</button><span class="txt">You help me turn my project files into a zip file to send to my study lead.
 My study lead will hand these files to an AI to research approaches that fit my situation.
@@ -79,20 +91,4 @@ Create "00_AI-handoff.md" at the top of the zip. Keep it short so another AI can
 - Before zipping, check once more for any remaining secrets and tell me the result in one line.
 - Tell me where the zip file was saved.</span></div>
 
-## <span class="no">3</span> Submit
-
-<!-- After publishing the form, replace the div below with: <a class="submit-go" href="(form link)" target="_blank" rel="noopener">Submit</a> -->
-<div class="submit-go pending">Form goes here<small>Becomes the Submit button once the form is published</small></div>
-
-Uploading a zip file requires signing in to Google.<br>
-If you only worked in a web chat (ChatGPT or Claude), you can paste the chat's "Share" link instead of a zip.
-
-## <span class="no">4</span> How your files are used
-
-<ul class="use-list">
-<li>Only I can see the files you send.<br>They are not shared with other members.</li>
-<li>They are used only to research approaches for your work.<br>Never for anything else.</li>
-<li>I delete them when the study ends.<br>You can ask me to delete them sooner at any time.</li>
-</ul>
-
-<div class="callout warn"><svg><use href="#i-warn"/></svg><div>The AI is set up to leave out API keys and passwords automatically.<br>Still, please check once before you send.</div></div>
+<script src="{{ '/assets/js/submit.js' | relative_url }}"></script>

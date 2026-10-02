@@ -6,23 +6,35 @@ lang: ko
 description: 지피터스 24기 스터디원이 개발 자료를 스터디장에게만 보내는 곳이에요.
 spacious: true
 ---
-사례글로 경험을 나누고 있지만, 개인 사업 정보까지 자세히 쓰기는 어렵잖아요.<br>
-그래서 커스터마이징에 꼭 필요한 개발 자료를 저에게만 보내실 수 있는 창구를 열었어요.
+<div class="keyline">개발 자료를 여기에 첨부해 주세요.<small>zip 파일은 아래 프롬프트로 만들 수 있어요.</small></div>
 
-보내주시면 4주 동안 여러분 상황에 맞는 방법을 제가 미리 같이 조사해 둘게요.<br>
-필요할 때는 따로 피드백도 드릴게요.
+## <span class="no">1</span> 첨부하기
 
-<div class="keyline">보내는 방법 바로 소개해 드릴게요.</div>
+<form id="submit-form" class="sform" data-endpoint="" novalidate>
+<label class="sf-row"><span class="sf-l">닉네임 <b>*</b></span><input name="nickname" type="text" maxlength="40" autocomplete="nickname" required></label>
+<label class="sf-row"><span class="sf-l">자료 파일 (zip, 100MB까지)</span><input name="file" type="file"></label>
+<label class="sf-row"><span class="sf-l">또는 대화 공유 링크</span><input name="link" type="url" placeholder="https://" inputmode="url"></label>
+<p class="sf-hint">인터넷 채팅창(ChatGPT·Claude)으로만 작업했다면 대화 "공유" 링크를 넣어 주세요.</p>
+<input class="sf-hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+<label class="sf-agree"><input name="agree" type="checkbox"> 아래 주의점을 읽었고, 자료를 보내는 데 동의해요.</label>
+<button class="sf-btn" type="submit">제출하기</button>
+<div class="sf-bar" hidden><span></span></div>
+<p class="sf-status" role="status" aria-live="polite"></p>
+</form>
 
-## <span class="no">1</span> 보내는 방법
+<ul class="use-list">
+<li>보내주신 자료는 스터디장(라이프스케줄)만 볼 수 있어요.<br>다른 스터디원에게는 공개되지 않아요.</li>
+<li>여러분을 도와드리는 용도로만 써요.<br>그 외 용도로는 절대 쓰지 않아요.</li>
+<li>더 나은 방법을 조사할 때 AI 도구(Claude 등)를 함께 써요.</li>
+<li>스터디가 끝나면 받은 자료는 삭제해요.<br>원하시면 언제든 먼저 삭제를 요청할 수 있어요.</li>
+</ul>
 
-1. Claude Code나 Codex를 열고, 아래 프롬프트를 통째로 복사해서 붙여넣어요.<br>개발하던 대화창에 붙여넣으면 더 정확해요.
-2. AI가 프로젝트 이름과 막힌 부분을 물어봐요.<br>막힌 게 없으면 "없음"이라고 답하면 돼요.
-3. AI가 찾은 폴더를 보여 주면, 내 프로젝트가 맞는지 번호로 골라요.
-4. 바탕화면에 `개발자료_날짜.zip` 파일이 생겨요.
-5. 아래 **제출하기**에서 닉네임을 적고 zip 파일을 올려요.
+<div class="callout warn"><svg><use href="#i-warn"/></svg><div>API 키나 비밀번호는 AI가 자동으로 빼도록 되어 있어요.<br>그래도 보내기 전에 한 번만 확인해 주세요.</div></div>
 
-## <span class="no">2</span> 자료 정리 프롬프트 <small>(한번 해 보세요!)</small>
+## <span class="no">2</span> zip 만드는 프롬프트 <small>(복사 붙여넣으세요!)</small>
+
+Claude Code나 Codex에 통째로 붙여넣어요.<br>
+개발하던 대화창에 붙여넣으면 더 정확해요.
 
 <div class="prompt"><span class="who">자료 정리 요청 (Claude Code·Codex에)</span><button class="copy" type="button">복사</button><span class="txt">너는 내 개발 자료를 스터디장님께 보낼 제출용 압축 파일로 만들어 주는 도우미야.
 스터디장님은 이 자료를 AI에게 넘겨서 내 상황에 맞는 방법을 같이 조사할 거야.
@@ -79,20 +91,4 @@ spacious: true
 - 압축하기 전에 비밀 정보가 남아 있는지 한 번 더 검사하고, 결과를 한 줄로 알려 줘.
 - zip 파일이 저장된 위치를 알려 줘.</span></div>
 
-## <span class="no">3</span> 제출하기
-
-<!-- 설문지를 게시한 뒤 아래 div를 이 줄로 바꾼다: <a class="submit-go" href="(설문지 링크)" target="_blank" rel="noopener">제출하기</a> -->
-<div class="submit-go pending">설문지 넣을 자리<small>설문지를 게시한 뒤 제출하기 버튼으로 바꿔요</small></div>
-
-zip 파일을 올리려면 구글 로그인이 필요해요.<br>
-인터넷 채팅창(ChatGPT·Claude)으로만 작업했다면, zip 대신 대화 "공유" 링크를 넣어도 돼요.
-
-## <span class="no">4</span> 자료는 이렇게 써요
-
-<ul class="use-list">
-<li>보내주신 자료는 저만 볼 수 있어요.<br>다른 스터디원에게는 공개되지 않아요.</li>
-<li>여러분 업무에 맞는 방법을 같이 조사하는 데만 써요.<br>그 외 용도로는 절대 쓰지 않아요.</li>
-<li>스터디가 끝나면 받은 자료는 삭제해요.<br>원하시면 언제든 먼저 삭제를 요청할 수 있어요.</li>
-</ul>
-
-<div class="callout warn"><svg><use href="#i-warn"/></svg><div>API 키나 비밀번호는 AI가 자동으로 빼도록 되어 있어요.<br>그래도 보내기 전에 한 번만 확인해 주세요.</div></div>
+<script src="{{ '/assets/js/submit.js' | relative_url }}"></script>

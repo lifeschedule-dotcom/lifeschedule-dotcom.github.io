@@ -60,7 +60,7 @@ Ask these two questions together in one message.
 
 [Step 3: Gather the files]
 - Include the whole folder I confirmed.
-- If any of my work lives outside the folder (e.g. workflows in automation tools like n8n or Make, scripts attached to Google Sheets, settings inside an app builder), export and include it only if you're connected to that tool. If not, just note where it lives in "00_AI-handoff.md".
+- If some of my work lives outside the folder, include it if you can export it; if not, just note where it is in "00_AI-handoff.md".
 - Never edit or delete the original files. Work only on copies.
 
 [Step 4: Leave these out]

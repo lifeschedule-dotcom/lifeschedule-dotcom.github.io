@@ -23,7 +23,7 @@ GPT와 클로드 데스크탑 앱 모두 <code>me</code>를 작업 폴더로 열
 
 <div class="seq"><figure><a href="/assets/img/collaboration/laptop-b-live-collaboration.png" target="_blank" rel="noopener"><img src="/assets/img/collaboration/laptop-b-live-collaboration.png" alt="파일 탐색기에서 me 아래 live_collaboration 폴더와 협업 MD 파일들이 보이는 실제 화면" style="max-width:none"></a><figcaption><b>me &gt; live_collaboration</b> 폴더</figcaption></figure></div>
 
-## 폴더 활용 1 - 실시간 검토시키기
+## 실시간 검토시키기
 
 이번에는 GPT에게 지금까지 한 일과 클로드에게 확인받고 싶은 점을 [MD 파일]({{ '/2026/09/27/gpters-24-md/' | relative_url }})에 적게 했습니다.<br>
 그다음 클로드에게 그 파일을 읽고 검토해 달라고 했어요.
@@ -36,7 +36,25 @@ GPT가 그 의견을 읽고 결과에 반영한 다음, 다시 검토를 받았�
 뒤에는 **→ 받을 AI - 날짜·시간 작성 AI.md**를 붙였어요.<br>
 누가 다음에 읽을 파일인지 목록에서 바로 보입니다.
 
-## 폴더 활용 2 - 실시간 협업의 실제 모습
+<div class="wc">
+<p><b>여기서 잠깐!</b></p>
+<p>클로드 Pro·Max와 ChatGPT를 함께 구독 중이라면, GPT에게 클로드 검토를 바로 맡길 수도 있어요.<br>
+GPT가 내 컴퓨터에 설치된 Claude Code를 실행해 클로드의 검토를 받아 옵니다.<br>
+반대로 클로드가 GPT를 부르려면, Claude Code에 OpenAI의 Codex 플러그인을 설치하면 돼요.<br>
+(2026년 10월 4일 기준)</p>
+</div>
+
+<div class="prompt"><span class="who">GPT에게 클로드 검토 바로 맡기기</span><button class="copy" type="button">복사</button><span class="txt">지금까지 한 결과물을 클로드에게 검토받고 싶어.
+내 컴퓨터에 설치된 Claude Code를 실행해서 검토를 맡겨줘.
+
+- 검토받을 것: <span class="fill">(결과물 파일 이름)</span>
+- 검토 기준: <span class="fill">(틀린 사실, 빠진 단계, 읽기 어려운 문장)</span>
+
+클로드의 검토 의견은 live_collaboration에 MD 파일로 남기고, 반영할 점을 정리해서 알려줘.
+Claude Code가 설치돼 있지 않으면 설치 방법부터 한 단계씩 알려줘.
+실행을 허용할지 묻는 창이 뜨면, 내가 읽고 판단해서 누를게.</span></div>
+
+## 실시간 협업의 실제 모습
 
 두 AI의 대화는 자동으로 공유되지 않습니다.<br>
 제가 말하는 실시간 협업은 새 파일이 생기면 상대 AI가 읽고 회신하는 흐름이에요.
@@ -81,14 +99,6 @@ GPT가 그 의견을 읽고 결과에 반영한 다음, 다시 검토를 받았�
 - 완료 MD 파일이 오면 확인을 멈춰줘.</span></div>
 
 저는 위와 같은 방식으로 요청했어요.
-
-<div class="wc">
-<p><b>여기서 잠깐!</b></p>
-<p>클로드 Pro·Max와 ChatGPT를 함께 구독 중이라면, AI가 상대 AI를 직접 부를 수도 있어요.<br>
-GPT는 컴퓨터에 설치된 Claude Code를 실행해 클로드에게 검토를 맡길 수 있습니다.<br>
-클로드도 Claude Code에 OpenAI의 공식 Codex 플러그인을 설치하면 GPT에게 검토를 맡길 수 있어요.<br>
-(2026년 10월 4일 기준)</p>
-</div>
 
 ## 두 노트북까지도 잇는 폴더
 

@@ -916,3 +916,25 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .sf-status.ok { color: #1e6b4d; } .sf-status.err { color: #a33b3b; }
 .use-list { margin: .6em 0 1.4em; padding: 14px 18px 14px 36px; border-radius: 14px; background: #fff; border: 1px solid #ebe3e6; }
 .use-list li { margin: 4px 0; font-size: 17px; line-height: 1.7; }
+
+/* 협업 글 도식: GPT ↔ live_collaboration ↔ 클로드 */
+.collab { display: flex; align-items: stretch; gap: 8px; margin: 1.4em 0 1.8em; }
+.cb-ai { flex: 0 0 92px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 12px 6px; border-radius: 14px; background: #fff; border: 1px solid #ebe3e6; font-size: 17px; }
+.cb-ai img { width: 40px; height: 40px; object-fit: contain; }
+.cb-arr { flex: 0 0 104px; display: flex; flex-direction: column; justify-content: center; gap: 18px; font-size: 15px; line-height: 1.4; text-align: center; color: var(--ink); }
+.cb-arr span { display: block; }
+.cb-arr i { display: block; font-style: normal; font-size: 24px; line-height: 1; color: var(--accent); }
+.cb-folder { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 12px; border-radius: 14px; border: 2px solid var(--accent); background: #fbf1f4; }
+.cb-folder > b { display: flex; align-items: center; gap: 6px; font-size: 16px; color: #5a2233; }
+.cb-folder > b svg { width: 20px; height: 20px; flex: none; fill: var(--accent); }
+.cb-file { padding: 6px 10px; border-radius: 8px; background: #fff; border: 1px solid #ebe3e6; font-size: 15px; line-height: 1.45; word-break: keep-all; }
+.cb-note { font-size: 15px; color: var(--ink); }
+@media (max-width: 640px) {
+  .collab { flex-direction: column; gap: 6px; }
+  .cb-ai { flex: none; flex-direction: row; padding: 8px; }
+  .cb-ai img { width: 30px; height: 30px; }
+  .cb-arr { flex: none; flex-direction: row; justify-content: center; gap: 28px; }
+  .cb-arr span { display: flex; align-items: center; gap: 6px; }
+  .cb-arr i { transform: rotate(90deg); }
+  .cb-arr br { display: none; }
+}

@@ -39,20 +39,66 @@ GPT가 그 의견을 읽고 결과에 반영한 다음, 다시 검토를 받았�
 ## 실시간 협업의 실제 모습
 
 두 AI의 대화는 자동으로 공유되지 않습니다.<br>
-제가 말하는 실시간 협업은 새 파일이 생기면 상대 AI가 읽고 회신하는 흐름이에요.<br>
-저는 상대 AI에게 폴더를 읽으라고 하고, 작업 중에는 2분 간격으로 새 파일을 확인하게 했습니다.
+제가 말하는 실시간 협업은 새 파일이 생기면 상대 AI가 읽고 회신하는 흐름이에요.
 
-클로드 Pro·Max 구독으로 Claude Code를 사용할 수 있어요.<br>
-GPT가 설치된 Claude Code를 실행해 검토를 받은 적도 있습니다.<br>
-이번에는 MD 파일로 요청과 회신을 주고받았어요.
+<div class="collab">
+<div class="cb-ai"><img src="/assets/img/icons/chatgpt.png" alt=""><b>GPT</b></div>
+<div class="cb-arr"><span>① 요청 MD <br>남기기 <i>→</i></span><span><i>←</i> ④ 읽고 <br>반영하기</span></div>
+<div class="cb-folder"><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg>live_collaboration</b><div class="cb-file">01 요청 → 클로드.md</div><div class="cb-file">02 검토 → GPT.md</div><span class="cb-note">두 AI가 2분마다 새 파일 확인</span></div>
+<div class="cb-arr"><span>② 새 파일 <br>읽기 <i>→</i></span><span><i>←</i> ③ 검토 MD <br>남기기</span></div>
+<div class="cb-ai"><img src="/assets/img/icons/claude.png" alt=""><b>클로드</b></div>
+</div>
 
-공개하거나 발송할 결과는 마지막에 제가 확인합니다.
+### 제가 쓰는 요청문 (한번 해 보세요!)
+
+<p class="sub-note">노란 괄호 칸만 내 상황에 맞게 바꿔주면 됩니다.</p>
+
+<div class="prompt"><span class="who">주담당 AI에게</span><button class="copy" type="button">복사</button><span class="txt">안녕! 이 프로젝트는 네가 주담당이고, <span class="fill">(GPT)</span>가 너랑 같이 일할 거야.
+
+- 프로젝트: <span class="fill">(프로젝트 이름)</span>
+- 함께 쓰는 폴더: me 안의 live_collaboration
+
+1. 일 나누기
+   - 네가 진행하되, 부분 작업은 <span class="fill">(GPT)</span>에게 맡겨도 돼.
+   - 검토가 필요한 시점은 네가 기준을 정해줘. 결과물이 다 끝났을 때는 꼭 검토를 받아줘.
+
+2. 파일로 주고받기
+   - 맡기거나 검토받을 일은 live_collaboration에 MD 파일로 남겨줘.
+   - 배경·목표·지금까지 한 일을 파일에 다 적어서, 내가 따로 설명하지 않아도 되게 해줘.
+   - 파일 이름: 프로젝트·순번·할 일 → 받을 AI - 날짜·시간 작성 AI.md
+   - 상대의 원본은 고치지 말고, 의견은 새 MD 파일로 남겨줘.
+
+3. 확인과 마무리
+   - 작업 중에는 2분마다 폴더에서 너에게 온 새 파일을 확인해줘.
+   - 내가 시킨 일과 모든 검토가 끝나면, 완료 MD 파일을 남기고 확인을 멈춰줘.
+
+공개·발송·삭제처럼 되돌리기 어려운 일은 하기 전에 나에게 먼저 물어봐.</span></div>
+
+<div class="prompt"><span class="who">함께 일할 AI에게</span><button class="copy" type="button">복사</button><span class="txt">안녕! 이번 프로젝트는 <span class="fill">(클로드)</span>가 주담당이고, 너는 같이 일할 거야.
+
+- me 안의 live_collaboration 폴더를 2분마다 확인해서, 너에게 온 MD 파일을 읽고 회신해줘.
+- 회신은 같은 이름 규칙의 새 MD 파일로 남기고, 상대의 원본은 고치지 마.
+- 완료 MD 파일이 오면 확인을 멈춰줘.</span></div>
+
+저는 위와 같은 방식으로 요청했어요.
+
+<div class="wc">
+<p><b>여기서 잠깐!</b></p>
+<p>클로드 Pro·Max와 ChatGPT를 함께 구독 중이라면, AI가 상대 AI를 직접 부를 수도 있어요.<br>
+GPT는 컴퓨터에 설치된 Claude Code를 실행해 클로드에게 검토를 맡길 수 있습니다.<br>
+클로드도 Claude Code에 OpenAI의 공식 Codex 플러그인을 설치하면 GPT에게 검토를 맡길 수 있어요.<br>
+(2026년 10월 4일 기준)</p>
+</div>
 
 ## 두 노트북까지도 잇는 폴더
 
-제 <code>me</code>는 원드라이브 안에 있어서, 다른 노트북에도 같은 파일이 내려옵니다.<br>
-그래서 한 노트북의 화면을 ChatGPT의 컴퓨터 사용(Computer Use) 기능이 쓰는 동안,<br>
-다른 노트북에서 클로드에게 검토를 맡길 수 있었어요.
+제 <code>me</code>는 원드라이브 안에 있어서, 다른 노트북에도 같은 파일이 실시간으로 내려옵니다.
+
+요즘 저는 AI에게 "네가 직접 해줘."라는 말을 자주 해요.<br>
+그러면 AI가 크롬 클릭부터 코드 입력까지 화면을 직접 조작합니다.<br>
+이런 기능을 컴퓨터 사용(Computer Use)이라고 해요.<br>
+그동안 제가 노트북을 만지면 AI의 작업을 방해하게 되어, 저는 아무것도 못 하더라고요.<br>
+그래서 다른 일은 다른 노트북에서 이어서 하니 편했습니다.
 
 <div class="seq"><figure><a href="/assets/img/collaboration/onedrive-sync-status.png" target="_blank" rel="noopener"><img src="/assets/img/collaboration/onedrive-sync-status.png" alt="다른 노트북의 OneDrive가 백업 및 동기화됨 상태이고 협업 폴더의 새 파일을 다운로드한 실제 화면" style="max-width:340px;margin:auto"></a><figcaption>다른 노트북에 협업 파일이 내려온 화면입니다.</figcaption></figure></div>
 
@@ -99,4 +145,5 @@ USB에 압축해서 옮긴다고 했어요.
 <li><a href="https://support.google.com/drive/answer/13401938" target="_blank" rel="noopener">Google: 데스크톱 파일 스트리밍과 미러링</a></li>
 <li><a href="https://learn.chatgpt.com/use-cases/use-your-computer-with-codex" target="_blank" rel="noopener">OpenAI: 컴퓨터 사용 기능</a></li>
 <li><a href="https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-or-max-plan" target="_blank" rel="noopener">Anthropic: 유료 구독의 Claude Code 사용</a></li>
+<li><a href="https://github.com/openai/codex-plugin-cc" target="_blank" rel="noopener">OpenAI: Claude Code용 Codex 플러그인</a></li>
 </ul>

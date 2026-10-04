@@ -1,10 +1,10 @@
 ---
-title: "여러 노트북에서 AI가 실시간으로 협업하게 만들기"
+title: "AI들을 함께 실시간으로 일 시키는 방법"
 section: vibe-coding
 sub: automation
 ref: onedrive-ai-collaboration
 date: 2026-10-01 22:30:00 +0900
-description: AI가 한 노트북의 화면을 쓰는 동안, 다른 노트북의 AI와 원드라이브 파일로 일을 이어 간 경험.
+description: 두 컴퓨터에 동기화된 폴더 하나로 GPT와 클로드가 파일을 주고받으며 일한 경험.
 spacious: true
 ---
 

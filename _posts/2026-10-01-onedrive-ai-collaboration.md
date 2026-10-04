@@ -13,7 +13,7 @@ AI끼리 서로 교차검증을 시키거나,<br>
 똑같은 내용을 직접 쓰고 반복해서 설명하는 제 자신을 발견하게 됩니다. ^^;<br>
 그래서 두 AI가 같은 폴더의 파일로 직접 일을 주고받게 했어요.
 
-<div class="keyline">폴더 하나에 MD 파일을 남기면<br>GPT와 클로드가 그 파일로 일을 주고받아요.</div>
+<div class="keyline">동기화 폴더 하나에 MD 파일을 남기면<br>GPT와 클로드가 그 파일로 일을 주고받아요.</div>
 
 ## AI들이 함께 쓰는 폴더
 
@@ -23,7 +23,7 @@ GPT와 클로드 데스크탑 앱 모두 <code>me</code>를 작업 폴더로 열
 
 <div class="seq"><figure><a href="/assets/img/collaboration/laptop-b-live-collaboration.png" target="_blank" rel="noopener"><img src="/assets/img/collaboration/laptop-b-live-collaboration.png" alt="파일 탐색기에서 me 아래 live_collaboration 폴더와 협업 MD 파일들이 보이는 실제 화면" style="max-width:none"></a><figcaption><b>me &gt; live_collaboration</b> 폴더</figcaption></figure></div>
 
-## 동기화 활용 1 - 실시간 검토시키기
+## 폴더 활용 1 - 실시간 검토시키기
 
 이번에는 GPT에게 지금까지 한 일과 클로드에게 확인받고 싶은 점을 [MD 파일]({{ '/2026/09/27/gpters-24-md/' | relative_url }})에 적게 했습니다.<br>
 그다음 클로드에게 그 파일을 읽고 검토해 달라고 했어요.
@@ -36,7 +36,7 @@ GPT가 그 의견을 읽고 결과에 반영한 다음, 다시 검토를 받았�
 뒤에는 **→ 받을 AI - 날짜·시간 작성 AI.md**를 붙였어요.<br>
 누가 다음에 읽을 파일인지 목록에서 바로 보입니다.
 
-## 동기화 활용 2 - 실시간 협업의 실제 모습
+## 폴더 활용 2 - 실시간 협업의 실제 모습
 
 두 AI의 대화는 자동으로 공유되지 않습니다.<br>
 제가 말하는 실시간 협업은 새 파일이 생기면 상대 AI가 읽고 회신하는 흐름이에요.

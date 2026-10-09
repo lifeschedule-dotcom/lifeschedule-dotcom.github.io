@@ -3,7 +3,7 @@ title: "둘이검토 스킬: AI에게 '검토해' 한 줄로 다른 AI의 검토
 section: vibe-coding
 sub: automation
 ref: duli-review
-date: 2026-10-09 23:00:00 +0900
+date: 2026-10-09 15:00:00 +0900
 description: 내 AI에게 "검토해"라고만 하면, 다른 AI가 먼저 혼자 읽고 틀린 것을 잡아 주는 둘이검토 스킬. 한 줄 설치, 두 가지 설정, 실제 결과.
 spacious: true
 ---

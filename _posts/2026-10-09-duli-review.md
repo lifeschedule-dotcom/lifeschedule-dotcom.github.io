@@ -54,9 +54,12 @@ AI한테 글이나 설계를 시키면 참 잘 써 줘요.<br>
 
 ## <span class="no">4</span> "검토해" 해 보기
 
-설계안이든 글이든 파일 하나를 두고 이렇게만 해요.
+AI와 설계를 얘기하던 그 대화창에서 이렇게만 해요.<br>
+파일을 따로 줄 필요 없어요. 지금까지 얘기한 내용을 내 AI가 파일로 정리해서 검토 AI에게 보내요.
 
-<div class="prompt"><span class="who">검토 요청 (내 AI에게)</span><button class="copy" type="button">복사</button><span class="txt"><span class="fill">(설계안 파일 이름)</span> 이 설계안 검토해</span></div>
+<div class="prompt"><span class="who">검토 요청 (내 AI에게)</span><button class="copy" type="button">복사</button><span class="txt">검토해</span></div>
+
+이미 써 둔 파일이 있으면 이름을 붙여요. <b>"예약 설계안.md 검토해"</b>
 
 제가 피부관리실 예약 자동화 설계안에 **일부러 틀린 것 세 개를 심어** 놓고 돌려 봤어요.<br>
 내 AI는 클로드, 검토 AI는 다른 모델(Opus)이었고 3분 걸렸어요.
@@ -88,10 +91,7 @@ AI한테 글이나 설계를 시키면 참 잘 써 줘요.<br>
 
 `live_collaboration` 폴더를 열어요. 번호가 붙은 파일 두 개가 보이면 된 거예요.
 
-<div class="wc">
-<p><b>예약 자동화 01 설계안 v1 → Opus - 2026-10-09 1335 Claude.md</b> — 내 AI가 보낸 것</p>
-<p><b>예약 자동화 02 설계안 v1 검토 → Claude - 2026-10-09 1304 Opus.md</b> — 검토 AI가 보낸 것</p>
-</div>
+<div class="seq"><figure><img src="/assets/img/duli/folder-two-files.png" alt="me 안의 live_collaboration 폴더에 01 설계안(내 AI → Opus)과 02 검토(Opus → Claude) 파일 두 개가 있는 실제 화면"><figcaption><b>01</b>은 내 AI가 검토 AI에게 보낸 설계안, <b>02</b>는 검토 AI가 돌려보낸 검토예요.</figcaption></figure></div>
 
 누가 뭘 잡았고 뭘 반영했는지 이 파일들에 다 남아요.
 
@@ -114,6 +114,5 @@ AI한테 글이나 설계를 시키면 참 잘 써 줘요.<br>
 
 <ul class="refs">
 <li><a href="https://github.com/lifeschedule-dotcom/duli" target="_blank" rel="noopener">둘이검토 스킬 저장소</a></li>
-<li><a href="https://github.com/chat-prompt/write-post" target="_blank" rel="noopener">지피터스 write-post 스킬 (설치 방식 참고)</a></li>
 <li><a href="https://github.com/jcputney/agent-peer-review" target="_blank" rel="noopener">agent-peer-review (먼저 혼자 읽기 참고)</a></li>
 </ul>

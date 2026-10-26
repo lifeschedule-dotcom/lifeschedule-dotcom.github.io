@@ -16,7 +16,12 @@ spacious: true
 @media (max-width: 560px) { .content th, .content td { padding: 7px 5px; font-size: 16px; } }
 </style>
 
-2026년 10월 26일, 판다스(pandas) 실습 10문제를 풀며 틀린 이유를 모아 보니 **같은 실수 세 가지**가 계속 반복됐어요.<br>
+<div class="wc"><p><b>pandas는 왜 배울까요?</b><br>
+판다스(pandas)는 파이썬에서 표 데이터를 읽고, 고르고, 계산하는 [데이터 분석 라이브러리](https://github.com/pandas-dev/pandas)예요.<br>
+머신러닝은 모델에 넣기 전에 CSV를 읽고, 빈 값을 정리하고, 필요한 열만 고르는 일이 먼저라 이 단계를 대부분 pandas로 해요.<br>
+scikit-learn 같은 머신러닝 도구도 [pandas 표를 그대로 주고받을 수 있어서](https://scikit-learn.org/stable/auto_examples/miscellaneous/plot_set_output.html), pandas가 손에 익어야 모델 수업이 덜 막혀요. (2026년 10월 26일 기준)</p></div>
+
+2026년 10월 26일, pandas 실습 10문제를 풀며 틀린 이유를 모아 보니 **같은 실수 세 가지**가 계속 반복됐어요.<br>
 NVIDIA AI CAMPUS 수업 복습이었고, 한 문제에 15분에서 20분씩 걸렸어요.<br>
 막힐 때마다 AI에게 물어보며 이해한 것을 그대로 정리해요.
 
@@ -308,18 +313,5 @@ out.to_csv('output.csv, index=False')   # ❌ 파일 이름이 "output.csv, inde
 out.to_csv('output.csv', index=False)   # ✅
 ```
 따옴표는 파일 이름 바로 뒤에서 닫아요.
-
-### 막히면 AI에게 이렇게 물어보면 돼요
-
-제가 가장 도움을 받은 질문 방식이에요. 틀린 코드를 그대로 붙여 넣고 물어봐요.
-
-```
-pandas 실습 중인데 이 코드가 왜 틀렸는지 모르겠어.
-[내 코드 붙여 넣기]
-
-1. 어디가 틀렸는지 한두 줄로 알려 줘.
-2. 고친 코드를 조각으로 나눠서, 조각마다 내 데이터에서 실제로 뭐가 나오는지 값으로 보여 줘.
-3. 어려운 용어 없이 설명해 줘.
-```
 
 <div class="done"><div class="done-t">🎉 핵심은 세 가지예요. 표가 필요한지 개수만 필요한지, [ ]인지 ( )인지, 열 이름인지 값인지!</div></div>

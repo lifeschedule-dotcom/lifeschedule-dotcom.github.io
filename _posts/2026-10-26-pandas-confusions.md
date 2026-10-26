@@ -12,7 +12,9 @@ spacious: true
 .content table { width: 100%; border-collapse: collapse; margin: 14px 0 24px; font-size: 17px; line-height: 1.5; }
 .content th, .content td { border-bottom: 1px solid #e6dde0; padding: 8px 10px; text-align: left; vertical-align: top; }
 .content thead { background: #fbf1f4; }
-.content th { white-space: nowrap; }
+.content figure { margin: 18px 0; }
+.content figure img { width: 100%; height: auto; }
+.content td, .content th { word-break: keep-all; overflow-wrap: normal; }
 @media (max-width: 560px) { .content th, .content td { padding: 7px 5px; font-size: 16px; } }
 </style>
 
@@ -85,8 +87,10 @@ df[df["category"] == "과일"]      # ✅
 
 ## <span class="no">2</span> 조건 결과와 골라낸 표 구분하기
 
-조건만 쓰면 True/False 목록이 나오고, `df[ ]`로 감싸야 표가 돼요.<br>
+조건만 쓰면 True/False 목록(boolean mask)이 나오고, `df[ ]`로 감싸야 표가 돼요.<br>
 pandas에서 가장 자주 하는 실수가 이 둘을 헷갈리는 거예요.
+
+<figure><img src="/assets/img/ml/pandas-mask.png" alt="df['price']를 4000과 비교하면 True/False 목록이 나오고, 그 목록으로 df를 감싸면 True인 바나나·치즈·배 3줄만 남는 과정" width="1745" height="595"></figure>
 
 ```python
 df["price"] >= 4000
@@ -197,7 +201,11 @@ df.sort_values("price")["name"]
 4       배
 3      치즈
 ```
-왼쪽 숫자(1, 0, 2…)는 **원래 줄 이름**이라 순서와 맞지 않아요.<br>
+왼쪽 숫자(1, 0, 2…)는 **원래 줄 이름(index label)** 이라 순서와 맞지 않아요.<br>
+
+<figure><img src="/assets/img/ml/pandas-loc-iloc.png" alt="가격순으로 정렬한 표에서 .loc[1]은 줄 이름이 1인 우유, .iloc[1]은 위에서 두 번째 줄인 사과" width="1373" height="620"></figure>
+
+같은 숫자 1이라도 `.loc[1, "name"]`은 줄 이름이 1인 **우유**, `.iloc[1, 0]`은 위에서 두 번째 줄인 **사과**예요.<br>
 그래서 몇 번째로 집는 `iloc`를 써요. 두 번째는 `[1]`이에요.
 
 ```python

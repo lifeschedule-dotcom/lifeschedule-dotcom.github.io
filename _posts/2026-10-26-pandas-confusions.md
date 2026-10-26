@@ -17,9 +17,9 @@ spacious: true
 </style>
 
 <div class="wc"><p><b>pandas는 왜 배울까요?</b><br>
-판다스(pandas)는 파이썬에서 표 데이터를 읽고, 고르고, 계산하는 [데이터 분석 라이브러리](https://github.com/pandas-dev/pandas)예요.<br>
+판다스(pandas)는 파이썬에서 표 데이터를 읽고, 고르고, 계산하는 <a href="https://github.com/pandas-dev/pandas">데이터 분석 라이브러리</a>예요.<br>
 머신러닝은 모델에 넣기 전에 CSV를 읽고, 빈 값을 정리하고, 필요한 열만 고르는 일이 먼저라 이 단계를 대부분 pandas로 해요.<br>
-scikit-learn 같은 머신러닝 도구도 [pandas 표를 그대로 주고받을 수 있어서](https://scikit-learn.org/stable/auto_examples/miscellaneous/plot_set_output.html), pandas가 손에 익어야 모델 수업이 덜 막혀요. (2026년 10월 26일 기준)</p></div>
+scikit-learn 같은 머신러닝 도구도 <a href="https://scikit-learn.org/stable/auto_examples/miscellaneous/plot_set_output.html">pandas 표를 그대로 주고받을 수 있어서</a>, pandas가 손에 익어야 모델 수업이 덜 막혀요. (2026년 10월 26일 기준)</p></div>
 
 2026년 10월 26일, pandas 실습 10문제를 풀며 틀린 이유를 모아 보니 **같은 실수 세 가지**가 계속 반복됐어요.<br>
 NVIDIA AI CAMPUS 수업 복습이었고, 한 문제에 15분에서 20분씩 걸렸어요.<br>

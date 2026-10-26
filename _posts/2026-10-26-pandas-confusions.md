@@ -1,10 +1,10 @@
 ---
-title: "pandas에서 자꾸 헷갈린 것들, AI에게 하나씩 물어본 정리"
+title: "pandas 실습에서 자꾸 틀린 것 정리: 괄호·조건·loc"
 section: physical-ai
 sub: nvidia
 ref: pandas-confusions
 date: 2026-10-26 23:40:00 +0900
-description: pandas 실습을 하다 계속 막힌 괄호, 조건, loc·iloc, append를 AI에게 물어보고 실제 값으로 다시 정리했어요.
+description: 판다스(pandas) 실습 10문제에서 반복된 실수 세 가지(조건과 표, 괄호, loc·iloc)를 틀린 코드와 고친 코드로 정리했어요.
 spacious: true
 ---
 
@@ -16,9 +16,9 @@ spacious: true
 @media (max-width: 560px) { .content th, .content td { padding: 7px 5px; font-size: 16px; } }
 </style>
 
-NVIDIA AI CAMPUS 수업 중 pandas 실습 10문제를 풀었어요.<br>
-한 문제에 15~20분씩 걸렸고, 틀린 이유를 모아 보니 **같은 실수가 계속 반복**되고 있었어요.<br>
-AI에게 물어보며 이해한 것을 그대로 정리해요.
+2026년 10월 26일, 판다스(pandas) 실습 10문제를 풀며 틀린 이유를 모아 보니 **같은 실수 세 가지**가 계속 반복됐어요.<br>
+NVIDIA AI CAMPUS 수업 복습이었고, 한 문제에 15분에서 20분씩 걸렸어요.<br>
+막힐 때마다 AI에게 물어보며 이해한 것을 그대로 정리해요.
 
 <div class="keyline">아래 작은 가게 표 하나로 전부 설명할게요.</div>
 
@@ -40,12 +40,10 @@ df = pd.DataFrame({
 | 3 | 치즈 | 유제품 | 6000 | 8 |
 | 4 | 배 | 과일 | 5000 | 20 |
 
-## <span class="no">1</span> df는 이 표 자체예요
+## <span class="no">1</span> pandas에서 df 꺼내 쓰는 법
 
-`df`는 위에 나온 **표 한 장에 붙인 이름**이에요.<br>
+`df`는 위에 나온 **표 한 장에 붙인 이름**이고, 열·줄 번호·칸 세 가지로 꺼내 써요.<br>
 `pd.read_csv("파일.csv")`로 읽어도, 위처럼 직접 만들어도 결과는 같아요.
-
-표에서 쓰는 방법은 세 가지만 알면 돼요.
 
 ```python
 df["price"]
@@ -71,9 +69,19 @@ df.loc[df["price"].idxmax(), "name"]   # → 치즈
 <div class="wc"><p><b>팁</b> : 긴 코드는 한 줄에 몰아 쓰지 말고, 조각마다 칸을 나눠 실행해 보세요.<br>
 「무엇이 나오는지」를 눈으로 확인하고 이어 붙이면 훨씬 덜 헷갈려요.</p></div>
 
-## <span class="no">2</span> 가장 많이 틀린 것: True/False 목록과 골라낸 표
+### 열 이름과 안에 든 값
 
-틀린 걸 모아 보니 거의 다 이거였어요.
+```python
+df["과일"]                        # ❌ KeyError
+df[df["category"] == "과일"]      # ✅
+```
+`df[" "]` 안에는 **표 맨 위 줄의 열 이름**만 들어가요.<br>
+"과일"은 category 열 안에 든 **값**이라, 「category가 과일과 같은가」로 써야 해요.
+
+## <span class="no">2</span> 조건 결과와 골라낸 표 구분하기
+
+조건만 쓰면 True/False 목록이 나오고, `df[ ]`로 감싸야 표가 돼요.<br>
+틀린 걸 모아 보니 거의 다 이 둘을 헷갈린 거였어요.
 
 ```python
 df["price"] >= 4000
@@ -111,7 +119,9 @@ df[df["price"] >= 4000].sum()
 True/False 목록에는 stock 열이 없어서 `KeyError`가 나요.<br>
 `df[df["price"] <= 4000]["stock"]`처럼 표를 먼저 만들어야 해요.
 
-## <span class="no">3</span> 괄호: [ ]는 꺼내기, ( )는 실행하기
+## <span class="no">3</span> 괄호 [ ]와 ( ) 구분하기
+
+`[ ]`는 꺼낼 때, `( )`는 기능을 실행할 때 써요.
 
 | `[ ]` 꺼내기 | `( )` 실행하기 |
 |---|---|
@@ -153,9 +163,9 @@ df[(df["category"] == "과일") & (df["price"] >= 4000)]
 
 <div class="wc"><p><b>팁</b> : 괄호 하나에 커서를 대면 VS Code가 짝이 되는 괄호를 같이 표시해 줘요.</p></div>
 
-## <span class="no">4</span> loc와 iloc: 이름으로 집기, 몇 번째로 집기
+## <span class="no">4</span> loc와 iloc 차이
 
-둘 다 표에서 **칸을 콕 집어** 꺼내요. 집는 방법만 달라요.
+loc는 **이름으로**, iloc는 **몇 번째인지 숫자로** 칸을 콕 집어 꺼내요.
 
 ```python
 df.loc[3, "name"]   # 3번 줄, name 열 → 치즈
@@ -203,16 +213,9 @@ df.sort_values("price")["name"]  .iloc[1]
 `.iloc`는 둘 다 맨 뒤예요. 앞에 놓인 대상만 달라요.<br>
 `["name"]`도 똑같아요. 앞이 `df`면 전체 표에서, 앞이 골라낸 표면 그 표에서 꺼내요.
 
-## <span class="no">5</span> 열 이름과 안에 든 값
+## <span class="no">5</span> groupby와 자주 쓴 기능
 
-```python
-df["과일"]                        # ❌ KeyError
-df[df["category"] == "과일"]      # ✅
-```
-`df[" "]` 안에는 **표 맨 위 줄의 열 이름**만 들어가요.<br>
-"과일"은 category 열 안에 든 **값**이라, 「category가 과일과 같은가」로 써야 해요.
-
-## <span class="no">6</span> 「~별」이 나오면 묶기
+문제에 「~별」이 나오면 같은 것끼리 묶어서 계산해요.
 
 ### 평균·합계는 groupby
 
@@ -248,30 +251,28 @@ df["category"].value_counts().iloc[0]     # → 3 (개수)
 ```
 이름이 필요하면 `idxmax()`나 `index[0]`, 개수가 필요하면 `iloc[0]`이에요.
 
-## <span class="no">7</span> 자주 쓴 기능
-
-**또는 조건을 짧게 : isin**
+### 또는 조건을 짧게: isin
 
 ```python
 df["name"].isin(["사과", "배"]).sum()   # → 2
 ```
 목록 안에 있으면 True예요. `(조건1) | (조건2)`를 쓸 때보다 괄호 걱정이 없어요.
 
-**상위 25% 기준 : quantile**
+### 상위 25% 기준: quantile
 
 ```python
 df["price"].quantile(0.75)                            # → 5000.0
 (df["price"] > df["price"].quantile(0.75)).sum()      # → 1 (치즈)
 ```
 
-**새 열 만들기**
+### 새 열 만들기
 
 ```python
 df["sales"] = df["stock"] * df["price"]
 ```
 `stock * price`처럼 쓰면 `NameError`가 나요. 열은 늘 `df["열 이름"]`으로 꺼내요.
 
-**개수 세기 세 가지 : 다 같은 답**
+### 개수 세기 세 가지는 다 같은 답
 
 ```python
 len(df[df["price"] >= 4000])           # → 3
@@ -280,7 +281,9 @@ df[df["price"] >= 4000].shape[0]       # → 3
 ```
 `shape`는 `(행 수, 열 수)`를 돌려줘요. `[0]`이 행 수, `[1]`이 열 수예요.
 
-## <span class="no">8</span> 화면에 이상한 게 보일 때
+## <span class="no">6</span> 주피터(Jupyter) 화면에 이상한 게 보일 때
+
+대부분 코드가 틀린 게 아니라, 실행 기록이 남았거나 표시 방식이 달라서예요.
 
 **append 결과가 계속 쌓여요**
 
@@ -306,4 +309,17 @@ out.to_csv('output.csv', index=False)   # ✅
 ```
 따옴표는 파일 이름 바로 뒤에서 닫아요.
 
-<div class="done"><div class="done-t">🎉 정리하면 세 가지예요. 표가 필요한지 개수만 필요한지, [ ]인지 ( )인지, 열 이름인지 값인지!</div></div>
+### 막히면 AI에게 이렇게 물어보면 돼요
+
+제가 가장 도움을 받은 질문 방식이에요. 틀린 코드를 그대로 붙여 넣고 물어봐요.
+
+```
+pandas 실습 중인데 이 코드가 왜 틀렸는지 모르겠어.
+[내 코드 붙여 넣기]
+
+1. 어디가 틀렸는지 한두 줄로 알려 줘.
+2. 고친 코드를 조각으로 나눠서, 조각마다 내 데이터에서 실제로 뭐가 나오는지 값으로 보여 줘.
+3. 어려운 용어 없이 설명해 줘.
+```
+
+<div class="done"><div class="done-t">🎉 핵심은 세 가지예요. 표가 필요한지 개수만 필요한지, [ ]인지 ( )인지, 열 이름인지 값인지!</div></div>

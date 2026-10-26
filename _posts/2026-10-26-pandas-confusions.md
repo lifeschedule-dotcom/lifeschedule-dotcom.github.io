@@ -1,10 +1,10 @@
 ---
-title: "pandas 실습에서 자꾸 틀린 것 정리: 괄호·조건·loc"
+title: "pandas 입문자가 자주 헷갈리는 것 정리: 괄호·조건·loc"
 section: physical-ai
 sub: nvidia
 ref: pandas-confusions
 date: 2026-10-26 23:40:00 +0900
-description: 판다스(pandas) 실습 10문제에서 반복된 실수 세 가지(조건과 표, 괄호, loc·iloc)를 틀린 코드와 고친 코드로 정리했어요.
+description: 판다스(pandas)를 처음 배울 때 자주 틀리는 세 가지(조건과 표, 괄호, loc·iloc)를 틀린 코드와 고친 코드로 정리했어요.
 spacious: true
 ---
 
@@ -19,11 +19,11 @@ spacious: true
 <div class="wc"><p><b>pandas는 왜 배울까요?</b><br>
 판다스(pandas)는 파이썬에서 표 데이터를 읽고, 고르고, 계산하는 <a href="https://github.com/pandas-dev/pandas">데이터 분석 라이브러리</a>예요.<br>
 머신러닝은 모델에 넣기 전에 CSV를 읽고, 빈 값을 정리하고, 필요한 열만 고르는 일이 먼저라 이 단계를 대부분 pandas로 해요.<br>
-scikit-learn 같은 머신러닝 도구도 <a href="https://scikit-learn.org/stable/auto_examples/miscellaneous/plot_set_output.html">pandas 표를 그대로 주고받을 수 있어서</a>, pandas가 손에 익어야 모델 수업이 덜 막혀요. (2026년 10월 26일 기준)</p></div>
+scikit-learn 같은 머신러닝 도구도 <a href="https://scikit-learn.org/stable/auto_examples/miscellaneous/plot_set_output.html">pandas 표를 그대로 주고받을 수 있어서</a>, pandas가 손에 익어야 머신러닝 공부가 덜 막혀요. (2026년 10월 26일 기준)</p></div>
 
-2026년 10월 26일, pandas 실습 10문제를 풀며 틀린 이유를 모아 보니 **같은 실수 세 가지**가 계속 반복됐어요.<br>
-NVIDIA AI CAMPUS 수업 복습이었고, 한 문제에 15분에서 20분씩 걸렸어요.<br>
-막힐 때마다 AI에게 물어보며 이해한 것을 그대로 정리해요.
+pandas를 처음 배울 때 자주 틀리는 건 **세 가지**로 모여요.<br>
+조건 결과와 표, `[ ]`와 `( )`, loc와 iloc예요.<br>
+틀린 코드와 고친 코드를, 작은 표 하나로 실제 값을 보며 정리했어요.
 
 <div class="keyline">아래 작은 가게 표 하나로 전부 설명할게요.</div>
 
@@ -86,7 +86,7 @@ df[df["category"] == "과일"]      # ✅
 ## <span class="no">2</span> 조건 결과와 골라낸 표 구분하기
 
 조건만 쓰면 True/False 목록이 나오고, `df[ ]`로 감싸야 표가 돼요.<br>
-틀린 걸 모아 보니 거의 다 이 둘을 헷갈린 거였어요.
+pandas에서 가장 자주 하는 실수가 이 둘을 헷갈리는 거예요.
 
 ```python
 df["price"] >= 4000
@@ -108,7 +108,7 @@ df[df["price"] >= 4000]
 df[df["price"] >= 4000]["name"]        # → 바나나, 치즈, 배
 ```
 
-### 이렇게 틀렸어요 ①: 표 전체를 더해 버림
+### 자주 하는 실수 ①: 표 전체를 더해 버림
 
 ```python
 df[df["price"] >= 4000].sum()
@@ -116,7 +116,7 @@ df[df["price"] >= 4000].sum()
 `df[ ]`로 감싼 표에 `.sum()`을 붙이면, 골라낸 표의 **열마다 전부 더해요.**<br>
 가격은 가격끼리 더하고, 이름은 이름끼리 이어 붙여서 `바나나치즈배` 같은 덩어리가 나와요.
 
-### 이렇게 틀렸어요 ②: 필요한 표를 안 만듦
+### 자주 하는 실수 ②: 필요한 표를 안 만듦
 
 ```python
 (df["price"] <= 4000)["stock"]   # KeyError: 'stock'

@@ -29,6 +29,9 @@
     - id: nvidia
       ko: NVIDIA AI CAMPUS
       en: NVIDIA AI CAMPUS
+    - id: microduck
+      ko: Microduck
+      en: Microduck
 
 - id: daily
   en: Daily

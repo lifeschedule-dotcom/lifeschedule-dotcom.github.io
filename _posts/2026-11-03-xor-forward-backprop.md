@@ -92,7 +92,7 @@ class MLP:
 | 경우 | 은닉 노드 1 | 은닉 노드 2 |
 |---|---|---|
 | w 전부 0 | 1×0 + 0×0 = 0 | 1×0 + 0×0 = 0 |
-| w 무작위, b 0 | 1×0.34 + 0×0.23 = 0.34 | 1×0.13 + 0×0.23 = 0.13 |
+| w 무작위, b 0 | 1×0.34 + 0×0.23 = 0.34 | 1×0.13 + 0×(-0.41) = 0.13 |
 
 w가 전부 0이면 두 노드가 같은 값으로 시작하고, 역전파에서도 똑같이 고쳐져서 끝까지 같은 노드로 남아요. w가 무작위면 b가 0이어도 이미 달라요. 초기화 방법은 [경사하강법·가중치 초기화 글](/2026/10/26/gradient-descent-init/)에 정리했어요.
 
@@ -259,7 +259,7 @@ $$\frac{\partial L}{\partial W_2} = A_1^{\top}\,\frac{\partial L}{\partial Z_2}$
 self.dz2 = (y_pred - y) / N
 self.dw2 = N.T @ self.dz2
 ```
-- `y_pred`는 class 바깥에서 **예전에 만든 다른 예측**이에요. 에러 없이 틀린 숫자가 나와서 찾기 어려워요. 예측은 `self.a2`예요.
+- `y_pred`는 class 바깥의 변수예요. 바깥에 남아 있던 다른 예측을 몰래 가져다 써서, 에러 없이 `self.a2`와 다른 숫자가 나올 수 있어요. 예측은 `self.a2`예요.
 - `N`은 숫자 4라 `.T`가 없어요(`AttributeError`). w2에 들어온 입력은 `self.a1`이에요.
 
 은닉층도 같은 공식이에요. 두 줄만 새로 생겨요.
@@ -293,12 +293,20 @@ $$W \leftarrow W - \eta\,\frac{\partial L}{\partial W}$$
 dw2가 -0.138이면 $$-(-0.138) = +0.138$$이라 w2가 올라가요. seed 0에서 η = 1로 한 번 고치면 w2가 `[-1.0845, -1.3986]` → `[-0.9464, -1.2563]`, loss는 0.8834 → 0.7784로 내려가요.
 
 ```python
-# ❌
+# ❌ bias 두 줄에서 - 대신 =
 self.b1 = self.b1 = lr * self.db1
-# ✅
-self.b1 = self.b1 - lr * self.db1
+self.b2 = self.b2 = lr * self.db2
 ```
 `-` 대신 `=`를 치면 bias 자리에 기울기가 그대로 들어가 부호가 반대가 돼요. 에러는 안 나고 loss가 0.9235로 **올라가요.** 이런 실수는 loss가 줄어드는지 봐야만 찾을 수 있어요.
+
+```python
+# ✅ class 안에 이어서
+    def gd(self, lr):
+        self.w1 = self.w1 - lr * self.dw1
+        self.b1 = self.b1 - lr * self.db1
+        self.w2 = self.w2 - lr * self.dw2
+        self.b2 = self.b2 - lr * self.db2
+```
 
 학습은 네 줄을 반복하는 거예요.
 
@@ -310,10 +318,10 @@ for epoch in range(1000):
     loss = mlp.bce_loss(y_pred, y_tensor)
     mlp.backward(X_tensor, y_tensor)
     mlp.gd(1.0)
+    if epoch % 100 == 0:
+        print(epoch, loss.item())
 ```
-→ 최종 loss 0.0245, 예측 `[0.0217, 0.9722, 0.9717, 0.0190]`, 0.5 기준 판정 `[0, 1, 1, 0]`으로 정답과 같아요.
-
-`mlp.gd(1.0)`은 위 업데이트 식을 w1, b1, w2, b2 네 개에 쓴 함수예요.
+→ loss가 0.8834, 0.6350, 0.4731 … 0.0283(epoch 900)으로 내려가요. 최종 loss 0.0245, 예측 `[0.0217, 0.9722, 0.9717, 0.0190]`, 0.5 기준 판정 `[0, 1, 1, 0]`으로 정답과 같아요.
 
 **seed는 무작위 숫자 목록의 시작 번호**예요. 컴퓨터의 무작위는 정해진 공식으로 만든 목록이라, seed가 같으면 목록도 같아요. seed 0 목록은 `1.5410, -0.2934, -2.1788, 0.5684, -1.0845, -1.3986, …`이고, 앞 4개가 w1, 다음 2개가 w2가 돼요.
 
@@ -321,7 +329,7 @@ for epoch in range(1000):
 
 <figure><img src="/assets/img/xor/xor-loss-curves.png" alt="seed 0 은닉 2개와 seed 1 은닉 4개는 loss가 0 근처까지 내려가고, seed 1 은닉 2개는 0.367에서 평평해짐" width="1592" height="791"></figure>
 
-- seed 1, 은닉 2개 : 400 epoch 동안 0.693에 머물러요. 0.693은 예측이 전부 0.5일 때의 loss예요. 그 뒤 내려가다 0.367에서 평평해져요.
+- seed 1, 은닉 2개 : 약 400 epoch 동안 0.693 근처에 머물러요. 0.693은 예측이 전부 0.5일 때의 loss예요. 그 뒤 내려가다 0.367에서 평평해져요.
 - 예측 `[0.018, 0.970, 0.498, 0.513]` : (1, 0)과 (1, 1)을 구분하지 못하고 둘 다 0.5에 멈췄어요.
 - 3,000번에 0.349, 10,000번에 0.347이라 **더 돌려도 거의 안 풀려요.** 0이 아닌 곳에서 평평하면 갇힌 신호예요.
 
@@ -354,7 +362,7 @@ forward와 backward는 그대로예요. `@`가 모양에 맞춰 계산해요.
 | 가중치 | `torch.randn(2, 2)` | `torch.randn(2, 2, requires_grad=True)` |
 | sigmoid | `sigmoid(z)` | `torch.sigmoid(z)` |
 | loss | BCE 식 직접 | `F.binary_cross_entropy(y_pred, y_true)` |
-| 역전파 | `mlp.backward(X, y)` 7줄 | `loss.backward()` |
+| 역전파 | `mlp.backward(X, y)` 기울기 7줄 | `loss.backward()` |
 | 기울기 | `self.dw1` | `self.w1.grad` |
 | 업데이트 | `self.w1 = self.w1 - lr * self.dw1` | `self.w1 -= lr * self.w1.grad` |
 
@@ -368,21 +376,23 @@ forward와 backward는 그대로예요. `@`가 모양에 맞춰 계산해요.
             # 쓴 기울기 지우기
 ```
 
+위 표대로 `__init__`, `forward`, `bce_loss`를 고친 class를 다시 실행한 뒤 확인해요.
+
 ```python
 import torch.nn.functional as F
 
 torch.manual_seed(0)
 mlp = MLP()
-loss = mlp.bce_loss(mlp.forward(X_tensor), y_tensor)
+loss = F.binary_cross_entropy(mlp.forward(X_tensor), y_tensor)
 loss.backward()
 print(mlp.w2.grad.view(-1))
 ```
-→ `tensor([-0.1382, -0.1423])` : 4절에서 손으로 구한 dw2와 똑같아요. 1,000번 학습한 loss도 0.8834 → 0.0283(epoch 900)까지 한 자리도 다르지 않아요.
+→ `tensor([-0.1382, -0.1423])` : 4절에서 손으로 구한 dw2와 똑같아요. 1,000번 학습한 loss도 0.8834 → 0.0283(epoch 900)까지 소수 넷째 자리까지 같아요.
 
 gd 안의 두 줄이 autograd에서 실수가 제일 많은 곳이에요.
 
-- `.grad.zero_()` : `backward()`는 기울기를 지우지 않고 **더해 쌓아요.** 안 지우고 두 번 하면 w2.grad가 `[-0.2763, -0.2845]`로 두 배가 돼요.
-- `with torch.no_grad():`와 `-=` : 가중치를 고치는 빼기는 기록하지 않게 해요. `self.w1 = self.w1 - …`로 새로 만들면 `requires_grad`가 `False`가 돼서 다음 반복에서 기울기를 못 구해요.
+- `.grad.zero_()` : `backward()`는 기울기를 지우지 않고 **더해 쌓아요.** 같은 가중치로 `backward()`를 두 번 하면 w2.grad가 `[-0.2763, -0.2845]`로 두 배가 돼요.
+- `with torch.no_grad():`와 `-=` : 가중치를 고치는 빼기는 기록하지 않게 해요. no_grad 안에서 `self.w1 = self.w1 - …`로 새로 만들면 `requires_grad`가 `False`가 돼서 다음 반복에서 기울기를 못 구해요. no_grad 없이 `-=`를 쓰면 `RuntimeError`가 나요.
 
 ## <span class="no">7</span> PyTorch 함수 정리
 
@@ -405,7 +415,7 @@ gd 안의 두 줄이 autograd에서 실수가 제일 많은 곳이에요.
 | `requires_grad=True` | 기울기 구할 텐서 표시 | autograd 가중치 |
 | `torch.sigmoid` | sigmoid | autograd 순전파 |
 | `F.binary_cross_entropy` | BCE loss | autograd loss |
-| `loss.backward()` | 역전파로 기울기 계산 | 7줄 대신 한 줄 |
+| `loss.backward()` | 역전파로 기울기 계산 | 기울기 7줄 대신 한 줄 |
 | `.grad` | 계산된 기울기가 담기는 곳 | `w1.grad` |
 | `.grad.zero_()` | 쌓인 기울기 지우기 | 반복마다 |
 | `torch.no_grad()` | 기울기 기록 끄기 | 가중치 업데이트 |

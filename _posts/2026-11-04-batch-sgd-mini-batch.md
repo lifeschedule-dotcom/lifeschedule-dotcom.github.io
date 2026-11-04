@@ -82,9 +82,9 @@ $$\text{Iteration 수} = \left\lceil \frac{N}{B} \right\rceil$$
 
 $$N$$은 데이터 수이고, $$\lceil \ \rceil$$는 올림이에요. $$N = 700$$, $$B = 32$$이면 21.875를 올려서 22예요. 이 글에서 "수정 1번"은 Iteration 1번과 같은 말이에요.
 
-이 차이를 눈으로 볼게요. 가중치가 2개뿐인 작은 모델을 같은 지점에서 출발시켜 1 Epoch만 돌렸어요. 뒤에서 만들 데이터의 3번째, 4번째 칸을 입력으로 쓰고 `lr=0.1`로 맞췄어요. 회색 선은 loss가 같은 곳을 이은 등고선이고, 별 쪽으로 갈수록 loss가 작아요.
+이 차이를 눈으로 볼게요. 가중치가 2개뿐인 작은 모델을 같은 지점에서 출발시켜 1 Epoch만 돌렸어요. 뒤에서 만들 데이터의 2번 칸과 3번 칸을 입력으로 쓰고 `lr=0.1`로 맞췄어요. 회색 선은 loss가 같은 곳을 이은 등고선이고, 별 쪽으로 갈수록 loss가 작아요.
 
-<figure><img src="/assets/img/mini-batch-compare/path-one-epoch.png" alt="가중치 2개 모델의 1 Epoch: Batch GD는 출발점 근처에서 1번, 32행 묶음은 22번 움직여 중간쯤까지, SGD는 700번 움직여 loss 최소 근처까지 가서 계속 흔들려요." width="1520" height="1167"></figure>
+<figure><img src="/assets/img/mini-batch-compare/path-one-epoch.png" alt="가중치 2개 모델의 1 Epoch: Batch GD는 출발점 근처에서 1번, 32행 묶음은 22번 움직여 조금 내려가고, SGD는 700번 움직여 loss 최소 근처까지 가서 계속 흔들려요." width="1520" height="1167"></figure>
 
 같은 1 Epoch인데 Batch GD는 한 걸음이고, SGD는 loss 최소 근처까지 가서도 계속 흔들려요. 그럼 어느 방식이 좋을까요? 큰 모델로 직접 돌려 볼게요. 식은 [경사하강법 정리](/2026/10/26/gradient-descent-init/)에도 있어요.
 
@@ -332,15 +332,19 @@ for name, size in sizes.items():
 
 <figure><img src="/assets/img/mini-batch-compare/loss-by-update.png" alt="가중치를 700번 고치는 동안 700행, 256행, 32행은 모두 0.19까지 매끄럽게 내려가고, 1행(SGD)은 흔들리며 0.25에 머물러요." width="1520" height="1194"></figure>
 
-앞의 가중치 2개 모델로 40번씩 고친 경로를 보면 더 잘 보여요.
+앞의 가중치 2개 모델로 40번씩 고친 경로를 보면 Batch GD와 32행 묶음이 거의 같은 길로 가요.
 
-<figure><img src="/assets/img/mini-batch-compare/path-same-updates.png" alt="가중치 2개 모델을 40번씩 고친 경로: Batch GD와 32행 묶음은 거의 같은 길로 가고, SGD는 지그재그로 다른 곳에 도착해요." width="1520" height="1167"></figure>
+<figure><img src="/assets/img/mini-batch-compare/path-same-updates.png" alt="가중치 2개 모델을 40번씩 고친 경로: Batch GD와 주황 점선의 32행 묶음은 거의 같은 길로 가고, SGD는 지그재그로 다른 길을 가요." width="1520" height="1167"></figure>
 
-그럼 32행 묶음의 기울기가 전체와 거의 같아서 겹치는 걸까요? 재 보니 그렇지 않았어요. 두 기울기의 방향이 얼마나 같은지는 cosine similarity로 재요. 1이면 같은 방향, 0이면 상관없는 방향이에요.
+SGD는 다른 길로 가는데, 이 40번만 보면 끝점의 loss가 0.71로 Batch GD의 0.87보다 오히려 낮아요. 앞의 700번 그림에서는 SGD가 위에 있으니, 짧은 구간만 보고 판단하면 안 돼요.
+
+그럼 32행 묶음의 기울기가 전체와 거의 같아서 겹치는 걸까요? 이번에는 4절의 4칸 입력 모델로 재 봤어요. 두 기울기의 방향이 얼마나 같은지는 cosine similarity로 재요. 1이면 같은 방향, 0이면 상관없는 방향이에요.
 
 <figure><img src="/assets/img/mini-batch-compare/grad-direction.png" alt="전체 기울기와의 cosine similarity 평균: 학습 시작 때 1행 0.19, 32행 0.80, 256행 0.98이고, 300번 고친 뒤에는 1행 0.09, 32행 0.29, 256행 0.70으로 낮아져요." width="1520" height="1221"></figure>
 
-점 하나가 무작위로 뽑은 묶음 하나예요. 학습이 진행되면 32행 묶음 하나의 방향은 평균 0.29까지 떨어져요. 그런데 묶음마다 어긋나는 방향이 달라서 서로 상쇄돼요. 같은 가중치에서 32행 묶음 22개의 기울기를 평균 내면 cosine similarity가 0.9997이에요. `lr=0.1`로 조금씩 움직이니, 여러 묶음을 거치며 전체 기울기를 따라가는 거예요. SGD는 1행의 방향이 훨씬 더 흩어져서 흔들림이 크게 남아요.
+점 하나가 무작위로 뽑은 묶음 하나예요. 학습이 진행되면 32행 묶음 하나의 방향은 평균 0.29까지 떨어져요. 묶음 하나만 보면 전체와 꽤 달라요.
+
+그래도 1 Epoch 동안 700행을 한 번씩 다 쓰니, 22개 묶음의 기울기를 평균 내면 전체 기울기와 거의 같아져요. 같은 가중치에서 재면 cosine similarity가 0.9997이에요. 묶음마다 어긋난 방향이 서로 상쇄되는 거예요. 한 걸음이 작아 22번 고치는 동안 가중치가 많이 움직이지 않으면, 이 상쇄가 실제 학습에서도 유지돼요. loss가 겹친 이유를 이렇게 볼 수 있어요. 1행 묶음은 방향이 훨씬 더 흩어져서 loss가 크게 흔들렸어요.
 
 그런데 700번 고치는 동안 본 행 수는 크게 달라요.
 

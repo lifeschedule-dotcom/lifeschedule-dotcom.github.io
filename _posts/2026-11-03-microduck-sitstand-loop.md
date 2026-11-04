@@ -4,7 +4,7 @@ section: physical-ai
 sub: microduck
 ref: microduck-sitstand-loop
 date: 2026-11-03 11:30:00 +0900
-description: 허깅페이스 Pollen Robotics의 오픈소스 이족 로봇 마이크로덕(Microduck)에서 앉기·서기 명령 한 칸이 관측 61개, ONNX 정책 출력 14개, 목표 관절각으로 바뀌는 과정을 실제 코드 줄과 시뮬레이션 숫자로 따라가요.
+description: 앉았다 일어서는 새 로봇 짹짹이를 만들려고 허깅페이스 Pollen Robotics의 오픈소스 이족 로봇 마이크로덕(Microduck) 코드를 읽었어요. 앉기 명령 한 칸이 관측 61개, ONNX 정책 출력 14개, 목표 관절각으로 바뀌는 과정을 직접 돌린 코드와 숫자로 따라가요.
 spacious: true
 ---
 
@@ -16,6 +16,8 @@ spacious: true
 .content figure img { width: 100%; height: auto; }
 .content td, .content th { word-break: keep-all; overflow-wrap: normal; }
 .content .katex-display { overflow-x: auto; overflow-y: hidden; padding: 4px 0; }
+.content td code { white-space: nowrap; }
+.content pre .nb { padding: 0; border: 0; border-radius: 0; background: none; }
 @media (max-width: 560px) { .content th, .content td { padding: 7px 5px; font-size: 16px; } }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
@@ -25,15 +27,107 @@ spacious: true
 <div class="wc"><p><b>마이크로덕 코드는 왜 읽어 볼까요?</b><br>
 마이크로덕(Microduck)은 2025년 허깅페이스에 인수된 Pollen Robotics가 만든 키 약 25cm의 두 발 로봇이고, <a href="https://github.com/pollen-robotics/microduck_rl">학습 코드</a>와 <a href="https://huggingface.co/pollen-robotics/microduck-policies">학습된 정책</a>이 공개돼 있어요.<br>
 걷기·넘어진 뒤 일어나기·앉았다 서기 같은 동작을 강화학습으로 시뮬레이션에서 학습하고, ONNX 파일로 내보내 실제 로봇에서 50Hz로 돌려요.<br>
-명령이 신경망 입력으로 들어가 관절 목표각이 되는 한 바퀴를 알면, 강화학습 로봇 코드의 관측·행동·보상이 어디에 있는지 바로 찾을 수 있어요. (2026년 11월 3일 기준)</p></div>
+명령이 신경망 입력으로 들어가 관절 목표각이 되는 한 바퀴를 알면, 강화학습 로봇 코드에서 관측과 행동이 어디 있는지 바로 찾을 수 있어요. (2026년 11월 3일 기준)</p></div>
 
-공개 정책 `alpha_sitstand.onnx`가 앉았다 서는 12초 시뮬레이션을 **일곱 단계**로 나눠, 실제 코드 줄과 숫자로 따라가요.
+공개 정책 `alpha_sitstand.onnx`로 12초 시뮬레이션을 직접 돌리고, 앉기 명령이 관절 목표각이 되는 길을 코드와 숫자로 따라가요.
 
 <div class="keyline">핵심은 하나예요. 언제 앉을지는 프로그램이 정하고, 관절 14개를 어떻게 움직일지는 학습된 정책이 정해요.</div>
 
-## <span class="no">1</span> 0.02초마다 도는 제어 루프
+## <span class="no">1</span> 짹짹이 때문에 읽은 코드
 
-정책 코드는 0.02초마다 같은 다섯 칸을 한 바퀴 돌아요.
+제가 이 코드를 읽는 이유는 짹짹이예요.
+짹짹이는 함께 만들고 있는 말하는 새 로봇이에요.
+처음 생각한 새 외형에 마이크로덕과 같은 다리 구조를 넣어서, 앉았다 일어서게 하는 게 목표예요.
+날기와 걷기는 지금 범위에 넣지 않았어요.
+
+다리를 그대로 가져오려면 그 다리를 움직이는 정책도 읽을 줄 알아야 해요.
+공식 정책의 재생 영상을 먼저 봤고, 이 글에서는 3초에 앉고 7초에 서는 명령이 어느 줄에서 정해지는지부터 코드를 따라가요.
+아래는 공식 정책을 재생한 결과이고, 제가 직접 학습시킨 결과는 7번에 따로 적었어요.
+
+## <span class="no">2</span> 12초 재생을 직접 돌리기
+
+먼저 저장소와 공개 정책 파일을 받아요.
+
+```bash
+git clone https://github.com/pollen-robotics/microduck_rl
+cd microduck_rl
+curl -LO https://huggingface.co/pollen-robotics/microduck-policies/resolve/main/alpha_sitstand.onnx
+```
+
+아래 코드를 차례로 이어 붙여 `replay.py`로 저장하고 `uv run python replay.py`로 실행해요.
+저는 이미 설치해 둔 파이썬 환경에서 돌렸고, `uv` 설치부터 새로 해 보지는 않았어요.
+
+필요한 도구를 불러와요.
+
+```python
+import sys              # 경로 설정
+import numpy as np      # 숫자 배열
+import mujoco           # 물리 계산
+
+sys.path.insert(0, "scripts")
+from infer_policy import (
+    load_bam_model,        # 모터 모델
+    load_mujoco_with_bam,  # 로봇 불러오기
+    PolicyInference,       # 정책 실행기
+    BAM_VIN_MIN,           # 최저 전압
+)
+```
+
+로봇, 모터 모델, 정책을 불러와요. BAM은 서보 모터 XL330의 전압과 마찰을 흉내 내는 모터 모델이에요.
+
+```python
+XML = ("src/mjlab_microduck/robot/"
+       "microduck/scene.xml")
+# kp 200, 전압 7.4V, 전류 제한 없음
+motor = load_bam_model(200, 7.4, None)
+model, data, bam, _ = load_mujoco_with_bam(
+    XML, motor,    # 로봇, 모터
+    0.005,         # 물리 계산 간격(초)
+    0.1,           # 부하 전압 강하
+    BAM_VIN_MIN)   # 최저 전압
+policy = PolicyInference(
+    model, data, bam_ctrl=bam,
+    sitstand_onnx_path="alpha_sitstand.onnx",
+    new_cmd_obs=True,            # 명령 13칸
+    use_projected_gravity=True)  # 중력 방향
+```
+
+로봇을 높이 0.125m, 기준 자세로 세워요.
+
+```python
+FREE = mujoco.mjtObj.mjOBJ_JOINT
+j = mujoco.mj_name2id(
+    model, FREE, "trunk_base_freejoint")
+q = model.jnt_qposadr[j]   # 몸통 위치 칸
+data.qpos[q:q+7] = [0, 0, 0.125,  # 높이
+                    1, 0, 0, 0]   # 똑바로
+pose = policy.default_pose
+for i, k in enumerate(
+        policy.joint_qpos_indices):
+    data.qpos[k] = pose[i]    # 기준 자세
+bam.reset(data.qpos)
+policy.set_position_targets(pose)
+mujoco.mj_forward(model, data)  # 상태 계산
+```
+
+이제 600단계를 돌려요. 전체 흐름이 이 반복문에 다 있어요.
+
+```python
+for step in range(600):      # 12초
+    if step in (150, 350):   # 3초, 7초
+        policy.toggle_sit()  # 앉기/서기
+    action = policy.infer()  # 행동 14개
+    policy.apply_action(action)  # 목표각
+    for _ in range(4):       # 물리 4번
+        bam.update()         # 모터 토크
+        mujoco.mj_step(model, data)
+    if step % 150 == 149:    # 3초마다 출력
+        t = (step + 1) * 0.02
+        z = data.qpos[q + 2] * 100
+        print(f"{t:.0f}초 {z:.2f}cm")
+```
+
+→ `3초 11.65cm`, `6초 6.00cm`, `9초 11.57cm`, `12초 11.58cm`
 
 <figure><img src="/assets/img/microduck/loop.png" alt="명령 → 관측 61개 → ONNX 정책 61→14 → 목표 관절각 14개 → BAM 모터와 MuJoCo 물리 계산 4번, 0.02초마다 반복" width="1227" height="555"></figure>
 
@@ -42,29 +136,7 @@ spacious: true
 $$\Delta t = 4 \times 0.005\,\text{s} = 0.02\,\text{s}$$
 
 $$\Delta t$$는 정책이 행동을 한 번 내는 간격(control step)이에요. 1초에 50번(50Hz)이에요.
-BAM은 서보 모터 XL330의 전압·마찰을 흉내 내는 모터 모델이에요.
-
-## <span class="no">2</span> 앉기 명령은 프로그램이 바꿔요
-
-시뮬레이션 재생 스크립트에서 "몇 번째 단계에 앉아"를 정하는 줄은 아래 한 줄이에요. 이 재생 루프는 직접 만든 예시예요.
-
-```python
-# 600 × 0.02초 = 12초
-for step in range(600):
-    # 3초에 앉기, 7초에 서기
-    if step in (150, 350):
-        policy.toggle_sit()
-    # 정책이 행동 14개 계산
-    action = policy.infer()
-    # 행동 → 목표 관절각
-    policy.apply_action(action)
-    # 물리 계산 4번
-    for _ in range(4):
-        bam.update()
-        mujoco.mj_step(model, data)
-```
-
-단계 번호에 $$\Delta t$$를 곱하면 시각이에요.
+단계 번호 $$N$$에 곱하면 시각이 돼요.
 
 $$t = N \times \Delta t$$
 
@@ -72,41 +144,35 @@ $$150 \times 0.02 = 3\,\text{s}$$
 
 $$350 \times 0.02 = 7\,\text{s}$$
 
-→ 3초까지 서기, 7초까지 앉기, 12초까지 다시 서기.
+## <span class="no">3</span> 앉기 명령이 관측 61개가 되기까지
 
-`toggle_sit()`은 저장소 `scripts/infer_policy.py` 808행에 있어요. 키보드로 돌릴 때는 Y 키가 이 함수를 불러요. 핵심은 두 줄이에요.
+아래 줄 번호는 저장소 `scripts/infer_policy.py`, 커밋 `bae39f5` 기준이에요.
+
+`toggle_sit()`(808행)은 앉기 상태를 뒤집어요. 키보드로 돌릴 때는 Y 키가 이 함수를 불러요.
 
 ```python
-# 앉기 상태를 뒤집기
+# 앉기 ↔ 서기
 self.sit_mode = not self.sit_mode
 ...
-# 정책에 넣을 명령 배열 다시 만들기
-self._update_command()
+self._update_command()  # 명령 다시 만들기
 ```
 
-## <span class="no">3</span> 명령 13칸 중 첫 칸이 앉기 플래그
-
-`_update_command()`(461행)는 명령을 숫자 13개짜리 배열로 만들어요. SitStand 정책에서는 첫 칸 `cmd[0]`이 앉기 플래그(flag)예요.
+`_update_command()`(461행)는 숫자 13개짜리 명령을 만들어요. SitStand 정책에서는 첫 칸 `cmd[0]`이 앉기 플래그(flag)예요.
 
 ```python
 cmd = np.zeros(13, dtype=np.float32)
 # 1 = 앉기, 0 = 서기
 cmd[0] = 1.0 if self.sit_mode else 0.0
-# 머리 자세 명령 4칸
-cmd[3:7]  = self.head_offset
-# 몸통 자세 명령 6칸
-cmd[7:13] = self.body_cmd
+cmd[3:7]  = self.head_offset  # 머리 4칸
+cmd[7:13] = self.body_cmd     # 몸통 6칸
 self.command = cmd
 ```
 
-→ 2.98초(149단계): `cmd = [0, 0, 0, … 0]`
-→ 3.00초(150단계): `cmd = [1, 0, 0, … 0]`
+→ 149단계(2.98초): `cmd = [0, 0, 0, … 0]`
 
-자주 헷갈리는 점은 **0도 명령**이라는 거예요. 0은 "서기"예요. 코드 주석에도 앞 세 칸이 모두 0이면 이 정책에서는 서기 명령이라고 적혀 있어요. 허깅페이스 허브의 정책 설명 파일 `manifest.json`도 `"sit": 1.0, "stand": 0.0`으로 같은 규칙을 적어 둬요.
+→ 150단계(3.00초): `cmd = [1, 0, 0, … 0]`
 
-## <span class="no">4</span> 관측 61개는 몸 상태 48개와 명령 13개
-
-`get_observations()`(656행)는 여섯 묶음을 이어 붙여 정책 입력 61개를 만들어요.
+`get_observations()`(656행)는 이 명령을 몸 상태와 이어 붙여 정책 입력 61개를 만들어요.
 
 <figure><img src="/assets/img/microduck/obs61.png" alt="관측 61칸 구성: 각속도 3(0–2), 중력 방향 3(3–5), 관절각 14(6–19), 관절속도 14(20–33), 직전 행동 14(34–47), 명령 13(48–60), 앉기 플래그는 48번 칸" width="1214" height="324"></figure>
 
@@ -126,22 +192,19 @@ self.command = cmd
 $$g^{body} = R^{\top} \begin{bmatrix} 0 \\ 0 \\ -1 \end{bmatrix}$$
 
 $$R$$은 몸통의 회전(자세), $$R^{\top}$$은 그 반대 방향 회전이에요.
-2.98초의 값은 `[0.048, 0.021, -0.999]`예요. 세 번째 값이 -1에 가까우니 몸통이 거의 똑바로 서 있다는 뜻이에요.
+2.98초의 값은 `[0.048, 0.021, -0.999]`예요. 세 번째 값이 -1에 가까우니 몸통이 거의 똑바로 서 있어요.
 
-같은 함수의 설명 주석에는 아직 **"Total: 51D"**가 남아 있어요. 명령 칸이 3개였던 예전 구성의 숫자예요. 지금 SitStand 정책은 명령 13칸을 쓰므로 실제 입력은 61개이고, ONNX 파일의 입력 모양도 `[1, 61]`이에요.
-
-## <span class="no">5</span> ONNX 정책은 61개를 받아 14개를 내요
+## <span class="no">4</span> 정책 출력이 목표 관절각이 되기까지
 
 `infer()`(857행)는 관측을 ONNX 런타임에 넣고 행동을 받아요.
 
 ```python
-# 관측 61개 → 모양 [1, 61]
-obs = self.get_observations()
-obs_batch = obs.reshape(1, -1)
-# 정책 실행 → 모양 [1, 14] → 14개
+obs = self.get_observations()  # 61개
+obs_batch = obs.reshape(1, -1) # [1, 61]
+# 정책 실행 → 모양 [1, 14]
 action = self.ort_session.run(...)[0]
-action = action.squeeze(0)
-# 다음 관측의 34–47번 칸에 들어감
+action = action.squeeze(0)     # 14개
+# 다음 관측의 34–47번 칸으로
 self.last_action = action.copy()
 ```
 
@@ -151,9 +214,7 @@ $$o_t \in \mathbb{R}^{61}, \quad a_t \in \mathbb{R}^{14}$$
 
 $$\pi_\theta$$는 가중치 $$\theta$$로 정해진 정책 신경망, $$o_t$$는 관측, $$a_t$$는 행동이에요.
 
-행동 14개의 순서는 왼다리 5개(0–4번), 목·머리 4개(5–8번), 오른다리 5개(9–13번)예요. 다리마다 hip_yaw, hip_roll, hip_pitch, knee, ankle 순이에요. 이 정책은 다리뿐 아니라 목과 머리도 함께 움직여요.
-
-## <span class="no">6</span> 행동은 기준 자세에 더하는 각도
+행동 14개의 순서는 왼다리 5개(0–4번), 목·머리 4개(5–8번), 오른다리 5개(9–13번)예요. 다리마다 hip_yaw, hip_roll, hip_pitch, knee, ankle 순이에요.
 
 `apply_action()`(866행)은 행동을 목표 관절각으로 바꿔요.
 
@@ -169,19 +230,45 @@ $$= 1.2005\ \text{rad}$$
 
 → 약 69도까지 무릎을 굽히라는 목표예요.
 
+## <span class="no">5</span> 12초 동안 일어난 일
+
+명령 한 칸을 바꾸자 몸통 높이가 따라 움직여요.
+
+<figure><img src="/assets/img/microduck/height.png" alt="cmd[0]가 3초에 1, 7초에 0으로 바뀌고, 몸통 높이는 11.65cm에서 4.12초에 6.0cm로 내려가 머물렀다가 7.30초에 다시 11.5cm 근처로 올라옴" width="1491" height="892"></figure>
+
+| 구간 | 높이 | 도착 |
+|---|---|---|
+| 서기 | 11.65cm | 시작부터 |
+| 앉기 | 6.00cm | 4.12초 (명령 후 1.12초) |
+| 다시 서기 | 11.58cm | 7.30초 (명령 후 0.30초) |
+
+높이는 각 구간의 마지막 1초 평균이에요. 도착은 목표 ±0.5cm 안에 들어와 끝까지 머문 첫 단계가 끝난 시각이에요. 학습 설정의 목표 높이는 서기 0.115m, 앉기 0.060m예요.
+
+앉을 때는 천천히 내려가다 마지막 0.1초쯤에 툭 내려앉고, 일어설 때는 0.3초 만에 올라와요. 하나의 시작 상태로 한 번 돌린 결과라, 정책의 평균 성능으로 일반화하지는 않아요.
+
+재현 조건: 저장소 커밋 `bae39f5`, 허브의 `alpha_sitstand.onnx`(SHA256 앞자리 `a6f102d9`, manifest 기준 체크포인트 2250), 위 코드 그대로, 학습 없음.
+
+## <span class="no">6</span> 헷갈리기 쉬운 네 가지
+
+**① 0도 명령이에요.**
+0은 "명령 없음"처럼 보이지만 이 정책에서는 "서기"예요. 코드 주석에도 앞 세 칸이 모두 0이면 서기 명령이라고 적혀 있어요. 허브의 정책 설명 파일 `manifest.json`도 `"sit": 1.0, "stand": 0.0`으로 같은 규칙을 적어 둬요.
+
+**② 입력은 61개예요.**
+`get_observations()`의 설명 주석에는 아직 "Total: 51D"가 남아 있어요. 명령 칸이 3개였던 예전 구성의 숫자예요. 지금 SitStand 정책은 명령 13칸을 쓰고, ONNX 파일의 입력 모양도 `[1, 61]`이에요.
+
+**③ 행동값은 목표각 그 자체가 아니에요.**
+
 ```python
-# ❌ 행동값을 그대로 목표각으로 쓰기
+# ❌ 행동값을 그대로 목표각으로
 target = action
 # ✅ 기준 자세에 더하기
 target = (self.default_pose
           + action * self.action_scale)
 ```
 
-행동이 0이면 목표는 기준 자세예요. ❌처럼 쓰면 행동 0이 "모든 관절 0 rad"가 되어, 정책이 학습한 자세와 전혀 다른 곳을 목표로 잡아요. 행동은 모터 토크나 전압도 아니에요. 목표각을 받은 모터 모델이 토크를 계산해요.
+행동이 0이면 목표는 기준 자세예요. ❌처럼 쓰면 행동 0이 "모든 관절 0 rad"가 되어 정책이 학습한 자세와 다른 곳을 목표로 잡아요. 행동은 모터 토크나 전압도 아니에요. 목표각을 받은 모터 모델이 토크를 계산해요.
 
-## <span class="no">7</span> 목표각과 실제 관절각, 그리고 결과
-
-목표각은 "이 각도로 가라"는 값일 뿐, 관절이 그 각도에 정확히 도착한다는 뜻은 아니에요.
+**④ 목표각에 관절이 정확히 도착하지는 않아요.**
 
 <figure><img src="/assets/img/microduck/knee.png" alt="왼쪽 무릎: 앉아 있는 동안 목표각 1.20 rad, 실제 관절각 1.35 rad. 다시 선 뒤 목표 -0.12 rad, 실제 0.05 rad" width="1492" height="652"></figure>
 
@@ -195,20 +282,34 @@ $$V = v_{in} \cdot d$$
 
 $$d$$는 듀티비(전원 전압 중 몇 %를 걸지, -1과 1 사이로 잘림), $$g$$는 각도 오차를 듀티비로 바꾸는 상수(XL330은 약 0.0029), $$k_p$$는 비례 이득, $$V$$는 모터에 거는 전압이에요.
 예를 들어 $$k_p = 200$$, 오차 0.15 rad이면 $$d \approx 0.086$$, 전압은 약 0.64V예요.
-차이가 0이면 전압도 0이라, 몸무게를 버티는 동안에는 차이가 남아야 힘이 나요. 실제 무릎 1.35 rad는 학습 설정에 적힌 앉은 자세(knee 1.35 rad)와 같아요. 정책은 더 작은 목표 1.20을 내서 실제 관절이 1.35에 머물게 해요. 그래서 목표각만 보고 실제 자세를 판단하면 안 돼요.
 
-몸통 높이로 보면 명령이 동작으로 이어진 게 보여요.
+차이가 0이면 전압도 0이라, 몸무게를 버티는 동안에는 차이가 남아야 힘이 나요. 실제 무릎 1.35 rad는 학습 설정에 적힌 앉은 자세(knee 1.35 rad)와 같아요. 정책은 더 작은 목표 1.20을 내서 실제 관절이 1.35에 머물게 해요.
 
-<figure><img src="/assets/img/microduck/height.png" alt="cmd[0]가 3초에 1, 7초에 0으로 바뀌고, 몸통 높이는 11.65cm에서 4.12초에 6.0cm로 내려가 머물렀다가 7.30초에 다시 11.5cm 근처로 올라옴" width="1491" height="892"></figure>
+## <span class="no">7</span> 제가 돌린 짧은 학습과 짹짹이에 남은 일
 
-| 구간 | 높이 | 도착 |
-|---|---|---|
-| 서기 | 11.65cm | 시작부터 |
-| 앉기 | 6.00cm | 4.12초 (명령 후 1.12초) |
-| 다시 서기 | 11.58cm | 7.30초 (명령 후 0.30초) |
+공식 정책을 재생했다고 제가 앉기·서기를 학습시킨 건 아니에요.
+저도 같은 과제(`Mjlab-SitStand-Flat-MicroDuck`)로 PPO를 짧게 돌려 봤어요. 환경 64개로 5회 학습하고, 거기서 이어 5회씩 두 갈래(A, B)로 더 돌렸어요. B는 충격 벌점 `gentle_motion`의 가중치만 0.05에서 0.10으로 키웠어요.
 
-평균 높이는 각 구간의 마지막 1초 값이에요. 도착 시각은 목표 ±0.5cm 안에 들어와 끝까지 머문 첫 단계가 끝난 시각이에요. 학습 설정의 목표 높이는 서기 0.115m, 앉기 0.060m예요. 앉을 때는 천천히 내려가다 마지막 0.1초쯤에 툭 내려앉고, 일어설 때는 0.3초 만에 올라와요. 하나의 시작 상태로 한 번 돌린 결과라, 정책의 평균 성능으로 일반화하지는 않아요.
+공식 정책과 같은 시작 상태, 같은 12초 명령, 같은 계산식으로 비교한 결과예요.
 
-재현 조건: 저장소 커밋 `bae39f5`, 허브의 `alpha_sitstand.onnx`(SHA256 앞자리 `a6f102d9`, manifest 기준 체크포인트 2250), 시작 높이 0.125m, 기준 자세에서 출발, MuJoCo 0.005초 × 4, BAM 모터 모델(전압 7.4V, 부하 전압 강하 0.1V/Nm, kp 200), 학습 없음.
+| 정책 | 학습 | 높이 오차 | 기울기 |
+|---|---|---|---|
+| 공식 | 2250회 | 0.61cm | 4.0도 |
+| 내 첫 학습 | 5회 | 5.06cm | 73.2도 |
+| A | 5회 더 | 3.93cm | 49.6도 |
+| B | 5회 더 | 4.04cm | 51.4도 |
+
+높이 오차는 600단계 동안 명령별 목표 높이와의 평균 절대 오차, 기울기는 몸통 기울기 평균이에요. 공식 정책의 학습 횟수는 허브 `manifest.json`의 체크포인트 번호이고, 저장소 문서에는 환경 4,096개로 학습했다고 적혀 있어요.
+
+A와 B는 영상에서 모두 몸이 바닥 쪽으로 기울었고, 앉았다 일어서지 못했어요.
+이 실험으로 확인한 건 학습을 이어 하고, 저장하고, 다시 불러 평가하는 절차가 돈다는 것까지예요.
+B는 순간 최대 충격이 A보다 작았지만(19.3 대 20.4 m/s²), 높이 오차와 기울기는 조금 컸어요. 넘어져 가만히 있어도 충격은 작게 나오니, 충격 값만으로 좋은 정책이라고 할 수 없어요.
+시드 하나, 시작 상태 하나로 돌린 결과라 A와 B의 우열을 말할 수도 없어요.
+
+짹짹이에 쓰려면 아직 확인할 게 남아 있어요.
+
+- **관절 수**: 이 정책은 다리 10개와 목·머리 4개를 함께 움직여요. 짹짹이의 목·머리를 어떻게 할지는 아직 정하지 않았고, 바꾸면 입출력 규격부터 달라져요.
+- **상체 물리값**: 외피·스피커·보드·배터리에 따라 질량, 무게중심, 관성, 바닥에 닿는 면이 달라져요. 새 값은 아직 없어요.
+- **검증**: 다리가 같아도 이 정책이 짹짹이 몸에서 앉았다 일어선다는 확인은 아직 없어요.
 
 <div class="done">🎉 앉을지 설지는 cmd[0] 한 칸, 관절 14개를 어떻게 움직일지는 정책 출력에 기준 자세를 더한 목표각이 정해요.</div>

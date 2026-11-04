@@ -52,7 +52,11 @@ $$\theta_{new} = \theta_{old} - \eta \nabla L(\theta_{old})$$
 
 $$\theta$$는 가중치, $$\eta$$는 learning rate, $$\nabla L$$은 기울기예요.
 
-기울기가 양수면 가중치를 키울수록 loss가 커진다는 뜻이라, 기울기에 learning rate를 곱한 만큼 빼서 가중치를 줄여요. $$\theta_{old} = 1$$, $$\eta = 0.1$$, 기울기가 3이면 $$\theta_{new} = 1 - 0.1 \times 3 = 0.7$$이에요.
+기울기가 양수면 가중치를 키울수록 loss가 커진다는 뜻이라, 기울기에 learning rate를 곱한 만큼 빼서 가중치를 줄여요. $$\theta_{old} = 3$$, $$\eta = 0.3$$, 기울기가 3이면 $$\theta_{new} = 3 - 0.3 \times 3 = 2.1$$이에요.
+
+아래 그림은 loss가 $$\frac{1}{2}\theta^2$$이고 기울기가 $$\theta$$일 때 이 계산을 네 번 반복한 모습이에요. loss 최소에 가까워질수록 기울기가 작아져서 한 걸음도 작아져요.
+
+<figure><img src="/assets/img/mini-batch-compare/gd-step.png" alt="loss 곡선 위에서 가중치가 3.0에서 2.1, 1.47, 1.03, 0.72로 움직이며 loss 최소에 가까워지고, 걸음이 점점 작아져요." width="1520" height="841"></figure>
 
 loss는 행마다 정답과 모델의 답으로 계산하니, 기울기도 행마다 달라요. **세 방식의 차이는 기울기를 몇 행의 데이터로 계산하느냐예요.** 여러 행을 쓰면 행마다 기울기를 구해 평균을 내요.
 
@@ -68,7 +72,7 @@ $$B$$는 한 번에 보는 행 수(묶음 크기, batch size)이고, $$\nabla L_
 
 SGD는 Stochastic Gradient Descent(확률적 경사하강법)의 줄임말이에요. Mini-batch GD까지 SGD라고 부르는 자료도 있는데, 이 글에서는 묶음 크기가 1인 경우만 SGD라고 할게요.
 
-전체 데이터를 한 번 다 보는 것이 **Epoch**이고, 가중치를 한 번 고치는 것이 **Iteration**이에요. 데이터 700행으로 1 Epoch를 돌면 세 방식은 이렇게 달라요.
+이 차이로 가중치를 고치는 횟수가 달라져요. 전체 데이터를 한 번 다 보는 것이 **Epoch**이고, 가중치를 한 번 고치는 것이 **Iteration**이에요. 데이터 700행으로 1 Epoch를 돌면 세 방식은 이렇게 달라요.
 
 <figure><img src="/assets/img/mini-batch-compare/batch-split.png" alt="학습 데이터 700행을 Batch GD는 묶음 1개로 1번, Mini-batch GD는 32행씩 22묶음(마지막 묶음은 28행)으로 22번, SGD는 1행씩 700묶음으로 700번 수정해요." width="1520" height="678"></figure>
 
@@ -78,7 +82,11 @@ $$\text{Iteration 수} = \left\lceil \frac{N}{B} \right\rceil$$
 
 $$N$$은 데이터 수이고, $$\lceil \ \rceil$$는 올림이에요. $$N = 700$$, $$B = 32$$이면 21.875를 올려서 22예요. 이 글에서 "수정 1번"은 Iteration 1번과 같은 말이에요.
 
-그럼 어느 방식이 좋을까요? 직접 돌려 볼게요. 경로 그림은 [경사하강법 정리](/2026/10/26/gradient-descent-init/)에도 있어요.
+이 차이를 눈으로 볼게요. 가중치가 2개뿐인 작은 모델을 같은 지점에서 출발시켜 1 Epoch만 돌렸어요. 뒤에서 만들 데이터의 3번째, 4번째 칸을 입력으로 쓰고 `lr=0.1`로 맞췄어요. 회색 선은 loss가 같은 곳을 이은 등고선이고, 별 쪽으로 갈수록 loss가 작아요.
+
+<figure><img src="/assets/img/mini-batch-compare/path-one-epoch.png" alt="가중치 2개 모델의 1 Epoch: Batch GD는 출발점 근처에서 1번, 32행 묶음은 22번 움직여 중간쯤까지, SGD는 700번 움직여 loss 최소 근처까지 가서 계속 흔들려요." width="1520" height="1167"></figure>
+
+같은 1 Epoch인데 Batch GD는 한 걸음이고, SGD는 loss 최소 근처까지 가서도 계속 흔들려요. 그럼 어느 방식이 좋을까요? 큰 모델로 직접 돌려 볼게요. 식은 [경사하강법 정리](/2026/10/26/gradient-descent-init/)에도 있어요.
 
 ## <span class="no">2</span> 풀 문제 만들기
 
@@ -322,9 +330,19 @@ for name, size in sizes.items():
 → `Mini-batch 32 0.188`<br>
 → `SGD 0.2483`
 
-<figure><img src="/assets/img/mini-batch-compare/loss-by-update.png" alt="가중치를 700번 고치는 동안 Batch GD, 256행 묶음, 32행 묶음의 loss는 거의 겹쳐 0.19까지 내려가고, SGD는 흔들리며 0.25에 머물러요." width="1520" height="895"></figure>
+<figure><img src="/assets/img/mini-batch-compare/loss-by-update.png" alt="가중치를 700번 고치는 동안 700행, 256행, 32행은 모두 0.19까지 매끄럽게 내려가고, 1행(SGD)은 흔들리며 0.25에 머물러요." width="1520" height="1194"></figure>
 
-이 문제에서는 32행의 평균 기울기가 700행의 평균 기울기와 비슷한 방향을 가리킨 거예요. 그런데 700번 고치는 동안 본 행 수는 크게 달라요.
+앞의 가중치 2개 모델로 40번씩 고친 경로를 보면 더 잘 보여요.
+
+<figure><img src="/assets/img/mini-batch-compare/path-same-updates.png" alt="가중치 2개 모델을 40번씩 고친 경로: Batch GD와 32행 묶음은 거의 같은 길로 가고, SGD는 지그재그로 다른 곳에 도착해요." width="1520" height="1167"></figure>
+
+그럼 32행 묶음의 기울기가 전체와 거의 같아서 겹치는 걸까요? 재 보니 그렇지 않았어요. 두 기울기의 방향이 얼마나 같은지는 cosine similarity로 재요. 1이면 같은 방향, 0이면 상관없는 방향이에요.
+
+<figure><img src="/assets/img/mini-batch-compare/grad-direction.png" alt="전체 기울기와의 cosine similarity 평균: 학습 시작 때 1행 0.19, 32행 0.80, 256행 0.98이고, 300번 고친 뒤에는 1행 0.09, 32행 0.29, 256행 0.70으로 낮아져요." width="1520" height="1221"></figure>
+
+점 하나가 무작위로 뽑은 묶음 하나예요. 학습이 진행되면 32행 묶음 하나의 방향은 평균 0.29까지 떨어져요. 그런데 묶음마다 어긋나는 방향이 달라서 서로 상쇄돼요. 같은 가중치에서 32행 묶음 22개의 기울기를 평균 내면 cosine similarity가 0.9997이에요. `lr=0.1`로 조금씩 움직이니, 여러 묶음을 거치며 전체 기울기를 따라가는 거예요. SGD는 1행의 방향이 훨씬 더 흩어져서 흔들림이 크게 남아요.
+
+그런데 700번 고치는 동안 본 행 수는 크게 달라요.
 
 | 방식 | 700번 수정에 처리한 행 수 |
 |---|---|
@@ -350,6 +368,8 @@ print(repeat(1, lr=0.003))
 | SGD, lr=0.003, 100 Epoch | 70,000 | 0.1585 | 0.9033 | 11초 |
 
 Mini-batch 32는 앞 표와 같은 실험을 다시 잰 값이라 시간만 조금 달라요.
+
+<figure><img src="/assets/img/mini-batch-compare/time-bars.png" alt="세 방식 모두 점수 0.90에 닿는 데 Batch GD는 7.4초, 32행 묶음은 0.8초, SGD는 11초 걸렸어요." width="1520" height="705"></figure>
 
 세 방식 모두 약 0.90에 닿았고, 차이는 시간이에요. Batch GD는 수정할 때마다 700행을 계산해서 Mini-batch 32보다 약 9배 걸렸어요. SGD와 Mini-batch 32는 둘 다 100 Epoch에 70,000행을 보는데, SGD는 10배 넘게 걸렸어요. 4절 표로 수정 1번의 시간을 구하면 SGD는 10초 ÷ 70,000번으로 약 0.14ms, 32행 묶음은 0.7초 ÷ 2,200번으로 약 0.32ms예요. 32행을 한 번에 계산해도 1행의 약 2배라서, 묶어서 계산하는 쪽이 빨라요.
 
@@ -449,8 +469,5 @@ print(updates)
 | `next(iter(loader))` | 묶음 하나만 꺼내 보기 |
 | `len(loader)` | 1 Epoch의 묶음 수 |
 | `torch.optim.SGD(...)` | 받은 기울기로 가중치 고치기 |
-| `optimizer.zero_grad()` | 쌓인 기울기 비우기 |
-| `loss.backward()` | 기울기 계산 |
-| `optimizer.step()` | 가중치 수정 |
 
 <div class="done">🎉 묶음 크기가 수정 횟수를 정하고, 수정 횟수와 계산량이 loss와 시간을 정해요.</div>

@@ -63,8 +63,10 @@ $$w$$는 가중치, $$\eta$$(에타)는 learning rate, $$g$$는 기울기예요.
 문제는 두 숫자가 다르면 1, 같으면 0을 답하는 XOR이에요. 설치가 안 됐다면 터미널에서 `pip install torch`를 먼저 실행하세요.
 
 ```python
-import torch           # 텐서 계산 도구
-import torch.nn as nn  # 모델 부품 모음
+# 텐서 계산 도구
+import torch
+# 모델 부품 모음
+import torch.nn as nn
 
 # 입력 4줄, 줄마다 숫자 2개
 X = torch.tensor(
@@ -131,7 +133,7 @@ optimizer = torch.optim.SGD(
 optimizer를 쓰는 줄은 `zero_grad()`와 `step()`이고, 그 사이에 `loss.backward()`가 들어가요. 세 줄이 무엇을 바꾸는지 가중치 하나를 찍어 볼게요.
 
 ```python
-# 0 또는 1이 정답일 때 쓰는 채점 방법
+# 0, 1 정답용 채점 방법
 criterion = nn.BCELoss()
 # 첫 부품의 가중치
 w = model[0].weight
@@ -139,9 +141,11 @@ w = model[0].weight
 def show(name):
     g = w.grad
     if g is not None:
-        g = round(g[0, 0].item(), 4)
-    print(name, g,
-          round(w[0, 0].item(), 4))
+        g = g[0, 0].item()
+        g = round(g, 4)
+    v = w[0, 0].item()
+    v = round(v, 4)
+    print(name, g, v)
 
 # 예측
 y_pred = model(X)
@@ -175,7 +179,8 @@ show("zero_grad 뒤")
 torch.manual_seed(42)
 model = make_model()
 optimizer = torch.optim.SGD(
-    model.parameters(), lr=1.0)
+    model.parameters(),
+    lr=1.0)
 
 for epoch in range(2000):
     y_pred = model(X)
@@ -184,10 +189,11 @@ for epoch in range(2000):
     loss.backward()
     optimizer.step()
     if epoch % 500 == 0:
-        print(epoch,
-              round(loss.item(), 4))
+        v = loss.item()
+        print(epoch, round(v, 4))
 
-with torch.no_grad():  # 계산 기록 끄기
+# 계산 기록 끄기
+with torch.no_grad():
     print(model(X).flatten())
 ```
 → `0 0.7482`, `500 0.6931`, `1000 0.6917`, `1500 0.0573`<br>
@@ -229,8 +235,9 @@ $$w \leftarrow w - \eta \, g$$
 
 ```python
 w = new_w()
-three_steps(w, torch.optim.SGD(
-    [w], lr=0.1))
+opt = torch.optim.SGD(
+    [w], lr=0.1)
+three_steps(w, opt)
 ```
 → `9.8`, `9.6`, `9.4` : 매번 0.2씩 움직여요.
 
@@ -242,8 +249,10 @@ $$v$$는 지금까지의 기울기를 누적한 값, $$\mu$$(뮤)는 지난 값�
 
 ```python
 w = new_w()
-three_steps(w, torch.optim.SGD(
-    [w], lr=0.1, momentum=0.9))
+opt = torch.optim.SGD(
+    [w], lr=0.1,
+    momentum=0.9)
+three_steps(w, opt)
 ```
 → `9.8`, `9.42`, `8.878` : 같은 방향이 이어지면 수정 폭이 커져요.
 
@@ -257,8 +266,9 @@ $$s$$는 기울기 제곱의 누적 합, $$\epsilon$$(엡실론)은 0으로 나�
 
 ```python
 w = new_w()
-three_steps(w, torch.optim.Adagrad(
-    [w], lr=0.1))
+opt = torch.optim.Adagrad(
+    [w], lr=0.1)
+three_steps(w, opt)
 ```
 → `9.9`, `9.8293`, `9.7716` : $$s$$가 4, 8, 12로 커져서 수정 폭이 0.1, 0.0707, 0.0577로 줄어요.
 
@@ -270,8 +280,10 @@ $$\rho$$(로)는 옛 값을 얼마나 남길지 정하는 비율이에요. 0.9�
 
 ```python
 w = new_w()
-three_steps(w, torch.optim.RMSprop(
-    [w], lr=0.1, alpha=0.9))
+opt = torch.optim.RMSprop(
+    [w], lr=0.1,
+    alpha=0.9)
+three_steps(w, opt)
 ```
 → `9.6838`, `9.4544`, `9.2623` : $$s$$가 0.4, 0.76, 1.084로 커지지만 4 근처에서 멈춰요.
 
@@ -285,8 +297,9 @@ $$m$$은 최근 기울기 위주의 평균, $$v$$는 최근 기울기 제곱 위
 
 ```python
 w = new_w()
-three_steps(w, torch.optim.Adam(
-    [w], lr=0.1))
+opt = torch.optim.Adam(
+    [w], lr=0.1)
+three_steps(w, opt)
 ```
 → `9.9`, `9.8`, `9.7` : 기울기가 일정하면 $$\hat m / \sqrt{\hat v}$$가 1이라 수정 폭이 learning rate와 같아요.
 
@@ -301,58 +314,60 @@ Adagrad는 $$s$$가 커지기만 해서 수정 폭이 계속 줄고, RMSProp은 
 XOR에 다섯 가지를 돌려 볼게요. 먼저 이름으로 optimizer를 고르는 함수와 학습 함수를 만들어요.
 
 ```python
-def make_opt(name, params, lr):
+def make_opt(name, p, lr):
+    o = torch.optim
     if name == "SGD":
-        return torch.optim.SGD(
-            params, lr=lr)
+        return o.SGD(p, lr=lr)
     if name == "Momentum":
-        return torch.optim.SGD(
-            params, lr=lr,
-            momentum=0.9)
+        return o.SGD(p, lr=lr,
+                     momentum=0.9)
     if name == "Adagrad":
-        return torch.optim.Adagrad(
-            params, lr=lr)
+        return o.Adagrad(p, lr=lr)
     if name == "RMSprop":
-        return torch.optim.RMSprop(
-            params, lr=lr,
-            alpha=0.9)
+        return o.RMSprop(p, lr=lr,
+                         alpha=0.9)
     if name == "Adam":
-        return torch.optim.Adam(
-            params, lr=lr)
+        return o.Adam(p, lr=lr)
 
-def train(name, lr, seed, hidden=2,
-          epochs=5000):
+def train(name, lr, seed,
+          hidden=2, epochs=5000):
     torch.manual_seed(seed)
     model = make_model(hidden)
     optimizer = make_opt(
-        name, model.parameters(), lr)
+        name,
+        model.parameters(),
+        lr)
     losses = []
     for epoch in range(epochs):
         y_pred = model(X)
-        loss = criterion(y_pred, y)
+        loss = criterion(
+            y_pred, y)
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
-        losses.append(loss.item())
+        v = loss.item()
+        losses.append(v)
     return model, losses
 
 # loss 0.1 아래에 머물기 시작한 때
-def stay_time(losses):
+def stay_time(ls):
     last = -1
-    for i, v in enumerate(losses):
+    for i, v in enumerate(ls):
         if v >= 0.1:
             last = i
     return last + 1
 
-for name, lr in [("SGD", 1.0),
-                 ("Momentum", 0.1),
-                 ("Adagrad", 0.1),
-                 ("RMSprop", 0.01),
-                 ("Adam", 0.01)]:
+runs = [("SGD", 1.0),
+        ("Momentum", 0.1),
+        ("Adagrad", 0.1),
+        ("RMSprop", 0.01),
+        ("Adam", 0.01)]
+for name, lr in runs:
     model, losses = train(
         name, lr, 42)
-    print(name, stay_time(losses),
-          round(losses[-1], 4))
+    t = stay_time(losses)
+    v = round(losses[-1], 4)
+    print(name, t, v)
 ```
 
 | 코드 | 뜻 |
@@ -360,7 +375,8 @@ for name, lr in [("SGD", 1.0),
 | `if name == "SGD":` | 이름이 SGD일 때만 아래 줄을 실행해요. `==`는 같은지 비교해요 |
 | `train` | 앞에서 본 반복문을 묶은 함수예요. `losses`에 loss를 모아요 |
 | `enumerate` | 번호와 값을 같이 꺼내요 |
-| `for name, lr in [...]` | 이름과 lr 짝을 하나씩 꺼내요 |
+| `for name, lr in runs:` | `runs`에서 이름과 lr 짝을 하나씩 꺼내요 |
+| `o = torch.optim` | 긴 이름을 `o`로 줄여 불러요 |
 
 `train`은 시작할 때마다 시드를 고정하니 다섯 번 모두 같은 시작 가중치예요.
 
@@ -398,7 +414,8 @@ for seed in [5, 0]:
         "Adam", 0.01, seed)
     with torch.no_grad():
         p = model(X).flatten()
-    print(seed, round(losses[-1], 4))
+    v = round(losses[-1], 4)
+    print(seed, v)
     print(p)
 ```
 → `5 0.3469`<br>
@@ -445,7 +462,8 @@ X 표시가 막힌 시드예요. 0.48 근처는 한 입력만 확실히 답하�
 torch.manual_seed(3)
 model = make_model()
 optimizer = torch.optim.SGD(
-    model.parameters(), lr=1.0)
+    model.parameters(),
+    lr=1.0)
 for epoch in range(1000):
     y_pred = model(X)
     loss = criterion(y_pred, y)
@@ -453,8 +471,8 @@ for epoch in range(1000):
     loss.backward()
     optimizer.step()
     if epoch % 200 == 0:
-        print(epoch,
-              round(loss.item(), 4))
+        v = loss.item()
+        print(epoch, round(v, 4))
 print(round(loss.item(), 4))
 ```
 → `0 0.7112`, `200 0.4883`, `400 0.4934`, `600 0.4977`, `800 0.5005`, 마지막 `0.4978` : 200번 뒤로는 0.49와 0.50 사이를 오르내리고 더 내려가지 않아요.
@@ -478,14 +496,16 @@ torch.optim.adagrad(
 
 ### 이 글에서 쓴 함수
 
+표의 `optim`은 `torch.optim`을 줄여 쓴 거예요.
+
 | 함수 | 하는 일 |
 |---|---|
-| `torch.manual_seed(42)` | 시작 가중치의 난수 고정 |
+| `torch.manual_seed` | 시작 가중치의 난수 고정 |
 | `model.parameters()` | 고칠 가중치 꺼내기 |
-| `torch.optim.SGD(...)` | optimizer 만들기, `momentum=`은 옵션 |
-| `torch.optim.Adagrad(...)` | 크기를 전부 기억 |
-| `torch.optim.RMSprop(...)` | 크기를 최근 위주로 기억, `alpha=`는 옵션 |
-| `torch.optim.Adam(...)` | 방향과 크기를 함께 사용 |
+| `optim.SGD` | 기울기만 사용, `momentum=`은 옵션 |
+| `optim.Adagrad` | 크기를 전부 기억 |
+| `optim.RMSprop` | 크기를 최근 위주로 기억, `alpha=`는 옵션 |
+| `optim.Adam` | 방향과 크기를 함께 사용 |
 | `optimizer.zero_grad()` | 쌓인 기울기 지우기 |
 | `loss.backward()` | 기울기 계산 |
 | `optimizer.step()` | 가중치 수정 |

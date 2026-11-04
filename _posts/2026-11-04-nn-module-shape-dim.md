@@ -16,7 +16,7 @@ spacious: true
 .content figure img { width: 100%; height: auto; }
 .content td, .content th { word-break: keep-all; overflow-wrap: normal; }
 .content .katex-display { overflow-x: auto; overflow-y: hidden; padding: 4px 0; }
-.content td code { white-space: normal; overflow-wrap: anywhere; }
+.content td code { white-space: nowrap; }
 .content pre .nb { padding: 0; border: 0; border-radius: 0; background: none; }
 @media (max-width: 560px) { .content th, .content td { padding: 7px 5px; font-size: 16px; } }
 </style>
@@ -226,9 +226,13 @@ for epoch in range(201):         # 전체 데이터 201번
         print(epoch, round(loss.item(), 4))
 ```
 
-| epoch | 0 | 50 | 100 | 150 | 200 |
-|---|---|---|---|---|---|
-| loss | 1.1231 | 0.2979 | 0.0689 | 0.0253 | 0.0138 |
+| epoch | loss |
+|---|---|
+| 0 | 1.1231 |
+| 50 | 0.2979 |
+| 100 | 0.0689 |
+| 150 | 0.0253 |
+| 200 | 0.0138 |
 
 처음 loss 1.1231은 정답 확률이 $$1/3$$일 때의 1.0986과 비슷해요.
 

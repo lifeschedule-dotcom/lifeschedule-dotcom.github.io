@@ -84,9 +84,9 @@ $$\text{Iteration 수} = \left\lceil \frac{N}{B} \right\rceil$$
 
 $$N$$은 데이터 수이고, $$\lceil \ \rceil$$는 올림이에요. $$N = 700$$, $$B = 32$$이면 21.875를 올려서 22예요. 이 글에서 "수정 1번"은 Iteration 1번과 같은 말이에요.
 
-행 수가 달라지면 고치는 방향도 달라져요. 가중치가 2개뿐인 작은 모델로 확인해 볼게요. 입력은 뒤에서 만들 데이터의 2번 칸과 3번 칸이에요. 같은 가중치에서 묶음을 40번씩 뽑아 가중치를 어디로 고치는지 그렸어요.
+행 수가 달라지면 고치는 방향도 달라져요. 입력 2칸에 가중치를 하나씩 곱해 더하고 0과 1 사이로 바꾸는, 가중치가 2개뿐인 모델로 확인해 볼게요. 입력은 뒤에서 만들 데이터의 2번 칸과 3번 칸이에요. 같은 가중치에서 묶음을 40번씩 뽑아 가중치를 어디로 고치는지 그렸어요.
 
-<figure><img src="/assets/img/mini-batch-compare/update-direction.png" alt="같은 가중치에서 묶음을 40번 뽑아 그린 수정 방향: Batch GD는 한 가지뿐이고, SGD의 1행은 사방으로 크게 퍼지고, Mini-batch의 32행은 700행 방향 근처에 모여요." width="1520" height="583"></figure>
+<figure><img src="/assets/img/mini-batch-compare/update-direction.png" alt="같은 가중치에서 묶음을 40번 뽑아 그린 수정 방향: Batch GD는 한 가지뿐이고, SGD의 1행은 길이와 방향이 크게 달라지고, Mini-batch의 32행은 700행 방향 근처에 모여요." width="1520" height="583"></figure>
 
 검은 점이 지금 가중치이고, 선 끝이 고친 뒤의 가중치예요. 굵은 파란 선은 700행 전체로 계산한 수정이라 언제나 하나뿐이에요. 1행은 뽑을 때마다 크게 달라지고, 32행은 파란 선 근처에 모여요.
 
@@ -120,16 +120,16 @@ $$N$$은 데이터 수이고, $$\lceil \ \rceil$$는 올림이에요. $$N = 700$
 
 32행처럼 작은 묶음의 평균 기울기로 1번 고쳐요. 700행이면 1 Epoch에 22번 고쳐요.
 
-<figure><img src="/assets/img/mini-batch-compare/method-mini.png" alt="Mini-batch GD 10 Epoch: 수정 220번으로 경로는 작게 흔들리며 별 쪽으로 가고, loss는 매끄럽게 0.41까지 내려가요." width="1520" height="746"></figure>
+<figure><img src="/assets/img/mini-batch-compare/method-mini.png" alt="Mini-batch GD 10 Epoch: 수정 220번으로 경로는 거의 곧게 별 쪽으로 가고, loss는 매끄럽게 0.41까지 내려가요." width="1520" height="746"></figure>
 
-작게 흔들리면서 별 쪽으로 가고, loss는 매끄럽게 0.41까지 내려갔어요.
+흔들림이 거의 보이지 않을 만큼 작고, 곧게 별 쪽으로 가요. loss는 매끄럽게 0.41까지 내려갔어요.
 
 - **장점:** 흔들림이 SGD보다 작고, 수정 횟수는 Batch GD보다 많아요. 32행을 한 번에 묶어 계산하니 행 하나당 계산이 SGD보다 빨라요.
 - **단점:** 묶음 크기를 직접 정해야 해요. 크기를 바꾸면 흔들림과 수정 횟수가 함께 달라져서 learning rate도 다시 봐야 할 수 있어요.
 
 그래서 학습 코드에서는 Mini-batch를 많이 써요. 맨 앞에 링크한 PyTorch 튜토리얼도 `batch_size=64`예요.
 
-세 방식을 표로 모으면 이래요. 시간은 4절의 큰 모델에서 잰 값이에요.
+세 방식을 표로 모으면 이래요. 시간은 4절에서 돌릴 4칸 입력 모델(가운데 층 32칸)로 잰 값이에요.
 
 | 항목 | Batch GD | SGD | Mini-batch |
 |---|---|---|---|

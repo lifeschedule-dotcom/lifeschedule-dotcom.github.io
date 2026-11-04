@@ -336,7 +336,7 @@ for name, size in sizes.items():
 
 <figure><img src="/assets/img/mini-batch-compare/path-same-updates.png" alt="가중치 2개 모델을 40번씩 고친 경로: Batch GD와 주황 점선의 32행 묶음은 거의 같은 길로 가고, SGD는 지그재그로 다른 길을 가요." width="1520" height="1167"></figure>
 
-SGD는 다른 길로 가는데, 이 40번만 보면 끝점의 loss가 0.71로 Batch GD의 0.87보다 오히려 낮아요. 앞의 700번 그림에서는 SGD가 위에 있으니, 짧은 구간만 보고 판단하면 안 돼요.
+SGD는 다른 길로 가는데, 이 40번만 보면 끝점의 loss가 0.71로 Batch GD의 0.88보다 오히려 낮아요. 앞의 700번 그림에서는 SGD가 위에 있으니, 짧은 구간만 보고 판단하면 안 돼요.
 
 그럼 32행 묶음의 기울기가 전체와 거의 같아서 겹치는 걸까요? 이번에는 4절의 4칸 입력 모델로 재 봤어요. 두 기울기의 방향이 얼마나 같은지는 cosine similarity로 재요. 1이면 같은 방향, 0이면 상관없는 방향이에요.
 

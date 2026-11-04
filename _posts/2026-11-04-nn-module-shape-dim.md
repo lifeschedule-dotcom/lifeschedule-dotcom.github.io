@@ -17,6 +17,7 @@ spacious: true
 .content td, .content th { word-break: keep-all; overflow-wrap: normal; }
 .content .katex-display { overflow-x: auto; overflow-y: hidden; padding: 4px 0; }
 .content td code { white-space: normal; overflow-wrap: anywhere; }
+.content pre .nb { padding: 0; border: 0; border-radius: 0; background: none; }
 @media (max-width: 560px) { .content th, .content td { padding: 7px 5px; font-size: 16px; } }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">

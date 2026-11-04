@@ -1,10 +1,10 @@
 ---
-title: "Batch·SGD·Mini-batch 차이 정리: 직접 돌려 비교"
+title: "경사하강법: 세 가지 방식 비교 (Batch, SGD, Mini-batch)"
 section: physical-ai
 sub: nvidia
 ref: batch-sgd-mini-batch
 date: 2026-11-04 12:00:00 +0900
-description: 같은 데이터와 모델로 Batch GD, SGD, Mini-batch GD를 PyTorch DataLoader로 직접 돌려 수정 횟수, 시간, loss, 시험 점수를 비교했어요. shape 읽는 법과 자주 하는 실수까지 정리했어요.
+description: 경사하강법이 무엇인지부터 Batch GD, SGD, Mini-batch GD의 차이까지 처음 보는 사람도 따라오게 정리하고, 같은 데이터로 PyTorch에서 직접 돌려 수정 횟수, 시간, loss, 시험 점수를 비교했어요.
 spacious: true
 ---
 
@@ -24,22 +24,67 @@ spacious: true
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.querySelector('.content')||document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
 
-<div class="wc"><p><b>데이터를 왜 묶음으로 나눌까요?</b><br>
-<a href="https://docs.pytorch.org/docs/2.15/data.html">DataLoader</a>는 데이터를 묶음(batch)으로 나눠 모델에 넘겨 주는 PyTorch 도구예요.<br>
-<a href="https://docs.pytorch.org/tutorials/beginner/basics/optimization_tutorial.html">PyTorch 공식 학습 튜토리얼</a>도 묶음을 하나씩 꺼낼 때마다 가중치를 고쳐요.<br>
-묶음 크기가 수정 횟수와 시간을 어떻게 바꾸는지 알면 학습 코드의 숫자를 근거를 갖고 읽을 수 있어요. (2026년 11월 4일 기준)</p></div>
+<div class="wc"><p><b>경사하강법은 왜 알아야 할까요?</b><br>
+경사하강법(Gradient Descent)은 모델이 틀린 정도가 줄어드는 쪽으로 모델 안의 숫자를 조금씩 고치는 방법이에요.<br>
+<a href="https://docs.pytorch.org/tutorials/beginner/basics/optimization_tutorial.html">PyTorch 공식 학습 튜토리얼</a>도 데이터를 묶음으로 나눠, 묶음마다 이렇게 숫자를 고쳐요.<br>
+묶음 크기에 따라 달라지는 세 방식을 알면 학습 코드의 <code>batch_size</code>를 왜 그렇게 정했는지 읽을 수 있어요. (2026년 11월 4일 기준)</p></div>
 
-같은 데이터와 모델로 경사하강법(Gradient Descent) 세 방식을 돌려 비교하고, 헷갈리는 포인트 네 가지와 자주 하는 실수 네 가지를 정리했어요.
+경사하강법 세 방식을 처음부터 설명하고, 같은 데이터로 직접 돌려 비교했어요. 헷갈리는 포인트 네 가지와 자주 하는 실수 네 가지도 정리했어요.
 
-**데이터 만들기 → 묶음 나누기 → 세 방식 학습 → 수정 횟수 맞춰 비교 → 헷갈리는 곳**
+**세 방식 이해하기 → 문제 만들기 → 묶음 나누기 → 학습하고 비교하기 → 헷갈리는 곳**
+
+<div class="keyline">먼저 경사하강법이 무엇인지부터 볼게요.</div>
+
+## <span class="no">1</span> 경사하강법과 세 가지 방식
+
+경사하강법은 loss가 줄어드는 쪽으로 가중치를 조금씩 고치는 일을 반복하는 방법이에요. 먼저 용어 네 개만 잡을게요.
+
+| 용어 | 뜻 |
+|---|---|
+| 가중치 | 모델 안의 숫자. 학습은 이 숫자를 고치는 일이에요 |
+| loss | 모델의 답이 정답에서 얼마나 틀렸는지 나타낸 숫자. 작을수록 좋아요 |
+| 기울기 | 가중치를 조금 키울 때 loss가 얼마나 변하는지 나타낸 숫자 |
+| learning rate | 한 번에 얼마나 고칠지 정하는 숫자 |
+
+가중치 하나로 보면 고치는 식은 이래요.
+
+$$\theta_{new} = \theta_{old} - \eta \nabla L(\theta_{old})$$
+
+$$\theta$$는 가중치, $$\eta$$는 learning rate, $$\nabla L$$은 기울기예요.
+
+기울기가 양수면 가중치를 키울수록 loss가 커진다는 뜻이라, 기울기에 learning rate를 곱한 만큼 빼서 가중치를 줄여요. $$\theta_{old} = 1$$, $$\eta = 0.1$$, 기울기가 3이면 $$\theta_{new} = 1 - 0.1 \times 3 = 0.7$$이에요.
+
+loss는 행마다 정답과 모델의 답으로 계산하니, 기울기도 행마다 달라요. **세 방식의 차이는 기울기를 몇 행의 데이터로 계산하느냐예요.** 여러 행을 쓰면 행마다 기울기를 구해 평균을 내요.
+
+$$\theta_{new} = \theta_{old} - \eta \cdot \frac{1}{B} \sum_{i=1}^{B} \nabla L_i(\theta_{old})$$
+
+$$B$$는 한 번에 보는 행 수(묶음 크기, batch size)이고, $$\nabla L_i$$는 $$i$$번째 행의 기울기예요. 앞의 기울기 3은 기울기가 2와 4인 두 행의 평균일 수 있어요. 이때 $$B = 2$$예요.
+
+| 방식 | 기울기를 계산할 데이터 |
+|---|---|
+| Batch GD | 전체 데이터 |
+| Mini-batch GD | 작은 묶음(예: 32행) |
+| SGD | 무작위로 고른 1행 |
+
+SGD는 Stochastic Gradient Descent(확률적 경사하강법)의 줄임말이에요. Mini-batch GD까지 SGD라고 부르는 자료도 있는데, 이 글에서는 묶음 크기가 1인 경우만 SGD라고 할게요.
+
+전체 데이터를 한 번 다 보는 것이 **Epoch**이고, 가중치를 한 번 고치는 것이 **Iteration**이에요. 데이터 700행으로 1 Epoch를 돌면 세 방식은 이렇게 달라요.
+
+<figure><img src="/assets/img/mini-batch-compare/batch-split.png" alt="학습 데이터 700행을 Batch GD는 묶음 1개로 1번, Mini-batch GD는 32행씩 22묶음(마지막 묶음은 28행)으로 22번, SGD는 1행씩 700묶음으로 700번 수정해요." width="1520" height="678"></figure>
+
+1 Epoch의 Iteration 수는 이렇게 구해요.
+
+$$\text{Iteration 수} = \left\lceil \frac{N}{B} \right\rceil$$
+
+$$N$$은 데이터 수이고, $$\lceil \ \rceil$$는 올림이에요. $$N = 700$$, $$B = 32$$이면 21.875를 올려서 22예요. 이 글에서 "수정 1번"은 Iteration 1번과 같은 말이에요.
+
+그럼 어느 방식이 좋을까요? 직접 돌려 볼게요. 경로 그림은 [경사하강법 정리](/2026/10/26/gradient-descent-init/)에도 있어요.
+
+## <span class="no">2</span> 풀 문제 만들기
+
+세 방식을 공정하게 비교하려면 같은 문제가 필요해요. 숫자 4칸을 보고 정답 0 또는 1을 맞히는 문제를 1000행 만들어요. 표로 생각하면 행 하나가 데이터 하나예요.
 
 코드는 위에서부터 이어져요. `pip install torch`로 설치하거나 Google Colab에서 돌릴 수 있어요. ❌ 표시가 붙은 블록은 일부러 틀린 코드예요. 결과값은 torch 2.11 CPU에서 실행한 값이고, 시간은 컴퓨터와 실행마다 달라요.
-
-<div class="keyline">먼저 풀 문제부터 만들어 볼게요.</div>
-
-## <span class="no">1</span> 풀 문제 만들기
-
-숫자 4칸을 보고 정답 0 또는 1을 맞히는 문제를 1000행 만들어요.
 
 ```python
 import torch  # 텐서 계산 도구
@@ -52,8 +97,10 @@ from torch.utils.data import (
 torch.manual_seed(42)  # 난수 고정
 X = torch.randn(1000, 4)  # 1000행 4칸
 noise = 0.3 * torch.randn(1000)
+# 0번 칸 × 1번 칸 + 2번 칸
 score = X[:, 0] * X[:, 1] + X[:, 2]
 score = score - 0.5 * X[:, 3] + noise
+# 1000행 1칸 모양으로
 y = (score > 0).float().reshape(-1, 1)
 
 X_train, y_train = X[:700], y[:700]
@@ -62,41 +109,17 @@ print(X_train.shape, y_train.shape)
 print(X_test.shape, y_test.shape)
 print(round(y_train.mean().item(), 4))
 ```
-→ `torch.Size([700, 4]) torch.Size([700, 1])`<br>
-→ `torch.Size([300, 4]) torch.Size([300, 1])`<br>
+→ `torch.Size([700, 4]) torch.Size([700, 1])` : 700행에 입력 4칸, 700행에 정답 1칸<br>
+→ `torch.Size([300, 4]) torch.Size([300, 1])` : 300행에 입력 4칸, 300행에 정답 1칸<br>
 → `0.5014` : 정답의 절반이 1이라, 찍으면 약 50점이에요.
 
-700행으로 학습하고, 학습에 쓰지 않은 300행으로 시험을 봐요. 첫 칸과 둘째 칸을 곱한 항이 있어서 직선 하나로는 잘 안 풀리는 문제예요.
+`X`는 입력이고 `y`는 정답이에요. `torch.randn`은 무작위 숫자를 만들고, `score`가 0보다 크면 정답이 1이에요.
 
-## <span class="no">2</span> Batch GD·SGD·Mini-batch 차이
-
-세 방식의 차이는 가중치를 한 번 고칠 때 몇 행을 보느냐예요. 식은 모두 같아요.
-
-$$\theta_{new} = \theta_{old} - \eta \cdot \frac{1}{B} \sum_{i=1}^{B} \nabla L_i(\theta_{old})$$
-
-$$\theta$$는 가중치, $$\eta$$는 learning rate, $$B$$는 묶음 크기, $$\nabla L_i$$는 $$i$$번째 행의 기울기예요.
-
-숫자를 넣어 볼게요. $$\theta_{old} = 1$$, $$\eta = 0.1$$이고 두 행의 기울기가 2와 4라면, $$B = 2$$일 때 기울기 평균은 3이에요. 그래서 $$\theta_{new} = 1 - 0.1 \times 3 = 0.7$$이 돼요.
-
-전체 데이터를 한 번 다 보는 것이 **Epoch**이고, 가중치를 한 번 고치는 것이 **Iteration**이에요. 1 Epoch의 Iteration 수는 이렇게 구해요.
-
-$$\text{Iteration 수} = \left\lceil \frac{N}{B} \right\rceil$$
-
-$$N$$은 데이터 수이고, $$\lceil \ \rceil$$는 올림이에요. $$N = 700$$, $$B = 32$$이면 21.875를 올려서 22예요.
-
-<figure><img src="/assets/img/mini-batch-compare/batch-split.png" alt="학습 데이터 700행을 Batch GD는 묶음 1개로 1번, Mini-batch GD는 32개씩 22묶음(마지막 묶음은 28개)으로 22번, SGD는 1개씩 700묶음으로 700번 수정해요." width="1520" height="678"></figure>
-
-| 방식 | 묶음 크기 | 1 Epoch 수정 횟수 |
-|---|---|---|
-| Batch GD | 700 | 1번 |
-| Mini-batch GD | 32 | 22번 |
-| SGD | 1 | 700번 |
-
-식과 경로 그림은 [경사하강법 정리](/2026/10/26/gradient-descent-init/)에 자세히 있어요. 여기서는 코드로 직접 비교할게요.
+700행으로 학습하고, 학습에 쓰지 않은 300행으로 시험을 봐요.
 
 ## <span class="no">3</span> DataLoader로 묶음 꺼내기
 
-`TensorDataset`이 X와 y를 같은 번호끼리 짝짓고, `DataLoader`가 그 짝을 묶음으로 꺼내 줘요.
+이제 700행을 묶음으로 나눠요. `TensorDataset`이 X와 y를 같은 번호끼리 짝짓고, `DataLoader`가 그 짝을 묶음으로 꺼내 줘요.
 
 ```python
 dataset = TensorDataset(X_train, y_train)
@@ -119,11 +142,11 @@ print(len(loader))
 
 <figure><img src="/assets/img/mini-batch-compare/batch-shape.png" alt="X_batch는 32행에 행마다 4칸이고, y_batch는 32행에 행마다 정답 1칸이에요. 0번 행은 -0.75, -0.38, 0.14, -0.08과 정답 1이에요." width="1520" height="651"></figure>
 
-행 하나가 데이터 하나예요. 모델은 한 행의 4칸을 보고 정답 1칸을 맞혀요. `batch_size`를 바꾸면 앞 숫자만 바뀌고, 뒤의 4와 1은 그대로예요.
+모델은 한 행의 4칸을 보고 정답 1칸을 맞혀요. `batch_size`를 바꾸면 앞 숫자만 바뀌고, 뒤의 4와 1은 그대로예요.
 
 ## <span class="no">4</span> 세 방식 학습하고 비교하기
 
-묶음 크기만 바꿔 같은 코드로 돌려요. 모델부터 만들어요.
+묶음 크기만 바꿔 같은 코드로 돌려요. 모델은 4칸을 받아 계산을 두 번 거쳐 0과 1 사이 숫자 하나를 내요. `Linear`가 하는 계산은 6절에서 보고, 클래스 구조는 [nn.Module 입문](/2026/11/04/nn-module-shape-dim/)에 자세히 있어요.
 
 ```python
 class SimpleNet(nn.Module):
@@ -131,7 +154,7 @@ class SimpleNet(nn.Module):
         super().__init__()
         self.net = nn.Sequential(
             nn.Linear(4, 32),  # 4칸 → 32칸
-            nn.ReLU(),
+            nn.ReLU(),  # 음수는 0으로
             nn.Linear(32, 1),  # 32칸 → 1칸
             nn.Sigmoid(),  # 0과 1 사이로
         )
@@ -140,7 +163,7 @@ class SimpleNet(nn.Module):
         return self.net(x)
 ```
 
-학습 함수는 `for` 안에 `for`가 있는 모양이에요. 바깥은 Epoch, 안쪽은 묶음을 반복해요.
+학습 함수는 `for` 안에 `for`가 있는 모양이에요. 바깥은 Epoch, 안쪽은 묶음을 반복해요. 안쪽에서 1절의 식을 묶음마다 실행해요.
 
 ```python
 def train(size, epochs=100, lr=0.1, seed=0):
@@ -175,13 +198,26 @@ def train(size, epochs=100, lr=0.1, seed=0):
 
     model.eval()
     with torch.no_grad():
+        # 0.5 이상이면 1로 답하기
         p = (model(X_test) >= 0.5).float()
     correct = (p == y_test).float()
-    acc = correct.mean().item()
+    acc = correct.mean().item()  # 맞힌 비율
     return losses, updates, acc
 ```
 
-[학습 반복문 다섯 단계](/2026/11/04/xor-training-loop/)를 묶음마다 하는 거예요. 묶음 22개면 100 Epoch에 2,200번 고쳐요.
+새로 나온 이름은 이런 뜻이에요.
+
+| 코드 | 뜻 |
+|---|---|
+| `torch.optim.SGD` | 기울기로 가중치를 고치는 도구(optimizer) |
+| `nn.BCELoss` | 정답이 0 또는 1일 때 쓰는 loss |
+| `loss.backward()` | 기울기 계산 |
+| `optimizer.step()` | 1절의 식으로 가중치 수정 |
+| `optimizer.zero_grad()` | 앞 묶음의 기울기 비우기 |
+| `torch.no_grad()` | 시험에서 기울기 계산 끄기 |
+| `model.train()`, `model.eval()` | 학습할 때와 시험 볼 때 모드 바꾸기 |
+
+반복문의 흐름은 [학습 반복문 다섯 단계](/2026/11/04/xor-training-loop/)와 같아요. 묶음 22개면 100 Epoch에 2,200번 고쳐요.
 
 Batch GD를 위해 묶음 크기로 700을 넘기면 묶음이 1개만 나와요. 네 가지 크기를 돌려 볼게요. SGD 줄은 10초쯤 걸려요.
 
@@ -203,11 +239,13 @@ for name, size in sizes.items():
 → `Mini-batch 32 2200 0.1575 0.8933`<br>
 → `SGD 70000 0.1779 0.88`
 
-<figure><img src="/assets/img/mini-batch-compare/loss-by-epoch.png" alt="100 Epoch 동안 Batch GD는 0.40까지 천천히 내려가고, 256개는 0.28, 32개는 0.16, SGD는 약 0.18 근처에서 흔들려요." width="1520" height="895"></figure>
+출력은 차례로 방식 이름, 수정 횟수, 마지막 Epoch의 평균 loss, 시험 300행에서 맞힌 비율이에요. 그림은 Epoch마다의 평균 loss예요.
 
-같은 Epoch 수라면 묶음이 작을수록 수정을 더 많이 해서 초반에 loss가 빨리 내려가요. 다만 SGD는 `lr=0.1`에서 삐죽삐죽 흔들리며 32개보다 위에 머물러요. 행 하나로 어림한 기울기는 다른 행에 맞지 않을 때가 많기 때문이에요.
+<figure><img src="/assets/img/mini-batch-compare/loss-by-epoch.png" alt="100 Epoch 동안 Batch GD는 0.40까지 천천히 내려가고, 256행 묶음은 0.28, 32행 묶음은 0.16, SGD는 약 0.18 근처에서 흔들려요." width="1520" height="895"></figure>
 
-그런데 시드 하나의 결과는 우연일 수 있어요. 시드 5개로 평균을 내 볼게요. 약 1분 걸려요.
+같은 Epoch 수라면 묶음이 작을수록 수정을 더 많이 해서 초반에 loss가 빨리 내려가요. 다만 SGD는 `lr=0.1`에서 삐죽삐죽 흔들리며 32행 묶음보다 위에 머물러요. 행 하나로 어림한 기울기는 다른 행에 맞지 않을 때가 많기 때문이에요.
+
+그런데 한 번의 결과는 우연일 수 있어요. 난수의 시작값인 시드(seed)가 달라지면 처음 가중치와 섞는 순서가 달라지거든요. 시드 5개로 평균을 내 볼게요. 약 1분 걸려요.
 
 ```python
 import time
@@ -230,20 +268,20 @@ for name, size in sizes.items():
     print(name, repeat(size))
 ```
 
-| 방식 | 100 Epoch 수정 | 최종 loss | 시험 점수 | 1번 시간 |
+| 방식 | 100 Epoch 수정 | 최종 loss | 시험 점수 | 1번 실행 시간 |
 |---|---|---|---|---|
 | Batch GD | 100번 | 0.3810 | 0.7913 | 0.3초 |
 | Mini-batch 256 | 300번 | 0.2707 | 0.8500 | 0.3초 |
 | Mini-batch 32 | 2,200번 | 0.1581 | 0.9013 | 0.7초 |
 | SGD | 70,000번 | 0.1780 | 0.8727 | 10초 |
 
-조건은 학습 700행, 시험 300행, 은닉층 1개(32칸), `lr=0.1`, 시드 0부터 4까지예요. 이 조건에서는 Mini-batch 32가 점수도 가장 높고, SGD보다 훨씬 빨랐어요.
+조건은 학습 700행, 시험 300행, 가운데 층 1개(32칸), learning rate `lr=0.1`, 시드 0부터 4까지예요. 이 조건에서는 Mini-batch 32가 점수도 가장 높고, SGD보다 훨씬 빨랐어요.
 
 이 표로 "SGD는 점수가 낮다"고 결론 내리면 안 돼요. Batch GD는 수정 횟수가 적고, SGD는 `lr=0.1`이면 흔들림이 커요. 조건을 맞춰 다시 볼게요.
 
 ## <span class="no">5</span> 수정 횟수를 맞추면 보이는 것
 
-수정 횟수를 700번으로 맞추면 묶음 32개, 256개, 전체 700개의 loss가 거의 겹쳐요. 매번 학습 데이터 전체로 loss를 재서 비교했어요.
+수정 횟수를 700번으로 맞추면 32행 묶음, 256행 묶음, 700행 전체의 loss가 거의 겹쳐요. 코드는 앞의 학습 반복문에 두 가지만 바꿨어요. 수정할 때마다 학습 데이터 전체의 loss를 기록하고, 700번 고치면 멈춰요.
 
 ```python
 def by_updates(size, max_updates=700):
@@ -284,7 +322,7 @@ for name, size in sizes.items():
 → `Mini-batch 32 0.188`<br>
 → `SGD 0.2483`
 
-<figure><img src="/assets/img/mini-batch-compare/loss-by-update.png" alt="가중치를 700번 고치는 동안 Batch GD, 256개, 32개의 loss는 거의 겹쳐 0.19까지 내려가고, SGD는 흔들리며 0.25에 머물러요." width="1520" height="895"></figure>
+<figure><img src="/assets/img/mini-batch-compare/loss-by-update.png" alt="가중치를 700번 고치는 동안 Batch GD, 256행 묶음, 32행 묶음의 loss는 거의 겹쳐 0.19까지 내려가고, SGD는 흔들리며 0.25에 머물러요." width="1520" height="895"></figure>
 
 이 문제에서는 32행의 평균 기울기가 700행의 평균 기울기와 비슷한 방향을 가리킨 거예요. 그런데 700번 고치는 동안 본 행 수는 크게 달라요.
 
@@ -295,9 +333,9 @@ for name, size in sizes.items():
 | Mini-batch 32 | 약 22,000행 |
 | SGD | 700행 |
 
-행 수로만 보면 SGD가 가장 적어요. 그런데 시간은 행 수대로 줄지 않아요.
+행 수로만 보면 SGD가 가장 적어요. 그런데 시간은 행 수대로 줄지 않아요. 세 방식이 비슷한 점수에 닿게 맞춘 뒤 시간을 재 볼게요.
 
-이번에는 세 방식이 비슷한 점수에 닿도록 조건을 바꿔 볼게요. Batch GD는 Epoch를 2,200으로 늘리고, SGD는 `lr`을 0.003으로 줄여요. 약 2분 걸려요.
+Batch GD는 수정 횟수가 모자랐으니 Epoch를 2,200으로 늘려요. SGD는 흔들림이 컸으니 learning rate를 0.003으로 줄여요. 약 2분 걸려요.
 
 ```python
 print(repeat(700, epochs=2200))
@@ -305,7 +343,7 @@ print(repeat(32))
 print(repeat(1, lr=0.003))
 ```
 
-| 설정 | 수정 횟수 | 최종 loss | 시험 점수 | 1번 시간 |
+| 설정 | 수정 횟수 | 최종 loss | 시험 점수 | 1번 실행 시간 |
 |---|---|---|---|---|
 | Batch GD, 2,200 Epoch | 2,200번 | 0.1533 | 0.8993 | 7.4초 |
 | Mini-batch 32, 100 Epoch | 2,200번 | 0.1581 | 0.9013 | 0.8초 |
@@ -313,13 +351,13 @@ print(repeat(1, lr=0.003))
 
 Mini-batch 32는 앞 표와 같은 실험을 다시 잰 값이라 시간만 조금 달라요.
 
-세 방식 모두 약 0.90에 닿았고, 차이는 시간이에요. Batch GD는 수정할 때마다 700행을 계산해서 Mini-batch 32보다 약 9배 걸렸어요. SGD와 Mini-batch 32는 둘 다 100 Epoch에 70,000행을 보는데, SGD는 10배 넘게 걸렸어요. 앞 표로 수정 1번의 시간을 나눠 보면 32행을 묶어 계산해도 1행의 약 2배뿐이라, 묶어서 한 번에 계산하는 쪽이 빨라요.
+세 방식 모두 약 0.90에 닿았고, 차이는 시간이에요. Batch GD는 수정할 때마다 700행을 계산해서 Mini-batch 32보다 약 9배 걸렸어요. SGD와 Mini-batch 32는 둘 다 100 Epoch에 70,000행을 보는데, SGD는 10배 넘게 걸렸어요. 4절 표로 수정 1번의 시간을 구하면 SGD는 10초 ÷ 70,000번으로 약 0.14ms, 32행 묶음은 0.7초 ÷ 2,200번으로 약 0.32ms예요. 32행을 한 번에 계산해도 1행의 약 2배라서, 묶어서 계산하는 쪽이 빨라요.
 
 이 실험에서 Mini-batch를 고를 이유가 여기 있어요. 다른 데이터에서는 점수 순서가 달라질 수 있고, `lr`에 따라서도 달라져요.
 
 ## <span class="no">6</span> 헷갈리기 쉬운 네 가지
 
-**마지막 묶음은 32개가 아니에요.** 700을 32로 나누면 28행이 남고, 이 28행이 22번째 묶음이 돼요.
+**마지막 묶음은 32행이 아니에요.** 700을 32로 나누면 28행이 남고, 이 28행이 22번째 묶음이 돼요.
 
 ```python
 counts = [len(X_b) for X_b, _ in loader]
@@ -335,7 +373,7 @@ print(len(small))
 
 앞의 `epoch_loss / len(loader)`는 묶음끼리의 평균이라, 28행 묶음도 32행 묶음과 같은 무게로 들어가요. 비교용으로는 충분해요.
 
-**`Linear(32, 1)`의 32는 `batch_size=32`와 상관없어요.** 이 32는 은닉층의 칸 수이고, 이 글에서 우연히 숫자가 같아요. `batch_size`를 바꿔도 모델 코드는 그대로예요.
+**`Linear(32, 1)`의 32는 `batch_size=32`와 상관없어요.** 이 32는 모델 가운데 층의 칸 수이고, 이 글에서 우연히 숫자가 같아요. `batch_size`를 바꿔도 모델 코드는 그대로예요.
 
 `Linear`가 32칸을 1칸으로 줄이는 방법은 곱해서 모두 더하기예요. 3칸 입력 $$[2, 1, 3]$$에 가중치 $$[0.5, -1, 1]$$을 곱해 더하면 $$1 - 1 + 3 = 3$$으로 숫자 하나가 돼요. 이 계산을 몇 세트 하느냐가 출력 칸 수예요.
 
@@ -400,7 +438,7 @@ print(updates)
 → `1`<br>
 → `100`
 
-**정렬된 데이터를 안 섞기.** 학습 데이터를 정답 순서로 정렬하고 `shuffle=False`로 돌리면, 앞쪽 묶음은 전부 0이고 뒤쪽 묶음은 전부 1이에요. 묶음 32개, 100 Epoch, 시드 5개로 재 보니 시험 점수 평균이 `shuffle=False`는 0.888, `shuffle=True`는 0.9013이었어요. 시드마다 모두 `shuffle=True`가 높았어요. 이 데이터에서 차이는 약 0.013이에요.
+**정렬된 데이터를 안 섞기.** 학습 데이터를 정답 순서로 정렬하고 `shuffle=False`로 돌리면, 앞쪽 묶음은 전부 0이고 뒤쪽 묶음은 전부 1이에요. 32행 묶음, 100 Epoch, 시드 5개로 재 보니 시험 점수 평균이 `shuffle=False`는 0.888, `shuffle=True`는 0.9013이었어요. 시드마다 모두 `shuffle=True`가 높았어요. 이 데이터에서 차이는 약 0.013이에요.
 
 이 글에서 쓴 함수를 순서대로 모으면 이래요.
 

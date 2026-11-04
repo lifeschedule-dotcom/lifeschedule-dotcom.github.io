@@ -132,7 +132,7 @@ $$w$$는 가중치, $$x$$는 입력, $$b$$는 bias예요. $$w=(0.5, -0.3)$$, $$b
 
 `nn.BCELoss`는 정답이 0 또는 1일 때 모델의 답이 얼마나 틀렸는지 점수로 계산해요. BCE는 Binary Cross Entropy의 줄임말이에요.
 
-$$l = -[\,y \log p + (1 - y) \log (1 - p)\,]$$
+$$l = -[y \log p + (1 - y) \log (1 - p)]$$
 
 $$L = \frac{1}{N}\sum_{n=1}^{N} l_n$$
 

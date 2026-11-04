@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
 3. `Ctrl + Shift + P`를 누르고 `Create: New Jupyter Notebook`을 골라요.
 4. `Ctrl + S`로 `motor_fault.ipynb`라는 이름으로 저장해요.
 5. 오른쪽 위 `Select Kernel` → `Python Environments`를 눌러 Python을 골라요.
-6. 아래 버튼으로 데이터를 받아, VS Code 왼쪽 파일 목록의 `motor_fault.ipynb` 옆으로 끌어다 놓아요.
+6. 아래 버튼을 누르면 `motor.csv`가 보통 `다운로드` 폴더에 저장돼요. 그 파일을 VS Code 왼쪽 파일 목록으로 끌어다 놓거나, 파일 탐색기에서 실습 폴더로 복사해요.
 
 <a class="databtn" href="/assets/downloads/pytorch-model-coding/motor.csv" download="motor.csv">motor.csv 받기</a>
 
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 고른 Python에 바로 설치돼요. 처음에는 몇 분 걸릴 수 있어요. 끝에 `Successfully installed`나 `Requirement already satisfied`가 보이면 성공이에요.
 
-칸 왼쪽의 `[*]`는 실행 중이라는 뜻이고, `[3]`처럼 숫자가 앞 칸보다 커지면 순서대로 실행된 거예요. 칸은 건너뛰지 말고 위에서부터 실행해요. 결과값은 Python 3.13, torch 2.11 CPU에서 실행한 값이에요. 지금 설치하면 더 새 버전이 깔리고, 환경이 다르면 소수 값이 다를 수 있어요.
+칸 왼쪽의 `[*]`는 실행 중이라는 뜻이고, `[3]`처럼 숫자가 앞 칸보다 커지면 순서대로 실행된 거예요. 칸은 건너뛰지 말고 위에서부터 실행해요. 결과값은 Python 3.13, torch 2.11에서 GPU 없이 CPU로 계산한 값이에요. 지금 설치하면 더 새 버전이 깔리고, 환경이 다르면 소수 값이 다를 수 있어요.
 
 ## <span class="no">2</span> 데이터를 Tensor로 바꾸기
 
@@ -119,6 +119,8 @@ df = pd.read_csv("motor.csv")
 print(df.shape)
 df.head()
 ```
+
+`(2000, 6)`은 글자로, 그 아래는 노트북이 그린 표로 나와요.
 
 ```text
 (2000, 6)
@@ -210,7 +212,7 @@ torch.Size([400, 4]) torch.Size([400, 1])
 class MotorNet(①):
     def __init__(self):
         super().__init__()
-        # nn.Module의 준비 작업을 먼저 실행해요
+        # nn.Module 준비 작업을 먼저 실행
 
         self.fc1 = ②
         self.fc2 = ③
@@ -341,7 +343,7 @@ losses = []
 
 for epoch in range(300):
     model.train()
-    # 학습 모드. 이 모델은 결과가 같지만 습관으로 써요
+    # 학습 모드(이 모델은 없어도 결과가 같아요)
 
     y_hat = ①
     # 1. 모델에 넣어 예측값을 구해요
@@ -552,7 +554,7 @@ ValueError: Using a target size (torch.Size([1600])) that is different to the in
 
 **모델만 새로 만들면 loss가 멈춰요.** 옵티마이저는 예전 모델의 가중치를 계속 붙잡고 있어요. 칸 5만 다시 실행하고 칸 8로 가면 loss가 0.6583에서 움직이지 않아요. 칸 5, 7, 8을 차례로 실행해요.
 
-**칸 8만 다시 실행하면 이어서 학습해요.** 다시 300번을 돌리면 loss가 0.1135에서 시작해 0.1021까지 내려가요. 처음부터 하려면 역시 칸 5부터 실행해요.
+**칸 8만 다시 실행하면 이어서 학습해요.** 칸 8 바로 다음에 다시 300번을 돌리면 loss가 0.1135에서 시작해 0.1021까지 내려가요. 칸 12를 실행한 뒤라면 `model`이 SGD 모델로 바뀌어 있어요. 처음부터 하려면 칸 5부터 실행해요.
 
 ### 이 글에서 쓴 함수
 
@@ -574,6 +576,6 @@ ValueError: Using a target size (torch.Size([1600])) that is different to the in
 
 ### 틀 없이 다시 쳐 보기 (한번 해 보세요!)
 
-새 칸을 만들고 이 글을 보지 않은 채 칸 4의 클래스와 칸 8의 반복문을 다시 쳐 봐요. 칸 5와 칸 7까지 다시 실행해서 마지막 loss가 0.1135로 나오면 성공이에요. 막히면 그 줄만 보고 다시 쳐요.
+새 칸 두 개를 만들고 이 글을 보지 않은 채 칸 4의 클래스와 칸 8의 반복문을 다시 쳐 봐요. 새 클래스 칸 → 칸 5 → 칸 7 → 새 반복문 칸 순서로 실행해서 마지막 loss가 0.1135로 나오면 성공이에요. 막히면 그 줄만 보고 다시 쳐요.
 
 <div class="done">🎉 모델 클래스부터 학습 반복문까지 직접 쳤어요. 다음 모델도 층만 바뀌고 이 다섯 줄은 그대로예요.</div>

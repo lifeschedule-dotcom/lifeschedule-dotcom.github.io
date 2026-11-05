@@ -4,6 +4,7 @@ ko:
   noposts: 아직 글이 없습니다. 곧 채워질 예정이에요.
   read: 읽는 시간
   min: 분
+  portfolio: 포트폴리오
   submit: 자료 제출
 en:
   tagline: Notes on vibe coding, Physical AI, and everyday life
@@ -11,4 +12,5 @@ en:
   noposts: No posts yet — coming soon.
   read: ""
   min: " min read"
+  portfolio: Portfolio
   submit: Submit Files

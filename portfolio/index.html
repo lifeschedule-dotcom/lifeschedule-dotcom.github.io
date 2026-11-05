@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>포트폴리오 · Lifeschedule</title>
+<meta name="description" content="사업장 3곳을 운영하며 반복 작업을 직접 자동화한 사례입니다.">
+<meta property="og:title" content="라이프스케줄 포트폴리오">
+<meta property="og:description" content="사업장 3곳을 운영하며 반복 작업을 직접 자동화한 사례입니다.">
+<meta property="og:image" content="https://lifeschedule-dotcom.github.io/assets/portfolio/thumbnail.png">
+</head>
+<body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* 기존 모집 페이지의 사례 구성(왼쪽 캡처, 오른쪽 문제·결과)을 유지한다 */
+:root{
+  --bg:#F3F5F2; --panel:#FFFFFF; --panel2:#E9EDE8; --ink:#1B211E; --ink2:#4E5955; --ink3:#6B7671;
+  --line:#D5DBD6; --accent:#2F6F5E; --accent-ink:#FFFFFF; --mark:#F5C518; --mark-ink:#1B211E;
+  --display:"Do Hyeon","Apple SD Gothic Neo",sans-serif;
+  --body:"IBM Plex Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141816; --panel:#1C2220; --panel2:#232B28; --ink:#E9EDE9; --ink2:#AEB8B2; --ink3:#8C9791;
+    --line:#2E3733; --accent:#5FB597; --accent-ink:#0F1613; --mark:#E7BE2C; --mark-ink:#141816; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141816; --panel:#1C2220; --panel2:#232B28; --ink:#E9EDE9; --ink2:#AEB8B2; --ink3:#8C9791;
+  --line:#2E3733; --accent:#5FB597; --accent-ink:#0F1613; --mark:#E7BE2C; --mark-ink:#141816; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.65;word-break:keep-all;overflow-wrap:anywhere;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:0;line-height:1.2;margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-block:0 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-block:18px;border-bottom:1px solid var(--line)}
+.brand{font-family:var(--display);font-size:20px}
+.top a{font-size:14px;font-weight:500}
+.hero{padding-block:52px 34px;display:grid;gap:20px;max-width:44em}
+.hero h1{font-size:clamp(36px,5.4vw,58px)}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--mark) 62%)}
+.lead{font-size:18px;color:var(--ink2)}
+.bio{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;margin:0;font-size:15px}
+.bio dt{color:var(--ink3);font-family:var(--mono);font-size:13px;padding-top:2px}
+.bio dd{margin:0}
+.pf{font-size:clamp(40px,6.5vw,68px);line-height:1;padding-block:28px 12px}
+.entry{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:18px 28px;padding-block:28px;border-top:1px solid var(--line)}
+.entry .head{grid-column:1/-1;font-size:clamp(22px,2.6vw,28px)}
+.cat{display:inline-block;vertical-align:middle;margin-right:10px;padding:4px 10px;border-radius:6px;background:var(--accent);color:var(--accent-ink);font-family:var(--body);font-size:14px;font-weight:600;position:relative;top:-3px}
+.media{position:relative;aspect-ratio:16/9;max-width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.media>img,.media>video{display:block;width:100%;height:100%;object-fit:contain}
+.pair{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1fr);gap:6px;width:100%;height:100%;padding:6px}
+.pair.flow{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr)}
+.pane{min-width:0;min-height:0;overflow:hidden;border-radius:5px;background:#0F1613}
+.pane img,.pane video{display:block;width:100%;height:100%;object-fit:contain}
+.pane.fill img,.pane.fill video{object-fit:cover}
+.pane.svg{background:var(--panel2)}
+.pane svg{display:block;width:100%;height:100%}
+.stack{min-width:0;display:grid;gap:14px;align-content:start}
+.cleaning{margin:0;display:grid;grid-template-columns:minmax(0,230px) minmax(0,1fr);gap:16px;align-items:center}
+.cleaning img{display:block;width:100%;border:1px solid var(--line);border-radius:8px}
+.cleaning figcaption{font-size:14.5px;color:var(--ink2)}
+.cleaning b{display:block;font-family:var(--display);font-weight:400;font-size:20px;color:var(--ink);margin-bottom:4px}
+.spec{min-width:0}
+.rows{margin:0;display:grid}
+.rows>div{display:grid;grid-template-columns:70px minmax(0,1fr);gap:10px;padding-block:10px;border-top:1px solid var(--line)}
+.rows dt{color:var(--ink3);font-size:13px;font-weight:500;padding-top:2px}
+.rows dd{margin:0;font-size:14.5px}
+.gain dd{font-weight:600}
+.gain mark{display:block;background:var(--mark);color:var(--mark-ink);padding:4px 8px;border-radius:3px;margin-bottom:6px;line-height:1.55}
+.gain mark:last-child{margin-bottom:0}
+.note{font-size:13px;color:var(--ink3);padding-top:8px}
+.sec{font-size:clamp(34px,5vw,56px);padding-block:28px 14px;border-top:1px solid var(--line)}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;align-content:start;min-width:0}
+.thumb{aspect-ratio:1/1;max-width:100%;border-radius:6px;overflow:hidden;background:var(--panel2)}
+.thumb img,.thumb video{display:block;width:100%;height:100%;object-fit:cover}
+.thumb img.whole{object-fit:contain;background:#0F1613}
+.thumb.audio{background-size:cover;background-position:center;display:flex;align-items:flex-end;padding:10px}
+.thumb.audio audio{width:100%;height:32px}
+.card h3{font-size:15px;line-height:1.3}
+.card p{font-size:12.5px;color:var(--ink2);line-height:1.5}
+.next{background:var(--ink);color:var(--bg);border-radius:10px;padding:clamp(22px,4vw,38px);margin-block:36px 0;display:grid;gap:12px}
+.next h2{font-size:clamp(25px,3vw,34px)}
+.next p{max-width:44em;opacity:.88}
+.next a{color:var(--bg);font-weight:500}
+.next .links{display:flex;flex-wrap:wrap;gap:8px 22px}
+footer{padding-block:22px 0;color:var(--ink3);font-size:13px}
+@media (max-width:860px){
+  .entry{grid-template-columns:minmax(0,1fr)}
+  .grid4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero{padding-block:36px 24px}
+  .lead{font-size:16px}
+  .cat{display:block;width:max-content;margin:0 0 8px;top:0;font-size:12.5px}
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="/" style="color:inherit;text-decoration:none">라이프스케줄</a>
+    <a href="https://www.linkedin.com/in/jiwon-woo-349815434/" target="_blank" rel="noopener">LinkedIn 프로필</a>
+  </header>
+
+  <section class="hero">
+    <h1>사업장 3곳,<br><em>직접 자동화</em>했습니다</h1>
+    <p class="lead">"이거까지 되나?" 싶은 것들을 작은 자영업 여러 개에 직접 적용했습니다.</p>
+  </section>
+
+  <h2 class="pf">Portfolio</h2>
+
+  <article class="entry" id="partyroom">
+    <h3 class="head"><span class="cat">파티룸</span>안내부터 문의 답장·환급 요청까지, 예약 손님 응대를 대신 하는 어플</h3>
+    <div class="stack">
+    <div class="media">
+      <div class="pair flow">
+        <div class="pane svg">
+          <svg viewBox="0 0 600 340" role="img" aria-label="네이버 예약부터 안내 문자, 입금 자동 매칭, 확정과 당일 안내, 문의와 연장 자동 답장, 환급 답장 알림까지 이어지는 흐름" style="font-family:var(--body)">
+            <defs><marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" style="fill:var(--accent)"/></marker></defs>
+            <g style="fill:var(--panel);stroke:var(--line)">
+              <rect x="20" y="36" width="160" height="84" rx="10"/><rect x="220" y="36" width="160" height="84" rx="10"/><rect x="420" y="36" width="160" height="84" rx="10"/>
+              <rect x="20" y="184" width="160" height="84" rx="10"/><rect x="220" y="184" width="160" height="84" rx="10"/><rect x="420" y="184" width="160" height="84" rx="10"/>
+            </g>
+            <g text-anchor="middle" font-size="17" font-weight="600" style="fill:var(--ink)">
+              <text x="100" y="71">네이버 예약</text><text x="300" y="71">안내 문자</text><text x="500" y="71">입금 문자</text>
+              <text x="100" y="219">확정·당일 안내</text><text x="300" y="219">문의·연장</text><text x="500" y="219">환급 답장</text>
+            </g>
+            <g text-anchor="middle" font-size="14" style="fill:var(--ink2)">
+              <text x="100" y="96">들어옴</text><text x="300" y="96">자동 발송</text><text x="500" y="96">자동 매칭</text>
+              <text x="100" y="244">일정대로 발송</text><text x="300" y="244">자동 답장</text><text x="500" y="244">사장 알림</text>
+            </g>
+            <g fill="none" stroke-width="2.5" style="stroke:var(--accent)" marker-end="url(#ah)">
+              <path d="M184 78 L214 78"/><path d="M384 78 L414 78"/><path d="M500 124 L500 150 L100 150 L100 178"/><path d="M184 226 L214 226"/><path d="M384 226 L414 226"/>
+            </g>
+            <text x="300" y="314" text-anchor="middle" font-size="13" style="fill:var(--ink3);font-family:var(--mono)">사람이 하는 일: 개인 문의 답장, 발송 확인, 환급 송금</text>
+          </svg>
+        </div>
+        <div class="pane"><img loading="lazy" src="/assets/portfolio/3dacb0dd84.webp" alt="예약 1건의 자동 처리 타임라인 화면"></div>
+      </div>
+    </div>
+    <figure class="cleaning">
+      <img loading="lazy" src="/assets/portfolio/fa1d5bce1e.webp" alt="청소 일정 화면, 날짜와 시간, 수건과 생수 개수가 표시되어 있고 숙소와 방 이름은 가림">
+      <figcaption><b>청소 선생님께 전달하는 일정 화면</b>날짜와 시간, 수건과 생수 개수를 선생님이 휴대폰에서 바로 확인합니다.</figcaption>
+    </figure>
+    </div>
+    <div class="spec">
+      <dl class="rows">
+        <div><dt>문제</dt><dd>네이버 예약이 들어올 때마다 저장해 둔 문서를 열어 잔금·보증금·주차 안내를 복사해 붙이고, 추가 인원에 따라 추가 금액을 계산하고, 은행 앱을 열어 입금됐는지 확인하고, 포토리뷰 답장이 없는 손님에게는 다시 연락했습니다.<br>예약은 불시에 들어오니 바로 응대하려면 핸드폰을 계속 주시해야 했습니다.<br>이용 전후에도 주차·쓰레기·식기 같은 문의에 답하고, 연장·인원 추가는 입금까지 확인해야 했습니다.</dd></div>
+        <div class="gain"><dt>결과</dt><dd>
+          <mark>앱이 예약 정보를 읽어 안내·리뷰 이벤트 문자를 보내고, 보증금이 들어오면 확인해 예약 확정 등 일련의 문자를 일정에 맞춰 발송.</mark>
+          <mark>주차·추가 금액·쓰레기·식기·미성년 동의서 문의에는 앱이 바로 답장.</mark>
+          <mark>연장·인원 추가·주차 요청은 입금까지 맞으면 앱이 확인 답장. 인원이 줄면 환급액에도 반영.</mark>
+          <mark>네이버 예약이 확정되면 스페이스클라우드의 같은 시간을 자동으로 막음.</mark>
+          <mark>청소 일정과 수건·생수 개수는 선생님 전용 화면으로 전달.</mark>
+          <mark>직접 하는 일은 개인 문의 답장, 발송 확인, 환급 송금뿐 — 예약 때문에 핸드폰을 계속 볼 필요가 없어짐.</mark>
+        </dd></div>
+      </dl>
+      <p class="note">2026년 10월 25일 운영판 기준. 건물 주차 요청은 실제 손님 건에서 입금 확인과 자동 답장까지 확인했습니다. 연장·인원 추가는 실제 손님 건 확인 전입니다.</p>
+    </div>
+  </article>
+
+  <article class="entry" id="keepsong">
+    <h3 class="head"><span class="cat">코인노래방</span>무인 시간에도 손님이 직접 남은 곡을 꺼내 쓰는 키핑 시스템</h3>
+    <div class="media">
+      <div class="pair">
+        <div class="pane"><img loading="lazy" src="/assets/portfolio/f8c0570c18.webp" alt="손님 사용 완료 화면, 이름과 지점은 가림"></div>
+        <div class="pane"><img loading="lazy" src="/assets/portfolio/44874926f9.webp" alt="매장 프로그램 제어 화면"></div>
+      </div>
+    </div>
+    <div class="spec"><dl class="rows">
+      <div><dt>문제</dt><dd>정액권 손님은 남은 곡을 키핑해 뒀다가 다음에 쓸 수 있습니다.<br>그런데 무인 시간대에 그 곡을 쓰려면 손님이 카운터 전화번호로 전화하고, 사장이 받아서 매장 프로그램에 손으로 넣어줘야 했습니다.<br>전화를 놓치면 손님은 기다리고, 사장은 무인 시간 내내 전화에 신경을 써야 했습니다</dd></div>
+      <div class="gain"><dt>결과</dt><dd><mark>손님이 직접 원하는 방에 원하는 곡 수만큼 키핑된 곡을 사용</mark><mark>전화 요청이 없어지고, 손님은 기다릴 필요가 없어짐</mark></dd></div>
+    </dl></div>
+  </article>
+
+  <article class="entry" id="attend">
+    <h3 class="head"><span class="cat">코인노래방 · 에어비앤비 · 파티룸</span>알바 출석 기록 + 인건비 자동 계산 시스템</h3>
+    <div class="media"><img loading="lazy" src="/assets/portfolio/2649a760ba.webp" alt="출석 기록 앱의 알바 로그인, 사장 마스터 모드, 구글시트 화면, 개인정보는 가림"></div>
+    <div class="spec"><dl class="rows">
+      <div><dt>문제</dt><dd>10명이 넘는 알바생의 출퇴근을 카톡과 종이 출석부로 더블 체크하고, 정산일에 그걸 엑셀에 옮겨 적어 시급·주휴수당·세금을 계산했습니다.<br>엑셀 함수를 만들어 놨지만, 시급이 다른 친구가 대타를 하거나 예외적인 주휴수당을 계산하는 일이 매번 까다로웠습니다</dd></div>
+      <div class="gain"><dt>결과</dt><dd><mark>직접 작성 및 확인 2시간 → 숫자 확인 10분</mark></dd></div>
+    </dl></div>
+  </article>
+
+  <article class="entry" id="bitna">
+    <h3 class="head"><span class="cat">코인노래방</span>마이크 소리가 그대로 들어가는 노래방 셀프 촬영</h3>
+    <div class="media">
+      <div class="pair">
+        <div class="pane"><video src="/assets/portfolio/14d55ebe6d.mp4" muted loop preload="none" data-auto playsinline controls aria-label="셀프 촬영 작동 영상"></video></div>
+        <div class="pane"><img loading="lazy" src="/assets/portfolio/46866bb913.webp" alt="촬영 완료 후 손님 폰에 영상이 전달된 화면"></div>
+      </div>
+    </div>
+    <div class="spec"><dl class="rows">
+      <div><dt>문제</dt><dd>부가 수익을 낼 방법을 고민하다가, 손님이 노래 부르는 모습을 셀프로 찍고 싶어 하는 니즈를 발견했습니다.<br>그런데 폰으로 찍으면 소리가 웅웅거리고 조명도 각도도 안 나옵니다.<br>두 니즈를 한 번에 잡으려면, 방 안에서 조명까지 갖춘 채로 손님이 직접 결제하고 촬영하는 시스템이 필요했습니다</dd></div>
+      <div class="gain"><dt>결과</dt><dd><mark>손님이 방 안에서 QR로 결제하고 촬영 버튼을 누르면 조명이 켜지고, 마이크로 들어가는 노래 소리가 그대로 영상에 담김</mark><mark>끝나면 손님 폰에서 바로 확인·저장</mark><mark>베타테스트 후 사업으로는 중단</mark></dd></div>
+    </dl></div>
+  </article>
+
+  <article class="entry" id="news">
+    <h3 class="head"><span class="cat">콘텐츠</span>매일 아침 7시, 손 안 대고 발행되는 해외 뉴스 블로그</h3>
+    <div class="media"><img loading="lazy" src="/assets/portfolio/254589d55d.webp" alt="n8n 자동 발행 워크플로 전체 화면"></div>
+    <div class="spec"><dl class="rows">
+      <div><dt>문제</dt><dd>한국 신문만 보는 것보다 해외 신문의 관점도 같이 보면 좋겠다고 생각하던 중에, 워드프레스로 광고 수익을 내는 것에 도전해 봤습니다.<br>다만 자료를 모으고 글을 쓰는 시간은 거의 0에 가깝게 줄이고 싶었습니다</dd></div>
+      <div class="gain"><dt>결과</dt><dd><mark>매일 아침 7시에 경제·언론·기술 3개 주제가 하루 하나씩 번갈아 발행되고, 영어·한국어 2개 언어로 워드프레스 두 곳에 이미지까지 붙어 자동으로 올라갔습니다. 발행에 드는 시간 0분</mark><mark>다만 이 구조에서는 글보다 사람이 검색하는 키워드·알고리즘·유입이 더 중요하다는 걸 확인하고, 여기에 시간을 쏟지 않기로 결정해 운영을 종료했습니다</mark></dd></div>
+    </dl></div>
+  </article>
+
+  <h2 class="sec">이외의 작은 프로젝트들</h2>
+  <div class="grid4">
+    <div class="card"><div class="thumb"><img loading="lazy" class="whole" src="/assets/portfolio/49f350fc31.webp" alt="논문 설명 영상의 한 장면"></div><h3>논문 설명 영상 — NotebookLM + Perplexity</h3><p>Perplexity로 논문을 찾고, NotebookLM으로 두 화자 대화형 해설을 만든 뒤 영상으로. 데이비드 싱클레어 노화 연구 편</p></div>
+    <div class="card"><div class="thumb audio" style="background-image:url(/assets/portfolio/569f1f2805.jpg)"><audio src="/assets/portfolio/7eb8fcc89f.mp3" controls preload="metadata" aria-label="스쳐가지마 재생"></audio></div><h3>Suno로 만든 노래 — 「스쳐가지마」</h3><p>가사부터 곡까지 AI로 만든 노래. 전곡 1분 45초</p></div>
+    <div class="card"><div class="thumb"><video src="/assets/portfolio/378814fd1c.mp4" muted loop preload="none" data-auto playsinline controls aria-label="AI 캐릭터 500살 디나 영상"></video></div><h3>AI 캐릭터 '500살 디나' 영상</h3><p>토끼 캐릭터 시트부터 움직이는 영상까지 전부 AI로 생성. 건강 논문을 대신 읽어주는 화자 캐릭터 (Kling 생성)</p></div>
+    <div class="card"><div class="thumb"><video src="/assets/portfolio/3ad770818b.mp4" muted loop preload="none" data-auto playsinline controls aria-label="컴맹의 로봇 제작기 1화 릴스"></video></div><h3>편집 프로그램 없이 만든 릴스 — 「컴맹의 로봇 제작기 1화」</h3><p>로봇팔 데모 영상과 Codex 코딩 화면녹화를 AI에게 맡겨 컷·자막까지. 24초 릴스 완성 (소리 켜서 보세요)</p></div>
+  </div>
+
+  <section class="next">
+    <h2>지금은 로봇을 공부하고 있습니다</h2>
+    <p>NVIDIA AI CAMPUS에서 로보틱스를 공부하며, 음성 대화 로봇을 공동 개발하고 있습니다. 강화학습을 통한 로봇 행동 제어에 집중하고 있습니다.</p>
+    <div class="links">
+      <a href="https://lifeschedule-dotcom.github.io" target="_blank" rel="noopener">학습 블로그</a>
+      <a href="https://www.linkedin.com/in/jiwon-woo-349815434/" target="_blank" rel="noopener">LinkedIn에서 연결하기</a>
+    </div>
+  </section>
+
+  <footer>라이프스케줄 · 2026년 11월 정리</footer>
+</div>
+
+<script>
+(function () {
+  var vids = document.querySelectorAll('video[data-auto]');
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (e.isIntersecting) { var p = e.target.play(); if (p && p.catch) p.catch(function () {}); }
+      else e.target.pause();
+    });
+  }, { threshold: 0.25 });
+  vids.forEach(function (v) { io.observe(v); });
+})();
+</script>
+</body>
+</html>

@@ -1,23 +1,83 @@
 <script>
 (function () {
-  var done = { ko: '복사됨', en: 'Copied' };
-  var lang = document.documentElement.lang === 'en' ? 'en' : 'ko';
+  var en = document.documentElement.lang === 'en';
+  var words = en ? { copy: 'Copy', done: 'Copied', fail: 'Press Ctrl+C' } : { copy: '복사', done: '복사됨', fail: '직접 복사해 주세요' };
+
+  // 권한이 막힌 환경(파일로 연 검토본, 일부 인앱 브라우저)에서는 예전 방식으로 복사한다.
+  function legacyCopy(text) {
+    var t = document.createElement('textarea');
+    t.value = text;
+    t.readOnly = true;
+    t.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+    document.body.appendChild(t);
+    t.select();
+    t.setSelectionRange(0, text.length);
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(t);
+    return ok;
+  }
+  function copyText(text, done, fail) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function () {
+        if (legacyCopy(text)) { done(); } else { fail(); }
+      });
+    } else if (legacyCopy(text)) {
+      done();
+    } else {
+      fail();
+    }
+  }
+
+  // 요청문 상자
   document.querySelectorAll('.prompt .copy').forEach(function (btn) {
     var label = btn.textContent;
     btn.addEventListener('click', function () {
       var txt = btn.closest('.prompt').querySelector('.txt').innerText;
-      var ok = function () {
-        btn.textContent = done[lang];
+      copyText(txt, function () {
+        btn.textContent = words.done;
         setTimeout(function () { btn.textContent = label; }, 1600);
-      };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(txt).then(ok, function () {});
-      } else {
-        var t = document.createElement('textarea');
-        t.value = txt; document.body.appendChild(t); t.select();
-        try { document.execCommand('copy'); ok(); } catch (e) {}
-        document.body.removeChild(t);
-      }
+      }, function () {});
+    });
+  });
+
+  // 코드 블록: 화면에 보이는 코드 글자 그대로 복사한다(끝의 빈 줄만 뺀다).
+  var names = { python: 'Python', bash: 'Bash', plaintext: 'Text' };
+  document.querySelectorAll('.content div.highlighter-rouge').forEach(function (box) {
+    var code = box.querySelector('pre code');
+    if (!code) return;
+    var m = box.className.match(/language-([\w-]+)/);
+    var lang = m ? (names[m[1]] || m[1]) : 'Text';
+
+    var bar = document.createElement('div');
+    bar.className = 'code-bar';
+    var name = document.createElement('span');
+    name.textContent = lang;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'code-copy';
+    btn.textContent = words.copy;
+    btn.setAttribute('aria-label', en ? 'Copy ' + lang + ' code' : lang + ' 코드 복사');
+    bar.appendChild(name);
+    bar.appendChild(btn);
+    box.insertBefore(bar, box.firstChild);
+
+    var timer;
+    function show(text, isDone) {
+      btn.textContent = text;
+      btn.classList.toggle('done', isDone);
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        btn.textContent = words.copy;
+        btn.classList.remove('done');
+      }, 1800);
+    }
+    btn.addEventListener('click', function () {
+      copyText(code.textContent.replace(/\n+$/, ''), function () {
+        show(words.done, true);
+      }, function () {
+        show(words.fail, false);
+      });
     });
   });
 })();

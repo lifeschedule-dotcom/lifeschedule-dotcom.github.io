@@ -938,3 +938,34 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   .cb-arr i { transform: rotate(90deg); }
   .cb-arr br { display: none; }
 }
+
+/* ---------- 코드 블록: VS Code 밝은 테마 (복사 버튼은 _includes/copy.js.html) ---------- */
+.content div.highlighter-rouge { margin: 1.2em 0 1.8em; border: 1px solid #e3e3e3; border-radius: 8px; background: #f5f5f5; overflow: hidden; }
+.content div.highlighter-rouge div.highlight { margin: 0; background: none; }
+.content div.highlighter-rouge pre {
+  margin: 0; padding: 12px 16px; border-radius: 0; background: none; overflow-x: auto;
+  /* 영문·숫자는 VS Code 기본 글꼴, 그 글꼴이 없는 폰은 Roboto Mono, 한글 주석은 Noto Sans KR */
+  font-family: Consolas, Menlo, Monaco, "Roboto Mono", "Noto Sans KR", "Malgun Gothic", monospace;
+  font-size: 16px; line-height: 1.5; color: #1f1f1f; tab-size: 4;
+  white-space: pre; word-break: normal; overflow-wrap: normal;
+}
+.content div.highlighter-rouge pre code { font: inherit; color: inherit; background: none; padding: 0; }
+/* 사이트의 .nb .st 같은 클래스가 코드 강조 클래스와 이름이 겹쳐 네모가 생기는 것을 막는다 */
+.content div.highlighter-rouge pre span { all: unset; }
+.content div.highlighter-rouge pre .c, .content div.highlighter-rouge pre .c1, .content div.highlighter-rouge pre .cm, .content div.highlighter-rouge pre .cs, .content div.highlighter-rouge pre .ch, .content div.highlighter-rouge pre .cp { color: #008000; }
+.content div.highlighter-rouge pre .kn, .content div.highlighter-rouge pre .ow { color: #af00db; }
+.content div.highlighter-rouge pre .k, .content div.highlighter-rouge pre .kc, .content div.highlighter-rouge pre .kd, .content div.highlighter-rouge pre .kr, .content div.highlighter-rouge pre .bp { color: #0000ff; }
+.content div.highlighter-rouge pre .nf, .content div.highlighter-rouge pre .fm, .content div.highlighter-rouge pre .nb { color: #795e26; }
+.content div.highlighter-rouge pre .nc, .content div.highlighter-rouge pre .nn { color: #267f99; }
+.content div.highlighter-rouge pre .mi, .content div.highlighter-rouge pre .mf, .content div.highlighter-rouge pre .m, .content div.highlighter-rouge pre .mh, .content div.highlighter-rouge pre .mb, .content div.highlighter-rouge pre .mo { color: #098658; }
+.content div.highlighter-rouge pre .s, .content div.highlighter-rouge pre .s1, .content div.highlighter-rouge pre .s2, .content div.highlighter-rouge pre .sa, .content div.highlighter-rouge pre .sd, .content div.highlighter-rouge pre .si, .content div.highlighter-rouge pre .se, .content div.highlighter-rouge pre .dl { color: #a31515; }
+.code-bar { display: flex; align-items: center; justify-content: space-between; padding: 3px 6px 3px 16px; border-bottom: 1px solid #e3e3e3; background: #ececec; font-size: 14px; line-height: 1.4; color: #4a4a4a; user-select: none; -webkit-user-select: none; }
+.code-copy { min-height: 30px; padding: 2px 12px; border: 1px solid #c9c9c9; border-radius: 6px; background: #fff; color: #1f2430; font: inherit; font-weight: 500; cursor: pointer; }
+.code-copy:hover { border-color: var(--accent); color: var(--accent); }
+.code-copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.code-copy.done { border-color: var(--accent); background: #fbf1f4; color: var(--accent); }
+@media (max-width: 560px) {
+  .content div.highlighter-rouge pre { padding: 10px 12px; font-size: 15px; }
+  .code-bar { padding-left: 12px; }
+  .code-copy { min-height: 34px; }
+}

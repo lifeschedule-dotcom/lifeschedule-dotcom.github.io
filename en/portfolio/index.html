@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Portfolio · Lifeschedule</title>
+<meta name="description" content="How I automated routine work across three small businesses.">
+<meta property="og:title" content="Lifeschedule Portfolio">
+<meta property="og:description" content="How I automated routine work across three small businesses.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://lifeschedule-dotcom.github.io/assets/portfolio/thumbnail.png">
+</head>
+<body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Case studies pair screenshots with the problem and outcome. */
+:root{
+  --bg:#F3F5F2; --panel:#FFFFFF; --panel2:#E9EDE8; --ink:#1B211E; --ink2:#4E5955; --ink3:#6B7671;
+  --line:#D5DBD6; --accent:#2F6F5E; --accent-ink:#FFFFFF; --mark:#F5C518; --mark-ink:#1B211E;
+  --display:"Do Hyeon","Apple SD Gothic Neo",sans-serif;
+  --body:"IBM Plex Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141816; --panel:#1C2220; --panel2:#232B28; --ink:#E9EDE9; --ink2:#AEB8B2; --ink3:#8C9791;
+    --line:#2E3733; --accent:#5FB597; --accent-ink:#0F1613; --mark:#E7BE2C; --mark-ink:#141816; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141816; --panel:#1C2220; --panel2:#232B28; --ink:#E9EDE9; --ink2:#AEB8B2; --ink3:#8C9791;
+  --line:#2E3733; --accent:#5FB597; --accent-ink:#0F1613; --mark:#E7BE2C; --mark-ink:#141816; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.65;word-break:keep-all;overflow-wrap:anywhere;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:0;line-height:1.2;margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-block:0 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-block:18px;border-bottom:1px solid var(--line)}
+.brand{font-family:var(--display);font-size:20px}
+.top a{font-size:14px;font-weight:500}
+.hero{padding-block:52px 34px;display:grid;gap:20px;max-width:44em}
+.hero h1{font-size:clamp(36px,5.4vw,58px)}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--mark) 62%)}
+.lead{font-size:18px;color:var(--ink2)}
+.bio{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;margin:0;font-size:15px}
+.bio dt{color:var(--ink3);font-family:var(--mono);font-size:13px;padding-top:2px}
+.bio dd{margin:0}
+.pf{font-size:clamp(40px,6.5vw,68px);line-height:1;padding-block:28px 12px}
+.entry{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:18px 28px;padding-block:28px;border-top:1px solid var(--line)}
+.entry .head{grid-column:1/-1;font-size:clamp(22px,2.6vw,28px)}
+.cat{display:inline-block;vertical-align:middle;margin-right:10px;padding:4px 10px;border-radius:6px;background:var(--accent);color:var(--accent-ink);font-family:var(--body);font-size:14px;font-weight:600;position:relative;top:-3px}
+.media{position:relative;aspect-ratio:16/9;max-width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.media>img,.media>video{display:block;width:100%;height:100%;object-fit:contain}
+.pair{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1fr);gap:6px;width:100%;height:100%;padding:6px}
+.pair.flow{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr)}
+.pane{min-width:0;min-height:0;overflow:hidden;border-radius:5px;background:#0F1613}
+.pane img,.pane video{display:block;width:100%;height:100%;object-fit:contain}
+.pane.fill img,.pane.fill video{object-fit:cover}
+.pane.svg{background:var(--panel2)}
+.pane svg{display:block;width:100%;height:100%}
+.stack{min-width:0;display:grid;gap:14px;align-content:start}
+.cleaning{margin:0;display:grid;grid-template-columns:minmax(0,230px) minmax(0,1fr);gap:16px;align-items:center}
+.cleaning img{display:block;width:100%;border:1px solid var(--line);border-radius:8px}
+.cleaning figcaption{font-size:14.5px;color:var(--ink2)}
+.cleaning b{display:block;font-family:var(--display);font-weight:400;font-size:20px;color:var(--ink);margin-bottom:4px}
+.spec{min-width:0}
+.rows{margin:0;display:grid}
+.rows>div{display:grid;grid-template-columns:70px minmax(0,1fr);gap:10px;padding-block:10px;border-top:1px solid var(--line)}
+.rows dt{color:var(--ink3);font-size:13px;font-weight:500;padding-top:2px}
+.rows dd{margin:0;font-size:14.5px}
+.gain dd{font-weight:600}
+.gain mark{display:block;background:var(--mark);color:var(--mark-ink);padding:4px 8px;border-radius:3px;margin-bottom:6px;line-height:1.55}
+.gain mark:last-child{margin-bottom:0}
+.note{font-size:13px;color:var(--ink3);padding-top:8px}
+.sec{font-size:clamp(34px,5vw,56px);padding-block:28px 14px;border-top:1px solid var(--line)}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;align-content:start;min-width:0}
+.thumb{aspect-ratio:1/1;max-width:100%;border-radius:6px;overflow:hidden;background:var(--panel2)}
+.thumb img,.thumb video{display:block;width:100%;height:100%;object-fit:cover}
+.thumb img.whole{object-fit:contain;background:#0F1613}
+.thumb.audio{background-size:cover;background-position:center;display:flex;align-items:flex-end;padding:10px}
+.thumb.audio audio{width:100%;height:32px}
+.card h3{font-size:15px;line-height:1.3}
+.card p{font-size:12.5px;color:var(--ink2);line-height:1.5}
+.next{background:var(--ink);color:var(--bg);border-radius:10px;padding:clamp(22px,4vw,38px);margin-block:36px 0;display:grid;gap:12px}
+.next h2{font-size:clamp(25px,3vw,34px)}
+.next p{max-width:44em;opacity:.88}
+.next a{color:var(--bg);font-weight:500}
+.next .links{display:flex;flex-wrap:wrap;gap:8px 22px}
+footer{padding-block:22px 0;color:var(--ink3);font-size:13px}
+@media (max-width:860px){
+  .entry{grid-template-columns:minmax(0,1fr)}
+  .grid4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero{padding-block:36px 24px}
+  .lead{font-size:16px}
+  .cat{display:block;width:max-content;margin:0 0 8px;top:0;font-size:12.5px}
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="/en/" style="color:inherit;text-decoration:none">Lifeschedule</a>
+    <a href="https://www.linkedin.com/in/jiwon-woo-349815434/" target="_blank" rel="noopener">LinkedIn profile</a>
+    <a href="/portfolio/" lang="ko" hreflang="ko">KO</a>
+  </header>
+
+  <section class="hero">
+    <h1>How I automated work<br><em>across three small businesses</em></h1>
+    <p class="lead">I built and tested these tools in the businesses I run.</p>
+  </section>
+
+  <h2 class="pf">Portfolio</h2>
+
+  <article class="entry" id="partyroom">
+    <h3 class="head"><span class="cat">Party room</span>An app for booking messages, guest questions, and refund requests</h3>
+    <div class="stack">
+    <div class="media">
+      <div class="pair flow">
+        <div class="pane svg">
+          <svg viewBox="0 0 600 340" role="img" aria-label="Workflow from Naver bookings and deposit matching through guest messages and refund alerts" style="font-family:var(--body)">
+            <defs><marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" style="fill:var(--accent)"/></marker></defs>
+            <g style="fill:var(--panel);stroke:var(--line)">
+              <rect x="20" y="36" width="160" height="84" rx="10"/><rect x="220" y="36" width="160" height="84" rx="10"/><rect x="420" y="36" width="160" height="84" rx="10"/>
+              <rect x="20" y="184" width="160" height="84" rx="10"/><rect x="220" y="184" width="160" height="84" rx="10"/><rect x="420" y="184" width="160" height="84" rx="10"/>
+            </g>
+            <g text-anchor="middle" font-size="13" font-weight="600" style="fill:var(--ink)">
+              <text x="100" y="71">Naver booking</text><text x="300" y="71">Guest instructions</text><text x="500" y="71">Deposit notice</text>
+              <text x="100" y="219">Booking updates</text><text x="300" y="219">Questions and extensions</text><text x="500" y="219">Refund reply</text>
+            </g>
+            <g text-anchor="middle" font-size="14" style="fill:var(--ink2)">
+              <text x="100" y="96">Received</text><text x="300" y="96">Sent automatically</text><text x="500" y="96">Matched automatically</text>
+              <text x="100" y="244">Sent on schedule</text><text x="300" y="244">Answered automatically</text><text x="500" y="244">Owner notified</text>
+            </g>
+            <g fill="none" stroke-width="2.5" style="stroke:var(--accent)" marker-end="url(#ah)">
+              <path d="M184 78 L214 78"/><path d="M384 78 L414 78"/><path d="M500 124 L500 150 L100 150 L100 178"/><path d="M184 226 L214 226"/><path d="M384 226 L414 226"/>
+            </g>
+            <text x="300" y="314" text-anchor="middle" font-size="13" style="fill:var(--ink3);font-family:var(--mono)">Manual work: individual replies, delivery checks, and refund transfers</text>
+          </svg>
+        </div>
+        <div class="pane"><img loading="lazy" src="/assets/portfolio/3dacb0dd84.webp" alt="Timeline showing the automated steps for one reservation"></div>
+      </div>
+    </div>
+    <figure class="cleaning">
+      <img loading="lazy" src="/assets/portfolio/fa1d5bce1e.webp" alt="Cleaner’s schedule with times, towel and water counts, and property and room names hidden">
+      <figcaption><b>Mobile schedule for cleaners</b>Cleaners can see the date, time, and how many towels and bottles of water to bring.</figcaption>
+    </figure>
+    </div>
+    <div class="spec">
+      <dl class="rows">
+        <div><dt>Problem</dt><dd>For each Naver booking, I copied payment and parking instructions, calculated extra guest fees, checked bank deposits, and followed up on unanswered photo review requests.<br>Bookings could arrive at any time, so I had to keep checking my phone.<br>I also answered questions about parking, waste, and dishes, and verified payments for extensions and extra guests.</dd></div>
+        <div class="gain"><dt>Outcome</dt><dd>
+          <mark>The app reads bookings, sends instructions and photo review offers, matches security deposits, and schedules confirmation and reminder texts.</mark>
+          <mark>It answers common questions about parking, fees, waste, dishes, and consent forms for minors.</mark>
+          <mark>It confirms requests for extensions, extra guests, or parking once payment matches. It also adjusts refunds when the guest count drops.</mark>
+          <mark>When a Naver booking is confirmed, it blocks the same time slot on SpaceCloud.</mark>
+          <mark>Cleaners get a dedicated view of the schedule and towel and water counts.</mark>
+          <mark>I handle individual replies, message delivery checks, and refund transfers. I no longer have to watch my phone for every booking.</mark>
+        </dd></div>
+      </dl>
+      <p class="note">Status as of October 25, 2026. I verified payment matching and automatic replies on a live parking request. Extensions and extra guest requests were still awaiting verification with real bookings.</p>
+    </div>
+  </article>
+
+  <article class="entry" id="keepsong">
+    <h3 class="head"><span class="cat">Coin karaoke</span>Self-service redemption for unused songs</h3>
+    <div class="media">
+      <div class="pair">
+        <div class="pane"><img loading="lazy" src="/assets/portfolio/f8c0570c18.webp" alt="Guest redemption confirmation with name and location hidden"></div>
+        <div class="pane"><img loading="lazy" src="/assets/portfolio/44874926f9.webp" alt="Karaoke management screen"></div>
+      </div>
+    </div>
+    <div class="spec"><dl class="rows">
+      <div><dt>Problem</dt><dd>Customers on prepaid plans can save unused songs for a later visit.<br>During unstaffed hours, guests used to call me so I could add their songs manually in the karaoke system.<br>If I missed the call, the guest had to wait.</dd></div>
+      <div class="gain"><dt>Outcome</dt><dd><mark>Guests can redeem as many saved songs as they want in the room they choose.</mark><mark>Guests no longer have to call or wait.</mark></dd></div>
+    </dl></div>
+  </article>
+
+  <article class="entry" id="attend">
+    <h3 class="head"><span class="cat">Coin karaoke · Airbnb · Party rooms</span>Time tracking and payroll automation</h3>
+    <div class="media"><img loading="lazy" src="/assets/portfolio/2649a760ba.webp" alt="Staff login, owner dashboard, and Google Sheets with personal information hidden"></div>
+    <div class="spec"><dl class="rows">
+      <div><dt>Problem</dt><dd>I cross-checked shifts for more than 10 part-time staff using KakaoTalk and a paper log, then copied the records into Excel to calculate pay, weekly paid leave allowances, and taxes.<br>Even with Excel formulas, different rates for shift covers and exceptions to weekly allowances took time to calculate.</dd></div>
+      <div class="gain"><dt>Outcome</dt><dd><mark>Payroll prep went from two hours of manual entry and checks to a 10-minute review.</mark></dd></div>
+    </dl></div>
+  </article>
+
+  <article class="entry" id="bitna">
+    <h3 class="head"><span class="cat">Coin karaoke</span>Self-service karaoke recording with direct microphone audio</h3>
+    <div class="media">
+      <div class="pair">
+        <div class="pane"><video src="/assets/portfolio/14d55ebe6d.mp4" muted loop preload="none" data-auto playsinline controls aria-label="Demo of the self-service recording system"></video></div>
+        <div class="pane"><img loading="lazy" src="/assets/portfolio/46866bb913.webp" alt="Finished video delivered to a guest’s phone"></div>
+      </div>
+    </div>
+    <div class="spec"><dl class="rows">
+      <div><dt>Problem</dt><dd>I was looking for a new revenue stream and saw that guests wanted to record their karaoke performances.<br>Phone recordings often had muddy audio, poor lighting, and awkward camera angles.<br>I needed an in-room system where guests could pay and record themselves with dedicated lighting.</dd></div>
+      <div class="gain"><dt>Outcome</dt><dd><mark>Guests pay by QR code and start recording from the room. The lights turn on, and the video records audio directly from the microphone.</mark><mark>Guests can view and save the video on their phones when it’s ready.</mark><mark>I stopped offering the service after beta testing.</mark></dd></div>
+    </dl></div>
+  </article>
+
+  <article class="entry" id="news">
+    <h3 class="head"><span class="cat">Publishing</span>An international news blog that published itself at 7 a.m.</h3>
+    <div class="media"><img loading="lazy" src="/assets/portfolio/254589d55d.webp" alt="Full n8n workflow for automated publishing"></div>
+    <div class="spec"><dl class="rows">
+      <div><dt>Problem</dt><dd>I wanted to read international perspectives alongside Korean news and tried running an ad-supported WordPress blog.<br>I wanted to spend as little time as possible gathering sources and writing.</dd></div>
+      <div class="gain"><dt>Outcome</dt><dd><mark>At 7 a.m. each day, the workflow published an illustrated story to two WordPress sites, one in English and one in Korean. It rotated among economics, media, and technology. Publishing took zero minutes of manual work.</mark><mark>I found that search terms, ranking, and traffic mattered more to this model than publishing volume. I decided to stop operating the sites.</mark></dd></div>
+    </dl></div>
+  </article>
+
+  <h2 class="sec">Other projects</h2>
+  <div class="grid4">
+    <div class="card"><div class="thumb"><img loading="lazy" class="whole" src="/assets/portfolio/49f350fc31.webp" alt="Frame from a research explainer video"></div><h3>Research explainer with NotebookLM and Perplexity</h3><p>I found a David Sinclair paper on aging with Perplexity and turned a two-speaker NotebookLM discussion into a video.</p></div>
+    <div class="card"><div class="thumb audio" style="background-image:url(/assets/portfolio/569f1f2805.jpg)"><audio src="/assets/portfolio/7eb8fcc89f.mp3" controls preload="metadata" aria-label="Play Don’t Pass Me By"></audio></div><h3>Don’t Pass Me By, a song made with Suno</h3><p>AI generated the lyrics and music. Runtime 1 minute 45 seconds.</p></div>
+    <div class="card"><div class="thumb"><video src="/assets/portfolio/378814fd1c.mp4" muted loop preload="none" data-auto playsinline controls aria-label="Video of Dina, a 500-year-old AI character"></video></div><h3>Dina, a 500-year-old AI character</h3><p>I generated a rabbit character sheet and animated it with Kling. Dina narrates explainers on health research.</p></div>
+    <div class="card"><div class="thumb"><video src="/assets/portfolio/3ad770818b.mp4" muted loop preload="none" data-auto playsinline controls aria-label="Episode 1 of A Beginner Builds a Robot"></video></div><h3>A Beginner Builds a Robot, Episode 1</h3><p>I used AI to cut robot arm footage and a Codex screen recording into a 24-second reel with captions. Turn on the sound.</p></div>
+  </div>
+
+  <section class="next">
+    <h2>What I’m learning in robotics</h2>
+    <p>I study robotics at NVIDIA AI CAMPUS and co-develop a voice-interactive robot. I’m focusing on robot control through reinforcement learning.</p>
+    <div class="links">
+      <a href="https://lifeschedule-dotcom.github.io/en/" target="_blank" rel="noopener">Learning blog</a>
+      <a href="https://www.linkedin.com/in/jiwon-woo-349815434/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
+  </section>
+
+  <footer>Lifeschedule · November 2026</footer>
+</div>
+
+<script>
+(function () {
+  var vids = document.querySelectorAll('video[data-auto]');
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (e.isIntersecting) { var p = e.target.play(); if (p && p.catch) p.catch(function () {}); }
+      else e.target.pause();
+    });
+  }, { threshold: 0.25 });
+  vids.forEach(function (v) { io.observe(v); });
+})();
+</script>
+</body>
+</html>

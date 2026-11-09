@@ -959,6 +959,11 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .content div.highlighter-rouge pre .nc, .content div.highlighter-rouge pre .nn { color: #267f99; }
 .content div.highlighter-rouge pre .mi, .content div.highlighter-rouge pre .mf, .content div.highlighter-rouge pre .m, .content div.highlighter-rouge pre .mh, .content div.highlighter-rouge pre .mb, .content div.highlighter-rouge pre .mo { color: #098658; }
 .content div.highlighter-rouge pre .s, .content div.highlighter-rouge pre .s1, .content div.highlighter-rouge pre .s2, .content div.highlighter-rouge pre .sa, .content div.highlighter-rouge pre .sd, .content div.highlighter-rouge pre .si, .content div.highlighter-rouge pre .se, .content div.highlighter-rouge pre .dl { color: #a31515; }
+/* 코드 바로 아래 출력 칸: 주피터처럼 코드에 붙이고 흰 바탕으로 구분한다 (이름표 「출력」은 copy.js.html) */
+.content div.highlighter-rouge + div.language-text.highlighter-rouge,
+.content div.highlighter-rouge + div.language-plaintext.highlighter-rouge { margin-top: -1.3em; background: #fff; }
+.content div.highlighter-rouge + div.language-text.highlighter-rouge .code-bar,
+.content div.highlighter-rouge + div.language-plaintext.highlighter-rouge .code-bar { background: #f7f7f7; }
 .code-bar { display: flex; align-items: center; justify-content: space-between; padding: 3px 6px 3px 16px; border-bottom: 1px solid #e3e3e3; background: #ececec; font-size: 14px; line-height: 1.4; color: #4a4a4a; user-select: none; -webkit-user-select: none; }
 .code-copy { min-height: 30px; padding: 2px 12px; border: 1px solid #c9c9c9; border-radius: 6px; background: #fff; color: #1f2430; font: inherit; font-weight: 500; cursor: pointer; }
 .code-copy:hover { border-color: var(--accent); color: var(--accent); }

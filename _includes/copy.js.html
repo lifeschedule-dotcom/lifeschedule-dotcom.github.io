@@ -42,12 +42,18 @@
   });
 
   // 코드 블록: 화면에 보이는 코드 글자 그대로 복사한다(끝의 빈 줄만 뺀다).
-  var names = { python: 'Python', bash: 'Bash', plaintext: 'Text' };
+  var names = { python: 'Python', bash: 'Bash', plaintext: 'Text', text: 'Text' };
   document.querySelectorAll('.content div.highlighter-rouge').forEach(function (box) {
     var code = box.querySelector('pre code');
     if (!code) return;
     var m = box.className.match(/language-([\w-]+)/);
     var lang = m ? (names[m[1]] || m[1]) : 'Text';
+    // 코드 칸 바로 아래 text 칸은 주피터의 셀 출력처럼 「출력」으로 부른다
+    var prev = box.previousElementSibling;
+    if (m && (m[1] === 'text' || m[1] === 'plaintext') && prev && prev.matches('div.highlighter-rouge')) {
+      lang = en ? 'Output' : '출력';
+      box.classList.add('code-output');
+    }
 
     var bar = document.createElement('div');
     bar.className = 'code-bar';
@@ -57,7 +63,7 @@
     btn.type = 'button';
     btn.className = 'code-copy';
     btn.textContent = words.copy;
-    btn.setAttribute('aria-label', en ? 'Copy ' + lang + ' code' : lang + ' 코드 복사');
+    btn.setAttribute('aria-label', en ? 'Copy ' + lang : lang + ' 복사');
     bar.appendChild(name);
     bar.appendChild(btn);
     box.insertBefore(bar, box.firstChild);

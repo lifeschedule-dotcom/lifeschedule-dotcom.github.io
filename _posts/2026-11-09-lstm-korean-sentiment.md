@@ -31,9 +31,11 @@ spacious: true
 
 직접 쓴 한국어 리뷰 120개로 감성분석 모델을 끝까지 만들고, 정확도가 낮은 원인을 찾아 토큰화를 바꿔 본 뒤 헷갈리는 개념 여섯 가지를 정리했어요.
 
-코드는 위에서부터 셀 하나씩 실행하면 이어져요. `pip install torch`로 설치하거나 Google Colab에서 바로 돌릴 수 있어요. ❌ 표시가 붙은 블록은 일부러 에러를 내는 코드예요. 결과값은 torch 2.11 CPU에서 실행한 값이고, 환경에 따라 소수 값은 조금 다를 수 있어요.
+**한눈에 보기:** 이 글에서 만든 모델에 test 문장 하나를 넣으면 단계마다 이렇게 바뀌어요. 토큰화, `<UNK>`, 패딩, Embedding, 마지막 칸 꺼내기가 모두 이 한 장에 있어요.
 
-**문장 → 단어 → 번호 → 길이 맞추기 → 모델 → 학습 → 평가 → 예측**
+<figure><img src="/assets/img/lstm-sentiment/overview.png" alt="test 문장 '분위기가 어수선해서 빨리 나왔다'가 토큰 4개, 번호 160·1·1·1, 0을 채운 8칸, 8×16 Embedding, 8×32 LSTM 출력을 거쳐 3번 칸만 꺼내 점수 2개가 되는 과정. 부정 확률 0.9998." width="1520" height="1480"></figure>
+
+코드는 위에서부터 칸 하나씩 실행하면 이어지고, 칸마다 오른쪽 위 복사 버튼으로 가져갈 수 있어요. 결과는 칸 바로 아래 text 상자에 있어요. `pip install torch`로 설치하거나 Google Colab에서 바로 돌릴 수 있어요. ❌ 표시가 붙은 칸은 일부러 에러를 내는 코드예요. 결과값은 torch 2.11 CPU에서 실행한 값이고, 환경에 따라 소수 값은 조금 다를 수 있어요.
 
 <div class="keyline">식당·카페·숙소·물건 리뷰를 긍정과 부정으로 나누는 모델을 만들어 볼게요.</div>
 
@@ -131,9 +133,12 @@ print(len(corpus))
 print(corpus[0])
 print(corpus[60])
 ```
-→ `120`<br>
-→ `('음식이 정말 맛있어요 또 올게요', 1)`<br>
-→ `('음식이 너무 짜고 맛없어요', 0)`
+
+```text
+120
+('음식이 정말 맛있어요 또 올게요', 1)
+('음식이 너무 짜고 맛없어요', 0)
+```
 
 ### Tokenization: 띄어쓰기로 자르기
 
@@ -147,7 +152,10 @@ def tokenize(sentence):     # 문장 → 단어 목록
 data = [(tokenize(s), y) for s, y in corpus]
 print(data[0])
 ```
-→ `(['음식이', '정말', '맛있어요', '또', '올게요'], 1)`
+
+```text
+(['음식이', '정말', '맛있어요', '또', '올게요'], 1)
+```
 
 ### train/test 8:2 분리
 
@@ -162,8 +170,11 @@ print(len(train), len(test))
 # 라벨 합 = 긍정 개수
 print(sum(y for _, y in train), sum(y for _, y in test))
 ```
-→ `96 24`<br>
-→ `49 11`
+
+```text
+96 24
+49 11
+```
 
 ## <span class="no">2</span> 사전과 인코딩
 
@@ -181,8 +192,11 @@ for words, label in train:  # train만 봐요
 print(len(vocab))
 print(list(vocab.items())[:4])
 ```
-→ `308`<br>
-→ `[('깔끔한', 0), ('맛이라', 1), ('자주', 2), ('올', 3)]`
+
+```text
+308
+[('깔끔한', 0), ('맛이라', 1), ('자주', 2), ('올', 3)]
+```
 
 `len(vocab)`은 지금까지 들어간 단어 수라서, 첫 단어가 0번, 다음 단어가 1번이 돼요. 번호를 세는 변수가 따로 필요 없어요.
 
@@ -204,8 +218,11 @@ vocab["<UNK>"] = 1  # 모르는 단어용
 print(len(vocab))
 print(list(vocab.items())[:4])
 ```
-→ `310`<br>
-→ `[('깔끔한', 2), ('맛이라', 3), ('자주', 4), ('올', 5)]`
+
+```text
+310
+[('깔끔한', 2), ('맛이라', 3), ('자주', 4), ('올', 5)]
+```
 
 ### Encoding: 사전에 없으면 1
 
@@ -219,8 +236,11 @@ def encode(words):
 print(train[0][0], encode(train[0][0]))
 print(test[0][0], encode(test[0][0]))
 ```
-→ `['깔끔한', '맛이라', '자주', '올', '것', '같아요'] [2, 3, 4, 5, 6, 7]`<br>
-→ `['분위기가', '어수선해서', '빨리', '나왔다'] [160, 1, 1, 1]`
+
+```text
+['깔끔한', '맛이라', '자주', '올', '것', '같아요'] [2, 3, 4, 5, 6, 7]
+['분위기가', '어수선해서', '빨리', '나왔다'] [160, 1, 1, 1]
+```
 
 ## <span class="no">3</span> 패딩과 DataLoader
 
@@ -251,8 +271,11 @@ X_test, L_test, y_test = to_tensors(test)
 print(X_train.shape, L_train.shape, y_train.shape)
 print(X_train[0], L_train[0])
 ```
-→ `torch.Size([96, 8]) torch.Size([96]) torch.Size([96])`<br>
-→ `tensor([2, 3, 4, 5, 6, 7, 0, 0]) tensor(6)`
+
+```text
+torch.Size([96, 8]) torch.Size([96]) torch.Size([96])
+tensor([2, 3, 4, 5, 6, 7, 0, 0]) tensor(6)
+```
 
 ### Tensor → TensorDataset → DataLoader
 
@@ -265,8 +288,11 @@ train_dl = DataLoader(train_ds, batch_size=32,
 print(len(train_ds), len(train_dl))  # 문장 수, 배치 수
 print(train_ds[0])  # (문장, 길이, 라벨)
 ```
-→ `96 3`<br>
-→ `(tensor([2, 3, 4, 5, 6, 7, 0, 0]), tensor(6), tensor(1))`
+
+```text
+96 3
+(tensor([2, 3, 4, 5, 6, 7, 0, 0]), tensor(6), tensor(1))
+```
 
 ## <span class="no">4</span> LSTM 모델과 shape
 
@@ -314,11 +340,14 @@ print(out.shape)   # 칸마다 32개 숫자
 print(last.shape)  # 줄마다 한 칸만
 print(model(xb, lb).shape)  # 긍정·부정 점수
 ```
-→ `torch.Size([32, 8])`<br>
-→ `torch.Size([32, 8, 16])`<br>
-→ `torch.Size([32, 8, 32])`<br>
-→ `torch.Size([32, 32])`<br>
-→ `torch.Size([32, 2])`
+
+```text
+torch.Size([32, 8])
+torch.Size([32, 8, 16])
+torch.Size([32, 8, 32])
+torch.Size([32, 32])
+torch.Size([32, 2])
+```
 
 `out`에는 8칸 모두의 출력이 있어요. 4단어 문장이라면 5번째부터 8번째 칸은 `<PAD>`를 읽은 뒤의 출력이에요. `out[rows, lengths - 1]`은 줄마다 다른 칸을 골라요.
 
@@ -352,9 +381,12 @@ for epoch in range(30):
     if epoch % 10 == 9:  # 10번마다 평균 loss
         print(epoch + 1, round(total / len(train_dl), 4))
 ```
-→ `10 0.0304`<br>
-→ `20 0.0005`<br>
-→ `30 0.0002`
+
+```text
+10 0.0304
+20 0.0005
+30 0.0002
+```
 
 ### 평가: eval, no_grad, argmax
 
@@ -370,7 +402,10 @@ def accuracy(X, L, y):
 
 print(accuracy(X_test, L_test, y_test))
 ```
-→ `0.458`
+
+```text
+0.458
+```
 
 ### 새 문장 예측
 
@@ -416,14 +451,20 @@ unk = [w for w in test_words if w not in vocab]
 print(len(test_words), len(unk),
       round(len(unk) / len(test_words), 3))
 ```
-→ `98 57 0.582`
+
+```text
+98 57 0.582
+```
 
 ### 진단 2: train 정확도
 
 ```python
 print(accuracy(X_train, L_train, y_train))
 ```
-→ `1.0`
+
+```text
+1.0
+```
 
 | 진단 | 결과 | 뜻 |
 |---|---|---|
@@ -504,9 +545,12 @@ def run_all(tok, seed=0):
 print("띄어쓰기", run_all(tokenize))   # UNK, train, test
 print("앞 2글자", run_all(tokenize2))
 ```
-→ `['직원', '불친', '기분', '나빴']`<br>
-→ `띄어쓰기 (0.582, 1.0, 0.458)`<br>
-→ `앞 2글자 (0.357, 1.0, 0.417)`
+
+```text
+['직원', '불친', '기분', '나빴']
+띄어쓰기 (0.582, 1.0, 0.458)
+앞 2글자 (0.357, 1.0, 0.417)
+```
 
 ### 결과 읽기: 한 번의 시험은 흔들려요
 
@@ -561,7 +605,10 @@ _ = run_all(tokenize, 0)
 # ❌ 길이 3과 2
 torch.tensor([[5, 6, 7], [8, 9]])
 ```
-→ `ValueError: expected sequence of length 3 at dim 1 (got 2)`
+
+```text
+ValueError: expected sequence of length 3 at dim 1 (got 2)
+```
 
 빈칸을 채우면 빈칸을 처리하는 장치가 같이 따라와요.
 
@@ -577,8 +624,11 @@ LSTM은 0 벡터 칸도 읽어서 hidden state가 계속 바뀌어요. 그래서
 print(model.embedding.weight[0][:4])  # 0번 = PAD
 print(model.embedding.weight[2][:4])  # 일반 단어
 ```
-→ `tensor([0., 0., 0., 0.], grad_fn=<SliceBackward0>)`<br>
-→ `tensor([-0.8075,  0.2139, -0.4970,  0.0481], grad_fn=<SliceBackward0>)`
+
+```text
+tensor([0., 0., 0., 0.], grad_fn=<SliceBackward0>)
+tensor([-0.8075,  0.2139, -0.4970,  0.0481], grad_fn=<SliceBackward0>)
+```
 
 ### Embedding이 왜 필요한가
 
@@ -621,9 +671,12 @@ print(type(r), len(r))
 out, (h, c) = model.lstm(model.embedding(X_train[:32]))
 print(out.shape, h.shape)  # LSTM도 튜플을 돌려줘요
 ```
-→ `1`<br>
-→ `<class 'tuple'> 3`<br>
-→ `torch.Size([32, 8, 32]) torch.Size([1, 32, 32])`
+
+```text
+1
+<class 'tuple'> 3
+torch.Size([32, 8, 32]) torch.Size([1, 32, 32])
+```
 
 `out, _ = self.lstm(e)`의 `_`는 받긴 하지만 쓰지 않는 값 `(h, c)` 자리예요.
 
@@ -648,8 +701,11 @@ print(w.grad is not None, w[0, 0].item() == before)
 optimizer.step()
 print(w[0, 0].item() == before)
 ```
-→ `True True`<br>
-→ `False`
+
+```text
+True True
+False
+```
 
 backward 뒤에는 가중치가 그대로이고, step 뒤에 바뀌어요.
 
@@ -688,7 +744,10 @@ wrong = out[:, -1]
 right = out[torch.arange(32), lb - 1]
 print(lb[0].item(), torch.allclose(wrong[0], right[0]))
 ```
-→ `6 False`
+
+```text
+6 False
+```
 
 길이 8이 아닌 문장은 `out[:, -1]`이 빈칸까지 읽은 뒤의 출력이에요. 에러가 나지 않아서 찾기 어려워요.
 
@@ -699,7 +758,10 @@ print(lb[0].item(), torch.allclose(wrong[0], right[0]))
 leak = {w for words, _ in data for w in words}
 print(sum(w not in leak for w in test_words))
 ```
-→ `0`
+
+```text
+0
+```
 
 test 단어가 모두 사전에 들어가서 UNK가 0개로 나와요. 실제로 들어올 새 리뷰에는 처음 보는 단어가 섞여 있으니, 6번 같은 진단도 틀리게 돼요.
 
@@ -709,13 +771,19 @@ test 단어가 모두 사전에 들어가서 UNK가 0개로 나와요. 실제로
 # ❌ 없는 키는 에러
 vocab["처음보는단어"]
 ```
-→ `KeyError: '처음보는단어'`
+
+```text
+KeyError: '처음보는단어'
+```
 
 ```python
 # ✅ 없으면 1(<UNK>)
 print(vocab.get("처음보는단어", 1))
 ```
-→ `1`
+
+```text
+1
+```
 
 ### 함수 정리
 

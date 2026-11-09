@@ -37,7 +37,7 @@ These seven sections walk through XOR with `nn.Module`. The reported results com
 
 Make a prediction, measure the loss, compute gradients, update the weights, and clear the gradients.
 
-<figure><img src="/assets/img/xor-training-loop/en/train-loop.png" alt="Each epoch repeats model(X), the loss function, loss.backward(), gradient_descent, and zero_grad." width="1243" height="455"></figure>
+<figure><img src="/assets/img/xor-training-loop/en/train-loop.png" alt="Each epoch repeats model(X), the loss function, loss.backward(), gradient_descent, and zero_grad." width="1210" height="455"></figure>
 
 Try naming the steps in order with the code covered.
 

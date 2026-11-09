@@ -4,7 +4,7 @@ section: physical-ai
 sub: nvidia
 ref: seq2seq-translation
 date: 2026-11-09 16:00:00 +0900
-description: "나는 겨울에 전기장판을 틀고 침대 위에서 귤을 까먹는 것을 좋아해"를 영어로 옮기는 Seq2Seq 모델을 PyTorch로 만들어요. 문장 432개 만들기, 사전과 EOS, 인코더·디코더, teacher forcing, 처음 보는 문장 번역까지 따라가고, 틀린 자리를 찾아 고쳐 봐요.
+description: 「나는 겨울에 전기장판을 틀고 침대 위에서 귤을 까먹는 것을 좋아해」를 영어로 옮기는 Seq2Seq 모델을 PyTorch로 만들어요. 문장 432개 만들기, 사전과 EOS, 인코더·디코더, teacher forcing, 처음 보는 문장 번역까지 따라가고, 틀린 자리를 찾아 고쳐 봐요.
 spacious: true
 ---
 

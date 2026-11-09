@@ -4,7 +4,7 @@ section: physical-ai
 sub: nvidia
 ref: lstm-korean-sentiment
 date: 2026-11-09 10:00:00 +0900
-description: 직접 쓴 한국어 리뷰 120개로 토큰화, 사전, 패딩, LSTM 학습, 예측까지 따라가요. 정확도가 50%를 못 넘는 원인을 UNK 비율과 train 정확도로 찾아 고치고, 헷갈리는 개념을 코드로 정리했어요.
+description: 직접 쓴 한국어 리뷰 120개로 토큰화, 사전, 패딩, LSTM 학습, 예측까지 따라가요. 정확도가 낮은 원인을 UNK 비율과 train 정확도로 찾고, 토큰화를 바꿔 seed 10개로 비교했어요. 헷갈리는 개념도 코드로 정리했어요.
 spacious: true
 ---
 
@@ -29,7 +29,7 @@ spacious: true
 문장을 단어로 자르고 번호로 바꿔 모델에 넣는 과정은 번역·챗봇 같은 다른 NLP 모델에도 똑같이 들어가요.<br>
 토큰화부터 <a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.LSTM.html">LSTM</a>까지 한 번 손으로 짜 보면, 라이브러리가 한 줄로 대신하는 일과 결과가 나쁠 때 볼 곳이 보여요. (2026년 11월 9일 기준)</p></div>
 
-직접 쓴 한국어 리뷰 120개로 감성분석 모델을 끝까지 만들고, 정확도가 낮은 원인을 찾아 고친 뒤 헷갈리는 개념 여섯 가지를 정리했어요.
+직접 쓴 한국어 리뷰 120개로 감성분석 모델을 끝까지 만들고, 정확도가 낮은 원인을 찾아 토큰화를 바꿔 본 뒤 헷갈리는 개념 여섯 가지를 정리했어요.
 
 코드는 위에서부터 셀 하나씩 실행하면 이어져요. `pip install torch`로 설치하거나 Google Colab에서 바로 돌릴 수 있어요. ❌ 표시가 붙은 블록은 일부러 에러를 내는 코드예요. 결과값은 torch 2.11 CPU에서 실행한 값이고, 환경에 따라 소수 값은 조금 다를 수 있어요.
 
@@ -303,8 +303,6 @@ torch.manual_seed(0)  # 시작 가중치 고정
 model = SentimentLSTM(len(vocab), 16, 32, 2)
 ```
 
-배치 하나(32문장)를 넣어 shape이 바뀌는 모습을 확인해요.
-
 ```python
 xb, lb = X_train[:32], L_train[:32]
 e = model.embedding(xb)
@@ -364,7 +362,8 @@ for epoch in range(30):
 
 ```python
 def accuracy(X, L, y):
-    model.eval()  # 평가 모드
+    # 평가 모드 (dropout 같은 층이 있을 때 결과가 달라져요)
+    model.eval()
     with torch.no_grad():  # 기울기 계산 끄기
         pred = model(X, L).argmax(dim=1)  # 큰 점수 번호
     return round((pred == y).float().mean().item(), 3)
@@ -375,7 +374,7 @@ print(accuracy(X_test, L_test, y_test))
 
 ### 새 문장 예측
 
-새 문장도 같은 길을 지나요. 토큰화 → 인코딩 → 패딩 → 모델 → softmax로 긍정 확률을 구해요.
+새 문장도 토큰화 → 인코딩 → 패딩 → 모델 → softmax 순서로 긍정 확률을 구해요.
 
 ```python
 def predict(sentence):
@@ -403,9 +402,9 @@ for s in ["직원이 친절하고 음식이 맛있어요",
 
 첫 문장은 네 단어가 모두 사전에 있는데도 부정으로 틀렸어요. 셋째 문장의 `갈게요`는 사전에 없어서 1번이 됐어요. loss는 0.0002까지 내려갔는데 test는 절반도 못 맞혀요.
 
-## <span class="no">6</span> 정확도 45.8%의 원인 찾고 고치기
+## <span class="no">6</span> 정확도 45.8%의 원인과 개선
 
-test 정확도 45.8%는 24문장 중 11개를 맞힌 값이에요. 긍정·부정 중 아무거나 찍는 수준(50%)보다도 낮아요. 원인을 두 숫자로 좁혀 봐요.
+test 정확도 45.8%는 24문장 중 11개를 맞힌 값이에요. 아무거나 찍는 수준(50%)과 다를 바 없어요. 24문장이라 한 문장 차이가 4.2%p예요. 원인을 두 숫자로 좁혀 봐요.
 
 ### 진단 1: test 단어 중 `<UNK>` 비율
 
@@ -428,8 +427,10 @@ print(accuracy(X_train, L_train, y_train))
 
 | 진단 | 결과 | 뜻 |
 |---|---|---|
-| test UNK 비율 | 58.2% (98개 중 57개) | test 단어 절반 이상을 모델이 1번으로만 봐요 |
+| test UNK 비율 | 58.2% (98개 중 57개) | test 단어 절반 이상이 1번 벡터로 들어가요 |
 | train 정확도 | 1.0 (100%) | 학습한 문장은 다 외웠어요 |
+
+train 문장에는 1번이 한 번도 나오지 않아요. 그래서 1번 벡터는 학습 내내 처음 정해진 난수 그대로이고, test 단어 58.2%가 이 벡터로 들어가요.
 
 두 숫자가 함께 말하는 원인은 **띄어쓰기 토큰화의 한계 + 과적합(overfitting)**이에요. 과적합은 train에만 맞춰져서 처음 보는 문장을 못 맞히는 상태예요.
 
@@ -509,7 +510,7 @@ print("앞 2글자", run_all(tokenize2))
 
 ### 결과 읽기: 한 번의 시험은 흔들려요
 
-test는 24문장이라 한 문장을 더 맞히면 정확도가 4.2%p(1/24) 움직여요. 섞는 순서(seed)를 10가지로 바꿔 같은 비교를 반복해요.
+처음 조건(seed 0)에서는 오히려 41.7%로 떨어졌어요. 섞는 순서(seed)를 10가지로 바꿔 같은 비교를 반복해요.
 
 ```python
 for seed in range(10):
@@ -540,15 +541,15 @@ _ = run_all(tokenize, 0)
 | 띄어쓰기 | 56.6% | 44.2% | 25.0% | 70.8% |
 | 앞 2글자 | 36.0% | 58.3% | 41.7% | 79.2% |
 
-1. **UNK는 확실히 줄었어요.** 10개 seed 모두에서 낮아졌어요.
+1. **UNK는 확실히 줄었어요.** 10개 seed 모두 낮아졌어요.
 2. **정확도는 평균이 올랐지만 흔들림이 커요.** seed 0과 7에서는 오히려 떨어져서, test 한 번으로 "좋아졌다"고 말하기 어려워요.
-3. **train 정확도는 20번 모두 1.0이에요.** 96문장은 모델이 통째로 외울 수 있을 만큼 적어요. 근본 원인은 코퍼스 부족이에요.
+3. **train 정확도는 20번 모두 1.0이에요.** 96문장은 모델이 통째로 외울 수 있을 만큼 적어요. 외우기에는 충분하고 처음 보는 문장에 맞히기에는 부족해서, 가장 큰 원인은 코퍼스 부족으로 보여요.
 
 실무에서는 이렇게 풀어요.
 
 - **큰 데이터:** 네이버 영화 리뷰 데이터셋(NSMC)은 리뷰 20만 개예요.
 - **사전학습 모델:** 많은 글로 미리 학습한 BERT 계열 한국어 모델을 감성분석에 맞게 조금 더 학습(fine-tuning)해요.
-- **더 나은 토크나이저:** 형태소 분석기(KoNLPy의 Okt·Mecab 등)는 `친절하고`를 `친절 / 하고`처럼 뜻 단위로 나누고, 서브워드(subword) 토크나이저(SentencePiece, WordPiece)는 자주 나오는 조각 단위로 나눠요.
+- **더 나은 토크나이저:** 형태소 분석기(KoNLPy의 Mecab 등)는 `친절하고`를 `친절 / 하 / 고`처럼 어간과 어미로 나누고, 서브워드(subword) 토크나이저(SentencePiece, WordPiece)는 자주 나오는 조각 단위로 나눠요.
 
 ## <span class="no">7</span> 헷갈리기 쉬운 개념 여섯 가지
 
@@ -562,13 +563,15 @@ torch.tensor([[5, 6, 7], [8, 9]])
 ```
 → `ValueError: expected sequence of length 3 at dim 1 (got 2)`
 
-빈칸을 채우면 "빈칸을 무시하게 만드는 장치"가 같이 따라와요.
+빈칸을 채우면 빈칸을 처리하는 장치가 같이 따라와요.
 
 | 장치 | 하는 일 |
 |---|---|
 | `<PAD>` = 0번 | 빈칸이 늘 같은 번호 |
 | `padding_idx=0` | 0번 벡터를 0으로 두고 학습에서 고치지 않음 |
-| `lengths` | 마지막 진짜 단어 칸을 골라 빈칸 뒤 출력을 쓰지 않음 |
+| `lengths` | 진짜 마지막 칸의 출력만 쓰고 빈칸 뒤 출력은 버림 |
+
+LSTM은 0 벡터 칸도 읽어서 hidden state가 계속 바뀌어요. 그래서 `lengths`로 진짜 마지막 칸을 골라야 해요. PyTorch의 `pack_padded_sequence`를 쓰면 빈칸을 아예 건너뛰고 읽게 할 수도 있어요.
 
 ```python
 print(model.embedding.weight[0][:4])  # 0번 = PAD
@@ -604,7 +607,7 @@ embed_size가 클수록 학습할 숫자가 늘어서, 96문장처럼 데이터�
 | `vocab_size` | `len(vocab)` | 데이터(사전 크기)가 정해요 |
 | `num_classes` | 2 | 데이터(라벨 종류 수)가 정해요 |
 
-하이퍼파라미터는 바꿔 가며 실험하는 값이고, 데이터가 정하는 값은 틀리면 에러가 나요. 예를 들어 `vocab_size`를 사전보다 작게 주면 큰 번호에서 `IndexError`가 나요.
+데이터가 정하는 값을 틀리면 에러가 나요. 예를 들어 `vocab_size`를 사전보다 작게 주면 큰 번호에서 `IndexError`가 나요.
 
 ### `for a, b in 목록`과 튜플
 
@@ -615,7 +618,7 @@ words, label = train[0]  # 두 개로 나눠 받기
 print(label)
 r = to_tensors(train[:2])  # 세 개를 돌려주는 함수
 print(type(r), len(r))
-out, (h, c) = model.lstm(model.embedding(xb))
+out, (h, c) = model.lstm(model.embedding(X_train[:32]))
 print(out.shape, h.shape)  # LSTM도 튜플을 돌려줘요
 ```
 → `1`<br>
@@ -658,7 +661,7 @@ backward 뒤에는 가중치가 그대로이고, step 뒤에 바뀌어요.
 | 모델 class | 직접 짜거나, 사전학습 모델을 불러와 끝에 층을 붙여요 |
 | 학습 루프, 평가 | 직접 짜요 (Trainer 같은 도구를 쓰기도 해요) |
 
-Hugging Face transformers의 토크나이저는 이 글의 1단계부터 3단계까지를 한 번에 해요. 아래는 형태를 보여 주는 예시이고, 이 글에서는 실행하지 않았어요.
+Hugging Face transformers의 토크나이저는 토큰화·사전·인코딩·패딩을 한 번에 해요. 아래는 형태를 보여 주는 예시이고, 이 글에서는 실행하지 않았어요.
 
 ```py
 from transformers import AutoTokenizer
@@ -668,22 +671,24 @@ batch = tok(["직원이 친절해요", "배송이 늦어요"],
             max_length=8, return_tensors="pt")
 # batch["input_ids"]: 번호 텐서
 # batch["attention_mask"]: 진짜 칸 1, 빈칸 0
+# [CLS]·[SEP]도 칸을 차지하고,
+# padding=True는 배치 안 가장 긴 문장에 맞춰요
 ```
-
-`attention_mask`는 이 글의 `lengths`처럼 진짜 칸과 빈칸을 구분하는 정보예요.
 
 ## <span class="no">8</span> 자주 하는 실수와 함수 정리
 
 ### 마지막 칸을 그냥 `-1`로 꺼내기
 
 ```python
+xb, lb = X_train[:32], L_train[:32]
+out, _ = model.lstm(model.embedding(xb))
 # ❌ 모든 줄의 8번째 칸 = PAD를 읽은 뒤
 wrong = out[:, -1]
 # ✅ 줄마다 진짜 마지막 단어 칸
 right = out[torch.arange(32), lb - 1]
 print(lb[0].item(), torch.allclose(wrong[0], right[0]))
 ```
-→ `5 False`
+→ `6 False`
 
 길이 8이 아닌 문장은 `out[:, -1]`이 빈칸까지 읽은 뒤의 출력이에요. 에러가 나지 않아서 찾기 어려워요.
 
@@ -716,8 +721,6 @@ print(vocab.get("처음보는단어", 1))
 
 | 함수 | 하는 일 |
 |---|---|
-| `split()` | 띄어쓰기로 자르기 |
-| `random.shuffle` | 목록 섞기 |
 | `dict.get(키, 기본값)` | 없으면 기본값 |
 | `torch.tensor` | 직사각형 목록 → 텐서 |
 | `TensorDataset` | 같은 줄끼리 묶기 |

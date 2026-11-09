@@ -93,11 +93,14 @@ class Perception:
 p = Perceptron(2)
 print(p.w, p.bias)
 ```
-→ `NameError: name 'Perceptron' is not defined`
+
+```text
+AttributeError: 'Perceptron' object has no attribute 'w'
+```
 
 There are two mistakes.
 
-- The class is named `Perception` (ending in -ion), so Python could not find `Perceptron` (ending in -ron).
+- The class is named `Perception` (ending in -ion), so it became a separate class. `Perceptron(2)` (ending in -ron) is built from the empty `pass` skeleton from earlier, which has no `w`. If you never ran the skeleton, you get `NameError: name 'Perceptron' is not defined` instead.
 - `np.zeros(self, n_inputs)` : `self` is not something you pass to an outside function like `np.zeros`. Fixing only the name gives a `TypeError` next.
 
 ```python
@@ -278,7 +281,22 @@ p_and = Perceptron(2)
 p_and.fit(X, y, lr=1.0, epoch=100)
 print([p_and.predict(x) for x in X])
 ```
-→ `[0, 0, 0, 1]` (matches the answers), learned values `w = [7. 7.]`, `bias = 7.0`
+
+```text
+epoch 1: w = [1. 1.], bias = 1.0
+epoch 2: w = [2. 2.], bias = 2.0
+epoch 3: w = [3. 3.], bias = 3.0
+epoch 4: w = [4. 4.], bias = 4.0
+epoch 5: w = [5. 5.], bias = 5.0
+epoch 6: w = [6. 6.], bias = 6.0
+epoch 7: w = [7. 7.], bias = 7.0
+epoch 8: w = [7. 7.], bias = 7.0
+…
+epoch 100: w = [7. 7.], bias = 7.0
+[0, 0, 0, 1]
+```
+
+The lines for epochs 9 to 99 are all `w = [7. 7.], bias = 7.0`, so they are cut here. The last line, `[0, 0, 0, 1]`, matches the answers.
 
 z comes out as 7, 14, 14 and 21. **Only with both inputs on does it reach 21 and pass 20.** The weights stop changing after epoch 7: once everything is right, answer - prediction is 0, so the correction is 0.<br>
 OR finds `w = [8, 8]`, `bias = 13`. Even one input on gives $$8 + 13 = 21$$.

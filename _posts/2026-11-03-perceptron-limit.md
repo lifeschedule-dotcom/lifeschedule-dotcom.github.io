@@ -93,11 +93,14 @@ class Perception:
 p = Perceptron(2)
 print(p.w, p.bias)
 ```
-→ `NameError: name 'Perceptron' is not defined`
+
+```text
+AttributeError: 'Perceptron' object has no attribute 'w'
+```
 
 틀린 곳이 두 군데예요.
 
-- 클래스 이름이 `Perception`(셉션)이라, `Perceptron`(셉트론)을 찾지 못했어요.
+- 클래스 이름이 `Perception`(셉션)이라 다른 클래스가 따로 생겼어요. `Perceptron(2)`(셉트론)은 앞에서 만든 `pass` 빈 틀로 만들어져서 `w`가 없어요. 빈 틀을 실행하지 않았다면 `NameError: name 'Perceptron' is not defined`가 나요.
 - `np.zeros(self, n_inputs)` : `self`는 `np.zeros` 같은 바깥 함수에 넣는 값이 아니에요. 이름만 고치면 다음엔 `TypeError`가 나요.
 
 ```python
@@ -278,7 +281,22 @@ p_and = Perceptron(2)
 p_and.fit(X, y, lr=1.0, epoch=100)
 print([p_and.predict(x) for x in X])
 ```
-→ `[0, 0, 0, 1]` (정답과 같음), 학습된 값 `w = [7. 7.]`, `bias = 7.0`
+
+```text
+epoch 1: w = [1. 1.], bias = 1.0
+epoch 2: w = [2. 2.], bias = 2.0
+epoch 3: w = [3. 3.], bias = 3.0
+epoch 4: w = [4. 4.], bias = 4.0
+epoch 5: w = [5. 5.], bias = 5.0
+epoch 6: w = [6. 6.], bias = 6.0
+epoch 7: w = [7. 7.], bias = 7.0
+epoch 8: w = [7. 7.], bias = 7.0
+…
+epoch 100: w = [7. 7.], bias = 7.0
+[0, 0, 0, 1]
+```
+
+가운데 epoch 9~99 줄은 모두 `w = [7. 7.], bias = 7.0`이라 줄였어요. 마지막 줄 `[0, 0, 0, 1]`이 정답과 같아요.
 
 z는 차례로 7, 14, 14, 21이에요. **둘 다 켜져야 21로 20을 넘어요.** 가중치는 epoch 7 뒤로 바뀌지 않아요. 다 맞히면 정답 - 예측이 0이라 고칠 양도 0이에요.<br>
 OR은 `w = [8, 8]`, `bias = 13`을 찾아요. 하나만 켜져도 $$8 + 13 = 21$$이에요.

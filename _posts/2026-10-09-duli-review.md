@@ -1,4 +1,5 @@
 ---
+published: false
 title: "둘이검토 스킬: AI에게 '검토해' 한 줄로 다른 AI의 검토까지 받기"
 section: vibe-coding
 sub: automation

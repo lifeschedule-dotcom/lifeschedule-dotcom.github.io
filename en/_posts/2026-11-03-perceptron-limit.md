@@ -40,7 +40,10 @@ First, prepare the data as numpy arrays.
 X = np.array([[2, 5]])
 y = np.array([1])
 ```
-→ `NameError: name 'np' is not defined`
+
+```text
+NameError: name 'np' is not defined
+```
 
 `np` has to be imported before you use it. Keep the `import` lines in the very first cell.
 
@@ -52,7 +55,12 @@ X = np.array([[2, 5]])
 y = np.array([1])
 X.shape
 ```
-→ `(1, 2)` : 1 sample, 2 inputs per sample
+
+```text
+(1, 2)
+```
+
+1 sample, 2 inputs per sample.
 
 The perceptron is a class with four methods. Writing everything at once is where people get stuck, so start with **an empty class made of `pass`**.
 
@@ -99,7 +107,7 @@ class Perceptron:
         self.w = np.zeros(n_inputs)
         self.bias = 0
 ```
-→ `[0. 0.] 0`
+Re-run the class cell, then the check cell prints `[0. 0.] 0`.
 
 After fixing the code, **run the class cell again first**, then create a fresh object with `p = Perceptron(2)` in the check cell. If you skip rerunning the class cell or keep using an old `p`, you are still running the code from before the fix.
 
@@ -126,7 +134,7 @@ def step_function(self, z):
     else:
         return 1
 ```
-→ `p.step_function(15)` is 0, `p.step_function(20)` is 1
+`p.step_function(15)` is 0, `p.step_function(20)` is 1.
 
 `predict` builds z and hands it to `step_function`. The first attempt had the two lines mixed up.
 
@@ -136,7 +144,7 @@ def predict(self, x):
     z = np.dot(self.w, self.step_function(z)) + self.bias
     return self.dot(z)
 ```
-→ `UnboundLocalError: cannot access local variable 'z' where it is not associated with a value`
+Calling this predict raises `UnboundLocalError: cannot access local variable 'z' where it is not associated with a value`.
 
 The line that creates z is already using z, which does not exist yet. `dot` is a numpy function, so there is no `self.dot` either.
 

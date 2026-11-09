@@ -41,7 +41,7 @@ train, test = train_test_split(full, test_size=100, random_state=42)
 test_answer = test["Survived"]
 test = test.drop(columns=["Survived"])
 ```
-→ `train` 791명(정답 있음)으로 모든 판단을 하고, `test` 100명은 마지막에 한 번만 채점해요.
+`train` 791명(정답 있음)으로 모든 판단을 하고, `test` 100명은 마지막에 한 번만 채점해요.
 
 ## <span class="no">1</span> 생존율과 기준선 먼저 보기
 
@@ -51,8 +51,16 @@ test = test.drop(columns=["Survived"])
 train.groupby("Sex")["Survived"]         # ❌
 train.groupby("Sex")["Survived"].mean()  # ✅
 ```
-❌는 `SeriesGroupBy object`만 나와요. 그룹으로 나누기만 하고 무엇을 계산할지 정하지 않았기 때문이에요.<br>
-✅ → `female 0.742`, `male 0.190`
+
+```text
+Sex
+female    0.741818
+male      0.189922
+Name: Survived, dtype: float64
+```
+
+❌ 줄만 실행하면 `SeriesGroupBy object`만 나와요. 그룹으로 나누기만 하고 무엇을 계산할지 정하지 않았기 때문이에요.<br>
+✅ 줄은 성별 생존율을 보여 줘요. 여자 0.742, 남자 0.190이에요.
 
 <figure><img src="/assets/img/titanic/titanic-survival-rate.png" alt="생존율: 여자 0.74, 남자 0.19, 1등석 0.62, 2등석 0.48, 3등석 0.24" width="1520" height="680"></figure>
 

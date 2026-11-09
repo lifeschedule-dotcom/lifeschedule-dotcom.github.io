@@ -170,9 +170,15 @@ print(X_train.shape, y_train.shape)
 print(X_test.shape, y_test.shape)
 print(round(y_train.mean().item(), 4))
 ```
-→ `torch.Size([700, 4]) torch.Size([700, 1])` : 700행에 입력 4칸, 700행에 정답 1칸<br>
-→ `torch.Size([300, 4]) torch.Size([300, 1])` : 300행에 입력 4칸, 300행에 정답 1칸<br>
-→ `0.5014` : 정답의 절반이 1이라, 찍으면 약 50점이에요.
+
+```text
+torch.Size([700, 4]) torch.Size([700, 1])
+torch.Size([300, 4]) torch.Size([300, 1])
+0.5014
+```
+
+첫 줄은 700행에 입력 4칸, 700행에 정답 1칸, 둘째 줄은 300행에 입력 4칸, 300행에 정답 1칸이에요.<br>
+0.5014는 정답의 절반이 1이라는 뜻이라, 찍으면 약 50점이에요.
 
 `X`는 입력이고 `y`는 정답이에요. `torch.randn`은 무작위 숫자를 만들고, `score`가 0보다 크면 정답이 1이에요.
 
@@ -192,8 +198,13 @@ X_batch, y_batch = next(iter(loader))
 print(X_batch.shape, y_batch.shape)
 print(len(loader))
 ```
-→ `torch.Size([32, 4]) torch.Size([32, 1])`<br>
-→ `22` : 묶음 22개
+
+```text
+torch.Size([32, 4]) torch.Size([32, 1])
+22
+```
+
+32행씩 꺼내고, 묶음은 22개예요.
 
 `iter(loader)`로 꺼낼 준비를 하고, `next`로 첫 묶음만 꺼내 본 코드예요. 학습에서는 `for`가 이 일을 대신해요.
 
@@ -293,10 +304,13 @@ for name, size in sizes.items():
           round(losses[-1], 4),
           round(acc, 4))
 ```
-→ `Batch GD 100 0.3978 0.7767`<br>
-→ `Mini-batch 256 300 0.279 0.8367`<br>
-→ `Mini-batch 32 2200 0.1575 0.8933`<br>
-→ `SGD 70000 0.1779 0.88`
+
+```text
+Batch GD 100 0.3978 0.7767
+Mini-batch 256 300 0.279 0.8367
+Mini-batch 32 2200 0.1575 0.8933
+SGD 70000 0.1779 0.88
+```
 
 출력은 차례로 방식 이름, 수정 횟수, 마지막 Epoch의 평균 loss, 시험 300행에서 맞힌 비율이에요. 그림은 Epoch마다의 평균 loss예요.
 
@@ -376,10 +390,13 @@ for name, size in sizes.items():
     curve = by_updates(size)
     print(name, round(curve[-1], 4))
 ```
-→ `Batch GD 0.1872`<br>
-→ `Mini-batch 256 0.1871`<br>
-→ `Mini-batch 32 0.188`<br>
-→ `SGD 0.2483`
+
+```text
+Batch GD 0.1872
+Mini-batch 256 0.1871
+Mini-batch 32 0.188
+SGD 0.2483
+```
 
 <figure><img src="/assets/img/mini-batch-compare/loss-by-update.png" alt="가중치를 700번 고치는 동안 700행, 256행, 32행은 모두 0.19까지 매끄럽게 내려가고, 1행(SGD)은 흔들리며 0.25에 머물러요." width="1520" height="1194"></figure>
 
@@ -432,8 +449,14 @@ small = DataLoader(
 )
 print(len(small))
 ```
-→ `32 28 22` : 첫 묶음 32행, 마지막 묶음 28행, 묶음 22개<br>
-→ `21` : `drop_last=True`면 작은 묶음을 버려요.
+
+```text
+32 28 22
+21
+```
+
+첫 묶음 32행, 마지막 묶음 28행, 묶음 22개예요.<br>
+`drop_last=True`면 작은 묶음을 버려서 21개가 돼요.
 
 **`Linear(32, 1)`의 32는 `batch_size=32`와 상관없어요.** 이 32는 모델 가운데 층의 칸 수이고, 이 글에서 우연히 숫자가 같아요. `batch_size`를 바꿔도 모델 코드는 그대로예요.
 
@@ -453,7 +476,10 @@ wrong = y_batch.reshape(-1)
 p = torch.full((32, 1), 0.5)
 nn.BCELoss()(p, wrong)
 ```
-→ `ValueError: Using a target size (torch.Size([32])) that is different to the input size (torch.Size([32, 1])) is deprecated. Please ensure they have the same size.`
+
+```text
+ValueError: Using a target size (torch.Size([32])) that is different to the input size (torch.Size([32, 1])) is deprecated. Please ensure they have the same size.
+```
 
 정답을 만들 때 `.reshape(-1, 1)`을 붙이면 돼요.
 
@@ -477,7 +503,14 @@ for epoch in range(3):
     optimizer.step()
     print(round(loss.item(), 4))
 ```
-→ `0.7513`, `0.7513`, `0.7513` : 세 번 다 같아요.
+
+```text
+0.7513
+0.7513
+0.7513
+```
+
+세 번 다 같아요.
 
 모델을 새로 만들면 optimizer도 바로 다음 줄에서 새로 만드세요.
 
@@ -497,8 +530,11 @@ for epoch in range(100):
     updates += 1
 print(updates)
 ```
-→ `1`<br>
-→ `100`
+
+```text
+1
+100
+```
 
 **정렬된 데이터를 안 섞기.** 학습 데이터를 정답 순서로 정렬하고 `shuffle=False`로 돌리면, 앞쪽 묶음은 전부 0이고 뒤쪽 묶음은 전부 1이에요. 32행 묶음, 100 Epoch, 시드 5개로 재 보니 시험 점수 평균이 `shuffle=False`는 0.888, `shuffle=True`는 0.9013이었어요. 시드마다 모두 `shuffle=True`가 높았어요.
 

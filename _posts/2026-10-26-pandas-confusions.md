@@ -55,17 +55,37 @@ df = pd.DataFrame({
 ```python
 df["price"]
 ```
-→ price 열만 꺼내요. `3000, 2500, 4000, 6000, 5000`
+
+```text
+0    3000
+1    2500
+2    4000
+3    6000
+4    5000
+Name: price, dtype: int64
+```
+
+price 열만 꺼내요.
 
 ```python
 df["price"].idxmax()
 ```
-→ 가장 큰 값(6000)이 **몇 번 줄인지** 알려 줘요. `3`
+
+```text
+3
+```
+
+가장 큰 값(6000)이 **몇 번 줄인지** 알려 줘요.
 
 ```python
 df.loc[3, "name"]
 ```
-→ 3번 줄의 name 칸을 꺼내요. `치즈`
+
+```text
+'치즈'
+```
+
+3번 줄의 name 칸을 꺼내요.
 
 세 개를 이어 붙이면 「가장 비싼 상품 이름」이에요.
 
@@ -95,12 +115,30 @@ pandas에서 가장 자주 하는 실수가 이 둘을 헷갈리는 거예요.
 ```python
 df["price"] >= 4000
 ```
-→ 표가 아니라 **True / False 5개**예요. `False, False, True, True, True`
+
+```text
+0    False
+1    False
+2     True
+3     True
+4     True
+Name: price, dtype: bool
+```
+
+표가 아니라 **True / False 5개**예요.
 
 ```python
 df[df["price"] >= 4000]
 ```
-→ `df[ ]`로 감싸야 True인 줄만 남은 **표**가 돼요. 바나나, 치즈, 배 3줄이에요.
+
+```text
+  name category  price  stock
+2  바나나       과일   4000      5
+3   치즈      유제품   6000      8
+4    배       과일   5000     20
+```
+
+`df[ ]`로 감싸야 True인 줄만 남은 **표**가 돼요. 바나나, 치즈, 배 3줄이에요.
 
 그래서 이렇게 갈라요.
 

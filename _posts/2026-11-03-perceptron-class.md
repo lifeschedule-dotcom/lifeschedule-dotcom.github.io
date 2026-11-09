@@ -69,7 +69,7 @@ class Perceptron:
 p_a = Perceptron(2)
 p_b = Perceptron(2)
 ```
-→ 같은 설계도로 만든 퍼셉트론 두 개예요. 기능은 같고, **가중치는 각자 따로** 들고 있어요.
+같은 설계도로 만든 퍼셉트론 두 개예요. 기능은 같고, **가중치는 각자 따로** 들고 있어요.
 
 | 코드 | 뜻 |
 |---|---|
@@ -85,7 +85,12 @@ p_b = Perceptron(2)
 X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
 X.shape
 ```
-→ `(4, 2)` : 데이터 4개, 데이터마다 입력 2개. `Perceptron( )`에 넣는 숫자는 뒤의 2예요.
+
+```text
+(4, 2)
+```
+
+데이터 4개, 데이터마다 입력 2개예요. `Perceptron( )`에 넣는 숫자는 뒤의 2예요.
 
 ## <span class="no">3</span> \_\_init\_\_과 step function
 
@@ -97,7 +102,7 @@ def __init__(self, n_inputs):
     self.w = np.zeros(self, n_inputs)
     self.bias = 0
 ```
-→ `TypeError`. `self`는 `np.zeros` 같은 바깥 함수에 넣는 값이 아니에요.
+이렇게 쓰면 `Perceptron(2)`를 만들 때 `TypeError`가 나요. `self`는 `np.zeros` 같은 바깥 함수에 넣는 값이 아니에요.
 
 ```python
 # ✅
@@ -105,7 +110,7 @@ def __init__(self, n_inputs):
     self.w = np.zeros(n_inputs)
     self.bias = 0
 ```
-→ `Perceptron(2).w`는 `[0. 0.]`
+이제 `Perceptron(2).w`는 `[0. 0.]`이에요.
 
 `step_function`은 문제의 말을 부등호로 그대로 옮겨요. 「20 **미만**이면 0」이면 20은 1이에요.
 
@@ -116,7 +121,7 @@ def step_function(self, z):
     else:
         return 1
 ```
-→ `p.step_function(15)`는 0, `p.step_function(20)`은 1, `p.step_function(30)`은 1
+`p.step_function(15)`는 0, `p.step_function(20)`은 1, `p.step_function(30)`은 1이에요.
 
 `<`를 `<=`로 쓰면 z가 딱 20일 때 0이 돼요. 경계값 하나로 결과가 바뀌니 직접 넣어 확인해요.
 
@@ -228,7 +233,7 @@ class Perceptron:
     def fit(self, X, y, lr, epoch):
         pass
 ```
-→ `pass`는 「아직 비어 있음」 표시라 이대로도 에러 없이 실행돼요.
+`pass`는 「아직 비어 있음」 표시라 이대로도 에러 없이 실행돼요.
 
 한 칸을 채울 때마다 **클래스 칸을 다시 실행하고 `p = Perceptron(2)`로 새로 만든 뒤** 확인해요. 예전에 만든 `p`는 고치기 전 코드로 동작해요.
 

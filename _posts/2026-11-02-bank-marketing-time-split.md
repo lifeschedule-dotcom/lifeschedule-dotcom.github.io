@@ -38,7 +38,7 @@ import pandas as pd
 full = pd.read_csv("bank-full.csv", sep=";")
 train, test = full.iloc[:-1000], full.iloc[-1000:]
 ```
-→ `train` 44,211건으로 모든 판단을 하고, `test` 1,000건(2010년 7월부터 11월)은 고르는 데 쓰지 않고 마지막에 채점만 해요.<br>
+`train` 44,211건으로 모든 판단을 하고, `test` 1,000건(2010년 7월부터 11월)은 고르는 데 쓰지 않고 마지막에 채점만 해요.<br>
 `iloc[-1000:]`은 「뒤에서 1,000번째 줄부터 끝까지」, `iloc[:-1000]`은 「처음부터 그 앞까지」예요.
 
 ## <span class="no">1</span> 전체 순서 한눈에 보기
@@ -61,7 +61,7 @@ num = pd.api.types.is_numeric_dtype
 pd.DataFrame([[c, f"{train[c].min()} ~ {train[c].max()}" if num(train[c])
                else ", ".join(sorted(train[c].astype(str).unique()))] for c in train.columns])
 ```
-→ 17줄짜리 표 하나에 `poutcome: failure, other, success, unknown`처럼 칸별 값이 다 보여요. `value_counts()`를 칸마다 출력하면 줄이 많아 화면에서 잘리기 쉬워요.
+실행하면 17줄짜리 표 하나에 `poutcome: failure, other, success, unknown`처럼 칸별 값이 다 보여요. `value_counts()`를 칸마다 출력하면 줄이 많아 화면에서 잘리기 쉬워요.
 
 ## <span class="no">2</span> 기준선 0.891의 함정
 
@@ -116,7 +116,7 @@ X_test = pd.get_dummies(test.drop(columns=["y", "duration"]), dtype=int)
 X_test = X_test.reindex(columns=X.columns, fill_value=0)
 y = (train["y"] == "yes").astype(int)
 ```
-→ `X` (44211, 50), `X_test` (1000, 50). 정답 `y`는 yes 1, no 0이에요.
+`X`는 (44211, 50), `X_test`는 (1000, 50)이에요. 정답 `y`는 yes 1, no 0이에요.
 
 시험 구간에는 1월부터 6월과 12월이 없어서, 따로 원-핫을 하면 `month_jan` 같은 칸이 생기지 않아요. `reindex`는 test의 칸 이름·순서·개수를 train과 똑같이 맞추고, 없던 칸은 0으로 채워요.
 

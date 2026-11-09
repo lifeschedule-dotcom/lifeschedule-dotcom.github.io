@@ -70,9 +70,12 @@ print(X_train.shape)  # 이미지
 print(y_train.shape)  # 정답 번호
 print(y_train[0], y_train[100], y_train[200])
 ```
-→ `torch.Size([300, 8, 8])`<br>
-→ `torch.Size([300])`<br>
-→ `tensor(0) tensor(1) tensor(2)`
+
+```text
+torch.Size([300, 8, 8])
+torch.Size([300])
+tensor(0) tensor(1) tensor(2)
+```
 
 <figure><img src="/assets/img/nn-module/sample-images.png" alt="직접 만든 8×8 이미지. 0번은 가로줄, 1번은 세로줄, 2번은 대각선이고 배경에 무작위 값이 섞여 있어요." width="1210" height="884"></figure>
 
@@ -143,7 +146,16 @@ print(x.shape)
 x = model.layers[2](x)  # Linear(32, 3)
 print(x.shape)
 ```
-→ `(3, 8, 8)` → `(3, 64)` → `(3, 32)` → `(3, 32)` → `(3, 3)`
+
+```text
+torch.Size([3, 8, 8])
+torch.Size([3, 64])
+torch.Size([3, 32])
+torch.Size([3, 32])
+torch.Size([3, 3])
+```
+
+`(3, 8, 8)` → `(3, 64)` → `(3, 32)` → `(3, 32)` → `(3, 3)` 순서로 바뀌어요.
 
 **Linear** 는 칸 수를 바꾸는 층이고, 학습되는 가중치가 여기에 있어요.
 
@@ -156,7 +168,12 @@ $$x$$는 입력, $$W$$는 가중치(weight), $$W^{T}$$는 행과 열을 뒤집�
 ```python
 print(model.layers[0].weight.shape)  # (출력, 입력) 순서
 ```
-→ `torch.Size([32, 64])` : (32, 64)로 저장되어 있어서 전치한 뒤 곱해요. 이 계산은 `nn.Linear`가 알아서 해요.
+
+```text
+torch.Size([32, 64])
+```
+
+(32, 64)로 저장되어 있어서 전치한 뒤 곱해요. 이 계산은 `nn.Linear`가 알아서 해요.
 
 **ReLU** 는 음수를 0으로 바꾸고 양수는 그대로 둬요.
 
@@ -165,7 +182,10 @@ $$\text{ReLU}(x) = \max(0, x)$$
 ```python
 print(nn.ReLU()(torch.tensor([-0.5, 0.3, 0.0, 1.2])))
 ```
-→ `tensor([0.0000, 0.3000, 0.0000, 1.2000])`
+
+```text
+tensor([0.0000, 0.3000, 0.0000, 1.2000])
+```
 
 ReLU가 없으면 층을 쌓아도 하나로 합쳐져요. 두 층 $$u = 2x + 1$$, $$y = 3u - 1$$을 이으면 $$y = 6x + 2$$ 한 층과 같아요. 가운데에 ReLU를 넣으면 꺾이는 곳이 생겨요.
 
@@ -188,9 +208,12 @@ print(y_train[:3])                 # 실제 정답
 pred = model(X_test).argmax(dim=1)      # 시험 이미지 예측
 print((pred == y_test).float().mean())  # 맞힌 비율
 ```
-→ `tensor([1, 1, 1])`<br>
-→ `tensor([0, 0, 0])`<br>
-→ `tensor(0.2167)`
+
+```text
+tensor([1, 1, 1])
+tensor([0, 0, 0])
+tensor(0.2167)
+```
 
 아직 학습 전이라 가중치가 무작위예요. 60장 중 13장만 맞혀서, 세 종류를 무작위로 고를 때의 기댓값 $$1/3$$에도 못 미쳐요.
 
@@ -251,7 +274,15 @@ with torch.no_grad():
     probs = nn.Softmax(dim=1)(model(samples))
 print(probs.round(decimals=3))
 ```
-→ `tensor(1.)` : 60장을 모두 맞혔어요. 학습 전에는 0.2167이었어요.
+
+```text
+tensor(1.)
+tensor([[0.9230, 0.0760, 0.0010],
+        [0.0150, 0.9840, 0.0010],
+        [0.0000, 0.0000, 1.0000]])
+```
+
+첫 줄 `tensor(1.)`은 60장을 모두 맞혔다는 뜻이에요. 학습 전에는 0.2167이었어요.
 
 | 시험 이미지 | 가로줄 | 세로줄 | 대각선 |
 |---|---|---|---|
@@ -278,8 +309,13 @@ t = torch.tensor([[2., 1., 0.],
 print(t.sum(dim=0))  # 줄 번호만 바뀌는 값끼리
 print(t.sum(dim=1))  # 칸 번호만 바뀌는 값끼리
 ```
-→ `tensor([2., 4., 1.])` : 2+0, 1+3, 0+1<br>
-→ `tensor([3., 4.])` : 2+1+0, 0+3+1
+
+```text
+tensor([2., 4., 1.])
+tensor([3., 4.])
+```
+
+첫 줄은 2+0, 1+3, 0+1, 둘째 줄은 2+1+0, 0+3+1이에요.
 
 | 형식 | shape 예시 | 쓸 수 있는 dim | 읽는 법 |
 |---|---|---|---|
@@ -294,8 +330,11 @@ v = torch.tensor([10., 20., 30.])
 print(v[1])          # 값의 위치 1
 print(v.sum(dim=0))  # shape의 0번 자리
 ```
-→ `tensor(20.)`<br>
-→ `tensor(60.)`
+
+```text
+tensor(20.)
+tensor(60.)
+```
 
 **Flatten이 맨 앞 숫자를 남기는 이유** 는 이미지를 구분하기 위해서예요. `nn.Flatten()`은 기본값이 `start_dim=1`이라 0번 자리는 두고 1번 자리부터 펴요.
 
@@ -309,7 +348,10 @@ $$N$$은 이미지 수, $$H$$와 $$W$$는 세로와 가로 크기예요. 작은 
 # ❌ 에러: 전부 펴면 숫자 192개가 한 줄
 model.layers(X_train[:3].flatten())
 ```
-→ `RuntimeError: mat1 and mat2 shapes cannot be multiplied (1x192 and 64x32)`
+
+```text
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (1x192 and 64x32)
+```
 
 ```python
 # ✅ (3, 64): 이미지별 64칸
@@ -340,13 +382,19 @@ print(e / e.sum(dim=0, keepdim=True))
 # ❌ 에러: 실수
 loss_fn(model(X_train[:4]), y_train[:4].float())
 ```
-→ `RuntimeError: expected scalar type Long but found Float`
+
+```text
+RuntimeError: expected scalar type Long but found Float
+```
 
 ```python
 # ❌ 에러: 모양 (4, 1)
 loss_fn(model(X_train[:4]), y_train[:4].view(4, 1))
 ```
-→ `RuntimeError: 0D or 1D target tensor expected, multi-target not supported`
+
+```text
+RuntimeError: 0D or 1D target tensor expected, multi-target not supported
+```
 
 ```python
 # ✅ 정수, 모양 (4,)
@@ -374,8 +422,13 @@ print(m.layers[2].bias.grad)  # 1번째
 loss_fn(m(X_train), y_train).backward()
 print(m.layers[2].bias.grad)  # 2번 쌓임
 ```
-→ `tensor([-0.0113,  0.0221, -0.0108])`<br>
-→ `tensor([-0.0226,  0.0443, -0.0216])` : 가중치가 같으니 두 배가 돼요.
+
+```text
+tensor([-0.0113,  0.0221, -0.0108])
+tensor([-0.0226,  0.0443, -0.0216])
+```
+
+가중치가 같으니 두 번째는 두 배가 돼요.
 
 같은 시작 가중치로 빼고 학습해 보면 시험 정확도는 1.0으로 같아요. 대신 쌓인 기울기만큼 가중치가 크게 움직여서, 50번째 반복에서 점수(logits)의 절댓값이 약 400까지 커지고 loss는 0에 가까워져요. 에러가 없고 결과도 좋아 보여서 더 놓치기 쉬워요. 이번 반복의 기울기로 고치려면 매번 지워야 해요.
 
@@ -407,8 +460,11 @@ class ModuleListNet(nn.Module):
 print(sum(p.numel() for p in ListNet().parameters()))
 print(sum(p.numel() for p in ModuleListNet().parameters()))
 ```
-→ `0`<br>
-→ `2179`
+
+```text
+0
+2179
+```
 
 이 2179개가 학습으로 고치는 숫자예요. 앞의 `model`과 개수가 같아요.
 

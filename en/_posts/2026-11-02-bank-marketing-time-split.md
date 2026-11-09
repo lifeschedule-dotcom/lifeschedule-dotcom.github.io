@@ -38,7 +38,7 @@ import pandas as pd
 full = pd.read_csv("bank-full.csv", sep=";")
 train, test = full.iloc[:-1000], full.iloc[-1000:]
 ```
-→ Every decision uses the 44,211 rows in `train`. The 1,000 rows in `test` (July to November 2010) are never used for choosing; they are only scored at the end.<br>
+Every decision uses the 44,211 rows in `train`. The 1,000 rows in `test` (July to November 2010) are never used for choosing; they are only scored at the end.<br>
 `iloc[-1000:]` means "from the 1,000th row from the end to the end", and `iloc[:-1000]` means "from the start up to that point".
 
 ## <span class="no">1</span> The whole workflow at a glance
@@ -61,7 +61,7 @@ num = pd.api.types.is_numeric_dtype
 pd.DataFrame([[c, f"{train[c].min()} ~ {train[c].max()}" if num(train[c])
                else ", ".join(sorted(train[c].astype(str).unique()))] for c in train.columns])
 ```
-→ One 17-row table shows every column's values, like `poutcome: failure, other, success, unknown`. Printing `value_counts()` for each column produces so many lines that the output easily gets cut off.
+Running it shows one 17-row table with every column's values, like `poutcome: failure, other, success, unknown`. Printing `value_counts()` for each column produces so many lines that the output easily gets cut off.
 
 ## <span class="no">2</span> The 0.891 baseline trap
 
@@ -116,7 +116,7 @@ X_test = pd.get_dummies(test.drop(columns=["y", "duration"]), dtype=int)
 X_test = X_test.reindex(columns=X.columns, fill_value=0)
 y = (train["y"] == "yes").astype(int)
 ```
-→ `X` (44211, 50), `X_test` (1000, 50). The target `y` is 1 for yes and 0 for no.
+`X` is (44211, 50) and `X_test` is (1000, 50). The target `y` is 1 for yes and 0 for no.
 
 The test period has no January to June or December, so one-hot encoding it separately never creates columns like `month_jan`. `reindex` makes the test columns match train in name, order and count, filling the missing ones with 0.
 

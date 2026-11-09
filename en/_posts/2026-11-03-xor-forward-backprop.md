@@ -48,7 +48,12 @@ X_tensor = torch.tensor(X, dtype=torch.float32)
 y_tensor = torch.tensor(y, dtype=torch.float32).view(4, 1)
 print(X_tensor.shape, y_tensor.shape)
 ```
-→ `torch.Size([4, 2]) torch.Size([4, 1])` : 4 samples × 2 inputs, 4 samples × 1 answer
+
+```text
+torch.Size([4, 2]) torch.Size([4, 1])
+```
+
+4 samples × 2 inputs, 4 samples × 1 answer.
 
 A weight's shape is **(nodes coming in, nodes going out)**.
 
@@ -108,7 +113,12 @@ def sigmoid(z):
 
 print(sigmoid(torch.tensor([-5.0, 0.0, 5.0])))
 ```
-→ `tensor([0.0067, 0.5000, 0.9933])` : a large negative goes toward 0, 0 gives one half, a large positive goes toward 1
+
+```text
+tensor([0.0067, 0.5000, 0.9933])
+```
+
+A large negative goes toward 0, 0 gives one half, a large positive goes toward 1.
 
 ```python
 # ❌
@@ -165,7 +175,12 @@ a = torch.tensor([1.0, 2.0, 3.0])
 b = torch.tensor([4.0, 5.0, 6.0])
 print(a * b, a @ b)
 ```
-→ `tensor([ 4., 10., 18.]) tensor(32.)` : `*` only multiplies, `@` multiplies and then adds
+
+```text
+tensor([ 4., 10., 18.]) tensor(32.)
+```
+
+`*` only multiplies, `@` multiplies and then adds.
 
 | Variable | Shape | Meaning |
 |---|---|---|
@@ -278,7 +293,7 @@ The hidden layer uses the same formula. Only two new lines appear.
         # same formula as the output layer
         self.db1 = self.dz1.sum(dim=0)
 ```
-→ seed 0 : `dw2 = [-0.1382, -0.1423]`, `db2 = [-0.2717]`, `dw1 = [[0.0176, 0.0495], [0.0036, 0.0387]]`
+Running forward and then backward once with seed 0 gives `dw2 = [-0.1382, -0.1423]`, `db2 = [-0.2717]`, `dw1 = [[0.0176, 0.0495], [0.0036, 0.0387]]`.
 
 **A gradient always has the same shape as its own weight.** If you get dw1 (2, 2), db1 (2,), dw2 (2, 1), db2 (1,), the structure is right.
 
@@ -321,7 +336,21 @@ for epoch in range(1000):
     if epoch % 100 == 0:
         print(epoch, loss.item())
 ```
-→ The loss goes down 0.8834, 0.6350, 0.4731 … 0.0283 (epoch 900). The final loss is 0.0245, the predictions are `[0.0217, 0.9722, 0.9717, 0.0190]`, and thresholding at 0.5 gives `[0, 1, 1, 0]`, matching the answers.
+
+```text
+0 0.883373498916626
+100 0.6350012421607971
+200 0.4730548858642578
+300 0.20953066647052765
+400 0.10972603410482407
+500 0.07138947397470474
+600 0.05219698324799538
+700 0.04089190065860748
+800 0.033506352454423904
+900 0.028327887877821922
+```
+
+The loss goes down from 0.8834 to 0.0283 (epoch 900). The final loss is 0.0245, the predictions are `[0.0217, 0.9722, 0.9717, 0.0190]`, and thresholding at 0.5 gives `[0, 1, 1, 0]`, matching the answers.
 
 **A seed is the starting number of a list of random numbers.** A computer's randomness is a list produced by a fixed formula, so the same seed gives the same list. The seed 0 list is `1.5410, -0.2934, -2.1788, 0.5684, -1.0845, -1.3986, …`, and the first 4 become w1 while the next 2 become w2.
 
@@ -387,7 +416,12 @@ loss = F.binary_cross_entropy(mlp.forward(X_tensor), y_tensor)
 loss.backward()
 print(mlp.w2.grad.view(-1))
 ```
-→ `tensor([-0.1382, -0.1423])` : exactly the dw2 computed by hand in section 4. The loss over 1,000 training epochs also matches to the fourth decimal place, 0.8834 → 0.0283 (epoch 900).
+
+```text
+tensor([-0.1382, -0.1423])
+```
+
+Exactly the dw2 computed by hand in section 4. The loss over 1,000 training epochs also matches to the fourth decimal place, 0.8834 → 0.0283 (epoch 900).
 
 The two lines inside gd are where most autograd mistakes happen.
 

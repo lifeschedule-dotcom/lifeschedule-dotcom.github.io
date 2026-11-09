@@ -55,17 +55,37 @@ It works the same whether you load it with `pd.read_csv("file.csv")` or build it
 ```python
 df["price"]
 ```
-→ Just the price column. `3000, 2500, 4000, 6000, 5000`
+
+```text
+0    3000
+1    2500
+2    4000
+3    6000
+4    5000
+Name: price, dtype: int64
+```
+
+Just the price column.
 
 ```python
 df["price"].idxmax()
 ```
-→ The **row label** of the largest value (6000). `3`
+
+```text
+3
+```
+
+The **row label** of the largest value (6000).
 
 ```python
 df.loc[3, "name"]
 ```
-→ The name cell in row 3. `cheese`
+
+```text
+'cheese'
+```
+
+The name cell in row 3.
 
 Chain the three together and you get "the name of the most expensive item".
 
@@ -95,12 +115,30 @@ Mixing these two up is the most common pandas mistake.
 ```python
 df["price"] >= 4000
 ```
-→ Not a table but **5 True/False values**. `False, False, True, True, True`
+
+```text
+0    False
+1    False
+2     True
+3     True
+4     True
+Name: price, dtype: bool
+```
+
+Not a table but **5 True/False values**.
 
 ```python
 df[df["price"] >= 4000]
 ```
-→ Wrapping it in `df[ ]` gives a **table** with only the True rows: banana, cheese and pear.
+
+```text
+     name category  price  stock
+2  banana    fruit   4000      5
+3  cheese    dairy   6000      8
+4    pear    fruit   5000     20
+```
+
+Wrapping it in `df[ ]` gives a **table** with only the True rows: banana, cheese and pear.
 
 So the rule is:
 

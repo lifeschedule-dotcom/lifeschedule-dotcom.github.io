@@ -41,7 +41,7 @@ train, test = train_test_split(full, test_size=100, random_state=42)
 test_answer = test["Survived"]
 test = test.drop(columns=["Survived"])
 ```
-→ Every decision is made with `train` (791 passengers, answers known). `test` (100 passengers) is scored only once, at the end.
+Every decision is made with `train` (791 passengers, answers known). `test` (100 passengers) is scored only once, at the end.
 
 ## <span class="no">1</span> Survival rates and a baseline first
 
@@ -51,8 +51,16 @@ test = test.drop(columns=["Survived"])
 train.groupby("Sex")["Survived"]         # ❌
 train.groupby("Sex")["Survived"].mean()  # ✅
 ```
-The ❌ line only prints a `SeriesGroupBy object`. It splits the rows into groups but never says what to compute.<br>
-✅ → `female 0.742`, `male 0.190`
+
+```text
+Sex
+female    0.741818
+male      0.189922
+Name: Survived, dtype: float64
+```
+
+The ❌ line alone only prints a `SeriesGroupBy object`. It splits the rows into groups but never says what to compute.<br>
+The ✅ line shows the survival rate by sex: 0.742 for women and 0.190 for men.
 
 <figure><img src="/assets/img/titanic/en/titanic-survival-rate.png" alt="Survival rate: female 0.74, male 0.19, 1st class 0.62, 2nd class 0.48, 3rd class 0.24" width="1520" height="680"></figure>
 

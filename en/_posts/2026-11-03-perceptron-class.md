@@ -69,7 +69,7 @@ class Perceptron:
 p_a = Perceptron(2)
 p_b = Perceptron(2)
 ```
-→ Two perceptrons from the same blueprint. Same methods, but **each keeps its own weights**.
+Two perceptrons from the same blueprint. Same methods, but **each keeps its own weights**.
 
 | Code | Meaning |
 |---|---|
@@ -85,7 +85,12 @@ The dot (`.`) means "the one inside that object". scikit-learn's `model.fit()` a
 X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
 X.shape
 ```
-→ `(4, 2)` : 4 samples, 2 inputs each. The number for `Perceptron( )` is the second one, 2.
+
+```text
+(4, 2)
+```
+
+4 samples, 2 inputs each. The number for `Perceptron( )` is the second one, 2.
 
 ## <span class="no">3</span> \_\_init\_\_ and the step function
 
@@ -97,7 +102,7 @@ def __init__(self, n_inputs):
     self.w = np.zeros(self, n_inputs)
     self.bias = 0
 ```
-→ `TypeError`. `self` is not something you pass to an outside function like `np.zeros`.
+Written this way, creating `Perceptron(2)` raises a `TypeError`. `self` is not something you pass to an outside function like `np.zeros`.
 
 ```python
 # ✅
@@ -105,7 +110,7 @@ def __init__(self, n_inputs):
     self.w = np.zeros(n_inputs)
     self.bias = 0
 ```
-→ `Perceptron(2).w` is `[0. 0.]`
+Now `Perceptron(2).w` is `[0. 0.]`.
 
 `step_function` turns the rule into an inequality word for word. "0 if **less than** 20" means 20 itself gives 1.
 
@@ -116,7 +121,7 @@ def step_function(self, z):
     else:
         return 1
 ```
-→ `p.step_function(15)` is 0, `p.step_function(20)` is 1, `p.step_function(30)` is 1
+`p.step_function(15)` is 0, `p.step_function(20)` is 1, `p.step_function(30)` is 1.
 
 Writing `<=` instead of `<` turns exactly 20 into 0. One boundary value changes the result, so test it directly.
 
@@ -228,7 +233,7 @@ class Perceptron:
     def fit(self, X, y, lr, epoch):
         pass
 ```
-→ `pass` means "empty for now", so this runs without errors.
+`pass` means "empty for now", so this runs without errors.
 
 Each time you fill a slot, **rerun the class cell and create a fresh `p = Perceptron(2)`** before checking. An old `p` still runs the code from before the change.
 

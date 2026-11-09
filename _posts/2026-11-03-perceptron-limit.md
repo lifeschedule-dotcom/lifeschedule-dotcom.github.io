@@ -40,7 +40,10 @@ PyTorch의 <a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Line
 X = np.array([[2, 5]])
 y = np.array([1])
 ```
-→ `NameError: name 'np' is not defined`
+
+```text
+NameError: name 'np' is not defined
+```
 
 `np`를 쓰기 전에 불러와야 해요. `import`는 맨 위 칸에 둬요.
 
@@ -52,7 +55,12 @@ X = np.array([[2, 5]])
 y = np.array([1])
 X.shape
 ```
-→ `(1, 2)` : 데이터 1개, 데이터마다 입력 2개
+
+```text
+(1, 2)
+```
+
+데이터 1개, 데이터마다 입력 2개예요.
 
 퍼셉트론은 기능 네 개를 가진 클래스로 만들어요. 처음부터 다 쓰면 막히니까 **`pass`로 빈 틀**을 먼저 만들어요.
 
@@ -99,7 +107,7 @@ class Perceptron:
         self.w = np.zeros(n_inputs)
         self.bias = 0
 ```
-→ `[0. 0.] 0`
+클래스 칸을 다시 실행한 뒤 확인 칸을 실행하면 `[0. 0.] 0`이 나와요.
 
 코드를 고친 뒤에는 **클래스 칸을 먼저 다시 실행**하고, 확인 칸에서 `p = Perceptron(2)`로 새로 만들어요. 클래스 칸을 다시 실행하지 않거나 예전에 만든 `p`를 그대로 쓰면, 고치기 전 코드로 동작해요.
 
@@ -126,7 +134,7 @@ def step_function(self, z):
     else:
         return 1
 ```
-→ `p.step_function(15)`는 0, `p.step_function(20)`은 1
+`p.step_function(15)`는 0, `p.step_function(20)`은 1이에요.
 
 `predict`는 z를 만들어 `step_function`에 넘겨요. 처음엔 두 줄의 자리가 뒤바뀌었어요.
 
@@ -136,7 +144,7 @@ def predict(self, x):
     z = np.dot(self.w, self.step_function(z)) + self.bias
     return self.dot(z)
 ```
-→ `UnboundLocalError: cannot access local variable 'z' where it is not associated with a value`
+이 predict를 부르면 `UnboundLocalError: cannot access local variable 'z' where it is not associated with a value`가 나요.
 
 z를 만드는 줄에서 아직 없는 z를 쓰고 있어요. `dot`은 numpy 함수라 `self.dot`도 없어요.
 

@@ -68,7 +68,12 @@ X = torch.tensor([[0,0], [0,1], [1,0], [1,1]]).float()
 y = torch.tensor([[0], [1], [1], [0]]).float()
 print(X.shape, y.shape)
 ```
-→ `torch.Size([4, 2]) torch.Size([4, 1])` : 4줄에 입력 2개씩, 4줄에 정답 1개씩
+
+```text
+torch.Size([4, 2]) torch.Size([4, 1])
+```
+
+4줄에 입력 2개씩, 4줄에 정답 1개씩이에요.
 
 | 틀린 곳 | 고치는 법 | 이유 |
 |---|---|---|
@@ -113,10 +118,17 @@ model = MLP()
 print(model)
 print(model(X).shape)
 ```
-→ `(fc1): Linear(in_features=2, out_features=2, bias=True)`<br>
-→ `(fc2): Linear(in_features=2, out_features=1, bias=True)`<br>
-→ `(sigmoid): Sigmoid()`<br>
-→ `torch.Size([4, 1])` : 데이터 4줄마다 답이 1개씩 나와요.
+
+```text
+MLP(
+  (fc1): Linear(in_features=2, out_features=2, bias=True)
+  (fc2): Linear(in_features=2, out_features=1, bias=True)
+  (sigmoid): Sigmoid()
+)
+torch.Size([4, 1])
+```
+
+마지막 줄 `torch.Size([4, 1])`은 데이터 4줄마다 답이 1개씩 나온다는 뜻이에요.
 
 `in_features`는 데이터 한 줄당 들어오는 숫자 수, `out_features`는 나가는 숫자 수예요. `X`의 shape `(4, 2)`에서 뒤의 2가 `in_features`예요. 앞의 4는 줄 수라 층을 만들 때 적지 않아요.
 
@@ -148,7 +160,10 @@ $$y$$는 정답, $$p$$는 모델의 답, $$l$$은 한 줄의 점수, $$N$$은 �
 criterion = nn.BCELoss()
 print(criterion(model(X), y))
 ```
-→ `tensor(0.6977, grad_fn=<BinaryCrossEntropyBackward0>)`
+
+```text
+tensor(0.6977, grad_fn=<BinaryCrossEntropyBackward0>)
+```
 
 학습 전이라 0.693 근처예요. `grad_fn`은 이 값까지의 계산 기록이 있다는 표시이고, 다음 단계의 `loss.backward()`가 이 기록을 써요. 식을 손으로 구현해 보려면 [XOR 직접 짜 보기](/2026/11/03/xor-forward-backprop/)를 보세요.
 
@@ -211,8 +226,13 @@ print(w.grad)
 (3 * w).backward()
 print(w.grad)
 ```
-→ `tensor(3.)`<br>
-→ `tensor(6.)` : $$3w$$의 기울기는 3인데 6이 됐어요.
+
+```text
+tensor(3.)
+tensor(6.)
+```
+
+$$3w$$의 기울기는 3인데 두 번째는 6이 됐어요.
 
 **코드가 맞아도 학습이 멈출 수 있어요.** 시드만 0부터 29까지 바꿔 lr 1.0, epoch 1000으로 돌려 봤어요.
 
@@ -237,7 +257,12 @@ print(w.grad)
 # ❌
 param -= lr * param.grad
 ```
-→ `RuntimeError: a leaf Variable that requires grad is being used in an in-place operation.` : 기울기를 추적 중인 가중치를 그 자리에서 바꿨다는 뜻이에요.
+
+```text
+RuntimeError: a leaf Variable that requires grad is being used in an in-place operation.
+```
+
+기울기를 추적 중인 가중치를 그 자리에서 바꿨다는 뜻이에요.
 
 **직접 치기**: 학습이 끝나면 평가 모드로 바꾸고 기록을 끈 채 예측해요.
 
@@ -248,8 +273,11 @@ with torch.no_grad():
 print(y_pred.flatten())
 print((y_pred > 0.5).float().flatten())
 ```
-→ `tensor([0.0241, 0.9694, 0.9692, 0.0511])`<br>
-→ `tensor([0., 1., 1., 0.])`
+
+```text
+tensor([0.0241, 0.9694, 0.9692, 0.0511])
+tensor([0., 1., 1., 0.])
+```
 
 | 입력 | 모델의 답 | 0.5 기준 판단 | 정답 |
 |---|---|---|---|
@@ -279,7 +307,12 @@ for epoch in range(1000):
     optimizer.zero_grad()
 print(loss.item())
 ```
-→ `0.034896522760391235` : 직접 쓴 함수로 돌린 1000번째 loss와 소수점 끝까지 같아요.
+
+```text
+0.034896522760391235
+```
+
+직접 쓴 함수로 돌린 1000번째 loss와 소수점 끝까지 같아요.
 
 [PyTorch DQN 튜토리얼](https://docs.pytorch.org/tutorials/intermediate/reinforcement_q_learning.html)과 비교하면 자리가 이렇게 대응돼요.
 

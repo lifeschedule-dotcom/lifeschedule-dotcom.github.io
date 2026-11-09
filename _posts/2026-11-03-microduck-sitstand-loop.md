@@ -132,7 +132,12 @@ for step in range(600):      # 12초
         print(f"{t:.0f}초 {z:.2f}cm")
 ```
 
-→ `3초 11.65cm`, `6초 6.00cm`, `9초 11.57cm`, `12초 11.58cm`
+```text
+3초 11.65cm
+6초 6.00cm
+9초 11.57cm
+12초 11.58cm
+```
 
 <figure><img src="/assets/img/microduck/loop.png" alt="명령 → 관측 61개 → ONNX 정책 61→14 → 목표 관절각 14개 → BAM 모터와 MuJoCo 물리 계산 4번, 0.02초마다 반복" width="1227" height="555"></figure>
 
@@ -173,9 +178,7 @@ cmd[7:13] = self.body_cmd     # 몸통 6칸
 self.command = cmd
 ```
 
-→ 149단계(2.98초): `cmd = [0, 0, 0, … 0]`
-
-→ 150단계(3.00초): `cmd = [1, 0, 0, … 0]`
+149단계(2.98초)에는 `cmd = [0, 0, 0, … 0]`, 150단계(3.00초)에는 `cmd = [1, 0, 0, … 0]`이에요.
 
 `get_observations()`(656행)는 이 명령을 몸 상태와 이어 붙여 정책 입력 61개를 만들어요.
 

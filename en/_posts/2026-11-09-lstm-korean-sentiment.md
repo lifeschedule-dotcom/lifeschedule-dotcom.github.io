@@ -606,10 +606,10 @@ _ = run_all(tokenize, 0)
 
 <figure><img src="/assets/img/lstm-sentiment/en/seeds.png" alt="Results over 10 seeds. First-2-character tokens lowered the UNK rate for every seed, while test accuracy swung widely from seed to seed." width="1520" height="640"></figure>
 
-| Tokenization | Mean UNK | Mean test | Lowest test | Highest test |
+| Tokens | Avg UNK | Avg test | Min test | Max test |
 |---|---|---|---|---|
 | Whitespace | 56.6% | 44.2% | 25.0% | 70.8% |
-| First 2 characters | 36.0% | 58.3% | 41.7% | 79.2% |
+| First 2 chars | 36.0% | 58.3% | 41.7% | 79.2% |
 
 1. **UNK clearly went down.** It dropped for all 10 seeds.
 2. **Mean accuracy went up, but it swings a lot.** For seeds 0 and 7 it actually dropped, so a single test run is not enough to say the change helped.
@@ -676,12 +676,12 @@ A larger embed_size means more numbers to learn. With little data, such as 96 se
 
 ### Hyperparameters vs values set by the data
 
-| Value | In this post | Who decides |
+| Value | Here | Set by |
 |---|---|---|
-| `embed_size` | 16 | A hyperparameter you choose |
-| `hidden_size` | 32 | A hyperparameter you choose |
-| `vocab_size` | `len(vocab)` | Set by the data (vocabulary size) |
-| `num_classes` | 2 | Set by the data (number of labels) |
+| `embed_size` | 16 | You choose |
+| `hidden_size` | 32 | You choose |
+| `vocab_size` | `len(vocab)` | The data |
+| `num_classes` | 2 | The data |
 
 Getting a data-defined value wrong causes an error. For example, if `vocab_size` is smaller than the vocabulary, large IDs raise an `IndexError`.
 

@@ -22,6 +22,7 @@ spacious: true
 .content .trio img { border: 1px solid #e6dde0; }
 .content .trio figcaption { font-size: 16px; text-align: center; margin-top: 4px; }
 .content figure.pipe img { max-width: 480px; display: block; margin: 0 auto; }
+.content div.language-text pre, .content div.language-text code { white-space: pre-wrap; overflow-wrap: anywhere; }
 @media (max-width: 560px) {
   .content th, .content td { padding: 7px 5px; font-size: 16px; }
   .content .trio { grid-template-columns: 1fr; }

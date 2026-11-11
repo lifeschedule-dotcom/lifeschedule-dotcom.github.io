@@ -4,7 +4,7 @@ section: physical-ai
 sub: nvidia
 ref: sketch-to-image-api
 date: 2026-11-11 11:00:00 +0900
-description: 그림판 낙서 한 장을 gpt-4o-mini로 읽고 gpt-image-1-mini로 다시 그리는 코드를 단계별로 짰어요. 그림→글→그림 두 단계의 코드 구성, 프롬프트를 바꿀 때마다 달라진 실제 결과, 같은 낙서를 GPT-6.1 Sol에 줬을 때의 차이까지 비교해요.
+description: 그림판 낙서 한 장을 gpt-4o-mini로 읽고 gpt-image-1-mini로 다시 그리는 코드를 단계별로 짰어요. 그림도 소리도 모델 사이는 글로 이어진다는 구조, 그림→글→그림 두 단계의 코드 구성, 프롬프트를 바꿀 때마다 달라진 실제 결과, 같은 낙서를 GPT-6.1 Sol에 줬을 때의 차이까지 비교해요.
 spacious: true
 ---
 
@@ -38,10 +38,10 @@ spacious: true
 }
 </style>
 
-<div class="wc"><p><b>멀티모달 API는 왜 두 개를 이어 쓸까요?</b><br>
+<div class="wc"><p><b>멀티모달 모델은 무엇으로 이어질까요?</b><br>
 멀티모달(multimodal)은 글·그림·소리처럼 여러 종류의 데이터를 함께 다루는 AI예요.<br>
-이 글에서는 그림을 보고 글로 답하는 데 OpenAI <a href="https://developers.openai.com/api/docs/guides/images-vision">Responses API</a>를, 그림을 새로 만드는 데 <a href="https://developers.openai.com/api/reference/resources/images/methods/generate">Images API</a>를 썼어요.<br>
-두 API를 어떻게 잇는지 알면, 그림을 받아 그림을 돌려주는 앱의 뼈대를 직접 짤 수 있어요. (2026년 11월 11일 기준)</p></div>
+모델 여러 개를 이어 붙이면 그림도 소리도 한 번은 <b>글(텍스트)</b>로 바뀌어 다음 모델로 넘어가요. 이 글에서는 그림 → 글 → 그림을 OpenAI <a href="https://developers.openai.com/api/docs/guides/images-vision">Responses API</a>와 <a href="https://developers.openai.com/api/reference/resources/images/methods/generate">Images API</a>로 이었어요.<br>
+그래서 중간에 오가는 글을 보면 결과가 왜 그렇게 나왔는지, 프롬프트의 어디를 고칠지 보여요. (2026년 11월 11일 기준)</p></div>
 
 그림판 낙서 한 장을 그림으로 바꾸는 코드를 두 단계로 짜고, 프롬프트를 세 가지로 바꿔 가며 결과를 비교했어요. 마지막에는 같은 낙서를 GPT-6.1 Sol에 그대로 줘서 차이를 봤어요.
 
@@ -62,6 +62,17 @@ spacious: true
 <figure class="pipe"><img src="/assets/img/sketch-artist/pipeline.png" alt="1단계: 손그림 PNG를 base64 글자로 바꿔 gpt-4o-mini(Responses API)에 보내 한국어 설명과 영어 프롬프트를 받는다. 2단계: 영어 프롬프트만 gpt-image-1-mini(Images API)에 보내 base64 글자로 받은 그림을 PNG로 저장한다. 손그림은 2단계로 넘어가지 않는다" width="774" height="907"></figure>
 
 코드는 위에서부터 칸 하나씩 이어 붙이면 돌아가요. `pip install openai python-dotenv`로 설치하고, 같은 폴더의 `.env`에 `OPENAI_API_KEY=sk-...`를 넣어요. API 요금이 드는 코드라 이 글에서 다시 실행하지는 않았어요. 출력 상자는 실습 때 조건마다 한 번씩 실행해 실제로 나온 결과예요.
+
+### 소리도 글을 거쳐요
+
+소리를 다루는 앱도 같은 모양이에요. 소리를 글로 받아쓰고, 그 글을 다시 소리로 읽어 줘요.
+
+| 흐름 | 글로 바꾸는 모델 | 글에서 만드는 모델 |
+|---|---|---|
+| 그림 → 글 → 그림 | gpt-4o-mini (그림 읽기) | gpt-image-1-mini (그림 그리기) |
+| 소리 → 글 → 소리 | gpt-4o-mini-transcribe (받아쓰기) | gpt-4o-mini-tts (읽어 주기) |
+
+통역 앱이라면 받아쓴 글을 LLM이 번역한 뒤 소리로 바꿔요. 소리 쪽 모델은 이 글에서 실행하지 않았어요. 두 모델은 <a href="https://developers.openai.com/api/docs/models/gpt-4o-mini-tts">2027년 초 지원 종료 예정</a>이고, OpenAI는 새 작업에 소리를 바로 주고받는 Realtime API를 권해요.
 
 ## <span class="no">2</span> 1단계: 낙서를 글로 읽기
 
@@ -246,7 +257,7 @@ GPT-6.1 Sol 쪽 과정은 Sol이 직접 밝힌 설명이고, 도구 기록으로
 
 ### ③ 무엇을 넘겨주느냐가 먼저일 수 있어요
 
-실습 코드는 1단계가 쓴 프롬프트에 구름 위치가 담기지 않았고, 2단계는 그 글만 받았어요. GPT-6.1 Sol은 Sol 설명대로라면 원본 낙서를 그림 도구에 함께 넘겼어요. 모델·화질·캔버스·프롬프트도 달라서 단정할 수는 없지만, 배치가 낙서와 같아진 건 원본 그림을 넘긴 덕분일 가능성이 커요. Images API에도 원본 그림을 함께 넘기는 [edit 기능](https://developers.openai.com/api/reference/python/resources/images/methods/edit)이 있어서, 같은 모델로 이 차이만 따로 비교해 볼 수 있어요.
+모델 사이가 글로 이어지면, 글에 담기지 않은 것은 다음 모델로 넘어가지 않아요. 실습 코드는 1단계가 쓴 프롬프트에 구름 위치가 담기지 않았고, 2단계는 그 글만 받았어요. GPT-6.1 Sol은 Sol 설명대로라면 원본 낙서를 그림 도구에 함께 넘겼어요. 모델·화질·캔버스·프롬프트도 달라서 단정할 수는 없지만, 배치가 낙서와 같아진 건 원본 그림을 넘긴 덕분일 가능성이 커요. Images API에도 원본 그림을 함께 넘기는 [edit 기능](https://developers.openai.com/api/reference/python/resources/images/methods/edit)이 있어서, 같은 모델로 이 차이만 따로 비교해 볼 수 있어요.
 
 ## <span class="no">7</span> 함수 정리
 
@@ -261,4 +272,4 @@ GPT-6.1 Sol 쪽 과정은 Sol이 직접 밝힌 설명이고, 도구 기록으로
 
 gpt-4o-mini와 gpt-image-1-mini는 OpenAI 모델 페이지에 지원 종료 예정(Deprecated)으로 표시돼 있어요. 실습한 2026년 11월 11일에는 둘 다 호출이 됐어요.
 
-<div class="done">🎉 그림을 글로, 글을 그림으로 잇는 두 단계 코드를 완성했어요!</div>
+<div class="done">🎉 그림도 소리도, 모델 사이를 잇는 건 글이에요!</div>

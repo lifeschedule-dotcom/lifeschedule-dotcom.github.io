@@ -17,15 +17,24 @@ spacious: true
 .content td, .content th { word-break: keep-all; overflow-wrap: normal; }
 .content td code { white-space: nowrap; }
 .content pre .nb { padding: 0; border: 0; border-radius: 0; background: none; }
-.content .trio { display: grid; grid-template-columns: 1.6fr 1fr 1.62fr; gap: 10px; align-items: end; margin: 18px 0; }
-.content .trio figure { margin: 0; }
-.content .trio img { border: 1px solid #e6dde0; }
-.content .trio figcaption { font-size: 16px; text-align: center; margin-top: 4px; }
+.content .flow3 { display: grid; grid-template-columns: 1.2fr auto 1.35fr auto 1fr; gap: 8px; align-items: center; margin: 20px 0; }
+.content .flow3 .card { border: 1px solid #e6dde0; border-radius: 10px; padding: 8px; background: #fff; }
+.content .flow3 .card img { width: 100%; height: auto; display: block; border-radius: 6px; }
+.content .flow3 .tag { display: block; font-weight: 700; font-size: 17px; margin-bottom: 6px; }
+.content .flow3 .card p { margin: 6px 0 0; font-size: 16px; line-height: 1.45; }
+.content .flow3 .prompt { font-family: Consolas, "Courier New", monospace; font-size: 14px; line-height: 1.45; background: #fbf1f4; border-radius: 6px; padding: 8px; overflow-wrap: anywhere; }
+.content .flow3 .arrow { text-align: center; color: #c8557b; font-weight: 700; font-size: 15px; line-height: 1.3; word-break: keep-all; }
+.content .flow3 .arrow .m { white-space: nowrap; }
+.content .flow3 .arrow b { display: block; font-size: 28px; }
+.content .flow3 .arrow .down { display: none; }
 .content figure.pipe img { max-width: 480px; display: block; margin: 0 auto; }
 .content div.language-text pre, .content div.language-text code { white-space: pre-wrap; overflow-wrap: anywhere; }
 @media (max-width: 560px) {
   .content th, .content td { padding: 7px 5px; font-size: 16px; }
-  .content .trio { grid-template-columns: 1fr; }
+  .content .flow3 { grid-template-columns: 1fr; gap: 4px; }
+  .content .flow3 .arrow .right { display: none; }
+  .content .flow3 .arrow .down { display: inline; }
+  .content .flow3 .card img { max-width: 230px; margin: 0 auto; }
 }
 </style>
 
@@ -36,10 +45,12 @@ spacious: true
 
 그림판 낙서 한 장을 그림으로 바꾸는 코드를 두 단계로 짜고, 프롬프트를 세 가지로 바꿔 가며 결과를 비교했어요. 마지막에는 같은 낙서를 GPT-6.1 Sol에 그대로 줘서 차이를 봤어요.
 
-<div class="trio">
-<figure><img src="/assets/img/sketch-artist/sketch.png" alt="그림판에 검은 선으로 그린 낙서: 구름 다섯 덩이 가운데 구름 위에 사람이 누워 있다" width="1536" height="960"><figcaption>① 그림판 낙서 「구름침대」</figcaption></figure>
-<figure><img src="/assets/img/sketch-artist/mini-result.jpg" alt="실습 코드 결과: 분홍·노랑 하늘과 구름 속에 색이 없는 선화 몸의 사람이 똑바로 누워 있다" width="1024" height="1024"><figcaption>② 실습 코드 결과</figcaption></figure>
-<figure><img src="/assets/img/sketch-artist/chatgpt-3d.jpg" alt="GPT-6.1 Sol 결과: 분홍 노을 하늘에 글리터가 반짝이는 구름 다섯 덩이, 가운데 구름에서 잠옷 입은 아이가 구름 베개를 안고 잠들어 있다" width="1860" height="1146"><figcaption>③ GPT-6.1 Sol (낙서 첨부)</figcaption></figure>
+<div class="flow3">
+<div class="card"><span class="tag">그림 · 그림판 낙서</span><img src="/assets/img/sketch-artist/sketch.png" alt="그림판에 검은 선으로 그린 낙서: 구름 다섯 덩이 가운데 구름 위에 사람이 누워 있다" width="1536" height="960"><p>제목 「구름침대」</p></div>
+<div class="arrow"><b><span class="right">→</span><span class="down">↓</span></b><span class="m">gpt-4o-mini</span><br>읽고 씀</div>
+<div class="card"><span class="tag">글 · 영어 프롬프트</span><div class="prompt">A dreamcore illustration of a person lying on a fluffy cloud bed. The person has thin lines next to their head representing hair. … pastel sunset with pink and yellow hues …</div></div>
+<div class="arrow"><b><span class="right">→</span><span class="down">↓</span></b><span class="m">gpt-image-1-mini</span><br>글만 보고 그림</div>
+<div class="card"><span class="tag">그림 · 결과</span><img src="/assets/img/sketch-artist/mini-result.jpg" alt="실습 코드 결과: 분홍·노랑 하늘과 구름 속에 색이 없는 선화 몸의 사람이 똑바로 누워 있다" width="1024" height="1024"><p>응급환자?</p></div>
 </div>
 
 <div class="keyline">낙서 한 장 → 응급환자 → 3D 드림코어, 어디서 달라졌는지 코드부터 볼게요.</div>
@@ -204,15 +215,17 @@ draw(prompt, "결과.png")
 A dreamcore illustration of a person lying on a fluffy cloud bed. The person has thin lines next to their head representing hair. The clouds are rounded and puffy, creating a serene atmosphere. The sky features a pastel sunset with pink and yellow hues, and soft, cotton candy-like clouds sparkle with glitter, radiating a gentle glow. No text or signatures present.
 ```
 
-결과가 맨 위 ② 그림이에요. 하늘과 구름 색은 원한 대로 나왔어요. 그런데 사람이 색 없는 선화로, 차렷 자세로 누워 있어서 응급환자처럼 보여요.
+결과가 맨 위 흐름의 마지막 그림이에요. 하늘과 구름 색은 원한 대로 나왔어요. 그런데 사람이 색 없는 선화로, 차렷 자세로 누워 있어서 응급환자처럼 보여요.
 
 원인으로 의심되는 건 프롬프트 속 `thin lines next to their head representing hair`예요. 1단계가 낙서의 「가는 선」을 그대로 옮겨 적었고, 2단계 모델이 받는 건 이 영어 글뿐이에요. 이 문구를 빼고 다시 그려 확인하지는 않았어요. 자세를 정하는 말이 없었던 것과 `quality="low"`도 함께 영향을 줬을 수 있어요.
 
 ## <span class="no">5</span> 같은 낙서를 GPT-6.1 Sol에 주면
 
-같은 낙서를 첨부하고, 3D 렌더·클레이 질감·잠든 자세·「환자처럼 보이지 않게」를 적어 Codex의 GPT-6.1 Sol에 부탁했어요. 결과가 맨 위 ③ 그림이에요. 구름 다섯 덩이의 자리가 낙서와 거의 같아요.
+같은 낙서를 첨부하고, 3D 렌더·클레이 질감·잠든 자세·「환자처럼 보이지 않게」를 적어 Codex의 GPT-6.1 Sol에 부탁했어요. 구름 다섯 덩이의 자리가 낙서와 거의 같아요.
 
-| 다른 점 | ② 실습 코드 | ③ GPT-6.1 Sol |
+<figure><img src="/assets/img/sketch-artist/chatgpt-3d.jpg" alt="GPT-6.1 Sol 결과: 분홍 노을 하늘에 글리터가 반짝이는 구름 다섯 덩이, 가운데 구름에서 잠옷 입은 아이가 구름 베개를 안고 잠들어 있다" width="1860" height="1146"></figure>
+
+| 다른 점 | 실습 코드 | GPT-6.1 Sol |
 |---|---|---|
 | 그림 그리는 쪽이 받은 것 | 영어 프롬프트 글 | 영어 설명 + 원본 낙서 (Sol 설명) |
 | 그림 모델 · 화질 | gpt-image-1-mini · low | 별도 이미지 생성 도구 |
@@ -233,7 +246,7 @@ GPT-6.1 Sol 쪽 과정은 Sol이 직접 밝힌 설명이고, 도구 기록으로
 
 ### ③ 무엇을 넘겨주느냐가 먼저일 수 있어요
 
-②는 1단계가 쓴 프롬프트에 구름 위치가 담기지 않았고, 2단계는 그 글만 받았어요. ③은 Sol 설명대로라면 원본 낙서를 그림 도구에 함께 넘겼어요. 모델·화질·캔버스·프롬프트도 달라서 단정할 수는 없지만, 배치가 낙서와 같아진 건 원본 그림을 넘긴 덕분일 가능성이 커요. Images API에도 원본 그림을 함께 넘기는 [edit 기능](https://developers.openai.com/api/reference/python/resources/images/methods/edit)이 있어서, 같은 모델로 이 차이만 따로 비교해 볼 수 있어요.
+실습 코드는 1단계가 쓴 프롬프트에 구름 위치가 담기지 않았고, 2단계는 그 글만 받았어요. GPT-6.1 Sol은 Sol 설명대로라면 원본 낙서를 그림 도구에 함께 넘겼어요. 모델·화질·캔버스·프롬프트도 달라서 단정할 수는 없지만, 배치가 낙서와 같아진 건 원본 그림을 넘긴 덕분일 가능성이 커요. Images API에도 원본 그림을 함께 넘기는 [edit 기능](https://developers.openai.com/api/reference/python/resources/images/methods/edit)이 있어서, 같은 모델로 이 차이만 따로 비교해 볼 수 있어요.
 
 ## <span class="no">7</span> 함수 정리
 

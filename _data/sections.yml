@@ -32,6 +32,9 @@
     - id: microduck
       ko: Microduck
       en: Microduck
+    - id: jjakjjak
+      ko: 짹짹이
+      en: Jjakjjak
 
 - id: daily
   en: Daily

@@ -267,10 +267,4 @@ PoE는 관절값에서 손끝 자세를 계산합니다. URDF(Universal Robot De
 link는 로봇의 몸체·형상·관성 정보를, joint는 링크 사이의 연결과 회전·직선 이동 방식을 나타냅니다.
 로봇 그림에서 M과 관절축을 구하는 계산, 로봇 구조를 파일로 기술하는 일을 구분하면 됩니다.
 
-## 학습 확인표
-
-혼자 설명하거나 계산할 수 있는 항목에 체크해 보세요.
-
-<div class="robot-demo study-check"><b>학습 확인표</b> <output>0/9개</output><label><input type="checkbox"> 회전행렬 R과 위치벡터 p로 변환행렬 T를 만들 수 있다.</label><label><input type="checkbox"> 벡터 ω를 반대칭행렬 [ω]로 바꿀 수 있다.</label><label><input type="checkbox"> 회전관절의 ω̂와 q로 스크루 축 S를 구할 수 있다.</label><label><input type="checkbox"> 회전관절과 직동관절에서 θ의 의미가 어떻게 다른지 안다.</label><label><input type="checkbox"> 행렬지수로 강체변환을 표현하는 이유를 설명할 수 있다.</label><label><input type="checkbox"> 2관절 로봇의 M, S₁, S₂를 구해 PoE에 넣을 수 있다.</label><label><input type="checkbox"> Space Form과 Body Form이 같은 자세를 계산한다는 것을 안다.</label><label><input type="checkbox"> 렌치는 힘과 모멘트를 묶은 표현임을 안다.</label><label><input type="checkbox"> URDF에서 link와 joint의 역할을 구분할 수 있다.</label></div>
-
 참고: [Modern Robotics 강체운동의 지수좌표](https://modernrobotics.northwestern.edu/nu-gm-book-resource/3-3-3-exponential-coordinates-of-rigid-body-motion/), [Space Form PoE](https://modernrobotics.northwestern.edu/nu-gm-book-resource/4-1-1-product-of-exponentials-formula-in-the-space-frame/), [Body Form PoE](https://modernrobotics.northwestern.edu/nu-gm-book-resource/4-1-2-product-of-exponentials-formula-in-the-end-effector-frame/). 2026년 11월 18일 확인.

@@ -36,6 +36,19 @@
       ko: 짹짹이
       en: Jjakjjak
 
+- id: personal-projects
+  en: Personal Projects
+  name:
+    ko: 개인 프로젝트
+    en: Personal Projects
+  desc:
+    ko: 직접 만든 프로젝트와 실행해 볼 수 있는 데모
+    en: Projects I build, with demos you can try
+  subs:
+    - id: robotics
+      ko: 로봇·센서
+      en: Robotics & Sensors
+
 - id: daily
   en: Daily
   name:

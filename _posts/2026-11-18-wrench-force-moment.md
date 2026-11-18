@@ -1,10 +1,10 @@
 ---
-title: "렌치란? 힘과 모멘트를 하나로 표현하기"
+title: "렌치 이해: 힘의 작용점에서 모멘트와 일률까지"
 section: physical-ai
 sub: nvidia
 ref: wrench-force-moment
 date: 2026-11-18 14:00:00 +0900
-description: 힘만으로는 강체에 작용하는 회전 효과를 모두 표현할 수 없습니다. 작용점, 모멘트, 렌치와 트위스트의 관계를 설명합니다.
+description: 수직거리와 힘에서 모멘트를 계산하고 원점에 따른 변화, 렌치의 6차원 표현과 역전치 변환을 일률로 설명합니다.
 spacious: true
 ---
 
@@ -23,110 +23,197 @@ spacious: true
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.querySelector('.content')||document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
 
-## 1. 렌치(Wrench)란?
+앞에서는 물체가 어떻게 움직이는지 트위스트로 표현했습니다.
+이번에는 그 물체의 어느 점에 어떤 힘이 작용하는지 보겠습니다.
+힘만 적으면 빠지는 회전 효과를 모멘트로 계산하고, 둘을 하나의 렌치로 묶겠습니다.
 
-앞에서는 강체가 어떻게 움직이는지 트위스트로 표현했습니다.
-이번에는 강체에 어떤 힘이 작용하는지 살펴보겠습니다.
+## 1. 힘의 작용점을 함께 알아야 하는 이유
 
-물체를 밀면 이동할 수 있고, 같은 힘이라도 어디를 미느냐에 따라 회전 효과가 달라집니다.
-따라서 강체에 가해지는 작용을 표현하려면 힘과 모멘트를 함께 알아야 합니다.
-이를 하나의 6차원 벡터로 묶은 것이 렌치입니다.
+손끝 원점에서 0.5 m 떨어진 곳을 2 N의 힘으로 밀어 보겠습니다.
+힘의 방향이 원점을 향하면 그 힘은 원점을 기준으로 물체를 돌리는 효과가 없습니다.
+반대로 원점에서 작용점으로 향하는 선분에 수직으로 밀면 회전 효과가 생깁니다.
 
-$$\boxed{\mathcal F=\begin{bmatrix}m\\f\end{bmatrix}}$$
+이 회전 효과를 원점에 대한 모멘트(moment)라고 합니다.
+크기는 힘 F와 원점에서 힘의 작용선까지의 수직거리 d의 곱입니다.
 
-- m: 기준 원점에 대한 모멘트(moment), N·m
-- f: 힘(force), N
+$$\lVert m\rVert=d\lVert f\rVert$$
 
-이 글은 Modern Robotics의 성분 순서인 모멘트 먼저, 힘 나중을 사용합니다.
+기호 $$\lVert\cdot\rVert$$는 벡터의 길이를 뜻합니다.
+작용선은 힘 화살표를 앞뒤로 늘인 직선입니다.
+원점에서 작용점까지의 벡터를 r, r과 f 사이 각도를 φ라고 하면 직각삼각형에서 다음 관계가 나옵니다.
 
-## 2. 힘이 같아도 모멘트가 달라지는 이유
+$$d=\lVert r\rVert\sin\varphi$$
 
-모멘트는 힘이 기준점 주위에 만드는 회전 효과를 나타냅니다.
-원점에서 힘이 작용하는 점까지의 벡터를 r이라고 하면 다음과 같습니다.
+따라서 모멘트의 크기는 다음과 같습니다.
+
+$$\lVert m\rVert=\lVert r\rVert\lVert f\rVert\sin\varphi$$
+
+<figure><img src="/assets/img/robot-kinematics/moment-arm.png" alt="원점 O에서 힘 작용선에 내린 수선의 길이는 d=r sinφ이고 모멘트 크기는 dF입니다."></figure>
+
+그림에서 P의 삼각형 안쪽 각도는 r과 f의 방향을 둘 다 뒤집어 만든 각입니다.
+두 방향을 함께 뒤집으면 사이 각도는 같으므로 이 각도도 φ입니다.
+
+여기서 sinφ가 나오는 이유는 회전에 기여하는 수직거리만 사용하기 때문입니다.
+φ=0°이면 d=0이고, φ=90°이면 d는 r의 길이와 같습니다.
+
+크기와 회전축 방향을 함께 담는 연산이 외적입니다.
+앞의 트위스트에서 쓴 외적과 같은 규칙을 사용합니다.
 
 $$\boxed{m=r\times f}$$
 
-힘의 크기만이 아니라 작용점까지의 거리와 방향이 함께 들어갑니다.
-예를 들어 원점에서 x 방향으로 0.5 m 떨어진 곳에, y 방향으로 2 N의 힘이 작용한다고 하겠습니다.
+방향은 오른손 법칙으로 정합니다.
+오른손 손가락을 r에서 f로 감으면 엄지가 모멘트의 양의 축을 향합니다.
+xy 평면에서 반시계 회전 효과는 +z 방향입니다.
+힘의 단위는 N, 모멘트는 N·m입니다.
 
-$$r=\begin{bmatrix}0.5\\0\\0\end{bmatrix}\ \mathrm m,\qquad f=\begin{bmatrix}0\\2\\0\end{bmatrix}\ \mathrm N$$
+## 2. 같은 손끝에 힘을 가해 계산하기
 
-외적을 계산하면 다음과 같습니다.
+앞의 물체좌표계 b를 그대로 사용하겠습니다.
+점 P의 b 좌표와 P에 작용하는 힘의 b 성분은 다음과 같습니다.
 
-$$m=r\times f=\begin{bmatrix}0\\0\\1\end{bmatrix}\ \mathrm{N\cdot m}$$
+$$r_b=(0.5,0,0)^T\ \mathrm m,\qquad f_b=(0,2,0)^T\ \mathrm N$$
 
-따라서 이 힘은 +z 방향으로 1 N·m의 모멘트를 만듭니다.
-모멘트의 방향은 오른손 법칙으로 정해집니다.
-같은 힘이라도 작용선을 기준 원점으로부터 더 멀리 옮기면 모멘트가 달라집니다.
+모멘트에 쓰는 r_b는 **기준 원점에서 힘의 작용점으로 향하는 벡터**입니다.
+성분별 외적을 계산하면 다음과 같습니다.
 
-## 3. 여섯 성분으로 힘의 작용을 적기
+$$m_b=\begin{bmatrix}r_y f_z-r_z f_y\\r_z f_x-r_x f_z\\r_x f_y-r_y f_x\end{bmatrix}=\begin{bmatrix}0\\0\\0.5\times2-0\times0\end{bmatrix}=\begin{bmatrix}0\\0\\1\end{bmatrix}$$
 
-앞의 모멘트와 힘을 그대로 위아래로 놓으면 렌치가 됩니다.
+평면 위에서 b의 +x 위치를 +y 방향으로 미는 힘이므로 +z 모멘트가 나옵니다.
+길이 0.5 m와 수직 힘 2 N을 곱한 1 N·m와도 일치합니다.
 
-$$\mathcal F=\begin{bmatrix}0\\0\\1\\0\\2\\0\end{bmatrix}$$
+## 3. 힘과 모멘트를 묶는 렌치
 
-위 세 성분은 회전 효과인 모멘트이고, 아래 세 성분은 힘입니다.
-트위스트와 모양은 비슷하지만 담고 있는 물리량이 다릅니다.
+렌치(wrench)는 모멘트와 힘을 함께 적은 6차원 벡터입니다.
+이 글에서는 Modern Robotics의 순서로 위에 모멘트, 아래에 힘을 놓겠습니다.
 
-| 트위스트 | 렌치 |
-|---|---|
-| 각속도와 선운동 성분 | 모멘트와 힘 |
-| 강체의 순간 운동 | 강체에 가해지는 힘의 작용 |
+$$\boxed{\mathcal F=\begin{bmatrix}m\\f\end{bmatrix}}$$
 
-실제 로봇 손목의 힘·토크 센서를 생각하면 의미가 분명해집니다.
-손끝에 물체가 매달려 있을 때, 센서는 물체가 당기는 힘과 센서 원점에 대한 회전 효과를 함께 표현해야 합니다.
+예제의 b 기준 렌치는 다음과 같습니다.
 
-## 4. 좌표계가 바뀌면 모멘트도 달라진다
+$$\mathcal F_b=\begin{bmatrix}0\\0\\1\\0\\2\\0\end{bmatrix}$$
 
-같은 힘도 어느 축과 어느 원점을 기준으로 표현했는지 알아야 합니다.
-앞의 숫자를 손끝 좌표계 b에서 표현한 값이라고 하겠습니다.
+첫 세 성분의 단위는 N·m, 뒤 세 성분의 단위는 N입니다.
+여섯 숫자를 같은 물리량으로 더하는 것이 아니라, 힘의 작용을 이 두 종류로 함께 보관합니다.
+여러 힘이 작용하면 힘끼리 더하고, **같은 원점에 대해 계산한 모멘트끼리** 더합니다.
+별도의 순수 토크가 가해지면 그것도 모멘트에 더합니다.
 
-바닥 기준 s에서 손끝의 위치는 $$(1,0.5,0)$$ m이고, 손끝의 방향은 z축으로 +90° 돌아 있습니다.
-손끝 앞에 붙은 점 P의 바닥 좌표는 $$(1,1,0)$$ m입니다.
-b의 +y 방향은 s에서 왼쪽을 향하므로, 이 점에 작용하는 힘은 s에서 $$(-2,0,0)^T$$ N입니다.
+트위스트가 각속도와 선운동 성분을 묶었다면, 렌치는 그 두 운동에 대응하는 모멘트와 힘을 묶습니다.
 
-<figure><img src="/assets/img/robot-kinematics/wrench.png" alt="손끝 앞의 점 P에 왼쪽으로 2 N이 작용합니다. 손끝 원점에 대한 모멘트는 1 N m, 바닥 원점에 대한 모멘트는 2 N m입니다."></figure>
+## 4. 원점을 바꾸면 모멘트도 바뀌는 이유
 
-s 원점에 대한 모멘트를 계산하면 다음과 같습니다.
+s에서 본 b의 자세는 앞과 같습니다.
 
-$$m_s=\begin{bmatrix}1\\1\\0\end{bmatrix}\times\begin{bmatrix}-2\\0\\0\end{bmatrix}=\begin{bmatrix}0\\0\\2\end{bmatrix}\ \mathrm{N\cdot m}$$
+$$R=R_z(90^\circ),\qquad p=(1,0.5,0)^T$$
 
-따라서 같은 렌치의 두 표현은 다음과 같습니다.
+힘은 방향벡터이므로 원점 위치 p를 더하지 않고 회전만 적용합니다.
+작용점은 위치이므로 p를 더합니다.
 
-$$\mathcal F_b=\begin{bmatrix}0\\0\\1\\0\\2\\0\end{bmatrix},\qquad\mathcal F_s=\begin{bmatrix}0\\0\\2\\-2\\0\\0\end{bmatrix}$$
+$$f_s=Rf_b=(-2,0,0)^T$$
 
-모멘트가 1에서 2로 바뀐 이유는 회전 효과를 계산한 기준 원점이 달라졌기 때문입니다.
-이처럼 렌치의 기준을 바꿀 때는 힘의 방향뿐 아니라 원점 이동도 반영해야 합니다.
+$$r_s=p+Rr_b=(1,1,0)^T$$
 
-일반적인 변환식은 T에서 만든 Adjoint를 사용합니다.
+s 원점에서 모멘트를 다시 계산해 보겠습니다.
 
-$$\boxed{\mathcal F_s=\operatorname{Ad}_T^{-T}\mathcal F_b}$$
+$$m_s=r_s\times f_s=\begin{bmatrix}0\\0\\1\times0-1\times(-2)\end{bmatrix}=\begin{bmatrix}0\\0\\2\end{bmatrix}$$
 
-$$^{-T}$$는 역행렬을 구한 뒤 전치한다는 뜻입니다.
-트위스트의 변환식 $$\mathcal V_s=\operatorname{Ad}_T\mathcal V_b$$와 구분해서 읽어야 합니다.
+손끝 원점에서는 작용선까지의 거리가 0.5 m였고, s 원점에서는 1 m입니다.
+힘은 같지만 기준 원점이 달라져 모멘트가 1 N·m에서 2 N·m로 달라집니다.
 
-## 5. 렌치와 트위스트를 함께 쓰면
+<figure><img src="/assets/img/robot-kinematics/wrench.png" alt="P=(1,1)에서 왼쪽으로 작용하는 2N 힘은 손끝 원점에 대해 1Nm, s 원점에 대해 2Nm입니다."></figure>
 
-힘과 그 힘이 작용하는 점의 속도를 내적하면 순간 일률을 구할 수 있습니다.
-일률은 단위 시간당 전달되는 일이며 단위는 W입니다.
-렌치와 트위스트를 같은 기준에서 표현하면 다음 식으로 계산할 수 있습니다.
+일반식에서도 이 원점 차이를 확인할 수 있습니다.
 
-$$\boxed{\mathcal P=\mathcal F^T\mathcal V=m\cdot\omega+f\cdot v}$$
+$$m_s=(p+Rr_b)\times(Rf_b)$$
 
-앞의 예에서 점 P가 왼쪽으로 2 m/s 움직이고 힘도 왼쪽으로 2 N 작용한다면 일률은 4 W입니다.
-같은 운동의 바디 트위스트가 다음과 같다고 하겠습니다.
+외적은 덧셈에 분배되며, 회전행렬은 외적의 방향과 크기를 함께 회전시킵니다.
+즉 $$(Rr_b)\times(Rf_b)=R(r_b\times f_b)$$입니다.
 
-$$\mathcal V_b=\begin{bmatrix}0\\0\\2\\0\\1\\0\end{bmatrix}$$
+$$\boxed{m_s=p\times(Rf_b)+Rm_b}$$
 
-b 기준의 렌치와 곱하면 같은 값이 나옵니다.
+Rm_b는 기존 모멘트의 방향을 바꾼 항이고, p×Rf_b는 기준 원점의 차이에서 추가된 항입니다.
+힘의 식과 합쳐 계수를 모으면 렌치 변환행렬도 직접 만들 수 있습니다.
+
+$$\begin{bmatrix}m_s\\f_s\end{bmatrix}=\begin{bmatrix}R&[p]R\\0&R\end{bmatrix}\begin{bmatrix}m_b\\f_b\end{bmatrix}$$
+
+오른쪽 위 블록은 힘이 원점 차이에 따라 모멘트를 만든다는 것을 나타냅니다.
+트위스트의 Adjoint에서는 왼쪽 아래에 놓였던 블록입니다.
+이 차이는 두 벡터가 어떻게 짝을 이루는지 살펴보면 더 분명해집니다.
+
+## 5. 트위스트와 렌치의 내적이 일률인 이유
+
+힘 f가 작용하는 점이 작은 거리 dx만큼 움직이면, 힘이 한 일은 $$dW=f\cdot dx$$입니다.
+이 일을 걸린 시간 dt로 나눈 값이 일률(power)입니다.
+
+$$\mathcal P=\frac{dW}{dt}=f\cdot\dot x$$
+
+힘 방향으로 움직인 속도 성분에 힘을 곱한 값이며, 단위는 W입니다.
+강체의 점 속도 $$\dot x=\omega\times r+v$$를 넣겠습니다.
+여기서는 모든 벡터를 같은 기준으로 표현합니다.
+
+$$\mathcal P=f\cdot(\omega\times r)+f\cdot v$$
+
+세 벡터의 스칼라 삼중곱은 순환 순서를 바꾸어도 같습니다.
+따라서 $$f\cdot(\omega\times r)=\omega\cdot(r\times f)$$입니다.
+오른쪽 괄호가 모멘트 m이므로 다음 식이 됩니다.
+
+$$\boxed{\mathcal P=m\cdot\omega+f\cdot v=\mathcal F^T\mathcal V}$$
+
+위의 세 성분끼리는 모멘트×각속도, 아래 세 성분끼리는 힘×선운동 성분으로 짝지어집니다.
+이것이 렌치를 (m,f), 트위스트를 (ω,v) 순서로 함께 쓰는 이유입니다.
+
+예제의 공간 트위스트와 렌치는 다음과 같습니다.
+
+$$\mathcal V_s=(0,0,2,\;0,-2,0)^T$$
+
+$$\mathcal F_s=(0,0,2,\;-2,0,0)^T$$
+
+$$\mathcal P=2\times2+(-2)\times0+0\times(-2)=4\ \mathrm W$$
+
+점 P의 실제 속도는 (−2,0,0) m/s였으므로, 힘과 직접 내적해도 4 W입니다.
+
+$$(-2,0,0)\cdot(-2,0,0)=4$$
+
+b 기준에서는 $$\mathcal V_b=(0,0,2,\;0,1,0)^T$$였고 $$\mathcal F_b=(0,0,1,\;0,2,0)^T$$입니다.
 
 $$\mathcal P=1\times2+2\times1=4\ \mathrm W$$
 
-기준 좌표계를 바꾸어도 일률은 같아야 합니다.
-이 관계가 렌치와 트위스트의 좌표 변환식을 연결합니다.
+같은 힘의 같은 운동에 대한 일률이므로 어느 기준으로 계산해도 같습니다.
 
-지금까지 T로 자세를, 트위스트로 운동을, 렌치로 힘의 작용을 표현했습니다.
-다음에는 운동의 표현으로 돌아가겠습니다.
-관절축과 관절각을 알고 있을 때 손끝의 T를 어떻게 계산하는지, 행렬지수와 PoE로 연결해 보겠습니다.
+## 6. 왜 렌치는 역전치로 변환할까?
 
-참고: [Modern Robotics 렌치](https://modernrobotics.northwestern.edu/nu-gm-book-resource/3-4-wrenches/). 2026년 11월 18일 확인.
+트위스트의 변환행렬을 $$A=\operatorname{Ad}_T$$라고 줄이겠습니다.
+
+$$\mathcal V_s=A\mathcal V_b,\qquad\mathcal V_b=A^{-1}\mathcal V_s$$
+
+일률의 기준 독립성을 쓰고 두 번째 식을 대입합니다.
+
+$$\mathcal F_s^T\mathcal V_s=\mathcal F_b^T A^{-1}\mathcal V_s$$
+
+오른쪽 앞부분을 하나의 전치된 벡터로 쓰면 다음과 같습니다.
+
+$$\mathcal F_b^TA^{-1}=(A^{-T}\mathcal F_b)^T$$
+
+여기서 $$A^{-T}=(A^{-1})^T$$는 역행렬을 전치한 것입니다.
+어떤 운동 트위스트와 짝지어도 일률이 같아야 하므로 계수 벡터가 일치합니다.
+
+$$\boxed{\mathcal F_s=\operatorname{Ad}_T^{-T}\mathcal F_b}$$
+
+앞에서 힘과 작용점을 직접 변환해 얻은 6×6 블록행렬이 바로 이 역전치입니다.
+역행렬은 트위스트를 반대 방향으로 바꾸는 데서, 전치는 내적의 곱 순서를 정리하는 데서 나왔습니다.
+
+### 이해도 확인
+
+힘이 b의 +y 방향으로 2 N 작용할 때, 작용점이 b 원점에서 +x로 0.25 m 떨어져 있다면 b 기준 모멘트는 얼마일까요?
+
+<details><summary>풀이 보기</summary>
+
+$$m_b=(0.25,0,0)^T\times(0,2,0)^T=(0,0,0.5)^T\ \mathrm{N\!\cdot m}$$
+
+<p>수직거리 0.25 m에 힘 2 N을 곱하면 크기 0.5 N·m이고, 회전 효과는 +z 방향입니다.</p>
+</details>
+
+지금까지 자세 T, 순간 운동 𝒱, 힘의 작용 𝓕를 구분했습니다.
+관절각으로 손끝 자세를 계산하는 PoE에는 운동의 축과 변환을 사용합니다.
+렌치는 이렇게 구한 로봇 자세에서 힘과 토크를 다룰 때 쓰는 표현입니다.
+
+참고: [Modern Robotics 렌치와 일률, 좌표 변환](https://modernrobotics.northwestern.edu/nu-gm-book-resource/3-4-wrenches/). 2026년 11월 18일 확인.

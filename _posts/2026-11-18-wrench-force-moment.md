@@ -1,7 +1,8 @@
 ---
 title: "렌치 이해: 힘의 작용점에서 모멘트와 일률까지"
 section: physical-ai
-sub: nvidia
+sub: dynamics
+series_order: 5
 ref: wrench-force-moment
 date: 2026-11-18 14:00:00 +0900
 description: 수직거리와 힘에서 모멘트를 계산하고 원점에 따른 변화, 렌치의 6차원 표현과 역전치 변환을 일률로 설명합니다.

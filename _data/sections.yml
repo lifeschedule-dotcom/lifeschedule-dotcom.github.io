@@ -35,6 +35,13 @@
     - id: jjakjjak
       ko: 짹짹이
       en: Jjakjjak
+    - id: dynamics
+      ko: 동역학
+      en: Dynamics
+      url:
+        ko: /physical-ai/dynamics/
+      desc:
+        ko: 로봇의 움직임과 힘을 공부합니다. 기구학 기초부터 차례로 정리합니다.
 
 - id: personal-projects
   en: Personal Projects

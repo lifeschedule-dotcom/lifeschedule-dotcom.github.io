@@ -1,0 +1,13 @@
+.subsection .intro p { max-width: 42em; font-size: 18px; color: var(--ink); }
+.subsection .back { font-size: 17px; }
+.series-heading { margin: 8px 0 12px; font-size: 20px; }
+.series-list { display: grid; gap: 12px; padding: 0; margin: 0; list-style: none; }
+.series-list .card { display: grid; grid-template-columns: 1.4em minmax(0, 1fr); gap: 14px; padding: 20px 24px; }
+.series-number { color: var(--accent); font-size: 24px; font-weight: 700; line-height: 1.35; }
+.series-list h2 { font-size: 22px; word-break: keep-all; overflow-wrap: anywhere; }
+.series-list .excerpt { margin: 0; font-size: 17px; color: var(--ink); word-break: keep-all; overflow-wrap: anywhere; }
+@media (max-width: 560px) {
+  .series-list .card { gap: 8px; padding: 16px; }
+  .series-list h2 { font-size: 20px; }
+  .series-number { font-size: 22px; }
+}

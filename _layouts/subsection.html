@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="{{ page.lang }}">
+<head>
+{% include head.html %}
+<link rel="stylesheet" href="{{ '/assets/css/subsection.css' | relative_url }}">
+</head>
+<body class="inner">
+{% include nav.html %}
+{% assign ui = site.data.ui[page.lang] %}
+{% assign sec = site.data.sections | where: "id", page.section | first %}
+{% assign subinfo = sec.subs | where: "id", page.sub | first %}
+{% if page.lang == "en" %}{% assign root = "/en/" %}{% else %}{% assign root = "/" %}{% endif %}
+<main class="wrap subsection">
+  <section class="intro">
+    <a class="back" href="{{ root | append: page.section | append: '/' | relative_url }}">← {{ sec.name[page.lang] }}</a>
+    <h1>{{ subinfo[page.lang] }}</h1>
+    <p>{{ subinfo.desc[page.lang] }}</p>
+  </section>
+  {% assign posts = site.posts | where: "section", page.section | where: "sub", page.sub | where: "lang", page.lang | sort: "series_order" %}
+  {% if posts.size > 0 %}
+  <h2 class="series-heading">학습 순서</h2>
+  <ol class="series-list">
+    {% for post in posts %}
+    <li value="{{ post.series_order | default: forloop.index }}">
+      <a class="card" href="{{ post.url | relative_url }}">
+        <span class="series-number" aria-hidden="true">{{ post.series_order | default: forloop.index }}</span>
+        <div>
+          <h2>{{ post.title | escape }}</h2>
+          <p class="excerpt">{{ post.description | default: post.excerpt | strip_html | strip_newlines | truncate: 140 }}</p>
+        </div>
+      </a>
+    </li>
+    {% endfor %}
+  </ol>
+  {% else %}
+  <p class="empty">{{ ui.noposts }}</p>
+  {% endif %}
+</main>
+{% include lang.js.html %}
+</body>
+</html>

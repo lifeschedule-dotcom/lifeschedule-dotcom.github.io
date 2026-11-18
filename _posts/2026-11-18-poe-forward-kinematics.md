@@ -1,7 +1,8 @@
 ---
 title: "PoE 순기구학 이해: 관절축과 각도에서 손끝 자세까지"
 section: physical-ai
-sub: nvidia
+sub: dynamics
+series_order: 6
 ref: poe-forward-kinematics
 date: 2026-11-18 14:00:00 +0900
 description: 같은 2관절 로봇의 홈과 스크루 축을 만들고, 원점 밖 회전과 곱 순서를 도출해 Space와 Body PoE를 직접 계산합니다.

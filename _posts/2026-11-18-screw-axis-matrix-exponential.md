@@ -1,7 +1,8 @@
 ---
 title: "트위스트 이해: 회전속도에서 점의 속도와 스크루 축까지"
 section: physical-ai
-sub: nvidia
+sub: dynamics
+series_order: 3
 ref: screw-axis-matrix-exponential
 date: 2026-11-18 14:00:00 +0900
 description: 호의 길이와 라디안, 외적의 성분 계산에서 출발해 트위스트의 선운동 성분과 스크루 축을 직접 만듭니다.

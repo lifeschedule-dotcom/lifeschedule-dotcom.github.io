@@ -17,7 +17,13 @@
   <div class="subs" role="tablist">
     <button class="sub active" data-sub="all">{{ ui.all }}</button>
     {% for sub in sec.subs %}
+    {% if sub.url %}
+    {% if sub.url[page.lang] %}
+    <a class="sub" href="{{ sub.url[page.lang] | relative_url }}">{{ sub[page.lang] }}</a>
+    {% endif %}
+    {% else %}
     <button class="sub" data-sub="{{ sub.id }}">{{ sub[page.lang] }}</button>
+    {% endif %}
     {% endfor %}
   </div>
 

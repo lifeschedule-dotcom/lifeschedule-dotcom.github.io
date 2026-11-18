@@ -12,7 +12,11 @@
 {% if page.lang == "en" %}{% assign root = "/en/" %}{% else %}{% assign root = "/" %}{% endif %}
 <main class="wrap">
   <article class="article">
+    {% if subinfo.url[page.lang] %}
+    <a class="back" href="{{ subinfo.url[page.lang] | relative_url }}">← {{ sec.name[page.lang] }} / {{ subinfo[page.lang] }}</a>
+    {% else %}
     <a class="back" href="{{ root | append: page.section | append: '/' | relative_url }}">← {{ sec.name[page.lang] }}</a>
+    {% endif %}
     <h1>{{ page.title }}</h1>
     {% assign mins = content | strip_html | size | divided_by: 500 | plus: 1 %}
     <p class="meta">{% if page.pinned %}{{ subinfo[page.lang] }}{% else %}{{ page.date | date: "%Y.%m.%d" }} · {{ ui.read }} {{ mins }}{{ ui.min }}{% if subinfo %} · {{ subinfo[page.lang] }}{% endif %}{% endif %}</p>

@@ -1,7 +1,8 @@
 ---
 title: "트위스트 행렬과 행렬지수: 속도에서 자세 변화까지"
 section: physical-ai
-sub: nvidia
+sub: dynamics
+series_order: 4
 ref: twist-matrix-exponential
 date: 2026-11-18 14:00:00 +0900
 description: 외적의 계수에서 4×4 속도 행렬을 만들고, 시간 누적으로 행렬지수를 도출하며 Space와 Body의 변환을 연결합니다.
@@ -23,44 +24,185 @@ spacious: true
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.querySelector('.content')||document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
 
-앞 글에서는 한 순간의 강체 운동을 트위스트로 묶었습니다.
-이제 그 속도로 얼마 동안 움직였을 때 위치와 방향이 어떻게 변하는지 구하겠습니다.
-먼저 외적을 행렬곱으로 바꾸고, 그 행렬을 시간에 따라 누적하면 행렬지수가 나옵니다.
+트위스트는 지금의 운동 속도를 담습니다.
+그 속도로 일정 시간 움직이면 손끝은 어디에 도달할까요?
+이번 글에서는 같은 회전축을 따라 작은 운동을 쌓아서, 최종 위치와 방향을 계산하겠습니다.
 
-## 1. 외적의 계수를 모으면 반대칭행렬
+## 1. 먼저 초기점과 속도를 정하기
 
-공간좌표계 s에서 점 x의 속도는 다음과 같았습니다.
+회전축은 앞 글과 같이 q=(1,0,0)을 지나는 +z축입니다.
+각속도는 ω=(0,0,2) rad/s이고, 축을 따라 이동하지 않는 순수 회전입니다.
+트위스트의 선운동 성분은 앞에서 구한 다음 값입니다.
 
-$$\dot x=\omega\times x+v_s$$
+$$v_s=-\omega\times q=(0,-2,0)^T$$
 
-점을 바꿀 때마다 외적을 새로 쓰는 대신, x 앞에 곱할 행렬을 만들겠습니다.
-외적을 성분으로 쓰면 다음과 같습니다.
+따라서 공간 기준 트위스트는 다음과 같습니다.
 
-$$\omega\times x=\begin{bmatrix}\omega_yx_z-\omega_zx_y\\\omega_zx_x-\omega_xx_z\\\omega_xx_y-\omega_yx_x\end{bmatrix}$$
+$$\mathcal V_s=(0,0,2,\;0,-2,0)^T$$
 
-첫 행에서 x_x의 계수는 0, x_y의 계수는 −ω_z, x_z의 계수는 ω_y입니다.
-나머지 행도 같은 방식으로 모읍니다.
+이제 초기 손끝 위치를 p(0)=(1.5,0,0) m로 정하겠습니다.
+축에서 오른쪽으로 0.5 m 떨어진 곳입니다.
+초기 방향은 바닥과 같아서 R(0)=I입니다.
+I는 좌표를 그대로 유지하는 단위행렬입니다.
 
-$$\omega\times x=\underbrace{\begin{bmatrix}0&-\omega_z&\omega_y\\\omega_z&0&-\omega_x\\-\omega_y&\omega_x&0\end{bmatrix}}_{[\omega]}\begin{bmatrix}x_x\\x_y\\x_z\end{bmatrix}$$
+<figure><img src="/assets/img/robot-kinematics/exponential-path.png" alt="초기 손끝(1.5,0)이 축q=(1,0)을 중심으로 조금씩 돌아 90도 뒤(1,0.5)에 도달합니다."></figure>
 
-대괄호 $$[\omega]$$는 벡터 ω로 만든 이 행렬을 뜻합니다.
-전치하면 부호가 반대가 되어 $$[\omega]^T=-[\omega]$$이므로 반대칭행렬이라고 부릅니다.
-음수 부호는 외적의 각 성분에서 나온 것입니다.
+초기 손끝의 속도를 먼저 계산하겠습니다.
+점 위의 점 표시는 시간에 대한 미분, 즉 그 점의 속도입니다.
 
-트위스트 $$\mathcal V_s=(\omega_s,v_s)$$도 같은 방식으로 행렬로 바꿉니다.
+$$\dot p=\omega\times p+v_s$$
+
+$$\dot p(0)=\begin{bmatrix}0\\3\\0\end{bmatrix}+\begin{bmatrix}0\\-2\\0\end{bmatrix}=\begin{bmatrix}0\\1\\0\end{bmatrix}$$
+
+처음에는 위쪽으로 1 m/s입니다.
+90° 돌아간 뒤에는 같은 손끝이 왼쪽으로 움직입니다.
+트위스트가 일정해도 점의 위치 p가 바뀌므로 **그 점의 속도 방향은 계속 바뀝니다.**
+
+## 2. 외적 계산을 행렬곱으로 바꾸기
+
+매번 속도를 구하려면 ω×p를 계산해야 합니다.
+지금 각속도 ω=(0,0,2)를 쓰면 외적의 세 성분은 다음과 같습니다.
+
+$$\omega\times p=\begin{bmatrix}-2p_y\\2p_x\\0\end{bmatrix}$$
+
+첫 행은 p_x를 0배, p_y를 −2배, p_z를 0배 합니다.
+둘째 행은 p_x를 2배 하고, 나머지는 0배 합니다.
+셋째 행은 모두 0입니다.
+각 행의 계수를 모으겠습니다.
+
+$$\omega\times p=\underbrace{\begin{bmatrix}0&-2&0\\2&0&0\\0&0&0\end{bmatrix}}_{[\omega]}\begin{bmatrix}p_x\\p_y\\p_z\end{bmatrix}$$
+
+이 행렬에 초기점 (1.5,0,0)을 곱하면 (0,3,0)입니다.
+앞에서 외적으로 계산한 값과 같습니다.
+대괄호 [ω]는 ω를 이 모양의 행렬로 바꿨다는 표시입니다.
+일반적인 ω에서도 외적의 계수를 모으면 됩니다.
+
+$$[\omega]=\begin{bmatrix}0&-\omega_z&\omega_y\\\omega_z&0&-\omega_x\\-\omega_y&\omega_x&0\end{bmatrix}$$
+
+예를 들어 첫 행의 −ω_z와 ω_y는 $$\omega_y p_z-\omega_z p_y$$에서 나온 계수입니다.
+전치하면 부호가 반대가 되는 $$[\omega]^T=-[\omega]$$ 성질 때문에 반대칭행렬이라고 부릅니다.
+
+이제 v_s도 더해야 합니다.
+변환행렬에서 위치 p를 더하려고 마지막 성분 1을 붙였듯이, 여기서는 v_s를 더하는 데 1을 씁니다.
+
+$$\underbrace{\begin{bmatrix}0&-2&0&0\\2&0&0&-2\\0&0&0&0\\0&0&0&0\end{bmatrix}}_{[\mathcal V_s]}\begin{bmatrix}p_x\\p_y\\p_z\\1\end{bmatrix}=\begin{bmatrix}-2p_y\\2p_x-2\\0\\0\end{bmatrix}$$
+
+첫 세 성분은 바로 ω×p+v_s입니다.
+마지막 성분은 1의 시간 미분이므로 0입니다.
+T가 점을 새 위치로 옮겼다면, 이 행렬은 그 점의 **현재 속도**를 계산합니다.
+
+이를 블록으로 쓰면 다음과 같습니다.
 
 $$[\mathcal V_s]=\begin{bmatrix}[\omega_s]&v_s\\0&0\end{bmatrix}$$
 
-윗부분의 두 블록은 각각 3×3과 3×1이며, 아래는 0 네 개입니다.
-이유를 보려면 동차좌표에 직접 곱하면 됩니다.
+왼쪽 위는 3×3, 오른쪽 위는 3×1, 마지막 행은 0 네 개입니다.
+이 모양의 속도 행렬 집합이 se(3)입니다.
 
-$$\begin{bmatrix}[\omega_s]&v_s\\0&0\end{bmatrix}\begin{bmatrix}x\\1\end{bmatrix}=\begin{bmatrix}\omega_s\times x+v_s\\0\end{bmatrix}=\begin{bmatrix}\dot x\\0\end{bmatrix}$$
+## 3. 작은 시간 동안 움직인 결과를 이어 붙이기
 
-동차좌표의 마지막 1은 시간이 지나도 1이므로 그 미분은 0입니다.
-위치 변환 T의 마지막 칸은 1이었지만, 속도를 만드는 이 행렬의 마지막 칸은 0입니다.
-이 모양의 4×4 행렬 집합을 $$se(3)$$라고 합니다.
+처음 손끝 속도는 (0,1,0) m/s였습니다.
+0.1초 동안 이 속도가 그대로라고 근사하면 새 위치는 다음과 같습니다.
 
-## 2. 왜 T의 미분 양옆에 역행렬을 곱할까?
+$$p_1\approx(1.5,0,0)+(0,1,0)\times0.1=(1.5,0.1,0)$$
+
+이 근사 위치에서 속도를 다시 계산하면 (−0.2,1,0)입니다.
+다음 0.1초에는 그 속도로 움직인다고 근사합니다.
+
+$$p_2\approx(1.5,0.1,0)+(-0.2,1,0)\times0.1=(1.48,0.2,0)$$
+
+한 번의 직선 이동으로 끝내면 원 궤적을 따라가지 못합니다.
+**현재 위치에서 속도를 다시 구하고, 짧게 움직이는 계산을 반복**해야 합니다.
+시간 간격을 더 작게 나눌수록 이 근사가 정확해집니다.
+그림의 원호는 그 간격을 0으로 보낸 결과입니다.
+
+위치뿐 아니라 물체의 축 방향도 함께 바뀝니다.
+전체 자세를 T에 묶고, 위 속도 행렬을 A=[𝒱_s]라고 줄이면 같은 누적 계산을 다음처럼 씁니다.
+
+$$T(t+\Delta t)\approx T(t)+A T(t)\Delta t=(I+A\Delta t)T(t)$$
+
+Δt는 짧게 나눈 시간 간격입니다.
+AT(t)는 현재 자세의 변화 속도입니다.
+어느 물체 고정점의 동차좌표에 적용해도 같은 속도식을 얻으므로, 그 점들을 옮기는 T에도 $$\dot T=AT$$가 성립합니다.
+동차좌표와 미분으로 확인하는 과정은 아래 좌표계 설명에 적었습니다.
+
+전체 시간 t를 n조각으로 나누면 Δt=t/n이고, 같은 행렬을 n번 왼쪽에 곱합니다.
+
+$$T(t)\approx\left(I+\frac{At}{n}\right)^n T(0)$$
+
+조각을 무한히 잘게 나눈 극한을 행렬지수라고 부릅니다.
+
+$$\boxed{T(t)=e^{At}T(0)=e^{[\mathcal V_s]t}T(0)}$$
+
+$$e^{At}$$는 각 칸에 e를 취한다는 뜻이 아닙니다.
+방금처럼 **같은 속도 행렬의 작은 변화를 계속 곱해 누적한 하나의 변환**입니다.
+지금 식에서는 공간 트위스트가 일정하다고 가정했습니다.
+트위스트 자체가 시간에 따라 달라지면 그 변화까지 반영해야 합니다.
+
+## 4. 90도 뒤의 손끝까지 계산하기
+
+각속도는 2 rad/s입니다.
+90°=π/2 rad만큼 도는 데 걸리는 시간은 다음과 같습니다.
+
+$$t=\frac{\pi/2}{2}=\frac{\pi}{4}\ \mathrm s$$
+
+이 시간 동안 누적한 지수변환을 E라고 하겠습니다.
+ω는 z축을 향하고 크기가 2 rad/s로 일정하므로, π/4초 동안 물체의 축 방향도 z축 주위로 2×π/4=π/2, 즉 90° 돌아갑니다.
+따라서 E의 왼쪽 위 3×3 방향 블록은 앞 글의 R_z(90°)입니다.
+위치 열 p_Δ는 따로 구해야 합니다.
+회전축 위 점 q는 움직이지 않으므로 다음 조건을 만족합니다.
+
+$$Rq+p_\Delta=q$$
+
+따라서 p_Δ=q−Rq입니다.
+지금은 q=(1,0,0)이고 Rq=(0,1,0)이므로 다음과 같습니다.
+
+$$p_\Delta=(1,-1,0)^T$$
+
+점에서 q를 빼 원점 중심으로 회전하고 q를 다시 더하는 $$R(x-q)+q$$와 같은 계산입니다.
+지수변환 전체는 다음과 같습니다.
+
+$$E=e^{[\mathcal V_s]\pi/4}=\begin{bmatrix}0&-1&0&1\\1&0&0&-1\\0&0&1&0\\0&0&0&1\end{bmatrix}$$
+
+초기 손끝 위치에 적용해 보겠습니다.
+
+$$p(t)=R_z(90^\circ)\begin{bmatrix}1.5\\0\\0\end{bmatrix}+\begin{bmatrix}1\\-1\\0\end{bmatrix}=\begin{bmatrix}1\\0.5\\0\end{bmatrix}$$
+
+초기 방향은 I였으므로 최종 방향은 R_z(90°)입니다.
+결과적으로 손끝은 축의 오른쪽에서 위쪽으로 이동했고, 방향도 90° 바뀌었습니다.
+**트위스트의 속도와 누적 시간에서 최종 위치·방향까지** 구했습니다.
+
+## 5. 스크루 축과 회전량으로 같은 변환 쓰기
+
+각속도 크기 2를 따로 떼면 정규화된 축은 다음과 같습니다.
+
+$$S=(0,0,1,\;0,-1,0)^T,\qquad\mathcal V_s=2S$$
+
+시간 π/4를 곱한 트위스트와 회전량 π/2를 곱한 축은 같습니다.
+
+$$[\mathcal V_s]\frac{\pi}{4}=[S]\frac{\pi}{2}$$
+
+따라서 같은 지수변환을 $$E=e^{[S]\theta}$$라고도 적습니다.
+Sθ의 여섯 성분을 이 변환의 지수좌표라고 합니다.
+[S]θ는 그 벡터의 4×4 행렬 표현입니다.
+
+S는 어떤 축을 따라 움직이는지, θ는 그 축을 따라 얼마나 움직였는지 담습니다.
+회전관절에서는 θ가 회전각이고, 순수 이동관절에서는 이동 거리입니다.
+
+### 이해도 확인
+
+같은 축과 각속도로 π/2초 움직이면 초기 손끝 (1.5,0,0)은 어디에 있을까요?
+
+<details markdown="1"><summary>풀이 보기</summary>
+
+회전량은 2×π/2=π rad, 즉 180°입니다.
+축 q=(1,0,0)의 오른쪽으로 0.5 m에 있던 점이 왼쪽으로 0.5 m에 도달합니다.
+최종 위치는 (0.5,0,0)이며 방향은 R_z(180°)입니다.
+
+</details>
+
+<details markdown="1"><summary>같은 운동을 Space·Body로 표현하고 Adjoint로 연결하기</summary>
+
+### T의 미분에서 트위스트를 꺼내기
 
 물체에 고정된 점은 b 기준 좌표 x_b가 일정합니다.
 s에서 본 좌표만 시간에 따라 바뀝니다.
@@ -90,13 +232,18 @@ $$\dot T=\begin{bmatrix}\dot R&\dot p\\0&0\end{bmatrix},\qquad T^{-1}=\begin{bma
 
 $$\dot T T^{-1}=\begin{bmatrix}\dot RR^T&\dot p-\dot RR^Tp\\0&0\end{bmatrix}$$
 
+오른쪽 위 칸은 $$\dot R(-R^Tp)+\dot p\times1$$입니다.
+이를 $$\dot p-\dot RR^Tp$$로 모은 것입니다.
 위치의 미분이 ω×p+v_s라는 점 속도식과 비교하면 다음과 같습니다.
 
 $$[\omega_s]=\dot RR^T,\qquad v_s=\dot p-\omega_s\times p$$
 
+90° 회전한 순간에는 $$\dot p=(-1,0,0)^T$$이고, $$\omega_s\times p=(-1,2,0)^T$$입니다.
+따라서 $$v_s=(-1,0,0)^T-(-1,2,0)^T=(0,-2,0)^T$$가 됩니다.
+
 **v_s가 손끝 원점의 실제 속도 $$\dot p$$와 일반적으로 다른 이유**가 이 오른쪽 위 블록에 보입니다.
 
-## 3. Body Twist와 Adjoint의 블록
+### Body Twist와 Adjoint의 블록
 
 같은 운동을 물체에 붙은 b 기준으로 나타낼 수도 있습니다.
 행렬곱의 순서를 바꾸어 계산한 것을 Body Twist로 정의합니다.
@@ -134,120 +281,55 @@ $$\boxed{\mathcal V_s=\underbrace{\begin{bmatrix}R&0\\{[p]}R&R\end{bmatrix}}_{\o
 위 두 블록 R, 0은 각속도의 방향만 바꾸고, 아래 두 블록은 원점 차이의 효과와 실제 속도의 방향 변환을 더합니다.
 이 행렬이 수반표현(Adjoint Representation)입니다.
 
-## 4. 순간 속도를 쌓으면 행렬지수
 
-공간 트위스트가 일정하다고 가정하고 $$A=[\mathcal V_s]$$라고 줄이겠습니다.
-위에서 구한 식은 $$\dot T=AT$$입니다.
+</details>
 
-속도는 짧은 시간 동안의 변화량을 시간으로 나눈 값입니다.
-아주 짧은 Δt 동안에는 다음처럼 근사할 수 있습니다.
+<details markdown="1"><summary>지수급수에서 cosθ·sinθ가 다시 나오는 계산</summary>
 
-$$T(t+\Delta t)\approx T(t)+A T(t)\Delta t=(I+A\Delta t)T(t)$$
+행렬지수는 다음 급수로도 계산할 수 있습니다.
 
-I는 여기서 4×4 단위행렬입니다.
-전체 시간 t를 n조각으로 나누면 Δt=t/n입니다.
-매 조각마다 같은 행렬을 왼쪽에 곱하므로 n번 뒤에는 다음과 같습니다.
+$$e^{A t}=I+A t+\frac{A^2t^2}{2!}+\frac{A^3t^3}{3!}+\cdots$$
 
-$$T(t)\approx\left(I+\frac{At}{n}\right)^nT(0)$$
+A²는 A를 두 번 곱한 행렬이며, 3!=3×2×1입니다.
+앞의 작은 행렬곱을 n번 펼친 뒤 n을 무한히 늘리면 이 계수들을 얻습니다.
+예를 들어 A²t²의 계수는 n개 중 두 자리를 고르는 n(n−1)/2를 n²으로 나눈 값이며, 극한은 1/2입니다.
+세 자리를 고르는 계수는 같은 방식으로 1/3!이 됩니다.
 
-조각 수를 무한히 늘려 시간 간격을 0으로 보낸 극한이 행렬지수입니다.
+z축 단위 방향의 행렬을 W라고 두겠습니다.
 
-$$\boxed{T(t)=e^{At}T(0)}$$
+$$W=\begin{bmatrix}0&-1&0\\1&0&0\\0&0&0\end{bmatrix}$$
 
-이는 행렬의 각 칸에 따로 e를 취한다는 뜻이 아닙니다.
-행렬곱으로 정의한 다음 급수와 같습니다.
+W²의 첫 칸은 0×0+(−1)×1+0×0=−1입니다.
+같은 방법으로 계산하면 x·y 대각선만 −1이고 나머지는 0입니다.
 
-$$e^{At}=I+At+\frac{A^2t^2}{2!}+\frac{A^3t^3}{3!}+\cdots$$
+$$W^2=\begin{bmatrix}-1&0&0\\0&-1&0\\0&0&0\end{bmatrix}$$
 
-A²는 A를 두 번 곱한 행렬이고, 3!=3×2×1입니다.
-왜 2!, 3!이 붙는지도 속도식을 적분하며 확인할 수 있습니다.
-$$T(t)=T(0)+\int_0^t A T(\tau)d\tau$$의 오른쪽 T 자리에 먼저 T(0)를 넣으면 At 항이 나옵니다.
-다시 그 결과를 넣으면 $$\int_0^t A^2\tau d\tau=A^2t^2/2$$가 추가됩니다.
-이 과정을 반복하면 차례로 같은 급수의 항을 얻습니다.
+W³=W²W의 첫 행은 (0,1,0)으로 W의 첫 행과 부호가 반대입니다.
+둘째 행도 부호가 반대가 되어 W³=−W이며, 한 번 더 곱하면 W⁴=−W²입니다.
+이를 급수에 대입합니다.
 
-<figure><img src="/assets/img/robot-kinematics/exponential-path.png" alt="q=(1,0)을 중심으로 초기 손끝 (1.5,0)이 0도부터 90도까지 조금씩 회전해 (1,0.5)에 도달합니다."></figure>
+$$e^{W\theta}=I+\theta W+\frac{\theta^2}{2}W^2-\frac{\theta^3}{6}W-\frac{\theta^4}{24}W^2+\cdots$$
 
-그림의 작은 이동을 점점 잘게 나누어 누적한 결과가 하나의 유한한 변환입니다.
-몸체 기준 트위스트가 일정하면 곱이 오른쪽에 놓입니다.
+W가 붙은 항과 W²가 붙은 항을 따로 모읍니다.
 
-$$T(t)=T(0)e^{[\mathcal V_b]t}$$
+$$e^{W\theta}=I+\left(\theta-\frac{\theta^3}{6}+\cdots\right)W+\left(\frac{\theta^2}{2}-\frac{\theta^4}{24}+\cdots\right)W^2$$
 
-이를 미분하면 $$\dot T=T[\mathcal V_b]$$가 되어 앞서 구한 Body 식과 맞습니다.
-트위스트가 시간에 따라 변할 때는 그 변화를 적분해야 합니다.
-한 시점의 속도만 위 식에 넣어서 전체 운동을 계산할 수는 없습니다.
+사인과 코사인의 라디안 급수는 다음과 같습니다.
 
-## 5. 행렬지수 안에서 sin과 cos가 다시 나오는 이유
+$$\sin\theta=\theta-\frac{\theta^3}{6}+\cdots,\quad\cos\theta=1-\frac{\theta^2}{2}+\frac{\theta^4}{24}-\cdots$$
 
-z축 단위 방향에 대한 반대칭행렬을 W라고 하겠습니다.
+30°=π/6≈0.5236을 사인의 앞 두 항에 넣으면 0.5236−0.0239≈0.4997입니다.
+첫 글의 sin30°=0.5에 가까우며, 뒤 항까지 더하면 정확한 값에 수렴합니다.
+위의 첫 묶음은 sinθ, 둘째 묶음은 1−cosθ입니다.
 
-$$W=\begin{bmatrix}0&-1&0\\1&0&0\\0&0&0\end{bmatrix},\qquad W^2=\begin{bmatrix}-1&0&0\\0&-1&0\\0&0&0\end{bmatrix}$$
+$$e^{W\theta}=I+\sin\theta W+(1-\cos\theta)W^2$$
 
-한 번 더 곱하면 $$W^3=-W$$, 다시 곱하면 $$W^4=-W^2$$가 됩니다.
-이후의 거듭제곱도 W와 W²의 부호가 반복됩니다.
-이를 지수급수에서 모아 보겠습니다.
-
-$$e^{W\theta}=I+\left(\theta-\frac{\theta^3}{3!}+\cdots\right)W+\left(\frac{\theta^2}{2!}-\frac{\theta^4}{4!}+\cdots\right)W^2$$
-
-괄호는 각각 sinθ와 1−cosθ의 급수입니다.
-이 급수에서 θ의 단위는 라디안입니다.
-
-$$e^{W\theta}=I+\sin\theta\,W+(1-\cos\theta)W^2$$
-
-대각선의 x·y 성분은 1−(1−cosθ)=cosθ이고, 두 비대각 성분은 −sinθ와 sinθ입니다.
+첫 칸은 1−(1−cosθ)=cosθ, 첫 행 둘째 칸은 −sinθ, 둘째 행 첫 칸은 sinθ입니다.
 
 $$e^{W\theta}=\begin{bmatrix}\cos\theta&-\sin\theta&0\\\sin\theta&\cos\theta&0\\0&0&1\end{bmatrix}=R_z(\theta)$$
 
-처음에는 단위벡터를 회전시켜 만든 행렬이었습니다.
-지금은 각속도를 작은 시간 동안 계속 누적해 같은 행렬을 얻었습니다.
+단위 화살표를 돌려 만든 회전행렬이 각속도를 잘게 쌓은 행렬지수에서도 같은 칸에 나타납니다.
 
-회전축이 원점 밖의 q=(1,0,0)에 있으면 4×4 지수의 위치 열도 구해야 합니다.
-초기 방향을 I, 초기 손끝 위치를 (1.5,0,0)으로 두겠습니다.
-순수 회전에서 축 위 점 q는 움직이지 않으므로, 추가 변환의 위치 열을 p_Δ라고 쓰면 다음 조건이 필요합니다.
-
-$$Rq+p_\Delta=q,\qquad p_\Delta=q-Rq$$
-
-이는 점을 먼저 q만큼 빼서 원점 중심으로 돌린 뒤 q를 다시 더하는 $$R(x-q)+q$$와 같습니다.
-90°에서 Rq=(0,1,0)이므로 p_Δ=(1,−1,0)입니다.
-위의 속도로 π/4초 움직인 4×4 지수는 다음과 같습니다.
-
-$$e^{[\mathcal V_s]\pi/4}=\begin{bmatrix}0&-1&0&1\\1&0&0&-1\\0&0&1&0\\0&0&0&1\end{bmatrix}$$
-
-이 행렬을 초기 자세에 곱하면, 새 방향은 R_z(90°)이고 새 위치는 다음과 같습니다.
-
-$$p(t)=R_z(90^\circ)\begin{bmatrix}1.5\\0\\0\end{bmatrix}+\begin{bmatrix}1\\-1\\0\end{bmatrix}=\begin{bmatrix}1\\0.5\\0\end{bmatrix}$$
-
-이제 트위스트의 속도, 누적 시간, 지수행렬, 최종 손끝 위치가 하나의 계산으로 연결됩니다.
-
-## 6. 속도에서 회전량·이동량으로: 지수좌표
-
-일정한 스크루 축 S를 따라 $$\mathcal V=S\dot\theta$$로 움직인다고 하겠습니다.
-일정한 속도로 t초 움직였다면 총 회전량은 $$\theta=\dot\theta t$$입니다.
-
-$$[\mathcal V]t=[S]\dot\theta t=[S]\theta$$
-
-Sθ의 여섯 성분을 변환 $$e^{[S]\theta}$$의 지수좌표라고 합니다.
-$$[S]\theta$$는 이 벡터를 4×4 행렬로 바꾼 표현입니다.
-
-공간 기준 축일 때 자세 변화는 다음과 같습니다.
-
-$$\boxed{T(\theta)=e^{[S]\theta}T(0)}$$
-
-S가 일정하면 속도가 바뀌더라도 누적한 θ를 사용할 수 있습니다.
-순수 이동 관절에서는 θ가 회전각 대신 이동 거리입니다.
-홈 자세에서 정의한 각 관절의 지수항을 순서대로 곱한 뒤, 초기 자세 M을 오른쪽에 한 번 붙이면 Space 형태의 PoE가 됩니다.
-
-### 이해도 확인
-
-공간 트위스트의 각속도는 (0,0,2) rad/s이고, 축 위 점은 (1,0,0) m입니다.
-초기 손끝은 (1.5,0,0) m이며 순수 회전합니다.
-얼마 동안 움직여야 그림처럼 (1,0.5,0) m에 도달할까요?
-
-<details><summary>풀이 보기</summary>
-<p>초기점은 축 오른쪽에, 목표점은 축 위쪽에 있으므로 필요한 회전량은 π/2 rad입니다.</p>
-
-$$t=\frac{\theta}{\dot\theta}=\frac{\pi/2}{2}=\frac{\pi}{4}\ \mathrm{s}$$
-
-<p>지수 안에는 [𝒱_s]π/4를 넣거나 [S]π/2를 넣습니다. 같은 회전을 두 방식으로 표현한 것입니다.</p>
 </details>
 
 참고: [Modern Robotics 트위스트와 수반표현](https://modernrobotics.northwestern.edu/nu-gm-book-resource/3-3-2-twists-part-2-of-2/), [강체운동의 지수좌표](https://modernrobotics.northwestern.edu/nu-gm-book-resource/3-3-3-exponential-coordinates-of-rigid-body-motion/). 2026년 11월 18일 확인.

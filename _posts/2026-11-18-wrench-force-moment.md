@@ -206,7 +206,7 @@ $$\boxed{\mathcal F_s=\operatorname{Ad}_T^{-T}\mathcal F_b}$$
 
 힘이 b의 +y 방향으로 2 N 작용할 때, 작용점이 b 원점에서 +x로 0.25 m 떨어져 있다면 b 기준 모멘트는 얼마일까요?
 
-<details><summary>풀이 보기</summary>
+<details markdown="1"><summary>풀이 보기</summary>
 
 $$m_b=(0.25,0,0)^T\times(0,2,0)^T=(0,0,0.5)^T\ \mathrm{N\!\cdot m}$$
 

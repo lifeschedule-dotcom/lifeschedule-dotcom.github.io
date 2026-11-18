@@ -23,10 +23,36 @@ spacious: true
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.querySelector('.content')||document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<link rel="stylesheet" href="/assets/css/robotics-demos.css">
+<script defer src="/assets/js/robotics-demos.js"></script>
+
 
 앞에서는 물체가 어떻게 움직이는지 트위스트로 표현했습니다.
 이번에는 그 물체의 어느 점에 어떤 힘이 작용하는지 보겠습니다.
 힘만 적으면 빠지는 회전 효과를 모멘트로 계산하고, 둘을 하나의 렌치로 묶겠습니다.
+
+## 내적부터 렌치로 연결하기
+
+벡터 a=(1,2,3), b=(4,5,6)의 내적은 같은 위치의 숫자끼리 곱해서 모두 더합니다.
+
+$$a\cdot b=1\times4+2\times5+3\times6=32$$
+
+| 구분 | 내적 | 외적 |
+|---|---|---|
+| 결과 | 숫자 하나(스칼라) | 새로운 벡터 |
+| 기하학적 의미 | 두 벡터의 방향 관계 | 두 벡터에 수직인 방향 |
+| 로봇공학에서의 연결 | 각도·투영·일률 | 회전·모멘트·트위스트 |
+
+### 내적을 그림으로 이해하기
+
+<div class="robot-demo" data-demo="dot"></div>
+
+두 단위벡터의 내적은 cosθ입니다.
+같은 방향이면 +1, 수직이면 0, 반대 방향이면 −1입니다.
+이 내적이 뒤에서 모멘트와 각속도, 힘과 속도를 짝지어 일률을 계산할 때 다시 등장합니다.
+
+<div class="robot-demo dot-quiz"><p><b>직접 계산해 보기</b><br>a=(1,2,0), b=(3,1,0)의 내적은 얼마일까요?</p><button data-answer="3">3</button><button data-answer="5">5</button><button data-answer="6">6</button><p class="quiz-result" aria-live="polite"></p></div>
+
 
 ## 1. 힘의 작용점을 함께 알아야 하는 이유
 

@@ -23,6 +23,9 @@ spacious: true
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.querySelector('.content')||document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<link rel="stylesheet" href="/assets/css/robotics-demos.css">
+<script defer src="/assets/js/robotics-demos.js"></script>
+
 
 로봇 손끝이 처음에는 오른쪽을 향하고 있다가, 반시계 방향으로 30° 돌아갔다고 하겠습니다.
 손끝의 앞쪽과 옆쪽은 이제 어느 방향을 향할까요?
@@ -30,6 +33,23 @@ spacious: true
 
 먼저 앞쪽 방향 하나부터 구하겠습니다.
 아래 계산을 끝내면 회전행렬의 cosθ, sinθ, −sinθ가 어디에서 나오는지 알 수 있습니다.
+
+## 회전행렬과 변환행렬의 핵심 차이
+
+로보틱스에서 회전행렬과 동차변환행렬의 가장 큰 차이는 **위치 이동을 포함하느냐**입니다.
+
+| 구분 | 회전행렬 R | 동차변환행렬 T |
+|---|---|---|
+| 역할 | 방향(자세) 표현 | 위치와 방향 표현 |
+| 2차원 크기 | 2×2 | 3×3 |
+| 3차원 크기 | 3×3 | 4×4 |
+| 회전 | 가능 | 가능 |
+| 평행이동 | 포함하지 않음 | 포함 |
+| 3차원 수학적 집합 | SO(3) | SE(3) |
+
+그리퍼가 어느 방향을 향하는지는 R로, 어디에 있고 어느 방향을 향하는지는 T로 표현합니다.
+이 차이를 바탕으로, 먼저 회전행렬의 cosθ·sinθ가 나오는 과정을 보겠습니다.
+
 
 ## 1. 앞쪽 화살표를 30도 돌려 보기
 
@@ -233,5 +253,13 @@ z축 회전행렬은 이 집합에 속하는 한 종류입니다.
 
 
 </details>
+
+## x축과 y축을 중심으로 돌리면
+
+3차원에서는 회전축에 따라 행렬이 달라집니다. x축을 고정하면 x 성분이 유지되고 yz 성분이 회전합니다. y축을 고정하면 y 성분이 유지됩니다.
+
+$$R_x(\theta)=\begin{bmatrix}1&0&0\\0&\cos\theta&-\sin\theta\\0&\sin\theta&\cos\theta\end{bmatrix}$$
+
+$$R_y(\theta)=\begin{bmatrix}\cos\theta&0&\sin\theta\\0&1&0\\-\sin\theta&0&\cos\theta\end{bmatrix}$$
 
 참고: [Modern Robotics 회전행렬의 정의와 성질](https://modernrobotics.northwestern.edu/nu-gm-book-resource/3-2-1-rotation-matrices-part-1-of-2/), [좌표 변환과 회전행렬의 사용](https://modernrobotics.northwestern.edu/nu-gm-book-resource/3-2-1-rotation-matrices-part-2-of-2/). 2026년 11월 18일 확인.

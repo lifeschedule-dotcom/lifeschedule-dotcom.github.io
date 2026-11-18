@@ -23,10 +23,54 @@ spacious: true
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.querySelector('.content')||document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<link rel="stylesheet" href="/assets/css/robotics-demos.css">
+<script defer src="/assets/js/robotics-demos.js"></script>
+
 
 동차변환행렬 T를 알면 물체가 어디에 있고 어느 방향을 향하는지 알 수 있습니다.
 그런데 같은 자세를 지나가는 물체라도 속도는 다를 수 있습니다.
 이번에는 **물체가 지금 어떻게 움직이고 있는가**를 표현하겠습니다.
+
+## 트위스트가 필요한 이유
+
+앞에서 배운 두 행렬을 복습하면, 회전행렬 R은 물체의 방향을, 동차변환행렬 T는 물체의 위치와 방향을 나타냅니다.
+그런데 여기에는 한 가지 빠진 정보가 있습니다.
+**물체가 지금 어떻게 움직이고 있는가?**
+
+로봇팔 끝부분이 현재 (2,3,1)에 있다고 하겠습니다.
+T로 위치와 방향은 알 수 있지만 얼마나 빠르게 이동하고 회전하는지는 알 수 없습니다.
+이때 등장하는 것이 트위스트입니다.
+
+$$\mathcal V=\begin{bmatrix}\omega\\v\end{bmatrix}$$
+
+ω는 각속도(rad/s), v는 선운동 성분(m/s)입니다. v가 항상 물체 원점의 실제 선속도와 같지는 않으며 표현 좌표계에 따라 구분해야 합니다.
+
+## 회전과 평행이동을 하나로 표현하기
+
+<div class="motion-photos"><figure><div class="motion-photo-window"><img src="/assets/img/robot-kinematics/original-motion-photos.png" alt="원문에 사용된 노란 산업용 로봇의 회전 관절 사진"></div><figcaption><b>회전 운동</b><br>관절을 중심으로 회전하는 운동</figcaption></figure><figure><div class="motion-photo-window right"><img src="/assets/img/robot-kinematics/original-motion-photos.png" alt="원문에 사용된 직선 레일 위의 로봇 사진"></div><figcaption><b>평행이동 운동</b><br>일정 방향으로 이동하는 운동</figcaption></figure></div>
+
+실제 로봇은 회전과 평행이동이 동시에 발생할 수 있습니다.
+예를 들어 로봇팔의 그리퍼가 회전하면서 앞으로 이동한다고 하겠습니다.
+이 두 가지 운동을 하나의 벡터로 표현하는 것이 트위스트입니다.
+
+## 트위스트의 핵심 수식과 기호
+
+원문에서 단위 회전축을 사용한 식은 다음과 같습니다.
+실제 각속도와 구분하기 위해 단위축에는 햇을 붙이고, 정규화된 스크루 축의 선운동 성분을 v_S라고 적겠습니다.
+
+$$v_S=-\hat\omega\times q+h\hat\omega$$
+
+| 기호 | 의미 |
+|---|---|
+| ω̂ | 회전축의 단위 방향벡터 |
+| q | 회전축 위의 임의의 점 |
+| h | 피치: 1 rad 회전당 축 방향 이동량 |
+| v_S | 정규화된 스크루 축의 선운동 성분 |
+
+이 식은 스크루 운동을 표현합니다.
+어떤 축을 중심으로 회전하면서 동시에 그 축을 따라 이동하는 운동입니다.
+아래에서는 각속도, 라디안과 외적부터 이 식의 각 항이 생기는 이유를 계산하겠습니다.
+
 
 ## 1. 위치의 변화와 회전각의 변화
 

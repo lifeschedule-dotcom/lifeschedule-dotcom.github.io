@@ -23,6 +23,9 @@ spacious: true
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.querySelector('.content')||document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<link rel="stylesheet" href="/assets/css/robotics-demos.css">
+<script defer src="/assets/js/robotics-demos.js"></script>
+
 
 앞 글에서 90° 돌아간 물체의 앞쪽으로 0.5 m 떨어진 점을 구했습니다.
 물체와 바닥의 원점이 같을 때, 그 점은 바닥 기준 (0,0.5,0)에 있었습니다.
@@ -30,6 +33,24 @@ spacious: true
 같은 점은 바닥에서 어디에 있을까요?
 
 이 질문을 계산한 뒤, 그 계산을 4×4 행렬 하나로 묶겠습니다.
+
+## 직접 비교해 보기
+
+회전각과 이동량을 바꿔서 비교해 보세요.
+원래 점은 (1,0)입니다. R은 이 점을 원점 중심으로 돌리고, T는 돌린 결과에 (x 이동, y 이동)을 더합니다.
+
+<div class="robot-demo" data-demo="transform"></div>
+
+2차원에서는 다음 식을 비교하는 것입니다.
+
+$$R=\begin{bmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{bmatrix}$$
+
+$$T=\begin{bmatrix}\cos\theta&-\sin\theta&p_x\\\sin\theta&\cos\theta&p_y\\0&0&1\end{bmatrix}$$
+
+90° 회전한 뒤 x로 2, y로 3 이동하면 원점은 (2,3)으로 갑니다.
+점 (1,0)은 먼저 (0,1)로 회전하고, 이동을 더해 (2,4)가 됩니다.
+이제 같은 계산을 3차원 점 P에 적용해 보겠습니다.
+
 
 ## 1. 먼저 그림에서 점의 위치를 구하기
 
@@ -218,5 +239,20 @@ $$QD=\begin{bmatrix}0&-1&0\\1&0&1\\0&0&1\end{bmatrix},\quad DQ=\begin{bmatrix}0&
 <figure><img src="/assets/img/robot-kinematics/order.png" alt="점(1,0)을 이동 후 회전하면(0,2), 회전 후 이동하면(1,1)에 도달합니다."></figure>
 
 </details>
+
+## 책의 r=Pq+p를 숫자로 읽기
+
+P는 s에서 본 b의 방향, p는 s에서 본 b 원점의 위치입니다. q는 b에서 본 c 원점의 위치이고, r은 같은 c 원점을 s에서 표현한 위치입니다.
+서로 다른 기준으로 적힌 q와 p를 더하려면 먼저 q를 s 기준으로 바꿉니다.
+
+$$P=\begin{bmatrix}0&-1\\1&0\end{bmatrix},\quad q=\begin{bmatrix}2\\0\end{bmatrix},\quad p=\begin{bmatrix}3\\1\end{bmatrix}$$
+
+$$Pq=\begin{bmatrix}0\\2\end{bmatrix},\qquad r=Pq+p=\begin{bmatrix}0\\2\end{bmatrix}+\begin{bmatrix}3\\1\end{bmatrix}=\begin{bmatrix}3\\3\end{bmatrix}$$
+
+방향도 이어서 바꾸면 R=PQ입니다. 이를 한꺼번에 묶은 곱은 다음과 같습니다.
+
+$$\begin{bmatrix}P&p\\0&1\end{bmatrix}\begin{bmatrix}Q&q\\0&1\end{bmatrix}=\begin{bmatrix}PQ&Pq+p\\0&1\end{bmatrix}$$
+
+좌표계 사이 관계를 합성하는 R=PQ, r=Pq+p와 실제 물체를 움직이는 R′=PR, r′=Pr+p는 식의 모양이 비슷하지만 해석이 다릅니다. 앞의 것은 기준 사이 관계를, 뒤의 것은 같은 기준에서 물체의 자세가 바뀌는 것을 계산합니다.
 
 참고: [Modern Robotics 동차변환행렬](https://modernrobotics.northwestern.edu/nu-gm-book-resource/3-3-1-homogeneous-transformation-matrices/). 2026년 11월 18일 확인.

@@ -23,10 +23,28 @@ spacious: true
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.querySelector('.content')||document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<link rel="stylesheet" href="/assets/css/robotics-demos.css">
+<script defer src="/assets/js/robotics-demos.js"></script>
+
 
 동차변환행렬 T를 알면 로봇 손끝의 위치와 방향을 알 수 있습니다.
 이번에는 관절각을 입력으로 주었을 때 T를 계산하겠습니다.
 관절 하나의 스크루 축을 유한한 변환으로 바꾸고, 그 변환들을 곱하는 것이 Product of Exponentials, PoE입니다.
+
+## 직접 2관절 로봇팔을 움직여 보기
+
+대화에서 조작했던 로봇팔은 **두 링크의 길이가 각각 1 m**입니다.
+첫 번째 관절을 움직이면 두 링크가 함께 돌고, 두 번째 관절만 움직이면 둘째 링크가 돌아갑니다.
+
+<div class="robot-demo" data-demo="poe"></div>
+
+여기서 손끝의 가로·세로 성분은 다음과 같습니다.
+
+$$x=\cos\theta_1+\cos(\theta_1+\theta_2),\quad y=\sin\theta_1+\sin(\theta_1+\theta_2)$$
+
+손끝 방향은 θ₁+θ₂입니다. 두 각도를 모두 90°로 두면 손끝은 (−1,1), 방향은 180°가 됩니다.
+아래의 자세한 행렬 계산은 둘째 링크를 0.5 m로 둔 예제입니다. 축과 행렬곱을 만드는 방법은 같으며, 링크 길이에 따라 홈 위치와 손끝 좌표가 달라집니다.
+
 
 ## 1. 먼저 로봇의 홈 자세를 정하기
 
@@ -242,5 +260,17 @@ $$p=(0,1.5,0)^T,\qquad R=R_z(90^\circ)$$
 회전행렬에서 시작한 cosθ·sinθ는 변환의 방향 블록을 만들었습니다.
 원점 차이를 더해 T를 구성했고, 순간 운동을 트위스트로 묶은 뒤 지수로 누적했습니다.
 PoE는 그 관절별 누적 운동을 연결해, 관절값에서 손끝의 위치와 방향으로 가는 식입니다.
+
+## 로봇의 구조를 적는 URDF
+
+PoE는 관절값에서 손끝 자세를 계산합니다. URDF(Universal Robot Description Format)는 로봇의 구조를 XML로 기술하는 형식입니다.
+link는 로봇의 몸체·형상·관성 정보를, joint는 링크 사이의 연결과 회전·직선 이동 방식을 나타냅니다.
+로봇 그림에서 M과 관절축을 구하는 계산, 로봇 구조를 파일로 기술하는 일을 구분하면 됩니다.
+
+## 학습 확인표
+
+혼자 설명하거나 계산할 수 있는 항목에 체크해 보세요.
+
+<div class="robot-demo study-check"><b>학습 확인표</b> <output>0/9개</output><label><input type="checkbox"> 회전행렬 R과 위치벡터 p로 변환행렬 T를 만들 수 있다.</label><label><input type="checkbox"> 벡터 ω를 반대칭행렬 [ω]로 바꿀 수 있다.</label><label><input type="checkbox"> 회전관절의 ω̂와 q로 스크루 축 S를 구할 수 있다.</label><label><input type="checkbox"> 회전관절과 직동관절에서 θ의 의미가 어떻게 다른지 안다.</label><label><input type="checkbox"> 행렬지수로 강체변환을 표현하는 이유를 설명할 수 있다.</label><label><input type="checkbox"> 2관절 로봇의 M, S₁, S₂를 구해 PoE에 넣을 수 있다.</label><label><input type="checkbox"> Space Form과 Body Form이 같은 자세를 계산한다는 것을 안다.</label><label><input type="checkbox"> 렌치는 힘과 모멘트를 묶은 표현임을 안다.</label><label><input type="checkbox"> URDF에서 link와 joint의 역할을 구분할 수 있다.</label></div>
 
 참고: [Modern Robotics 강체운동의 지수좌표](https://modernrobotics.northwestern.edu/nu-gm-book-resource/3-3-3-exponential-coordinates-of-rigid-body-motion/), [Space Form PoE](https://modernrobotics.northwestern.edu/nu-gm-book-resource/4-1-1-product-of-exponentials-formula-in-the-space-frame/), [Body Form PoE](https://modernrobotics.northwestern.edu/nu-gm-book-resource/4-1-2-product-of-exponentials-formula-in-the-end-effector-frame/). 2026년 11월 18일 확인.

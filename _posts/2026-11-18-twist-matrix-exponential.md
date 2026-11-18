@@ -23,10 +23,44 @@ spacious: true
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.querySelector('.content')||document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<link rel="stylesheet" href="/assets/css/robotics-demos.css">
+<script defer src="/assets/js/robotics-demos.js"></script>
+
 
 트위스트는 지금의 운동 속도를 담습니다.
 그 속도로 일정 시간 움직이면 손끝은 어디에 도달할까요?
 이번 글에서는 같은 회전축을 따라 작은 운동을 쌓아서, 최종 위치와 방향을 계산하겠습니다.
+
+## 변환행렬과 행렬지수는 어떻게 다를까?
+
+변환행렬 T는 위치와 방향을 표현하는 **결과 행렬**입니다.
+행렬지수는 행렬을 입력받아 새로운 행렬을 계산하는 **연산**입니다.
+스크루 축 S와 운동의 크기 θ를 넣어 변환을 만들고, 홈 자세에 곱합니다. θ는 회전각 또는 이동거리입니다.
+
+$$S,\theta\ \longrightarrow\ e^{[S]\theta}\ \longrightarrow\ T(\theta)=e^{[S]\theta}M$$
+
+먼저 운동 속도를 나타내는 기호를 구분해 두겠습니다.
+
+| 기호 | 읽는 법 | 의미 |
+|---|---|---|
+| θ | 세타 | 회전각 또는 이동거리 |
+| θ̇ | 세타 닷 | 각도 또는 거리의 시간 변화율 |
+| ω̂ | 오메가 햇 | 이 글에서 회전축의 단위 방향벡터 |
+| ω | 오메가 | 실제 각속도 벡터 |
+| [ω] | 오메가의 반대칭행렬 | 외적을 계산하는 3×3 행렬 |
+| Ṫ | 티 닷 | 변환행렬의 시간 미분 |
+| Ad_T | 애드조인트 티 | 트위스트의 좌표계를 바꾸는 수반표현 |
+
+ω는 그리스 문자이고 w는 영어 더블유입니다. 모양이 비슷해도 자동으로 같은 기호가 되지는 않습니다.
+교재가 ω를 단위축으로 쓰는 구간에서는 실제 각속도와 따로 읽어야 합니다.
+
+### 반대칭행렬을 직접 만들어 보는 연습
+
+<div class="robot-demo" data-demo="skew"></div>
+
+대각선은 0, 오른쪽 위는 −ωz·ωy·−ωx, 반대편은 부호를 뒤집어 배치합니다.
+이제 이 행렬이 점의 속도를 계산하고, 시간에 따라 누적되는 과정을 보겠습니다.
+
 
 ## 1. 먼저 초기점과 속도를 정하기
 
@@ -200,6 +234,26 @@ S는 어떤 축을 따라 움직이는지, θ는 그 축을 따라 얼마나 움
 
 </details>
 
+## 같은 운동을 두 좌표계로 표현하기
+
+| 구분 | Space Twist | Body Twist |
+|---|---|---|
+| 기준 | 고정된 공간좌표계 | 물체에 붙은 좌표계 |
+| 각속도와 선운동 성분 | 공간좌표계 성분 | 물체좌표계 성분 |
+| 변환행렬의 미분 | Ṫ=[𝒱_s]T | Ṫ=T[𝒱_b] |
+
+같은 강체 운동을 서로 다른 좌표계에서 표현한 것입니다.
+점의 좌표에는 T를 사용하고, 회전·이동 성분을 묶은 6차원 트위스트에는 Adjoint를 사용합니다.
+
+| 집합 | 포함되는 행렬 | 역할 |
+|---|---|---|
+| SO(3) | 3×3 회전행렬 | 방향 |
+| SE(3) | 4×4 강체변환행렬 | 위치와 방향 |
+| so(3) | 3×3 반대칭행렬 | 순간 회전 |
+| se(3) | 트위스트의 4×4 행렬 표현 | 순간 강체 운동 |
+
+소문자 se(3)의 행렬을 지수로 누적하면 대문자 SE(3)의 변환행렬을 얻습니다.
+
 <details markdown="1"><summary>같은 운동을 Space·Body로 표현하고 Adjoint로 연결하기</summary>
 
 ### T의 미분에서 트위스트를 꺼내기
@@ -331,5 +385,14 @@ $$e^{W\theta}=\begin{bmatrix}\cos\theta&-\sin\theta&0\\\sin\theta&\cos\theta&0\\
 단위 화살표를 돌려 만든 회전행렬이 각속도를 잘게 쌓은 행렬지수에서도 같은 칸에 나타납니다.
 
 </details>
+
+## 순수 평행이동에서는 어떻게 될까?
+
+회전이 없으면 트위스트의 위 세 성분이 0입니다. 일정한 선속도 v를 시간 t 동안 누적하면 위치 변화는 vt가 됩니다.
+
+$$e^{[\mathcal V]t}=\begin{bmatrix}1&0&0&v_xt\\0&1&0&v_yt\\0&0&1&v_zt\\0&0&0&1\end{bmatrix}$$
+
+x 방향으로 초당 2 m씩 3초 움직이면 2×3=6 m입니다. 회전행렬은 I이고, 변환행렬 위치 열만 (6,0,0)으로 바뀝니다.
+행렬지수의 반대 방향으로 변환에서 지수좌표를 구하는 연산은 행렬로그라고 합니다.
 
 참고: [Modern Robotics 트위스트와 수반표현](https://modernrobotics.northwestern.edu/nu-gm-book-resource/3-3-2-twists-part-2-of-2/), [강체운동의 지수좌표](https://modernrobotics.northwestern.edu/nu-gm-book-resource/3-3-3-exponential-coordinates-of-rigid-body-motion/). 2026년 11월 18일 확인.

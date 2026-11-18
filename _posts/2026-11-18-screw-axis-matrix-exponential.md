@@ -1,10 +1,10 @@
 ---
-title: "스크루 축과 행렬지수 정리: 트위스트에서 변환까지"
+title: "트위스트와 렌치: 같은 로봇의 운동과 힘을 표현하기"
 section: physical-ai
 sub: nvidia
 ref: screw-axis-matrix-exponential
-date: 2026-11-18 14:01:00 +0900
-description: 오메가와 오메가 햇, 외적과 반대칭행렬, v의 마이너스 부호를 풀고 스크루 축에서 행렬지수로 회전과 직동을 계산해요.
+date: 2026-11-18 14:00:00 +0900
+description: 앞에서 구한 손끝 자세를 그대로 두고, 회전축으로부터 속도장을 구한 뒤 힘과 모멘트, 일률까지 연결한다.
 spacious: true
 ---
 
@@ -23,232 +23,193 @@ spacious: true
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.querySelector('.content')||document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
 
-<div class="wc"><p><a href="https://modernrobotics.northwestern.edu/nu-gm-book-resource/3-3-2-twists-part-1-of-2/">스크루 축(screw axis)</a>은 강체의 회전·이동을 하나의 축으로 표현해요.<br>
-관절의 움직임을 변환행렬로 바꾸는 순기구학에서 쓰여요.<br>
-축·속도·움직인 양을 구분하면 행렬지수의 입력과 결과가 연결돼요.</p></div>
+앞에서 손끝의 방향 R과 위치 p를 구해 동차변환행렬 T를 만들었다.
+손끝 원점은 $$(1,0.5,0)$$에 있고, 손끝 앞에 붙은 점 P는 $$(1,1,0)$$에 있었다.
 
-단위벡터 표기부터 회전·직동의 변환행렬까지 여섯 단계로 정리해요.
-z 방향의 축이 점 $$(1,0,0)$$ m를 지나는 예제를 중심으로 볼게요.
+이번에는 첫 관절을 고정한 채 둘째 관절을 회전시켜 보자.
+현재 자세는 같지만, 이제는 **어떻게 움직이는가**를 설명해야 한다.
+이 운동을 표현하는 것이 트위스트다.
+이어서 같은 손끝에 힘이 작용하면 어떤 정보가 필요한지 렌치로 연결한다.
 
-<div class="keyline">축 방향 ω → 외적 행렬 [ω] → 스크루 축 S → 움직인 양 θ → 변환행렬 순서예요.</div>
+## 각속도만으로 점의 속도를 알 수 있을까
 
-## <span class="no">1</span> 오메가 햇과 각속도
+둘째 관절은 점 $$q=(1,0,0)^T$$를 지나는 z축을 중심으로 회전한다.
+이 관절이 현재 +2 rad/s로 돈다고 하자.
+회전축의 단위방향벡터와 실제 각속도벡터는 구분해서 적는다.
 
-햇(hat) 기호는 **이 글에서 무엇으로 정의했는지** 먼저 봐야 해요.
-단위벡터를 표시할 때도, 벡터를 반대칭행렬로 바꾸는 연산을 표시할 때도 쓰여요.
-이 글은 다음 표기로 통일할게요.
+$$\hat\omega=\begin{bmatrix}0\\0\\1\end{bmatrix},\qquad \dot\theta=2\ \mathrm{rad/s}$$
 
-| 기호 | 이 글에서의 뜻 |
-|---|---|
-| $$\hat\omega$$ | 길이가 1인 회전축 방향벡터 |
-| $$[\hat\omega]$$ | 그 벡터를 바꾼 3×3 반대칭행렬 |
-| $$\Omega$$ | 실제 각속도벡터, 단위 rad/s |
-| $$\dot\theta$$ | 축을 따라 도는 각속도, 단위 rad/s |
+$$\Omega=\hat\omega\dot\theta=\begin{bmatrix}0\\0\\2\end{bmatrix}\ \mathrm{rad/s}$$
 
-$$\Omega=\hat\omega\dot\theta$$
+햇이 붙은 벡터는 여기서는 길이가 1인 축 방향이다.
+얼마나 빠르게 도는가는 $$\dot\theta$$에 들어 있다.
+문헌에 따라 햇을 행렬 변환 표기로도 사용하므로, 이 글에서는 외적 행렬을 대괄호로 구분한다.
 
-햇이 붙은 벡터 자체에는 “초당 얼마나 빠른지”가 들어 있지 않아요.
-z축으로 초당 2 rad 돌면 $$\hat\omega=(0,0,1)$$, $$\Omega=(0,0,2)$$예요.
-여기서 점이 붙은 $$\dot\theta$$는 각도 $$\theta$$의 시간 변화율이에요.
+각속도를 알면 모든 점의 선속도도 같을까?
+회전축 위의 점은 정지하고, 축에서 먼 점은 더 빠르게 움직인다.
+따라서 각속도에 더해 **축의 위치와 계산할 점의 위치**가 필요하다.
+축이 q를 지날 때 점 x의 순간속도는 다음과 같다.
 
-## <span class="no">2</span> 외적을 행렬로 바꾸기
+$$\dot x=\Omega\times(x-q)$$
 
-반대칭행렬(skew-symmetric matrix)은 **벡터와의 외적을 행렬곱으로 계산하게 해 줘요.**
-외적 $$a\times b$$는 두 벡터에 수직인 방향을 가지는 벡터 연산이에요.
-회전하는 점의 순간속도를 계산할 때 등장해요.
+외적 $$\times$$는 회전축과 점까지의 벡터로부터 접선 방향 속도를 구하는 연산이다.
+식을 펼치면 회전축의 위치에 관한 항을 따로 모을 수 있다.
 
-$$[a]=\begin{bmatrix}0&-a_z&a_y\\a_z&0&-a_x\\-a_y&a_x&0\end{bmatrix}$$
+$$\dot x=\Omega\times x+v_s$$
 
-$$[a]b=a\times b,\qquad [a]^T=-[a]$$
+$$v_s=-\Omega\times q=\begin{bmatrix}0\\-2\\0\end{bmatrix}\ \mathrm{m/s}$$
 
-행과 열을 바꾸면 부호가 반대로 바뀌어서 ‘반대칭’이라고 불러요.
-z축 방향 $$\hat\omega=(0,0,1)$$을 넣어 볼까요?
+여기서 마이너스는 축 위의 점이 정지하도록 만드는 데서 나온다.
+x에 q를 넣으면 $$\Omega\times q+v_s=0$$이 된다.
 
-$$[\hat\omega]=\begin{bmatrix}0&-1&0\\1&0&0\\0&0&0\end{bmatrix}$$
+## 트위스트: 운동을 여섯 성분으로 담는다
 
-아래 코드는 `pip install numpy scipy`로 설치한 환경에서 위부터 실행해요.
+이제 어느 점을 넣어도 속도를 구할 수 있는 두 벡터가 생겼다.
+각속도 $$\Omega$$와 선운동 성분 $$v_s$$다.
+이 둘을 위아래로 묶은 6차원 벡터가 공간 트위스트(spatial twist)다.
 
-```python
-import numpy as np
-from scipy.linalg import expm  # 행렬지수
+$$\mathcal V_s=\begin{bmatrix}\Omega\\v_s\end{bmatrix}=\begin{bmatrix}0\\0\\2\\0\\-2\\0\end{bmatrix}$$
 
-def skew(a):
-    x, y, z = a
-    return np.array([[0., -z, y],
-                     [z, 0., -x],
-                     [-y, x, 0.]])
+위의 세 성분은 각속도(rad/s), 아래의 세 성분은 선운동 성분(m/s)이다.
+모두 s 좌표계를 기준으로 표현했다.
+트위스트는 강체의 순간 운동을 여섯 성분으로 표현하고, 이 운동에 따른 **각 점의 속도장**을 결정한다.
 
-w = np.array([0., 0., 1.])
-q = np.array([1., 0., 0.])
-W = skew(w)
-print(W)
-print(W @ q)
-print(np.cross(w, q))  # 외적
-```
+그렇다면 아래 성분 $$(0,-2,0)$$이 손끝의 속도일까?
+손끝의 위치 $$p=(1,0.5,0)$$를 식에 직접 넣어 보자.
 
-```text
-[[ 0. -1.  0.]
- [ 1.  0. -0.]
- [-0.  0.  0.]]
-[0. 1. 0.]
-[0. 1. 0.]
-```
+$$\dot p=\Omega\times p+v_s$$
 
-마지막 두 줄이 같아요.
-출력의 `-0.`은 부동소수점에서 표시된 0이에요.
-**이 행렬 자체는 회전행렬이 아니에요.**
-반대칭행렬은 외적을 계산하고, 회전행렬은 유한한 각도만큼 돌린 결과를 표현해요.
+$$\dot p=\begin{bmatrix}-1\\2\\0\end{bmatrix}+\begin{bmatrix}0\\-2\\0\end{bmatrix}=\begin{bmatrix}-1\\0\\0\end{bmatrix}\ \mathrm{m/s}$$
 
-## <span class="no">3</span> v의 마이너스 부호
+손끝은 이 순간 왼쪽으로 1 m/s 움직인다.
+점 P는 축에서 1 m 떨어져 있으므로 왼쪽으로 2 m/s 움직인다.
 
-순수 회전의 $$v=-\hat\omega\times q$$는 **회전축 위의 점이 정지하도록 만드는 항**이에요.
-$$q$$는 회전축 위의 점 하나를 선택한 좌표예요.
-여기서는 회전축이 $$(1,0,0)$$을 지나고 z 방향을 향해요.
+<figure><img src="/assets/img/robot-kinematics/velocity-field.png" alt="q=(1,0)의 회전축은 정지한다. 현재 손끝 (1,0.5)의 속도는 (-1,0), 점 P=(1,1)의 속도는 (-2,0) m/s다."></figure>
 
-회전축을 따라 이동하는 성분이 없는 회전을 생각해요.
-각속도가 1 rad/s일 때, 공간의 점 x에 대응하는 순간속도장은 다음과 같아요.
+$$v_s$$는 x=0에서 평가한 운동의 속도장 값이다.
+바닥에 고정한 s 원점이 실제로 움직인다는 뜻은 아니다.
+손끝의 실제 속도와 공간 트위스트의 아래 성분을 구분해야 하는 이유가 여기에 있다.
 
-$$\dot x=\hat\omega\times x+v$$
+## 앞에서 만든 T와 트위스트의 연결
 
-축 위의 점 q는 움직이지 않으므로 $$\dot q=0$$이어야 해요.
+트위스트는 T와 별개로 붙인 정보일까?
+T가 시간에 따라 변하는 방식에서 직접 얻을 수 있다.
+이 관계를 행렬곱으로 쓰기 위해 먼저 외적을 행렬로 바꾼다.
 
-$$0=\hat\omega\times q+v$$
+$$[\Omega]x=\Omega\times x$$
 
-$$v=-\hat\omega\times q=(0,-1,0)$$
+$$[\Omega]=\begin{bmatrix}0&-2&0\\2&0&0\\0&0&0\end{bmatrix}$$
 
-“v의 y 성분이 음수니까 로봇 끝이 아래로 가나?” 하고 읽기 쉬워요.
-로봇 끝의 속도는 **그 점의 위치 x까지 넣어야** 알 수 있어요.
+이처럼 전치하면 부호가 바뀌는 행렬을 반대칭행렬이라고 한다.
+트위스트도 같은 방식으로 4×4 행렬로 묶는다.
 
-```python
-v = -np.cross(w, q)
-for x in [np.zeros(3), q,
-          np.array([2., 0., 0.])]:
-    dx = np.cross(w, x) + v
-    print(dx)
-```
+$$[\mathcal V_s]=\begin{bmatrix}[\Omega]&v_s\\0&0\end{bmatrix}$$
 
-```text
-[ 0. -1.  0.]
-[0. 0. 0.]
-[0. 1. 0.]
-```
+이 행렬의 마지막 행은 네 칸 모두 0이다.
+변환행렬 T의 마지막 행 $$(0,0,0,1)$$과 구분하자.
+현재 자세 T와 그 시간 변화율 $$\dot T$$ 사이의 관계는 다음과 같다.
 
-<figure><img src="/assets/img/robot-kinematics/velocity-field.png" alt="축이 (1,0)을 지날 때 원점의 속도장은 아래로, 축 위의 속도는 0, (2,0)의 속도는 위로 향해요."></figure>
+$$[\mathcal V_s]=\dot T T^{-1}$$
 
-세 줄은 원점, 축 위의 점, $$(2,0,0)$$의 순간속도예요.
-단위는 m/s이고, 회전속도를 1 rad/s로 둔 결과예요.
-원점은 **속도장을 평가하는 위치**로 넣었어요.
-바닥에 고정된 좌표계 자체가 움직인다는 뜻은 아니에요.
+$$\dot T=[\mathcal V_s]T$$
 
-## <span class="no">4</span> 스크루 축과 트위스트
+즉, **T는 현재 자세를, 트위스트는 그 자세가 순간적으로 변하는 방식을 담는다.**
+위치 부분만 꺼내면 앞에서 사용한 $$\dot p=\Omega\times p+v_s$$가 그대로 나온다.
 
-스크루 축은 운동의 기하를, 트위스트(twist)는 **현재의 운동 속도**를 나타내요.
-회전관절의 스크루 축을 6차원 열벡터로 적어요.
+## 같은 운동을 손끝 기준으로 표현하면
 
-$$S=\begin{bmatrix}\hat\omega\\v\end{bmatrix},\qquad \mathcal V=S\dot\theta$$
+앞에서는 속도를 s의 축과 원점을 기준으로 표현했다.
+같은 운동을 b 기준으로 적을 수도 있다.
+이것이 바디 트위스트(body twist)다.
 
-위의 세 칸은 축 방향, 아래의 세 칸은 축 위치를 반영하는 선운동 성분이에요.
-트위스트 $$\mathcal V$$는 이 축에 실제 속도 $$\dot\theta$$를 곱해요.
-이 예제에서 2 rad/s로 돌면 다음과 같아요.
+$$[\mathcal V_b]=T^{-1}\dot T$$
 
-$$S=\begin{bmatrix}0\\0\\1\\0\\-1\\0\end{bmatrix},\qquad \mathcal V=\begin{bmatrix}0\\0\\2\\0\\-2\\0\end{bmatrix}$$
+바디 트위스트의 아래 성분은 손끝 원점의 실제 속도를 b의 축 방향으로 환산한 값이다.
+s에서 왼쪽으로 1 m/s인 속도는 b에서는 +y 방향 1 m/s다.
+현재 b의 y축이 왼쪽을 향하기 때문이다.
+각속도는 두 좌표계의 z축이 같으므로 여전히 $$(0,0,2)$$다.
 
-이번에는 이를 4×4 행렬로 포장해요.
+$$\mathcal V_b=\begin{bmatrix}0\\0\\2\\0\\1\\0\end{bmatrix}$$
 
-$$[S]=\begin{bmatrix}[\hat\omega]&v\\0&0\end{bmatrix}$$
+두 트위스트를 연결할 때는 T에서 만든 6×6 행렬인 Adjoint를 사용한다.
 
-아래 행은 네 칸 모두 0이에요.
-변환행렬 T의 오른쪽 아래 1과 구분하세요.
-대괄호는 성분을 제곱하거나 목록으로 만든다는 뜻이 아니라, 여기서는 **정해진 행렬 형태로 바꾸는 표기**예요.
+$$\mathcal V_s=\operatorname{Ad}_T\mathcal V_b$$
 
-회전과 축 방향 이동을 함께 하는 일반 스크루에서는 $$v=-\hat\omega\times q+h\hat\omega$$예요.
-피치(pitch) h는 회전 1 rad당 축 방향으로 이동하는 거리이고, 순수 회전관절은 h=0이에요.
+$$\operatorname{Ad}_T=\begin{bmatrix}R&0\\[p]R&R\end{bmatrix}$$
 
-## <span class="no">5</span> 행렬지수로 회전 만들기
+각 블록은 3×3이고, $$[p]$$는 p와의 외적을 수행하는 행렬이다.
+같은 운동을 표현하더라도 기준 원점과 축이 바뀌면 여섯 성분의 값도 달라진다.
+지금 두 트위스트의 아래 성분이 다른 것은 서로 다른 운동이기 때문이 아니다.
 
-행렬지수(matrix exponential)는 **고정된 축을 따라 움직인 양을 변환행렬로 바꿔요.**
-원점을 지나는 단위 회전축만 먼저 보면 식은 다음과 같아요.
+## 렌치: 힘에 모멘트를 더해야 하는 이유
 
-$$R=e^{[\hat\omega]\theta}$$
+이제 같은 손끝의 점 P에 힘이 작용한다고 하자.
+같은 크기의 힘이라도 손끝 원점에 작용할 때와 떨어진 점에 작용할 때는 회전 효과가 다르다.
+따라서 힘만 적어서는 강체에 가해진 작용을 모두 표현할 수 없다.
+**어느 원점을 기준으로 어떤 모멘트가 생기는지**도 필요하다.
 
-입력 $$\hat\omega\theta$$는 회전 방향과 각도를 담은 3차원 지수좌표예요.
-반대칭행렬 $$[\hat\omega]\theta$$를 행렬지수에 넣으면 3×3 회전행렬이 나와요.
-z축으로 90° 돌릴 때 $$\theta=\pi/2$$ rad를 넣어요.
+b 기준에서 점 P까지의 벡터와 힘을 다음과 같이 정하자.
 
-**행렬지수는 각 칸에 지수를 취하는 연산과 달라요.**
-단위행렬부터 시작하는 행렬곱의 급수로 정의돼요.
+$$r_b=\begin{bmatrix}0.5\\0\\0\end{bmatrix}\ \mathrm{m},\qquad f_b=\begin{bmatrix}0\\2\\0\end{bmatrix}\ \mathrm{N}$$
 
-$$e^A=I+A+\frac{A^2}{2!}+\frac{A^3}{3!}+\cdots$$
+P는 손끝의 +x 방향으로 0.5 m 떨어져 있다.
+그 점에 b의 +y 방향으로 2 N의 힘이 작용한다.
+이 힘이 b 원점에 만드는 모멘트는 외적으로 구한다.
 
-단위 회전축에서는 이 식을 로드리게스 공식(Rodrigues' formula)으로 계산할 수 있어요.
+$$m_b=r_b\times f_b=\begin{bmatrix}0\\0\\1\end{bmatrix}\ \mathrm{N\cdot m}$$
 
-$$R=I+\sin\theta[\hat\omega]+(1-\cos\theta)[\hat\omega]^2$$
+모멘트와 힘을 한 6차원 벡터로 묶으면 렌치(wrench)가 된다.
+이 글은 Modern Robotics의 성분 순서를 따른다.
 
-```python
-theta = np.pi / 2
-R = (np.eye(3) + np.sin(theta) * W
-     + (1 - np.cos(theta)) * W @ W)
-print(np.round(R, 6) + 0.)
-print(np.allclose(R, expm(W * theta)))
-```
+$$\mathcal F_b=\begin{bmatrix}m_b\\f_b\end{bmatrix}=\begin{bmatrix}0\\0\\1\\0\\2\\0\end{bmatrix}$$
 
-```text
-[[ 0. -1.  0.]
- [ 1.  0.  0.]
- [ 0.  0.  1.]]
-True
-```
+<figure><img src="/assets/img/robot-kinematics/wrench.png" alt="손끝 위 0.5 m에 있는 P에 왼쪽으로 2 N의 힘이 작용한다. 손끝 원점에 대한 모멘트는 +z 방향 1 N m이고, 바닥 원점에 대한 모멘트는 +z 방향 2 N m다."></figure>
 
-`expm`으로 구한 행렬지수와 로드리게스 공식이 같은 값을 만들었어요.
-`np.exp`는 칸마다 지수를 취하므로 여기서 사용할 함수는 `expm`이에요.
-반대로 회전행렬에서 지수좌표의 행렬 표현을 구하는 연산이 행렬로그(matrix logarithm)예요.
-회전각 표현은 여러 개일 수 있어, 로그에서 어떤 각도 범위를 택했는지도 중요해요.
+트위스트는 각속도와 선운동 성분을, 렌치는 모멘트와 힘을 담는다.
+두 벡터 모두 여섯 성분이지만 물리적 의미와 단위는 서로 다르다.
 
-## <span class="no">6</span> 회전관절과 직동관절
+## 같은 힘도 기준 원점에 따라 모멘트가 달라진다
 
-회전관절과 직동관절은 **같은 행렬지수 틀에 다른 축과 다른 단위의 관절변수**를 넣어요.
+b의 +y 방향은 s에서 왼쪽이므로 힘은 $$f_s=(-2,0,0)^T$$ N이다.
+이 힘이 작용하는 점 P의 s 좌표는 1편에서 구한 $$(1,1,0)^T$$ m다.
+s 원점에 대한 모멘트도 직접 계산할 수 있다.
 
-| 관절 | 스크루 축의 구성 | θ의 뜻 |
-|---|---|---|
-| 회전 | 단위 축 방향과 축 위치 | 회전각, rad |
-| 직동 | 위 3칸은 0, 아래는 단위 이동 방향 | 이동거리, m |
+$$m_s=x_s\times f_s=\begin{bmatrix}0\\0\\2\end{bmatrix}\ \mathrm{N\cdot m}$$
 
-두 경우 모두 관절 하나의 변환은 $$e^{[S]\theta}$$예요.
-원점을 지나는 z 회전축과 x 방향 직동축을 비교해 볼게요.
+따라서 s에서 표현한 같은 렌치는 다음과 같다.
 
-```python
-def se3(S):
-    A = np.zeros((4, 4))
-    A[:3, :3] = skew(S[:3])
-    A[:3, 3] = S[3:]
-    return A
+$$\mathcal F_s=\begin{bmatrix}0\\0\\2\\-2\\0\\0\end{bmatrix}$$
 
-S_rot = np.array([0., 0., 1., 0., 0., 0.])
-S_lin = np.array([0., 0., 0., 1., 0., 0.])
-E_rot = expm(se3(S_rot) * (np.pi / 2))
-E_lin = expm(se3(S_lin) * 0.5)
-print(np.round(E_rot, 6) + 0.)
-print(E_lin)
-```
+모멘트가 1에서 2로 바뀌었다.
+힘 자체가 달라진 것이 아니라 **회전 효과를 계산한 기준 원점이 달라졌기 때문**이다.
+일반적인 좌표 변환식은 다음과 같다.
 
-```text
-[[ 0. -1.  0.  0.]
- [ 1.  0.  0.  0.]
- [ 0.  0.  1.  0.]
- [ 0.  0.  0.  1.]]
-[[1.  0.  0.  0.5]
- [0.  1.  0.  0. ]
- [0.  0.  1.  0. ]
- [0.  0.  0.  1. ]]
-```
+$$\mathcal F_s=\operatorname{Ad}_T^{-T}\mathcal F_b$$
 
-<figure><img src="/assets/img/robot-kinematics/joint-motion.png" alt="원점 중심의 z 회전은 (1,0)을 (0,1)로 보내고, x 직동 0.5 m는 원점을 (0.5,0)으로 옮겨요."></figure>
+$$^{-T}$$는 역행렬을 구한 뒤 전치한다는 뜻이다.
+렌치의 기준 변환은 트위스트와 다른 식을 사용한다.
+그 차이는 다음 계산으로 확인할 수 있다.
 
-회전 결과는 왼쪽 위 3×3이 바뀌었어요.
-직동 결과는 오른쪽 위치 열이 바뀌었고요.
-회전관절의 축 방향과 위치, 직동관절의 이동 방향은 S에 담아요.
-**움직인 양은 θ, 움직임의 결과는 T**로 읽으면 연결돼요.
+## 트위스트와 렌치가 만나는 지점
 
-<div class="done">S는 축의 기하, Sθ는 움직인 양, Sθ̇는 순간속도를 담아요.</div>
+힘과 그 힘이 작용하는 점의 속도를 내적하면 순간 일률, 즉 단위 시간당 하는 일이 나온다.
+이 예제에서 P는 왼쪽으로 2 m/s 움직이고, 힘도 왼쪽으로 2 N 작용한다.
+따라서 힘이 강체에 전달하는 순간 일률은 4 W다.
 
-정의와 표기 확인: [Modern Robotics 트위스트](https://modernrobotics.northwestern.edu/nu-gm-book-resource/3-3-2-twists-part-1-of-2/), [회전의 지수좌표](https://modernrobotics.northwestern.edu/nu-gm-book-resource/3-2-3-exponential-coordinates-of-rotation-part-2-of-2/), [강체운동의 지수좌표](https://modernrobotics.northwestern.edu/nu-gm-book-resource/3-3-3-exponential-coordinates-of-rigid-body-motion/). 2026년 11월 18일 확인.
+렌치와 트위스트를 같은 기준에서 표현하면 이 계산을 여섯 성분의 내적으로 할 수 있다.
+
+$$\mathcal P=\mathcal F^T\mathcal V=m\cdot\Omega+f\cdot v$$
+
+b 기준의 숫자를 넣으면 다음과 같다.
+
+$$\mathcal P=1\times2+2\times1=4\ \mathrm W$$
+
+s 기준에서는 모멘트가 2, 각속도가 2이므로 모멘트 항이 4 W가 된다.
+힘과 $$v_s$$의 내적은 0이므로 전체는 역시 4 W다.
+기준을 바꿔도 같은 물리량이 나와야 한다는 조건이 렌치의 좌표 변환식을 결정한다.
+
+여기까지 오면 하나의 자세 T에서 출발해, 운동을 나타내는 트위스트와 힘의 작용을 나타내는 렌치까지 연결된다.
+운동과 힘을 구분해 표현하는 방법을 익힌 뒤, 다음 글에서는 다시 운동 쪽으로 돌아가 관절각으로 T를 계산한다.
+그때 트위스트에서 분리해 낸 스크루 축과 행렬지수가 사용된다.
+
+참고: [Modern Robotics 트위스트](https://modernrobotics.northwestern.edu/nu-gm-book-resource/3-3-2-twists-part-1-of-2/), [트위스트의 행렬 표현과 Adjoint](https://modernrobotics.northwestern.edu/nu-gm-book-resource/3-3-2-twists-part-2-of-2/), [렌치](https://modernrobotics.northwestern.edu/nu-gm-book-resource/3-4-wrenches/). 2026년 11월 18일 확인.
